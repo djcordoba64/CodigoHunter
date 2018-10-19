@@ -9,9 +9,11 @@
 //Route::resource('mensajes','MessagesController');
 //Usuarios
 //Route::resource('usuarios','UsuariosController');
-Route::get('/', function(){
-	return view('auth.login');
-});
 
-Route::post('login', 'Auth\LoginController@login')->name('login'); 
+Route::get('/', 'Auth\LoginController@showLoginForm');
+
+Route::get('bienvenido', 'BienvenidoController@index')->name('bienvenido'); 
+
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout'); 
 

@@ -4,9 +4,23 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+use App\Persona;
 
 class LoginController extends Controller
 {
+ 
+    public function __construct(){
+      //solo podemos acceder al login si somos usuarios no autenticados.
+      $this->middleware('guest' , ['only' =>'showLoginForm']);
+    }
+
+    public function showLoginForm(){
+
+      return view('auth.login');
+    }
+
     public function login(){
     //validamos los campos usuario(Número de identificación) y la contraseña
       $credentials =  $this->validate(request(),
@@ -15,15 +29,21 @@ class LoginController extends Controller
             'contrasena'=>'required|string',
         ]);
 
-             //return $credentials;
-        //iniciar sesion del usuario devuelve un valor true o false
-       if (Auth::attempt(  $credentials)){
-       return 'Bienvenido';
+
+        //Se hace la consulta en la base de datos utilizando (Eloquent)
+      $existe = Persona::Where(['usuario' => request(['usuario'])])->Where(['contrasena' => request(['contrasena'])])->count();
+      if ($existe>0){
+        return redirect()->route('bienvenido');
        }
        //return 'error';
       return back()
-       ->withErrors(['contrasena'=> 'El susuario y contraseña no coinciden con los registros'])
+      ->withErrors(['contrasena'=> 'El susuario y contraseña no coinciden con los registros'])
       ->withInput(request(['usuario']));//carga los datos ingresados del input.
 
    } 
+
+   public function logout(){
+    Auth::logout();
+    return redirect('/');
+  }
 }

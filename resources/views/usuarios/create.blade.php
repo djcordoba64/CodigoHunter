@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('contenido')
 
 <h1>Registro de Usuarios</h1>

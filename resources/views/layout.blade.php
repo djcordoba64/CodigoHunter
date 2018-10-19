@@ -14,7 +14,7 @@
 		}
 	</style>
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="7css/app.css">
+	<link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 <body>
 	<header>
