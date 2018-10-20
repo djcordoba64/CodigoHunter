@@ -1,4 +1,4 @@
-@extends('layouts')
+@extends('layout')
 
 
 @section('contenido')
@@ -7,44 +7,54 @@
 <table width="100%" border="1">
 	<thead>
 		<tr>
-			<th>Nombre Completo</th>
-			<th>Apellido</th>
 			<th>Documento</th>
+			<th>Nombre Completo</th>
+			<th>Apellidos</th>
 			<th>Correo</th>
-			<th>Numero Contacto</th>
+			<th>Contacto</th>
 			<th>Dirección</th>
 			<th>Rol</th>
 			<th>Estado</th>
 			<th>Acciones</th>
-
+			
 		</tr>
 	</thead>
 	<body>
-		@foreach($usuarios as $persona)
+		@foreach($usuarios as $usuario)
 		<tr>
 			<td>
-			<a href="{{route('usuarios.show',$persona->id)}}">
-				{{ $persona->primerNombre}}
-			</a></td>			
-			<td>{{ $persona->primerApellido}}</td>
-			<td>{{ $persona->documentoIdentidad}}</td>
-			<td>{{ $persona->numerocontacto}}</td>
-			<td>{{ $persona->direccion}}</td>
-			<td>{{ $persona->rol}}</td>
-			<td>{{ $persona->estado}}</td>
-			<td>
-				<a href="{{ route('usuarios.edit', $persona->id)}}">Editar</a>
-				<form style="display:inline" method="POST" action=" {{ route('usuarios.destroy', $persona->id) }}">
-					{!!csrf_field()!!}
-					{!!method_field('DELETE')!!}
-					<button type="submit">Eliminar</button>
-					
-				</form>
+				{{ $usuario->documentoIdentidad}}
 			</td>
-			
+			<a href="{{route('usuarios.show',$usuario->id)}}">
+				<td>
+					{{ $usuario->primerNombre}}
+					{{ $usuario->segundoNombre}}
+				</td>
+			</a>
+			<td>
+				{{ $usuario->primerApellido}}
+				{{ $usuario->segundoApellido}}
+			</td>
+			<td>
+				{{ $usuario->correo}}
+			</td>
+			<td>
+				{{ $usuario->numeroContacto}}
+			</td>
+			<td>
+				{{ $usuario->direccion}}
+			</td>
+			<td>
+				{{ $usuario->rol}}
+			</td>
+
+			<td>
+				{{ $usuario->estado}}
+			</td>
+			<th><a>Editar</a></th>													
 		</tr>
 		@endforeach
 	</body>
 </table>
 
-@stop
+@endsection

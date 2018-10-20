@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 @section('contenido')
 
 <h1>Registro de Usuarios</h1>
@@ -121,7 +121,7 @@
 	 			</label> 
 			</p>
 
-			<p>
+			
 			
 		</fieldset>
 	<input type="submit" value="Enviar">	

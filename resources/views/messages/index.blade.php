@@ -7,7 +7,7 @@
 <table width="100%" border="1">
 	<thead>
 		<tr>
-			<th>Id</th>
+			
 			<th>Nombre</th>
 			<th>email</th>
 			<th>Mensaje</th>
@@ -18,11 +18,11 @@
 	<body>
 		@foreach($messages as $message)
 		<tr>
-			<td>{{ $message->id }}</td>
 			<td>
-			<a href="{{route('mensajes.show',$message->id)}}">
-				{{ $message->nombre}}
-			</a></td>			
+				<a href="{{route('mensajes.show',$message->id)}}">
+					{{ $message->nombre}}
+				</a>
+			</td>			
 			<td>{{ $message->email}}</td>
 			<td>{{ $message->mensaje}}</td>
 			<td>
