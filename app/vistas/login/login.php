@@ -1,3 +1,10 @@
+<?php
+// Start the session
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +13,7 @@
 </head>
 <body>
   <h1 align="center">Inicio sesion</h1>
- <form action="<?php echo RUTA_URL;?>Login/sining" method="POST">
+ <form action="<?php echo RUTA_URL;?>/Login/validar" method="POST">
     <div class="container" align="center">
       <p >
         <label for="usuario"><b>Usuario</b></label>
@@ -15,8 +22,14 @@
       <p >
         <label for="contrasena"><b>Contrasena</b></label>
         <input type="password" placeholder="Ingrese la Contrasena" name="contrasena" >
-        <?php !empty($errors_message)? print($errors_message):'';?>
+
       </p>
+      <p>
+  
+
+        <?php isset($datos["error_message"])? print($datos["error_message"]):'';?>
+      </p>
+
       <p>
         <input type="submit" name="" value="Iniciar">
       </p>

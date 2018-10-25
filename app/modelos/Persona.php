@@ -1,4 +1,4 @@
-:<?php 
+<?php 
       
 
     class Persona{
@@ -104,6 +104,21 @@
                 return false;
             }
 
+        }
+
+        public function CredencialesCorrectas($usuario, $contrasena){
+            $this->db->query( 'SELECT count(1) as existe FROM personas where usuario=:usuario and contrasena=:contrasena');
+            $this->db->bind(':usuario',$usuario);
+            $this->db->bind(':contrasena',$contrasena);
+            $fila=$this->db->registro();
+            return $fila->existe==1;
+        }
+
+        public function ObtenerDatosPorNombreUsuario($usuario){
+            $this->db->query( 'SELECT * FROM personas where usuario=:usuario');
+            $this->db->bind(':usuario',$usuario);
+            $fila=$this->db->registro();
+            return $fila;
         }
         #-----------------------------------------------------------------------------------
     }

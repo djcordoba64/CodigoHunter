@@ -7,8 +7,8 @@
 	*/
 
 	Class Core{
-		protected $controladorActual='paginas';
-		protected $metodoActual='index';
+		protected $controladorActual='Login';
+		protected $metodoActual='inicio';
 		protected $parametros=[];
 
 		// constructor que se carga automaticamente una vez se carga la clase. 
@@ -18,7 +18,14 @@
 
 			//Buscar en controladores si el controlador existe. (evaluar si la página existe)
 			//Si existe se setea como controlador por defecto
-			if (file_exists('../app/controladores/' .ucwords($url[0]).'.php')) {
+			//echo 'Url solicitada: ';
+			//echo '/'.implode('/', $url);
+
+			if(is_null($url))
+			{
+				$this->controladorActual="Login";
+			} 
+			else if (file_exists('../app/controladores/' .ucwords($url[0]).'.php')) {
 
 				$this->controladorActual=ucwords($url[0]);
 
@@ -27,7 +34,9 @@
 			}
 			else 
 			{
-				//die("controlador no encontrado");
+				
+
+				die("ERROR!!! El Controlador :'".ucwords($url[0])."' NO existe; Url solicitada: /".implode('/',$url)." <a href='".RUTA_URL."'>ir al inicio</a>");
 				//echo "$this->controladorActual";
 			}
 			//REQUERIMOS EL CONTROLADOR (EL NUEVO CONTROLADOR)
@@ -36,7 +45,7 @@
 
 
 			//Chequear la segunda parte de la url que sería el método.
-			if (isset($url[1])) {
+			if (isset($url[1]) ) {
 				
 				if (method_exists($this->controladorActual,$url[1])) {
 					//cuequeamos el método
@@ -45,7 +54,7 @@
 				}
 				else 
 				{
-					die("metodo no encontrado");
+					die("ERROR!!! El Metodo :'".ucwords($url[1])."' NO existe en el controlador".ucwords($url[0])." ; Url solicitada: /".implode('/',$url)." <a href='".RUTA_URL."'>ir al inicio</a>");
 				}
 			}			
 			//echo "$this->metodoActual";
@@ -68,4 +77,5 @@
 			}
 		}
 	}
+
  ?>
