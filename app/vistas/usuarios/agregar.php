@@ -1,5 +1,6 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
-<a href="<?php echo RUTA_URL;?>paginas" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a> 
+<a href="<?php echo RUTA_URL;?>/Usuarios/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
+  
 <div class="">
 	<h3>Registrar usuario</h3>
 
@@ -63,7 +64,7 @@
 				</li>
 				<li>
 					<label>
-						<input type="radio" name="sexo" value="Femenino">Femenino
+						<input type="radio" name="sexo" value="femenino">Femenino
 					</label>
 				</li>
 			</ul>

@@ -27,7 +27,8 @@
 			}
 			else 
 			{
-				die("controlador no encontrado");
+				//die("controlador no encontrado");
+				//echo "$this->controladorActual";
 			}
 			//REQUERIMOS EL CONTROLADOR (EL NUEVO CONTROLADOR)
 			require_once '../app/controladores/' .$this->controladorActual . '.php';
@@ -52,7 +53,7 @@
 			$this->parametros=$url ? array_values($url): [];
 			//traer los arreglos que se hayan configgurado en la url
 			call_user_func_array([$this->controladorActual, $this->metodoActual],$this->parametros);
-
+			
 		}
 
 		public function getUrl(){
