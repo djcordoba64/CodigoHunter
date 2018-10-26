@@ -6,6 +6,7 @@
 
 	<form action="<?php echo RUTA_URL;?>/Usuarios/editar/<?php echo $datos['idPersona']?>" method="POST">
 		<div class="form-group">
+			
 			<p>
 				<label for="primerNombre">Primer Nombre:<sub>*</sub>
 					<input type="text" class="" name="primerNombre" value="<?php echo $datos['primerNombre']?>">
@@ -59,12 +60,12 @@
 			<ul>
 				<li>
 					<label>
-					<input type="radio" name="sexo" value="masculino <?php  $datos['sexo']=='masculino';?>"  > Masculino
+					<input type="radio" name="sexo" value="masculino" <?php echo  $datos['sexo'] = 'masculino' ? 'checked':'' ?>> Masculino
 					</label>
 				</li>
 				<li>
 					<label>
-						<input type="radio" name="sexo" value="femenino <?php  $datos['sexo']=='femenino';?>"> Femenino
+						<input type="radio" name="sexo" value="femenino" <?php echo $datos['sexo'] ='femenino' ? '':'checked' ?>> Femenino
 					</label>
 				</li>
 			</ul>
@@ -79,8 +80,8 @@
 	 			</label> 
 				<label for="estado">Estado
 					<select name="estado">
-	   					<option value="activo" <?php  $datos['estado']=='activo'? print "selected" : "";?>>Activo</option>
-		  				<option value="inhativo" <?php  $datos['estado']=='inhativo'? print "selected" : "";?> >Inhactivo</option>
+	   					<option value="activo" <?php echo $datos['estado']=='activo'? print "selected" : "";?>>Activo</option>
+		  				<option value="inactivo" <?php echo $datos['estado']=='inactivo'? print "selected" : "";?> >Inactivo</option>
 	 				 </select>
 	 			</label>
 	 			

@@ -18,6 +18,8 @@
 			];
 			$this->vista('/Usuarios/index',$datos);
 		}
+
+
 //--------------------------***AGREGAR UN USUARIO***------------------------------------------
 		
 		public function agregar(){
@@ -43,7 +45,7 @@
 					'estado'			=>trim($_POST['estado']),				
 				];
 
-				//SE EJECUTA EL MÉTODO agregarUsuario() del Modelo Persona.
+				//SE EJECUTA EL MÉTODO crearUsuario() del Modelo Persona.
 				if($this->personaModelo->agregarUsuario($datos)){
 					redireccionar('/Usuarios/index');
 				}else{
@@ -93,19 +95,20 @@
 					'usuario'			=>trim($_POST['usuario']),
 					'rol'				=>trim($_POST['rol']),
 					'contrasena'		=>trim($_POST['contrasena']),
-					'confi_Contrasena'	=>trim($_POST['confi_Contrasena']),
 					'estado'			=>trim($_POST['estado']),				
 				];
 
 				//SE EJECUTA EL MÉTODO 	editarUsuario() del Modelo Persona.
 				if($this->personaModelo->editarUsuario($datos)){
 					redireccionar('/Usuarios/index');
+
 				}else{
 					die ('Algo salio mal');
+					
 				}
 
 			}else{
-				//Obtener información del usuario desde el modelo Persona.
+				//Cuando se dio clic en el boton 'Editar' a un registro, se Obtiene la  información del usuario seleccionadao desde el modelo Persona, y se carga la información en el formulario de Actulización.
 				$usuario=$this->personaModelo->obtenerUsuarioId($idPersona);
 				
 				$datos=[
@@ -122,8 +125,7 @@
 					'direccion'			=> $usuario->direccion,
 					'usuario'			=> $usuario->usuario,
 					'rol'				=> $usuario->rol,
-					'contrasena'		=> $usuario->contrasena,
-					
+					'contrasena'		=> $usuario->contrasena,					
 					'estado'			=> $usuario->estado,	
 				];
 				//Nos redirecciona a la vista editar---(formulario de modificacón de datos del USUARIO)--
@@ -132,7 +134,14 @@
 			
 		}
 
-		//---------------------------------------------------------------------------------------------
+		//----DETALLE USUARIO-----------------------------------------------------------------------------------------
+		//Ver detaller del usuario
+		public function detalle(){
+			
+
+			$this->vista('/Usuarios/detalle');
+		}
+		
 	}
 
  ?>

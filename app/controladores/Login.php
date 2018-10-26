@@ -18,6 +18,7 @@
 				{
 					$error_message=array('error_message'=>'El usuario y la contraseña son obligatorios');
 					$this->vista('/Login/login', $error_message);
+					return;
 				}
 
 				if($this->personaModelo->CredencialesCorrectas( $_POST['usuario'], $_POST['contrasena']))

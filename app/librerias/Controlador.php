@@ -20,9 +20,12 @@
 			if (file_exists('../app/vistas/' . $vista . '.php')) {
 
 				require_once '../app/vistas/' . $vista . '.php';
+				//echo "$vista";
+
 			}else {
 				//si el archivo de la vista no existe
-				die('la vista no existe');
+				die('la vista ../app/vistas/' . $vista . '.php NO existe');
+				//echo "$vista";
 			}
 
 		}
