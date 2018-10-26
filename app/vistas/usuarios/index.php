@@ -24,9 +24,10 @@
 				</td>
 				
 				<td>
-					<?php echo $usuario->primerNombre; ?>
-					<?php echo $usuario->segundoNombre; ?>
-					
+					<a href=" <?php echo RUTA_URL;?>/Usuarios/detalle/<?php echo $usuario->idPersona;?> ">
+						<?php echo $usuario->primerNombre; ?>
+						<?php echo $usuario->segundoNombre; ?>
+					</a>
 				</td>
 				
 				<td>

@@ -1,4 +1,4 @@
-:<?php 
+<?php 
       
 
     class Persona{
@@ -7,15 +7,17 @@
     	public function __construct(){
     		$this->db = new Base;
     	}
-        #------------------****USUARIOS*******-----------------------------------------------------------------------        
-        //Listamos todos lo usuarios registrados
+    #---------------------------------------****USUARIOS*******-------------------------------       
+      
     	public function obtenerUsuarios(){
+        //Hacemos la consulta para obtener todos lo usuarios registrados.
     		$this->db->query("SELECT * FROM personas WHERE tipoPersona='usuario'");
             $listaUsuarios=$this->db->registros();
-    		return $listaUsuarios;
+    		    return $listaUsuarios;
     	}
-        //Agregamos un nuevo usuario ---CRUD con MVC(PDO)-link->https://www.youtube.com/watch?v=rTzwrVQFMHs
-        public function agregarUsuario($datos){
+      //--------AGREGAR UN NUEVO USURIO-------------------------------------------------------------
+      //Agregamos un nuevo usuario ---CRUD con MVC(PDO)-link->https://www.youtube.com/watch?v=rTzwrVQFMHs
+      public function agregarUsuario($datos){
 
            $this->db->query('INSERT INTO personas (
                                 primerNombre,segundoNombre,primerApellido, segundoApellido, documentoIdentidad,fechaNacimiento,sexo,correo,numeroContacto,direccion,tipoPersona,usuario,rol,contrasena, estado, created_at) 
@@ -40,7 +42,7 @@
            $this->db->bind(' :rol'             ,  $datos['rol']);
            $this->db->bind(' :contrasena'      ,  $datos['contrasena']);
            $this->db->bind(' :estado'          ,  $datos['estado']);
-
+          
            //EJECUTAMOS LA CONSULTA ----Execute
 
            if ($this->db->execute()){           
@@ -81,7 +83,7 @@
                 where idPersona= :idPersona
                 ');
         
-            //vinculmamos los valores
+            //vinculamos los valores
             $this->db->bind(' :idPersona',  $datos['idPersona']);
             $this->db->bind(' :primerNombre'    ,  $datos['primerNombre']);
             $this->db->bind(' :segundoNombre'   ,  $datos['segundoNombre']);
@@ -105,7 +107,50 @@
             }
 
         }
-        #-----------------------------------------------------------------------------------
+        #----------------***CLIENTES****------------------------------------------------
+        //Obtenemos los clientes de la base de datos.
+        public function obtenerClientes(){
+        $this->db->query("SELECT * FROM personas WHERE tipoPersona='cliente'");
+            $listaClientes=$this->db->registros();
+        return $listaClientes;
+       }
+       //Agregar un nuevo cliente
+      public function agregarCliente($datos){
+
+           $this->db->query('INSERT INTO personas (
+                                primerNombre,segundoNombre,primerApellido, segundoApellido, documentoIdentidad,fechaNacimiento,sexo,correo,numeroContacto,direccion,tipoPersona, estado, created_at) 
+                                VALUES (
+                                :primerNombre,:segundoNombre,:primerApellido, :segundoApellido, :documentoIdentidad, 
+                                :fechaNacimiento,:sexo,:correo, :numeroContacto, :direccion, :tipoPersona,:estado, NOW())
+                            ');
+
+           //VINCULAR LOS VALORES --- BIND(sentencias preparadas)---
+           $this->db->bind(' :primerNombre'    ,  $datos['primerNombre']);
+           $this->db->bind(' :segundoNombre'   ,  $datos['segundoNombre']);
+           $this->db->bind(' :primerApellido'  ,  $datos['primerApellido']);
+           $this->db->bind(' :segundoApellido' ,  $datos['segundoApellido']);
+           $this->db->bind(' :documentoIdentidad',$datos['documentoIdentidad']);
+           $this->db->bind(' :fechaNacimiento' ,  $datos['fechaNacimiento']);
+           $this->db->bind(' :sexo'            ,  $datos['sexo']);
+           $this->db->bind(' :correo'          ,  $datos['correo']);
+           $this->db->bind(' :numeroContacto'  ,  $datos['numeroContacto']);
+           $this->db->bind(' :direccion'       ,  $datos['direccion']);
+           $this->db->bind(' :tipoPersona'     , 'cliente');
+           $this->db->bind(' :estado'          ,  $datos['estado']);
+
+           //EJECUTAMOS LA CONSULTA ----Execute
+
+           if ($this->db->execute()){           
+            return true;
+           }else{
+            return false;
+           }
+
+
+        }
+        //----------------------------------------------------------------------------
+
+
     }
        
  ?>

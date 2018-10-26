@@ -31,6 +31,16 @@
           
         </div>
       </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" >
+          Clientes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/Hunter/Cliente/index">Administrar</a>
+          <a class="dropdown-item" href="/Hunter/Cliente/crear">Registrar</a>
+          
+        </div>
+      </li>
       
     </ul>
   </div>
