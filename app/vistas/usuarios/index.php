@@ -1,4 +1,12 @@
-<?php require RUTA_APP . '/vistas/inc/header.php' ?> 
+
+<?php 
+// Start the session
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
+
+require RUTA_APP . '/vistas/inc/header.php' ?> 
 <a href="<?php echo RUTA_URL;?>/paginas" class="btn btn-light"><i class="fa fa-backward"></i>Salir</a>
 <h1>Lista de los Usuarios</h1>
 <table width="100%" border="1">

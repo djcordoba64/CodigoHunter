@@ -75,7 +75,9 @@
 			if(!isset($_SESSION['usuario']) and !$esLogin)
 			{
 				//no es login y no tiene una sesion activa
-				call_user_func_array([$this->controladorActual, $this->metodoActual],$this->parametros);
+				require_once '../app/controladores/Login.php';
+				$parametros["mensaje_advertencia"]="No hay una sesión activa";
+				call_user_func_array([new Login, "index"], $this->parametros);
 			}
 			else
 			{

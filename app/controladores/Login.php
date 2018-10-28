@@ -9,8 +9,8 @@
 
 		}
 		//Esta funcion al iniciar al sitema lo primero que me muestra es el formulario de inicio de sesion
-		public function index(){
-			$this->vista('/login/index');
+		public function index($datos=[]){
+			$this->vista('/login/index', $datos);
 		}
 
 		public function validar(){
@@ -28,7 +28,7 @@
 					$datosUsuario = $this->personaModelo->ObtenerDatosPorIdentificacion( $_POST['identificacion']);
 
 					// datos del usuario para realizar y registrar operaciones sobre los datos en la base de datos
-					$_SESSION["nombreCompleto"] = $datosUsuario -> rol;
+					$_SESSION["nombreCompleto"] = $datosUsuario -> primerNombre." ".$datosUsuario -> primerApellido;
 					$_SESSION["identificacion"] = $datosUsuario -> documentoIdentidad;	
 					$_SESSION["idUsuario"] = $datosUsuario -> idPersona;	
 					$_SESSION["rol"] = $datosUsuario -> rol;	
