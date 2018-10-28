@@ -8,46 +8,52 @@
 				<th>Nombre Completo</th>
 				<th>Apellidos</th>
 				<th>Correo</th>
-				<th>Contacto</th>
+				<th>Numero de contácto</th>
 				<th>Dirección</th>
 				<th>Estado</th>
 				<th>Acciones</th>
+
+
 				
 			</tr>
 		</thead>
-		<body>		
-			<?php foreach($datos['personas']  as $cliente): ?>
-				<tr>
-					<td>
-						<?php echo $cliente->documentoIdentidad;?>				
-					</td>
+		<body>	
+			<?php foreach($datos['personas']  as $usuario): ?>
+			<tr>
+				<td>					
+					<?php echo $usuario->documentoIdentidad;?>								
+				</td>
+			
+				<td>
+					<a href="<?php echo RUTA_URL;?>/Cliente/detalle/<?php echo $usuario->idPersona;?>">
+						<?php echo $usuario->primerNombre;?>
+						<?php echo $usuario->segundoNombre;?>
+					</a>
+				</td>
+			
+				<td>
+					<?php echo $usuario->primerApellido;?>
+					<?php echo $usuario->segundoApellido;?>
+				</td>
+				<td>
+					<?php echo $usuario->correo;?>				
+				</td>
+				<td>
+					<?php echo $usuario->numeroContacto;?>				
+				</td>
+				<td>
+					<?php echo $usuario->direccion;?>				
+				</td>
+				<td>
+					<?php echo $usuario->estado;?>				
+				</td>
+				<td>
+					<a href="<?php echo RUTA_URL;?>/Cliente/editar/<?php echo $usuario->idPersona;?>">Editar</a>				
+				</td>
+
+			</tr>
+														
 					
-					<td>
-						<?php echo $cliente->primerNombre; ?>
-						<?php echo $cliente->segundoNombre; ?>
-						
-					</td>
-					
-					<td>
-						 <?php echo  $cliente->primerApellido; ?>
-						<?php echo $cliente->segundoApellido; ?>
-					</td>
-					<td>
-						 <?php echo $cliente->correo; ?>
-					</td>
-					<td>
-						 <?php echo $cliente->numeroContacto; ?>
-					</td>
-					<td>
-						 <?php echo $cliente->direccion; ?>
-					</td>
-					<td>
-						 <?php echo $cliente->estado; ?>
-					</td>
-					
-					<th><a href="<?php echo RUTA_URL;?>/Clientes/editar/<?php echo $cliente->idPersona;?>">Editar</a>
-					</th>													
-				</tr>
 			<?php endforeach;?>
 		</body>
 	</table>

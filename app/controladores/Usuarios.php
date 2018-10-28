@@ -136,11 +136,34 @@
 
 		//----DETALLE USUARIO-----------------------------------------------------------------------------------------
 		//Ver detaller del usuario
-		public function detalle(){
+		public function detalle($idPersona){
 			
+			$usuario=$this->personaModelo->obtenerUsuarioId($idPersona);
+				
+				$datos=[
+					'idPersona'			=> $usuario->idPersona,				
+					'primerNombre'		=> $usuario->primerNombre,
+					'segundoNombre'		=> $usuario->segundoNombre,
+					'primerApellido'	=> $usuario->primerApellido,
+					'segundoApellido'	=> $usuario->segundoApellido,
+					'documentoIdentidad'=> $usuario->documentoIdentidad,
+					'fechaNacimiento'	=> $usuario->fechaNacimiento,
+					'sexo'				=> $usuario->sexo,
+					'correo'			=> $usuario->correo,
+					'numeroContacto'	=> $usuario->numeroContacto,
+					'direccion'			=> $usuario->direccion,
+					'usuario'			=> $usuario->usuario,
+					'rol'				=> $usuario->rol,
+					'contrasena'		=> $usuario->contrasena,					
+					'estado'			=> $usuario->estado,
 
-			$this->vista('/Usuarios/detalle');
+				];
+			$this->vista('/Usuarios/detalle', $datos);
+
 		}
+		//---------------------------------------------------------
+
+		
 		
 	}
 

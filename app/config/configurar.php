@@ -12,7 +12,7 @@ define('RUTA_APP' , dirname(dirname(__FILE__) )); //C:\xampp\htdocs\Hunter\app
 
 
 //------Ruta url Ej: http://localhost/Hunter/------------------
-define ('RUTA_URL' , ' http://localhost:81/Hunter');
+define ('RUTA_URL' , ' http://localhost:80/Hunter');
 
 //-----NOMBRE DEL SITIO HUNTER---------------------------------
 define ('NOMBRESITIO' , 'HUNTER');

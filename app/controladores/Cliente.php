@@ -20,15 +20,15 @@
 				
 			'personas'=> $personas
 			];
+			//echo var_dump($datos);
+			$this->vista('/Cliente/index',$datos);
 			
-			$this->vista('/Cliente/index');
-			//echo "hola";
 		}
 		//-------------------****CREAR UN CLIENTE****--------------------------------------
 		
 		public function crear(){
 			/*
-			Si se ha enviado el formulario por el método POST. Guardamos la información ingresada de  cada uno de los campos en la variable $datos.
+			Si se ha enviado el formulario por el método POST. Guardamos la información ingresada en una variable.
 			*/ 
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -46,10 +46,13 @@
 					'estado'			=>trim($_POST['estado']),	
 				];
 				/*
-				Si los datos fueron enviador correcatmente ejecutamos el método agregarCliente() del Modelo Persona. Y redireccionamos la la vista donde estan la lista de los clientes, y se visuliza la informaación del nuevo cliente ingresado.
+				Si los datos fueron enviador correcatmente ejecutamos el método agregarCliente()
+				y guardamos el documento de identidad en una variable de sesión.
 				*/
 				if($this->personaModelo->agregarCliente($datos)){
-					redireccionar('/Finca/crear');
+					//echo $ultimoIdCliente;
+					redireccionar('/Fincas/agregar');
+					echo var_dump($datos);
 				}else{
 					die ('Algo salio mal');
 				}

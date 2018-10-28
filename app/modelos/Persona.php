@@ -37,12 +37,11 @@
            $this->db->bind(':correo'          ,  $datos['correo']);
            $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
            $this->db->bind(':direccion'       ,  $datos['direccion']);
-           //$this->db->bind(' :tipoPersona'     , 'usuario');
            $this->db->bind(':usuario'         ,  $datos['usuario']);
            $this->db->bind(':rol'             ,  $datos['rol']);
            $this->db->bind(':contrasena'      ,  $datos['contrasena']);
            $this->db->bind(':estado'          ,  $datos['estado']);
-          var_dump($datos);
+          //var_dump($datos);
            //EJECUTAMOS LA CONSULTA ----Execute
 
            if ($this->db->execute()){           
@@ -126,30 +125,33 @@
                             ');
 
            //VINCULAR LOS VALORES --- BIND(sentencias preparadas)---
-           $this->db->bind(' :primerNombre'    ,  $datos['primerNombre']);
-           $this->db->bind(' :segundoNombre'   ,  $datos['segundoNombre']);
-           $this->db->bind(' :primerApellido'  ,  $datos['primerApellido']);
-           $this->db->bind(' :segundoApellido' ,  $datos['segundoApellido']);
-           $this->db->bind(' :documentoIdentidad',$datos['documentoIdentidad']);
-           $this->db->bind(' :fechaNacimiento' ,  $datos['fechaNacimiento']);
-           $this->db->bind(' :sexo'            ,  $datos['sexo']);
-           $this->db->bind(' :correo'          ,  $datos['correo']);
-           $this->db->bind(' :numeroContacto'  ,  $datos['numeroContacto']);
-           $this->db->bind(' :direccion'       ,  $datos['direccion']);
-           $this->db->bind(' :tipoPersona'     , 'cliente');
-           $this->db->bind(' :estado'          ,  $datos['estado']);
+           $this->db->bind(':primerNombre'    ,  $datos['primerNombre']);
+           $this->db->bind(':segundoNombre'   ,  $datos['segundoNombre']);
+           $this->db->bind(':primerApellido'  ,  $datos['primerApellido']);
+           $this->db->bind(':segundoApellido' ,  $datos['segundoApellido']);
+           $this->db->bind(':documentoIdentidad',$datos['documentoIdentidad']);
+           $this->db->bind(':fechaNacimiento' ,  $datos['fechaNacimiento']);
+           $this->db->bind(':sexo'            ,  $datos['sexo']);
+           $this->db->bind(':correo'          ,  $datos['correo']);
+           $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
+           $this->db->bind(':direccion'       ,  $datos['direccion']);
+           $this->db->bind(':tipoPersona'     , 'cliente');
+           $this->db->bind(':estado'          ,  $datos['estado']);
 
            //EJECUTAMOS LA CONSULTA ----Execute
 
-           if ($this->db->execute()){           
+           if ($this->db->execute()){ 
+            //obtenemos el ultimo id registrado
+          //$ultimoIdCliente=$this->db->ObtenerUltimoID();           
             return true;
            }else{
             return false;
            }
+          
 
 
         }
-        //----------------------------------------------------------------------------
+        //-------LOGIN---------------------------------------------------------------------
 
         public function CredencialesCorrectas($usuario, $contrasena){
             $this->db->query( 'SELECT count(1) as existe FROM personas where usuario=:usuario and contrasena=:contrasena');

@@ -9,7 +9,7 @@ class Base{
 	private $nombre_base = DB_NOMBRE;
 
 	private $dbh; // significa dbh database handler
-	private $stmt; //Sinifica statement (Que es el ejecutar una consulta)
+	private $stmt; //Sinifica statement (Que es al ejecutar una consulta)
 	private $error;
 
 	//configuramos la conexión
@@ -63,9 +63,10 @@ class Base{
 		//Ejecutamos la consulta
 	public function execute(){
 			return $this->stmt->execute();
+
 	}
 
-		//OBTENEMOS LOS REGISTROS
+	//OBTENEMOS LOS REGISTROS
 	public function registros(){
 		$this->execute();
 		return $this->stmt->fetchAll(PDO::FETCH_OBJ);
@@ -77,10 +78,14 @@ class Base{
 		return $this->stmt->fetch(PDO::FETCH_OBJ);
 	}
 
-		//OBTENEMOS LA CANTIDAD DE REGISTROS CON EL MÉTODO ROWCOUNT
+	//OBTENEMOS LA CANTIDAD DE REGISTROS CON EL MÉTODO ROWCOUNT
 	public function rowCount(){
 		return $this->stmt->rowCount();
 	}
+
+	public function ObtenerUltimoID(){
+		return $this->dbh->lasInsertId();
+	} 
 }
 
 ?>

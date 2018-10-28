@@ -1,8 +1,9 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
-<a href="<?php echo RUTA_URL;?>/Cliente/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
+</a>
   
 <div class="">
-	<h3>Datos personales</h3>
+	<h3>Clientes</h3>
+	<h2>Información Personal</h2>
 
 	<form action="<?php echo RUTA_URL;?>/Cliente/crear" method="POST">
 		<div class="form-group">
@@ -63,10 +64,7 @@
 		  				<option value="inactivo">Inactivo</option>
 	 				 </select>
 	 		</label>
-	 			
-			<p>		
-			<input class="" type="submit" value="Agregar usuario">
-			</p>				
+				<input type="submit" value="Siguiente">			
 		</div>
 	</form>	
 </div>

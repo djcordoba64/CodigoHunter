@@ -1,5 +1,5 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?> 
-<a href="<?php echo RUTA_URL;?>/paginas" class="btn btn-light"><i class="fa fa-backward"></i>Salir</a>
+<a href="<?php echo RUTA_URL;?>/paginas/inicio" class="btn btn-light"><i class="fa fa-backward"></i>Salir</a>
 <h1>Lista de los Usuarios</h1>
 <table width="100%" border="1">
 	<thead>
@@ -16,7 +16,8 @@
 			
 		</tr>
 	</thead>
-	<body>		
+	<body>
+			
 		<?php foreach($datos['personas']  as $usuario): ?>
 			<tr>
 				<td>
