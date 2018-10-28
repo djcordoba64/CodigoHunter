@@ -14,27 +14,30 @@
 		}
 
 		public function validar(){
-			if (empty($_POST['usuario']) OR empty($_POST['contrasena']))
+			if (empty($_POST['identificacion']) OR empty($_POST['contrasena']))
 				{
-					$mensaje_error=array('mensaje_error'=>'El usuario y la contraseña son obligatorios');
+					$mensaje_error=array('mensaje_error'=>'El numero de identificación y la contraseña son obligatorios');
 					$this->vista('/Login/index', $mensaje_error);
 					return;
 				}
 
-				if($this->personaModelo->CredencialesCorrectas( $_POST['usuario'], $_POST['contrasena']))
+				if($this->personaModelo->CredencialesCorrectas( $_POST['identificacion'], $_POST['contrasena']))
 				{
 					$_SESSION["autenticado"] = true;
-					$_SESSION["usuario"] = $_POST['usuario'];	
 
-					$datosUsuario = $this->personaModelo->ObtenerDatosPorNombreUsuario( $_POST['usuario']);
+					$datosUsuario = $this->personaModelo->ObtenerDatosPorIdentificacion( $_POST['identificacion']);
 
+					// datos del usuario para realizar y registrar operaciones sobre los datos en la base de datos
+					$_SESSION["nombreCompleto"] = $datosUsuario -> rol;
+					$_SESSION["identificacion"] = $datosUsuario -> documentoIdentidad;	
+					$_SESSION["idUsuario"] = $datosUsuario -> idPersona;	
 					$_SESSION["rol"] = $datosUsuario -> rol;	
 
 					$this->vista('/paginas/index');
 				}
 				else
 				{
-					$mensaje_error=array('mensaje_error'=>'El usuario y/o la contraseña son incorrectos');
+					$mensaje_error=array('mensaje_error'=>'El numero de identificación y/o la contraseña son incorrectos');
 					$this->vista('/Login/index', $mensaje_error);
 				}
 

@@ -111,7 +111,6 @@
 					'segundoNombre'		=>trim($_POST['segundoNombre']),
 					'primerApellido'	=>trim($_POST['primerApellido']),
 					'segundoApellido'	=>trim($_POST['segundoApellido']),
-					'documentoIdentidad'=>trim($_POST['documentoIdentidad']),
 					'fechaNacimiento'	=>trim($_POST['fechaNacimiento']),
 					'sexo'				=>trim($_POST['sexo']),
 					'correo'			=>trim($_POST['correo']),
@@ -150,7 +149,8 @@
 					'direccion'			=> $usuario->direccion,
 					'usuario'			=> $usuario->usuario,
 					'rol'				=> $usuario->rol,
-					'contrasena'		=> $usuario->contrasena,					
+					'contrasena'		=> $usuario->contrasena,	
+					'confi_Contrasena'		=> $usuario->contrasena,					
 					'estado'			=> $usuario->estado,	
 				];
 				//Nos redirecciona a la vista editar---(formulario de modificacón de datos del USUARIO)--

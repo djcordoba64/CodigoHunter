@@ -21,8 +21,8 @@
  <form action="<?php echo RUTA_URL;?>/Login/validar" method="POST">
     <div class="container" align="center">
       <p >
-        <label for="usuario"><b>Usuario</b></label>
-        <input type="text" placeholder="Ingrese el documento" name="usuario" >
+        <label for="usuario"><b>Numero de identificacion</b></label>
+        <input type="text" placeholder="Ingrese el documento" name="identificacion" >
       </p>
       <p >
         <label for="contrasena"><b>Contrasena</b></label>

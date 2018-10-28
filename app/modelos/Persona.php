@@ -85,7 +85,6 @@
                 segundoNombre=:segundoNombre, 
                 primerApellido=:primerApellido,
                 segundoApellido=:segundoApellido,
-                documentoIdentidad=:documentoIdentidad, 
                 fechaNacimiento=:fechaNacimiento,
                 sexo=:sexo,
                 correo=:correo,
@@ -105,7 +104,6 @@
             $this->db->bind(':segundoNombre'   ,  $datos['segundoNombre']);
             $this->db->bind(':primerApellido'  ,  $datos['primerApellido']);
             $this->db->bind(':segundoApellido' ,  $datos['segundoApellido']);
-            $this->db->bind(':documentoIdentidad',$datos['documentoIdentidad']);
             $this->db->bind(':fechaNacimiento' ,  $datos['fechaNacimiento']);
             $this->db->bind(':sexo'            ,  $datos['sexo']);
             $this->db->bind(':correo'          ,  $datos['correo']);       
@@ -167,17 +165,17 @@
         }
         //----------------------------------------------------------------------------
 
-        public function CredencialesCorrectas($usuario, $contrasena){
-            $this->db->query( 'SELECT count(1) as existe FROM personas where usuario=:usuario and contrasena=:contrasena');
-            $this->db->bind(':usuario',$usuario);
+        public function CredencialesCorrectas($identificacion, $contrasena){
+            $this->db->query( 'SELECT count(1) as existe FROM personas where documentoIdentidad=:documentoIdentidad and contrasena=:contrasena');
+            $this->db->bind(':documentoIdentidad',$identificacion);
             $this->db->bind(':contrasena',$contrasena);
             $fila=$this->db->registro();
             return $fila->existe==1;
         }
 
-        public function ObtenerDatosPorNombreUsuario($usuario){
-            $this->db->query( 'SELECT * FROM personas where usuario=:usuario');
-            $this->db->bind(':usuario',$usuario);
+        public function ObtenerDatosPorIdentificacion($identificacion){
+            $this->db->query( 'SELECT * FROM personas where documentoIdentidad=:documentoIdentidad');
+            $this->db->bind(':documentoIdentidad',$identificacion);
             $fila=$this->db->registro();
             return $fila;
         }

@@ -9,7 +9,7 @@
 			
 			<p>
 				<label for="primerNombre">Primer Nombre:<sub>*</sub>
-					<input type="text" class="" name="primerNombre" value="<?php echo $datos['primerNombre']?>">
+					<input type="text" class="" name="primerNombre" value="<?php echo $datos['primerNombre']?>" required>
 				</label>
 
 				<label for="segundoNombre">Segundo Nombre:
@@ -18,18 +18,19 @@
 			</p> 
 			<p> 
 				<label for="primerApellido">Primer Apellido:<sub>*</sub>
-					<input type="text" class="" name="primerApellido" value="<?php echo $datos['primerApellido']?>">
+					<input type="text" class="" name="primerApellido" value="<?php echo $datos['primerApellido']?>"  required>
 				</label> 
 				<label for="segundoApellido">Segundo Apellido:<sub>*</sub>
 					<input type="text" class="" name="segundoApellido" value="<?php echo $datos['segundoApellido']?>">
 				</label>
 			</p>
 			<p> 
-				<label for="documentoIdentidad">Documento identidad:<sub>*</sub>
-					<input type="text" class="" name="documentoIdentidad" value="<?php echo $datos['documentoIdentidad']?>">
-				</label>  
+				<label for="documento">Documento identidad: </label> 
+				<!--se deshabilita modificacion del documento de identidad-->
+					<label name="documento"><?php echo $datos['documentoIdentidad']?></label>
+				 
 				<label for="fechaNacimiento">Fecha Nacimiento:<sub>*</sub>
-					<input type="date" class="" name="fechaNacimiento" value="<?php echo $datos['fechaNacimiento']?>">
+					<input type="date" class="" name="fechaNacimiento" value="<?php echo $datos['fechaNacimiento']?>"  required>
 				</label>
 			</p> 
 			<p>
@@ -44,16 +45,13 @@
 				<label for="direccion">Dirección:<sub>*</sub>
 					<input type="text" class="" name="direccion" value="<?php echo $datos['direccion']?>">
 				</label>
-				<label for="usuario">Usuario:<sub>*</sub>
-					<input type="text" class="" name="usuario" value="<?php echo $datos['usuario']?>">
-				</label>
 			</p>
 			<p>	
 				<label for="contrasena">contrasena:<sub>*</sub>
-					<input type="password" class="" name="contrasena" >
+					<input type="password" class="" name="contrasena" value="<?php echo $datos['contrasena']?>"  required>
 				</label>
 				<label for="confi_Contrasena">Confirmar contrasena:<sub>*</sub>
-					<input type="password" class="" name="confi_Contrasena">
+					<input type="password" class="" name="confi_Contrasena" value="<?php echo $datos['confi_Contrasena']?>"  required>
 				</label>
 			</p>	
 			<p>Sexo
