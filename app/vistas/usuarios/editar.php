@@ -60,30 +60,32 @@
 			<ul>
 				<li>
 					<label>
-					<input type="radio" name="sexo" value="masculino" <?php echo  $datos['sexo'] = 'masculino' ? 'checked':'' ?>> Masculino
+					<input type="radio" name="sexo" value="Masculino" <?php echo  $datos['sexo'] == 'Masculino' ? 'checked':'' ?>> Masculino
 					</label>
 				</li>
 				<li>
 					<label>
-						<input type="radio" name="sexo" value="femenino" <?php echo $datos['sexo'] ='femenino' ? '':'checked' ?>> Femenino
+						<input type="radio" name="sexo" value="Femenino" <?php echo $datos['sexo'] =='Femenino' ? 'checked':'' ?>> Femenino
 					</label>
 				</li>
 			</ul>
 			
 				<label for="rol">Rol
-					<select name="rol">
-	   					<option value="administrador" <?php  $datos['rol']=='administrador'? print "selected" : "";?> >Administrador</option>
-		  				<option value="coordinador" <?php $datos['rol']=='coordinador'? print "selected" : "";?> >Coordinador</option>
-		  			  	<option value="operario" <?php $datos['rol']=='operario'? print "selected" : "";?> >Operario</option>
-	   					<option value="tostador" <?php $datos['rol']=='tostador'? print "selected" : "";?> >Tostador</option>
-	 				 </select>
 	 			</label> 
-				<label for="estado">Estado
-					<select name="estado">
-	   					<option value="activo" <?php echo $datos['estado']=='activo'? print "selected" : "";?>>Activo</option>
-		  				<option value="inactivo" <?php echo $datos['estado']=='inactivo'? print "selected" : "";?> >Inactivo</option>
+							<select name="rol">
+	   					<option value="Seleccione" <?php  $datos['rol']==''? print "selected='selected'" : "";?> >Seleccione</option>
+	   					<option value="administrador" <?php  $datos['rol']=='administrador'? print "selected='selected'" : "";?> >Administrador</option>
+		  				<option value="coordinador" <?php $datos['rol']=='coordinador'? print "selected='selected'" : "";?> >Coordinador</option>
+		  			  	<option value="operario" <?php $datos['rol']=='operario'? print "selected='selected'" : "";?> >Operario</option>
+	   					<option value="tostador" <?php $datos['rol']=='tostador'? print "selected='selected'" : "";?> >Tostador</option>
 	 				 </select>
+				<label for="estado">Estado
 	 			</label>
+					<select name="estado">
+	   					<option value="Seleccione" <?php echo $datos['estado']==''? print "selected='selected'" : "";?>>Seleccione</option>
+	   					<option value="Activo" <?php echo $datos['estado']=='Activo'? print "selected='selected'" : "";?>>Activo</option>
+	   					<option value="Inactivo" <?php echo $datos['estado']=='Inactivo'? print "selected='selected'" : "";?>>Inactivo</option>
+	 				 </select>
 	 			
 			<p>		
 			<input class="" type="submit" value="Actualizar">

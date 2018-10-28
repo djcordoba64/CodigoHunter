@@ -16,8 +16,8 @@
 		public function validar(){
 			if (empty($_POST['usuario']) OR empty($_POST['contrasena']))
 				{
-					$error_message=array('error_message'=>'El usuario y la contraseña son obligatorios');
-					$this->vista('/Login/index', $error_message);
+					$mensaje_error=array('mensaje_error'=>'El usuario y la contraseña son obligatorios');
+					$this->vista('/Login/index', $mensaje_error);
 					return;
 				}
 
@@ -34,20 +34,16 @@
 				}
 				else
 				{
-					$error_message=array('error_message'=>'El usuario y/o la contraseña son incorrectos');
-					$this->vista('/Login/index', $error_message);
+					$mensaje_error=array('mensaje_error'=>'El usuario y/o la contraseña son incorrectos');
+					$this->vista('/Login/index', $mensaje_error);
 				}
 
 		}
-		public function verify(){
-			 
-		}
-		public function renderErrorMessage($message){
-			$errors_message=array('error_message'=>$message);
-			$this->render(__CLASS__, $params);
-		}
-		public  function exec(){
-			$this->render(__CLASS__);
+
+		public  function cerrarSesion(){
+			session_unset();
+			$mensaje_advertencia=array('mensaje_advertencia'=>'Se ha cerrado la sesión correctamente.');
+					$this->vista('/Login/index', $mensaje_advertencia);
 		}
 
 

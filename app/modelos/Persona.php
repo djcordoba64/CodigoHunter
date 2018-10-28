@@ -19,11 +19,23 @@
       //Agregamos un nuevo usuario ---CRUD con MVC(PDO)-link->https://www.youtube.com/watch?v=rTzwrVQFMHs
       public function agregarUsuario($datos){
 
+            //VALIDACIONES
+           $this->db->query("SELECT documentoIdentidad existe from personas where documentoIdentidad = :documentoIdentidad and tipoPersona = 'usuario'");            
+           $this->db->bind(':documentoIdentidad',$datos['documentoIdentidad']);
+           $existe=$this->db->execute();
+           $existe=$this->db->contarFilas();
+
+           if($existe>0)
+           {
+            // -2 significa que el usuario ya existe (numero de identificacion ya registrado)
+            return -2;       
+           }
+
            $this->db->query("INSERT INTO personas (
-                                primerNombre,segundoNombre,primerApellido, segundoApellido, documentoIdentidad,fechaNacimiento,sexo,correo,numeroContacto,direccion,tipoPersona,usuario,rol,contrasena, estado, created_at) 
+                                primerNombre,segundoNombre,primerApellido, segundoApellido, documentoIdentidad,fechaNacimiento,sexo,correo,numeroContacto,direccion,tipoPersona,rol,contrasena, estado, created_at) 
                                 VALUES (
                                 :primerNombre,:segundoNombre,:primerApellido, :segundoApellido, :documentoIdentidad, 
-                                :fechaNacimiento,:sexo,:correo, :numeroContacto, :direccion, 'usuario', :usuario, :rol, :contrasena,:estado, NOW())
+                                :fechaNacimiento,:sexo,:correo, :numeroContacto, :direccion, 'usuario', :rol, :contrasena,:estado, NOW())
                             ");
 
            //VINCULAR LOS VALORES --- BIND(sentencias preparadas)---
@@ -38,7 +50,6 @@
            $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
            $this->db->bind(':direccion'       ,  $datos['direccion']);
            //$this->db->bind(' :tipoPersona'     , 'usuario');
-           $this->db->bind(':usuario'         ,  $datos['usuario']);
            $this->db->bind(':rol'             ,  $datos['rol']);
            $this->db->bind(':contrasena'      ,  $datos['contrasena']);
            $this->db->bind(':estado'          ,  $datos['estado']);
@@ -46,12 +57,13 @@
            //EJECUTAMOS LA CONSULTA ----Execute
 
            if ($this->db->execute()){           
-             //$this->db->guardar();
+             //consulta ultimo id
              $id = $this->db->obtenerUltimoId();
-             echo 'ultimo id: '. $id;
+             //retorna ultimo id
              return $id; 
            }
            else{
+            // -1 significa que fallo el insert
             return -1;
            }
 

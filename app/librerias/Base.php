@@ -78,7 +78,7 @@ class Base{
 	}
 
 		//OBTENEMOS LA CANTIDAD DE REGISTROS CON EL MÉTODO ROWCOUNT
-	public function rowCount(){
+	public function contarFilas(){
 		return $this->stmt->rowCount();
 	}
 

@@ -15,10 +15,10 @@
 		}
 
 		//cargar vista
-		public function vista($vista, $datos = []){
+		public function vista($vista, $datosParametro = []){
 			//chequear si el archivo vista existe
 			if (file_exists('../app/vistas/' . $vista . '.php')) {
-
+				$datos = $datosParametro;
 				require_once '../app/vistas/' . $vista . '.php';
 				//echo "$vista";
 
@@ -28,6 +28,11 @@
 				//echo "$vista";
 			}
 
+		}
+
+		public function renderErrorMessage($message){
+			$errors_message=array('mensaje_error'=>$message);
+			$this->render(__CLASS__, $params);
 		}
 	}
 

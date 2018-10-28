@@ -25,7 +25,8 @@
 		public function agregar(){
 
 			//NOS VALIDA SI EL FORMULARIO HA SIDO ENVIADO ---CRUD con MVC(PDO)-link->https://www.youtube.com/watch?v=rTzwrVQFMHs-------
-			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+			//es un submit y no es la redireccion despues de haber encontrado un error al insertar el usuario (no existe mensaje de error entre los parametros)
+			if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
 
 				$datos=[				
 					'primerNombre'		=>trim($_POST['primerNombre']),
@@ -38,7 +39,6 @@
 					'correo'			=>trim($_POST['correo']),
 					'numeroContacto'	=>trim($_POST['numeroContacto']),
 					'direccion'			=>trim($_POST['direccion']),
-					'usuario'			=>trim($_POST['usuario']),
 					'rol'				=>trim($_POST['rol']),
 					'contrasena'		=>trim($_POST['contrasena']),
 					'confi_Contrasena'	=>trim($_POST['confi_Contrasena']),
@@ -48,31 +48,54 @@
 				//SE EJECUTA EL MÉTODO crearUsuario() del Modelo Persona.
 				$id = $this->personaModelo->agregarUsuario($datos);
 
-				if($id != -1){
+				if($id==-2)
+				{
+					// usuario ya existe
+					// agrego mensaje a arreglo de datos para ser mostrado 
+					$datos['mensaje_error'] ='El usuario ya existe, el numero de identificacion ya esta registrado';
+					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+					$this->vista('/usuarios/agregar', $datos);
+					return;
+				}
+				else if($id== -1){
+					// no se ejecutó el insert
+					// agrego mensaje a arreglo de datos para ser mostrado 
+					$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario intente de nuevo
+					$this->vista('/usuarios/agregar', $datos);
+					return;
+				}
+				else{
+					// Si se realizo el insert, se redirecciona a la lista de usuarios
 					redireccionar('/Usuarios/index/');
-				}else{
-					die ('Algo salio mal');
 				}
 
-			}else{
-				$datos=[				
-					'primerNombre'		=> '',
-					'segundoNombre'		=> '',
-					'primerApellido'	=> '',
-					'segundoApellido'	=> '',
-					'documentoIdentidad'=> '',
-					'fechaNacimiento'	=> '',
-					'sexo'				=> '',
-					'correo'			=> '',
-					'numeroContacto'	=> '',
-					'direccion'			=> '',
-					'usuario'			=> '',
-					'rol'				=> '',
-					'contrasena'		=> '',
-					'confi_Contrasena'	=> '',
-					'estado'			=> '',				
-				];
-				//Nos redirecciona a la vista agregar--(formulario de registro de un usuario)
+			}
+			else 
+			{ 
+				// es GET (primera carga del formulario, vacio), o se esta cargando el formulario de nuevo con mensaje de error encontrados al insertar el nuevo usuario
+				if(empty($datos)){
+					//si los datos no se enviaron, mostrar el formulario vacio
+					$datos=[				
+						'primerNombre'		=> '',
+						'segundoNombre'		=> '',
+						'primerApellido'	=> '',
+						'segundoApellido'	=> '',
+						'documentoIdentidad'=> '',
+						'fechaNacimiento'	=> '',
+						'sexo'				=> '',
+						'correo'			=> '',
+						'numeroContacto'	=> '',
+						'direccion'			=> '',
+						'rol'				=> '',
+						'contrasena'		=> '',
+						'confi_Contrasena'	=> '',
+						'estado'			=> '',				
+					];
+				} //si no, se dejan los datos que vienen.
+
+
+				//renderiza la pagina con el formulario (lleno vacio)
 				$this->vista('/Usuarios/agregar', $datos);
 			}
 		}

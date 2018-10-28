@@ -13,6 +13,8 @@
 
 		// constructor que se carga automaticamente una vez se carga la clase. 
 		public function __construct(){
+
+			
 			//print_r($this->getUrl());
 			$url= $this->getUrl();
 
@@ -21,14 +23,21 @@
 			//echo 'Url solicitada: ';
 			//echo '/'.implode('/', $url);
 
+			$esLogin=false;
+
 			if(is_null($url))
 			{
 				$this->controladorActual="Login";
+				$esLogin=true;
 			} 
 			else if (file_exists('../app/controladores/' .ucwords($url[0]).'.php')) {
 
 				$this->controladorActual=ucwords($url[0]);
 
+				if(ucwords($this->controladorActual)==ucwords('Login'))
+				{
+					$esLogin=true;
+				}
 				//para desmontar el controlADOR QUE EMPIEZA SIENDO PÁGINAS.
 				unset($url[0]);
 			}
@@ -61,7 +70,18 @@
 			//obtener los posibles parámetros
 			$this->parametros=$url ? array_values($url): [];
 			//traer los arreglos que se hayan configgurado en la url
-			call_user_func_array([$this->controladorActual, $this->metodoActual],$this->parametros);
+			
+			//Validar que haya una sesion iniciada y no sea una peticion de login:
+			if(!isset($_SESSION['usuario']) and !$esLogin)
+			{
+				//no es login y no tiene una sesion activa
+				call_user_func_array([$this->controladorActual, $this->metodoActual],$this->parametros);
+			}
+			else
+			{
+				// tiene una sesion activa
+				call_user_func_array([$this->controladorActual, $this->metodoActual],$this->parametros);
+			}
 			
 		}
 

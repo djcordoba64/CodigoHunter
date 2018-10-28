@@ -41,7 +41,9 @@
           
         </div>
       </li>
-      
+       <li class="nav-item">
+        <a class="nav-link" href="/Hunter/Login/cerrarSesion">Cerrar Sesión<span class="sr-only">(current)</span></a>
+      </li>
     </ul>
   </div>
 </nav>
