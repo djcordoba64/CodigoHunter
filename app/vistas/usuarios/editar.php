@@ -58,7 +58,7 @@
 			<ul>
 				<li>
 					<label>
-					<input type="radio" name="sexo" value="Masculino" <?php echo  $datos['sexo'] == 'Masculino' ? 'checked':'' ?>> Masculino
+					<input type="radio" name="sexo" value="Masculino" <?php echo  $datos['sexo'] == 'Masculino' ? 'checked':'' ?> required> Masculino
 					</label>
 				</li>
 				<li>
@@ -70,8 +70,8 @@
 			
 				<label for="rol">Rol
 	 			</label> 
-							<select name="rol">
-	   					<option value="Seleccione" <?php  $datos['rol']==''? print "selected='selected'" : "";?> >Seleccione</option>
+						<select name="rol" required aria-required="true">
+	   					<option value="">Seleccione</option>
 	   					<option value="administrador" <?php  $datos['rol']=='administrador'? print "selected='selected'" : "";?> >Administrador</option>
 		  				<option value="coordinador" <?php $datos['rol']=='coordinador'? print "selected='selected'" : "";?> >Coordinador</option>
 		  			  	<option value="operario" <?php $datos['rol']=='operario'? print "selected='selected'" : "";?> >Operario</option>
@@ -79,8 +79,8 @@
 	 				 </select>
 				<label for="estado">Estado
 	 			</label>
-					<select name="estado">
-	   					<option value="Seleccione" <?php echo $datos['estado']==''? print "selected='selected'" : "";?>>Seleccione</option>
+					<select name="estado" required aria-required="true">
+	   					<option value="">Seleccione</option>
 	   					<option value="Activo" <?php echo $datos['estado']=='Activo'? print "selected='selected'" : "";?>>Activo</option>
 	   					<option value="Inactivo" <?php echo $datos['estado']=='Inactivo'? print "selected='selected'" : "";?>>Inactivo</option>
 	 				 </select>
