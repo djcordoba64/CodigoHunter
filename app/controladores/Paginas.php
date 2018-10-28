@@ -5,7 +5,7 @@
 	
 		public function index(){
 		//Cuando ingreso al sistema es lo primero que se ve
-			$this->vista('/paginas/inicio');
+			$this->vista('/paginas/index');
 			
 		}
 	}

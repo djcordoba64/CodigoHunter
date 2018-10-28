@@ -81,6 +81,14 @@ class Base{
 	public function rowCount(){
 		return $this->stmt->rowCount();
 	}
+
+	public function obtenerUltimoId(){
+		return $this->dbh->lastInsertId(); 
+	}
+
+	public function guardar(){
+		return $this->dbh->commit(); 
+	}
 }
 
 ?>

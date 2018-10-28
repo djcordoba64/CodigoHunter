@@ -8,7 +8,7 @@
 
 	Class Core{
 		protected $controladorActual='Login';
-		protected $metodoActual='inicio';
+		protected $metodoActual='index';
 		protected $parametros=[];
 
 		// constructor que se carga automaticamente una vez se carga la clase. 

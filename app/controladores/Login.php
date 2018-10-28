@@ -9,15 +9,15 @@
 
 		}
 		//Esta funcion al iniciar al sitema lo primero que me muestra es el formulario de inicio de sesion
-		public function inicio(){
-			$this->vista('/login/login');
+		public function index(){
+			$this->vista('/login/index');
 		}
 
 		public function validar(){
 			if (empty($_POST['usuario']) OR empty($_POST['contrasena']))
 				{
 					$error_message=array('error_message'=>'El usuario y la contraseña son obligatorios');
-					$this->vista('/Login/login', $error_message);
+					$this->vista('/Login/index', $error_message);
 					return;
 				}
 
@@ -30,12 +30,12 @@
 
 					$_SESSION["rol"] = $datosUsuario -> rol;	
 
-					$this->vista('/paginas/inicio');
+					$this->vista('/paginas/index');
 				}
 				else
 				{
 					$error_message=array('error_message'=>'El usuario y/o la contraseña son incorrectos');
-					$this->vista('/Login/Login', $error_message);
+					$this->vista('/Login/index', $error_message);
 				}
 
 		}

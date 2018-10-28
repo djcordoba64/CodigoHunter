@@ -46,9 +46,13 @@
            //EJECUTAMOS LA CONSULTA ----Execute
 
            if ($this->db->execute()){           
-            return true;
-           }else{
-            return false;
+             //$this->db->guardar();
+             $id = $this->db->obtenerUltimoId();
+             echo 'ultimo id: '. $id;
+             return $id; 
+           }
+           else{
+            return -1;
            }
 
 

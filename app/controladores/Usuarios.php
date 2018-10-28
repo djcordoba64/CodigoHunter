@@ -46,8 +46,10 @@
 				];
 
 				//SE EJECUTA EL MÉTODO crearUsuario() del Modelo Persona.
-				if($this->personaModelo->agregarUsuario($datos)){
-					redireccionar('/Usuarios/index');
+				$id = $this->personaModelo->agregarUsuario($datos);
+
+				if($id != -1){
+					redireccionar('/Usuarios/index/');
 				}else{
 					die ('Algo salio mal');
 				}
