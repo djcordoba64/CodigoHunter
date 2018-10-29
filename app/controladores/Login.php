@@ -21,19 +21,30 @@
 					return;
 				}
 
-				if($this->personaModelo->CredencialesCorrectas( $_POST['identificacion'], $_POST['contrasena']))
+				if($this->personaModelo->credencialesCorrectas( $_POST['identificacion'], $_POST['contrasena']))
 				{
-					$_SESSION["autenticado"] = true;
+					//las credenciales son correctas
 
-					$datosUsuario = $this->personaModelo->ObtenerDatosPorIdentificacion( $_POST['identificacion']);
+					$datosUsuario = $this->personaModelo->obtenerDatosPorIdentificacion( $_POST['identificacion']);
 
-					// datos del usuario para realizar y registrar operaciones sobre los datos en la base de datos
-					$_SESSION["nombreCompleto"] = $datosUsuario -> primerNombre." ".$datosUsuario -> primerApellido;
-					$_SESSION["identificacion"] = $datosUsuario -> documentoIdentidad;	
-					$_SESSION["idUsuario"] = $datosUsuario -> idPersona;	
-					$_SESSION["rol"] = $datosUsuario -> rol;	
+					if($datosUsuario -> estado == 'Activo')
+					{
+						// el usuario esta activo
+						// datos del usuario para realizar y registrar operaciones sobre los datos en la base de datos
+						$_SESSION["nombreCompleto"] = $datosUsuario -> primerNombre." ".$datosUsuario -> primerApellido;
+						$_SESSION["identificacion"] = $datosUsuario -> documentoIdentidad;	
+						$_SESSION["idUsuario"] = $datosUsuario -> idPersona;	
+						$_SESSION["rol"] = $datosUsuario -> rol;	
 
-					$this->vista('/paginas/index');
+						$this->vista('/paginas/index');
+					}
+					else
+					{
+						//el suario no esta activo mostrar error
+						$mensaje_error=array('mensaje_error'=>'El usuario esta inactivo.');
+						$this->vista('/Login/index', $mensaje_error);
+					}
+
 				}
 				else
 				{
@@ -52,6 +63,5 @@
 
 	}
 
-session_start();
 
  ?>

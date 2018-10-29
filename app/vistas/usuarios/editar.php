@@ -13,7 +13,10 @@
 
 	<form action="<?php echo RUTA_URL;?>/Usuarios/editar/<?php echo $datos['idPersona']?>" method="POST">
 		<div class="form-group">
-			
+			<p>
+				<span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
+				 
+      		</p>
 			<p>
 				<label for="primerNombre">Primer Nombre:<sub>*</sub>
 					<input type="text" class="" name="primerNombre" value="<?php echo $datos['primerNombre']?>" required>
@@ -35,6 +38,8 @@
 				<label for="documento">Documento identidad: </label> 
 				<!--se deshabilita modificacion del documento de identidad-->
 					<label name="documento"><?php echo $datos['documentoIdentidad']?></label>
+
+					<input type="hidden"  name="documentoIdentidad" value="<?php echo $datos['documentoIdentidad']?>"/>
 				 
 				<label for="fechaNacimiento">Fecha Nacimiento:<sub>*</sub>
 					<input type="date" class="" name="fechaNacimiento" value="<?php echo $datos['fechaNacimiento']?>"  required>

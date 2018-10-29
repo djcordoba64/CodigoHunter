@@ -115,9 +115,10 @@
             $this->db->bind(':estado'          ,  $datos['estado']);
 
             if ($this->db->execute()){           
-                return true;
-            }else{
-                return false;
+                return 0;
+            }
+            else{
+                return -1;
             }
 
         }
@@ -165,7 +166,7 @@
         }
         //----------------------------------------------------------------------------
 
-        public function CredencialesCorrectas($identificacion, $contrasena){
+        public function credencialesCorrectas($identificacion, $contrasena){
             $this->db->query( 'SELECT count(1) as existe FROM personas where documentoIdentidad=:documentoIdentidad and contrasena=:contrasena');
             $this->db->bind(':documentoIdentidad',$identificacion);
             $this->db->bind(':contrasena',$contrasena);
@@ -173,11 +174,19 @@
             return $fila->existe==1;
         }
 
-        public function ObtenerDatosPorIdentificacion($identificacion){
+        public function obtenerDatosPorIdentificacion($identificacion){
             $this->db->query( 'SELECT * FROM personas where documentoIdentidad=:documentoIdentidad');
             $this->db->bind(':documentoIdentidad',$identificacion);
             $fila=$this->db->registro();
             return $fila;
+        }
+
+        public function usuarioActivo($identificacion){
+            $this->db->query( "SELECT count(1) as existe FROM personas where documentoIdentidad=:documentoIdentidad and estado='Activo'");
+            $this->db->bind(':documentoIdentidad',$identificacion);
+            $this->db->bind(':contrasena',$contrasena);
+            $fila=$this->db->registro();
+            return $fila->existe==1;
         }
 
     }

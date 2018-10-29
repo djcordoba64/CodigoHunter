@@ -5,6 +5,11 @@
 	3.-Parámetro
 	Ej: /articulos/editar/4
 	*/
+	// Start the session
+ 	if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
 
 	Class Core{
 		protected $controladorActual='Login';
@@ -72,7 +77,7 @@
 			//traer los arreglos que se hayan configgurado en la url
 			
 			//Validar que haya una sesion iniciada y no sea una peticion de login:
-			if(!isset($_SESSION['usuario']) and !$esLogin)
+			if(!isset($_SESSION['identificacion']) and !$esLogin)
 			{
 				//no es login y no tiene una sesion activa
 				require_once '../app/controladores/Login.php';
