@@ -1,4 +1,3 @@
-
 <?php 
 // Start the session
  if(!isset($_SESSION)) 
@@ -24,7 +23,8 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
 			
 		</tr>
 	</thead>
-	<body>		
+	<body>
+			
 		<?php foreach($datos['personas']  as $usuario): ?>
 			<tr>
 				<td>

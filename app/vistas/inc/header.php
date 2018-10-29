@@ -52,7 +52,7 @@
         <a class="nav-link" href="/Hunter/Login/cerrarSesion">Cerrar Sesión<span class="sr-only">(current)</span></a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="/Hunter/Login/cerrarSesion"><?php echo $_SESSION["nombreCompleto"];?><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#"><?php echo $_SESSION["nombreCompleto"];?><span class="sr-only">(current)</span></a>
       </li>
       
     </ul>

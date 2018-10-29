@@ -13,3 +13,5 @@ yarn-error.log
 .env
 .phpunit.result.cache
 app/config/configurar.php
+app/config/configurar.php
+app/config/configurar.php
