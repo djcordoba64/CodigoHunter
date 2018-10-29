@@ -32,10 +32,10 @@
            }
 
            $this->db->query("INSERT INTO personas (
-                                primerNombre,segundoNombre,primerApellido, segundoApellido, documentoIdentidad,fechaNacimiento,sexo,correo,numeroContacto,direccion,tipoPersona,rol,contrasena, estado, created_at) 
+                                primerNombre,segundoNombre,primerApellido, segundoApellido, documentoIdentidad,fechaNacimiento,sexo,correo,numeroContacto,direccion,tipoPersona,rol,contrasena, estado, created_at, created_by) 
                                 VALUES (
                                 :primerNombre,:segundoNombre,:primerApellido, :segundoApellido, :documentoIdentidad, 
-                                :fechaNacimiento,:sexo,:correo, :numeroContacto, :direccion, 'usuario', :rol, :contrasena,:estado, NOW())
+                                :fechaNacimiento,:sexo,:correo, :numeroContacto, :direccion, 'usuario', :rol, :contrasena,:estado, NOW(), :created_by)
                             ");
 
            //VINCULAR LOS VALORES --- BIND(sentencias preparadas)---
@@ -53,6 +53,7 @@
            $this->db->bind(':rol'             ,  $datos['rol']);
            $this->db->bind(':contrasena'      ,  $datos['contrasena']);
            $this->db->bind(':estado'          ,  $datos['estado']);
+           $this->db->bind(':created_by'          ,  $_SESSION['idUsuario']);
           var_dump($datos);
            //EJECUTAMOS LA CONSULTA ----Execute
 
@@ -94,7 +95,8 @@
                 rol=:rol,
                 contrasena=:contrasena, 
                 estado=:estado, 
-                updated_at= NOW() 
+                updated_at= NOW(),
+                updated_by = :updated_by 
                 where idPersona= :idPersona
                 ');
         
@@ -113,6 +115,7 @@
             $this->db->bind(':rol'             ,  $datos['rol']);
             $this->db->bind(':contrasena'      ,  $datos['contrasena']);
             $this->db->bind(':estado'          ,  $datos['estado']);
+            $this->db->bind(':updated_by'      ,  $_SESSION['idUsuario']);
 
             if ($this->db->execute()){           
                 return 0;
@@ -180,15 +183,6 @@
             $fila=$this->db->registro();
             return $fila;
         }
-
-        public function usuarioActivo($identificacion){
-            $this->db->query( "SELECT count(1) as existe FROM personas where documentoIdentidad=:documentoIdentidad and estado='Activo'");
-            $this->db->bind(':documentoIdentidad',$identificacion);
-            $this->db->bind(':contrasena',$contrasena);
-            $fila=$this->db->registro();
-            return $fila->existe==1;
-        }
-
     }
        
  ?>

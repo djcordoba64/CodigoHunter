@@ -127,7 +127,7 @@
 				} //si no, se dejan los datos que vienen.
 
 
-				//renderiza la pagina con el formulario (lleno vacio)
+				//renderiza la pagina con el formulario (lleno o vacio)
 				$this->vista('/Usuarios/agregar', $datos);
 			}
 		}
