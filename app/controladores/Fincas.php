@@ -27,11 +27,12 @@
 					'vereda'		=>trim($_POST['vereda']),
 				];
 
-					 var_dump($datosFinca) ;
+					 //var_dump($datosFinca) ;
 				if($this->fincaModelo->agregarFinca($datosFinca)){
 					
 					//redireccionar('/Fincas/agregar');
-					// echo $datosFinca;
+					
+
 				}else{
 					die ('Algo salio mal');
 				}
@@ -39,10 +40,10 @@
 			}else{
 
 			}
-
 		}
-
-
+		//----------------------------------------------------------------
+	
+		
 
 	}	
 ?>
