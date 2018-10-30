@@ -72,7 +72,7 @@
 				</li>
 				<li>
 					<label>
-						<input type="radio" name="sexo" value="Femenino" <?php echo $datos['sexo'] =='Femenino' ? 'checked':'' ?>> Femenino
+						<input type="radio" name="sexo" value="Femenino" <?php echo $datos['sexo'] =='Femenino' ? 'checked':'' ?> > Femenino
 					</label>
 				</li>
 			</ul>

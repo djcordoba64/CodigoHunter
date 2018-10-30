@@ -11,8 +11,9 @@
 			//instanciamos la clase del modelo Finca.
 			$this->fincaModelo = $this->modelo('Finca');
 		}
-		//----Agregar finca-----------
+		//----Agregar finca--------------------------
 		public function agregar(){
+
 			
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -26,9 +27,11 @@
 					'vereda'		=>trim($_POST['vereda']),
 				];
 
+					 var_dump($datosFinca) ;
 				if($this->fincaModelo->agregarFinca($datosFinca)){
 					
-					redireccionar('/Fincas/agregar');
+					//redireccionar('/Fincas/agregar');
+					// echo $datosFinca;
 				}else{
 					die ('Algo salio mal');
 				}
@@ -38,6 +41,8 @@
 			}
 
 		}
+
+
 
 	}	
 ?>

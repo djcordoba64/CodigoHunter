@@ -129,19 +129,33 @@
         #----------------***CLIENTES****------------------------------------------------
         //Obtenemos los clientes de la base de datos.
         public function obtenerClientes(){
+         //validamos si un cliente está registrado con el número de cédula.
+          $this->db->query("SELECT documentoIdentidad existe from personas where documentoIdentidad = :documentoIdentidad and tipoPersona = 'cliente'");            
+           $this->db->bind(':documentoIdentidad',$datos['documentoIdentidad']);
+           $existe=$this->db->execute();
+           $existe=$this->db->contarFilas();
+
+           if($existe>0)
+           {
+            // -2 significa que el cliente ya existe (numero de identificacion ya registrado)
+            return -2;       
+           } 
+
+
         $this->db->query("SELECT * FROM personas WHERE tipoPersona='cliente'");
             $listaClientes=$this->db->registros();
         return $listaClientes;
        }
+       //--------------------------------------------------------------------
        //Agregar un nuevo cliente
       public function agregarCliente($datos){
 
-           $this->db->query('INSERT INTO personas (
-                                primerNombre,segundoNombre,primerApellido, segundoApellido, documentoIdentidad,fechaNacimiento,sexo,correo,numeroContacto,direccion,tipoPersona, estado, created_at) 
+           $this->db->query("INSERT INTO personas (
+                                primerNombre,segundoNombre,primerApellido, segundoApellido, documentoIdentidad,fechaNacimiento,sexo,correo,numeroContacto,direccion,tipoPersona, estado, created_at,created_by) 
                                 VALUES (
                                 :primerNombre,:segundoNombre,:primerApellido, :segundoApellido, :documentoIdentidad, 
-                                :fechaNacimiento,:sexo,:correo, :numeroContacto, :direccion, :tipoPersona,:estado, NOW())
-                            ');
+                                :fechaNacimiento,:sexo,:correo, :numeroContacto, :direccion,'cliente',:estado, NOW(),:created_by)
+                            ");
 
            //VINCULAR LOS VALORES --- BIND(sentencias preparadas)---
            $this->db->bind(':primerNombre'    ,  $datos['primerNombre']);
@@ -154,20 +168,21 @@
            $this->db->bind(':correo'          ,  $datos['correo']);
            $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
            $this->db->bind(':direccion'       ,  $datos['direccion']);
-           $this->db->bind(':tipoPersona'     , 'cliente');
            $this->db->bind(':estado'          ,  $datos['estado']);
+           $this->db->bind(':created_by', $_SESSION['idUsuario']);
 
-           //EJECUTAMOS LA CONSULTA ----Execute
+          //EJECUTAMOS LA CONSULTA ----Execute
 
-           if ($this->db->execute()){ 
-            //obtenemos el ultimo id registrado
-          //$ultimoIdCliente=$this->db->ObtenerUltimoID();           
-            return true;
-           }else{
-            return false;
+           if ($this->db->execute()){           
+             //consulta ultimo id
+             $idCliente = $this->db->obtenerUltimoId();
+             //retorna ultimo id
+             return $idCliente; 
            }
-          
-
+           else{
+            // -1 significa que fallo el insert
+            return -1;
+           }      
 
         }
         //-------LOGIN---------------------------------------------------------------------

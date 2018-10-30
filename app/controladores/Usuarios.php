@@ -70,14 +70,14 @@
 				//validaciones antes de realizar la operacion:
 				if($datos["contrasena"]!=$datos["confi_Contrasena"])
 				{					
-					// agrego mensaje a arreglo de datos para ser mostrado 
+					// agrego mensaje al arreglo de datos para ser mostrado 
 					$datos['mensaje_error'] ='Las contraseñas no coinciden';
 					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
 					$this->vista('/usuarios/agregar', $datos);
 					return;
 				}
 
-				//SE EJECUTA EL MÉTODO crearUsuario() del Modelo Persona.
+				//SE EJECUTA EL MÉTODO agregarUsuario() del Modelo Persona.
 				$id = $this->personaModelo->agregarUsuario($datos);
 
 				if($id==-2)
