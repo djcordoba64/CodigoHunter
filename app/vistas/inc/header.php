@@ -6,56 +6,125 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta charset="viewport" content="width= device=width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="id=edge">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="icon" type="image/png" href="images/favicon.png">
+<title>Title</title>
+
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway:300,400,700,800" rel="stylesheet">
+
+<!-- CSS FILES -->
+<link href="<?php echo RUTA_URL ?>/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo RUTA_URL ?>/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo RUTA_URL ?>/css/owl.carousel.min.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo RUTA_URL ?>/css/zoomslider.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
+
   <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL ?>/css/estilos.css">
-	<title><?php echo NOMBRESITIO;?></title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="<?php echo RUTA_URL."/paginas/index";?>">HUNTER</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/Hunter/paginas/index">Home<span class="sr-only">(current)</span></a>
-      </li>
-      
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" >
-          Usuarios
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/Hunter/Usuarios/index">Administrar</a>
-          <a class="dropdown-item" href="/Hunter/Usuarios/agregar">Registrar</a>
-          
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-sm-9">
+          <ul class="top-bar-contacts">
+            <li><i class="fa fa-phone" aria-hidden="true"></i>+80 (041) 2824 504 43</li>
+            <li class="mail"><i class="fa fa-envelope-o" aria-hidden="true"></i>orders@mistercoffee.us</li>
+            <li class="skype"><i class="fa fa-user" aria-hidden="true"></i><?php echo $_SESSION["nombreCompleto"];?></li>
+          </ul>
         </div>
-      </li>
-       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" >
-          Clientes
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/Hunter/Cliente/index">Administrar</a>
-          <a class="dropdown-item" href="/Hunter/Cliente/crear">Registrar</a>
-          
+        <div class="col-md-2 col-sm-3 top-social-wrap">
+          <ul class="top-social">
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+          </ul>
         </div>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="/Hunter/Login/cerrarSesion">Cerrar Sesión<span class="sr-only">(current)</span></a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#"><?php echo $_SESSION["nombreCompleto"];?><span class="sr-only">(current)</span></a>
-      </li>
-      
-    </ul>
+      </div>
+    </div>
   </div>
-</nav>
+  <!-- TOP BAR END -->
+  <!-- HEADER -->
+  <div class="header-wrap">
+    <header class="top-nav inner-page" data-spy="affix" data-offset-top="34">
+      <div class="container">
+        <div class="row position-relative">
+          <div class="col-lg-2 col-md-2">
+            <a href="<?php echo RUTA_URL."/paginas/index";?>" class="small-logo alt"><img src="images/small-logo.png" alt=""></a>  
+          </div>
+          <div class="col-lg-10 col-md-10">
+            <nav class="navbar collapse navbar-collapse" id="coffee-menu">
+              <div class="col-lg-10 col-md-10">
+                <ul class="main-menu nav">
+                  <li><a href="<?php echo RUTA_URL."/paginas/index";?>">Inicio</a></li>
+                  <li class="parent">
+                    <a href="#">Usuarios</a>
+                    <ul class="sub-menu">
+                      <li><a href="/Hunter/Usuarios/index">Administrar</a></li>
+                      <li><a href="/Hunter/Usuarios/agregar">Registrar</a></li>
+                    </ul>
+                  </li>
 
+                  <li class="parent">
+                    <a href="#">Clientes</a>
+                    <ul class="sub-menu">
+                      <li><a href="/Hunter/Cliente/index">Administrar</a></li>
+                      <li><a href="/Hunter/Cliente/crear">Registrar</a></li>
+                    </ul>
+                  </li>
+                  
+                  
+                </ul>
+              </div>
+              <div class="col-lg-2 col-md-12">
+                <div class="top-right">
+                  <a href="/Hunter/Login/cerrarSesion" class="cart">
+                    <span class="name">Cart</span>
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  </a>
+                  <a href="cart.html" class="cart">
+                    <span class="name">Cart</span>
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="count">0</span>
+                  </a>
+                  <div class="top-search">
+                    <input type="text" placeholder="Search">
+                    <a href="#" class="fa fa-search search" aria-hidden="true"></a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#coffee-menu" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+      </div>
+    </header>
+  </div>
+  <!-- HEADER END -->
+
+  <!-- PAGE HEAD -->
+    <section class="page-head">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li>Products</li>
+            </ul>
+            <h1>Products</h1> 
+          </div>
+        </div>
+      </div>
+    </section>
+  <!-- PAGE HEAD END -->
