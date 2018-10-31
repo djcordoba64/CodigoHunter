@@ -74,21 +74,21 @@
 	<!-- FOOTER END -->
 
 <!-- JAVASCRIPT FILES -->
-<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTRSHf8sjMCfK9PHPJxjJkwrCIo5asIzE"></script>	
-<script type="text/javascript" src="js/map-style.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.zoomslider.js"></script>
-<script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
-<script type="text/javascript" src="js/waypoint.js"></script>
-<script type="text/javascript" src="js/jquery.counterup.min.js"></script>
-<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="js/custom-number.js"></script>
-<script type="text/javascript" src="js/jquery.select2.js"></script>
-<script type="text/javascript" src="js/jquery.swipebox.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/map-style.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/modernizr-2.6.2.min.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.zoomslider.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.parallax-1.1.3.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/waypoint.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.counterup.min.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/custom-number.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.select2.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.swipebox.min.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/main.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		/*cargar_Departamentos();

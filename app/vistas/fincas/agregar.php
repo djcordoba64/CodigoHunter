@@ -1,7 +1,5 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
-<?php echo $datos["deptos"];?>
-
 <div class="">
 	<h3>Finca</h3>
 	<h2>Registrar información de la finca</h2>
