@@ -1,10 +1,10 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
+<?php echo $datos["deptos"];?>
+
 <div class="">
 	<h3>Finca</h3>
 	<h2>Registrar información de la finca</h2>
-	<?php echo var_dump($datos) ?>
-	<?php echo var_dump($listaDepartamentos); ?>
 	<!-- REGISTRAR INFORMACIÓN DE LA FINCA!-->
 	<form action="<?php echo RUTA_URL;?>/Fincas/agregar" method="POST">
 		<div class="form-group">	
@@ -25,12 +25,17 @@
 			</p>
 			<p>
 				<label for="departamento">Departamento
-					<select name="cbx_departamento">
-						<option value="0">--Seleccione--</option>
-	   										
-	 				</select>	 				
+					<select id="departamento" name="departamento">
+        			</select>	 				
 		 		</label>
 	 		</p>
+	 		<p>
+	 			<label for="municipio">Municipio
+	      		  	<select id="municipio" name="municipio">
+	            		<option value="0">--Seleccione--</option>
+	        		</select>
+	        	</label>
+    		</p>
 	 		<p>
 	 		 	<label for="vereda">Vereda:
 					<input type="text" class="" name="vereda">

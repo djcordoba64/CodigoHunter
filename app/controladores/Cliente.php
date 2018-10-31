@@ -10,6 +10,8 @@
 		{
 			//instanciamos la clase del modelo Persona.
 			$this->personaModelo = $this->modelo('Persona');
+
+			$this->UbicacionModelo = $this->modelo('Ubicacion');
 		}
 
 		public function index(){
@@ -93,6 +95,15 @@
 					//redireccionar('/fincas/agregar');
 
 					$datos["idCliente"]=$idCliente;
+
+
+					$deptos = $this->UbicacionModelo -> obtenerDepartamentos();
+					$deptos = json_encode($deptos);
+					$municipios = $this->UbicacionModelo -> obtenerMunicipios();
+					$municipios = json_encode($municipios);
+
+					$datos["deptos"]=$deptos;
+					$datos["municipios"]=$municipios;
 
 					$this->vista('/Fincas/agregar', $datos);
 
