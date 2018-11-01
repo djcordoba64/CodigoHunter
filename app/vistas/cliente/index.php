@@ -1,60 +1,75 @@
-<?php require RUTA_APP . '/vistas/inc/header.php' ?>  
-<a href="<?php echo RUTA_URL;?>/paginas" class="btn btn-light"><i class="fa fa-backward"></i>Salir</a>
-<h1>Lista de los Clientes</h1>
-	<table width="100%" border="1">
-		<thead>
-			<tr>
-				<th>Documento</th>
-				<th>Nombre Completo</th>
-				<th>Apellidos</th>
-				<th>Correo</th>
-				<th>Numero de contácto</th>
-				<th>Dirección</th>
-				<th>Estado</th>
-				<th>Acciones</th>
+<?php require RUTA_APP . '/vistas/inc/header.php' ?> 
 
+<!-- CART -->
+<div class="col-md-12">
+	<h2>Lista de  Clientes</h2>
+</div>
+	<section class="cart-wrap">
 
-				
-			</tr>
-		</thead>
-		<body>	
-			<?php foreach($datos['personas']  as $usuario): ?>
-			<tr>
-				<td>					
-					<?php echo $usuario->documentoIdentidad;?>								
-				</td>
+		<div class="container">
 			
-				<td>
-					<a href="<?php echo RUTA_URL;?>/Cliente/detalle/<?php echo $usuario->idPersona;?>">
-						<?php echo $usuario->primerNombre;?>
-						<?php echo $usuario->segundoNombre;?>
-					</a>
-				</td>
-			
-				<td>
-					<?php echo $usuario->primerApellido;?>
-					<?php echo $usuario->segundoApellido;?>
-				</td>
-				<td>
-					<?php echo $usuario->correo;?>				
-				</td>
-				<td>
-					<?php echo $usuario->numeroContacto;?>				
-				</td>
-				<td>
-					<?php echo $usuario->direccion;?>				
-				</td>
-				<td>
-					<?php echo $usuario->estado;?>				
-				</td>
-				<td>
-					<a href="<?php echo RUTA_URL;?>/Cliente/editar/<?php echo $usuario->idPersona;?>">Editar</a>				
-				</td>
+			<div class="row">				
+					<div class="woocommerce">
+					    <div class="page_woo woo_cart">
+					        <form method="post">
+					            <table class="shop_table shop_table_responsive cart">
+					                <thead>
+					                    <tr>
+					                        
+					                    	<th class="product-remove">Documento</th>
+											<th class="product-remove">Nombre</th>
+											<th class="product-remove">Apellidos</th>
+											<th class="product-remove">Correo</th>
+											<th class="product-remove">Contácto</th>
+											<th class="product-remove">Dirección</th>
+											<th class="product-remove">Estado</th>
+											<th class="product-remove">Acciones</th>
+					                    </tr>
+					                </thead>
+					                <tbody  class="cart_item">
+									<?php foreach($datos['personas']  as $usuario): ?>
+										<tr class="cart_item">
+											<td class="product-remove">					
+												<?php echo $usuario->documentoIdentidad;?>								
+											</td>
+										
+											<td class="product-remove">
+												<a href="<?php echo RUTA_URL;?>/Cliente/detalle/<?php echo $usuario->idPersona;?>">
+													<?php echo $usuario->primerNombre;?>
+													<?php echo $usuario->segundoNombre;?>
+												</a>
+											</td class="cart_item">
+										
+											<td class="product-remove">
+												<?php echo $usuario->primerApellido;?>
+												<?php echo $usuario->segundoApellido;?>
+											</td>
+											<td class="product-remove">
+												<?php echo $usuario->correo;?>				
+											</td>
+											<td class="product-remove">
+												<?php echo $usuario->numeroContacto;?>				
+											</td>
+											<td class="product-remove">
+												<?php echo $usuario->direccion;?>				
+											</td>
+											<td class="product-remove">
+												<?php echo $usuario->estado;?>				
+											</td class="product-remove">
+											<td class="product-remove">
+												<a href="<?php echo RUTA_URL;?>/Cliente/editar/<?php echo $usuario->idPersona;?>">Editar</a>				
+											</td>
 
-			</tr>
-														
-					
-			<?php endforeach;?>
-		</body>
-	</table>
+										</tr>
+									<?php endforeach;?>
+					                </tbody>
+					            </table>
+					        </form>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 

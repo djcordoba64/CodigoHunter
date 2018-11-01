@@ -13,7 +13,7 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link rel="icon" type="image/png" href="images/favicon.png">
-<title>Title</title>
+<title>Hunter</title>
 
 <!-- FONTS -->
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway:300,400,700,800" rel="stylesheet">
@@ -119,10 +119,10 @@
         <div class="row">
           <div class="col-md-12">
             <ul class="breadcrumb">
-              <li><a href="#">Home</a></li>
-              <li>Products</li>
+              <li><a href="<?php echo RUTA_URL;?>/paginas">Inicio</a></li>
+              <li>Administrar clientes</li>
             </ul>
-            <h1>Products</h1> 
+            <h1>Administrar</h1> 
           </div>
         </div>
       </div>

@@ -125,11 +125,35 @@
             }
 
         }
+        //-------LOGIN---------------------------------------------------------------------
+
+        public function credencialesCorrectas($identificacion, $contrasena){
+            $this->db->query( 'SELECT count(1) as existe FROM personas where documentoIdentidad=:documentoIdentidad and contrasena=:contrasena');
+            $this->db->bind(':documentoIdentidad',$identificacion);
+            $this->db->bind(':contrasena',$contrasena);
+            $fila=$this->db->registro();
+            return $fila->existe==1;
+        }
+
+        public function obtenerDatosPorIdentificacion($identificacion){
+            $this->db->query( 'SELECT * FROM personas where documentoIdentidad=:documentoIdentidad');
+            $this->db->bind(':documentoIdentidad',$identificacion);
+            $fila=$this->db->registro();
+            return $fila;
+        }
 
         #----------------***CLIENTES****------------------------------------------------
-        //Obtenemos los clientes de la base de datos.
+
+        //Obtenemos los clientes registrados para mostrarlos en la vista (index).
         public function obtenerClientes(){
-         //validamos si un cliente está registrado con el número de cédula.
+         $this->db->query("SELECT * FROM personas WHERE tipoPersona='cliente'");
+            $listaClientes=$this->db->registros();
+        return $listaClientes;
+       }
+       //----REGISTRAR UN NUEVO CLIENTE------------------
+     
+        public function agregarCliente($datos){
+          //validamos si un cliente está registrado con el número de cédula.
           $this->db->query("SELECT documentoIdentidad existe from personas where documentoIdentidad = :documentoIdentidad and tipoPersona = 'cliente'");            
            $this->db->bind(':documentoIdentidad',$datos['documentoIdentidad']);
            $existe=$this->db->execute();
@@ -139,17 +163,7 @@
            {
             // -2 significa que el cliente ya existe (numero de identificacion ya registrado)
             return -2;       
-           } 
-
-
-        $this->db->query("SELECT * FROM personas WHERE tipoPersona='cliente'");
-            $listaClientes=$this->db->registros();
-        return $listaClientes;
-       }
-       //--------------------------------------------------------------------
-       //Agregar un nuevo cliente
-      public function agregarCliente($datos){
-
+           }    
            $this->db->query("INSERT INTO personas (
                                 primerNombre,segundoNombre,primerApellido, segundoApellido, documentoIdentidad,fechaNacimiento,sexo,correo,numeroContacto,direccion,tipoPersona, estado, created_at,created_by) 
                                 VALUES (
@@ -185,22 +199,7 @@
            }      
 
         }
-        //-------LOGIN---------------------------------------------------------------------
-
-        public function credencialesCorrectas($identificacion, $contrasena){
-            $this->db->query( 'SELECT count(1) as existe FROM personas where documentoIdentidad=:documentoIdentidad and contrasena=:contrasena');
-            $this->db->bind(':documentoIdentidad',$identificacion);
-            $this->db->bind(':contrasena',$contrasena);
-            $fila=$this->db->registro();
-            return $fila->existe==1;
-        }
-
-        public function obtenerDatosPorIdentificacion($identificacion){
-            $this->db->query( 'SELECT * FROM personas where documentoIdentidad=:documentoIdentidad');
-            $this->db->bind(':documentoIdentidad',$identificacion);
-            $fila=$this->db->registro();
-            return $fila;
-        }
+        
     }
        
  ?>

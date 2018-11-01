@@ -1,77 +1,118 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
-</a>
-  
-<div class="">
-	<h3>Clientes</h3>
-	<h2>Información Personal</h2>
 
-	<form action="<?php echo RUTA_URL;?>/Cliente/crear" method="POST">
-		<div class="form-group">
-			<p>
-				<span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
-				 
-      		</p>
-			<p>
-				<label for="primerNombre">Primer Nombre:<sub>*</sub>
-					<input type="text" class="" name="primerNombre" required value="<?php echo $datos['primerNombre']?>">
-				</label>
 
-				<label for="segundoNombre">Segundo Nombre:
-					<input type="text" class="" name="segundoNombre" value="<?php echo $datos['segundoNombre']?>">
-				</label>
-			</p> 
-			<p> 
-				<label for="primerApellido">Primer Apellido:<sub>*</sub>
-					<input type="text" class="" name="primerApellido" required value="<?php echo $datos['primerApellido']?>">
-				</label> 
-				<label for="segundoApellido">Segundo Apellido:<sub>*</sub>
-					<input type="text" class="" name="segundoApellido" value="<?php echo $datos['segundoApellido']?>">
-				</label>
-			</p>
-			<p> 
-				<label for="documentoIdentidad">Documento identidad:<sub>*</sub>
-					<input type="text" class="" name="documentoIdentidad" required value="<?php echo $datos['documentoIdentidad']?>">
-				</label>  
-				<label for="fechaNacimiento">Fecha Nacimiento:<sub>*</sub>
-					<input type="date" class="" name="fechaNacimiento" value="<?php echo $datos['fechaNacimiento']?>">
-				</label>
-			</p> 
-			<p>
-				<label for="correo">Correo:
-					<input type="email" class="" name="correo">
-				</label>
-				<label for="numeroContacto">Número de contácto:
-					<input type="`text" class="" name="numeroContacto" required value="<?php echo $datos['numeroContacto']?>">
-				</label>
-			</p>
-			<p> 
-				<label for="direccion">Dirección:<sub>*</sub>
-					<input type="text" class="" name="direccion" value="<?php echo $datos['direccion']?>">
-				</label>
-			</p>	
-			<p>Sexo
-			<ul>
-				<li>
-					<label>
-					<input type="radio" name="sexo" value="Masculino" <?php echo  $datos['sexo'] == 'Masculino' ? 'checked':'' ?> required>Masculino
-					</label>
-				</li>
-				<li>
-					<label>
-						<input type="radio" name="sexo" value="Femenino" <?php echo $datos['sexo'] =='Femenino' ? 'checked':'' ?>>Femenino
-					</label>
-				</li>
-			</ul>
-			<label for="estado">Estado
-					</label>
-					<select name="estado" required aria-required="true">
-	   					<option value="">Seleccione</option>
-	   					<option value="Activo" <?php echo $datos['estado']=='Activo'? print "selected='selected'" : "";?>>Activo</option>
-	   					<option value="Inactivo" <?php echo $datos['estado']=='Inactivo'? print "selected='selected'" : "";?>>Inactivo</option>
-	 				 </select>
-	 		</label>
-				<input type="submit" value="Siguiente">			
-		</div>
-	</form>	
-</div>
+<section class="cart-wrap">
+	<div class="container">
+	    <div class="row">
+	        <div class="col-md-12">
+	            <div class="">
+	                <form class="form-horizontal" method="post">
+	                    <fieldset>
+	                       <div class="col-md-12">
+								<h2>Información personal</h2>
+							</div>
+	                        <div class="form-group">
+	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+	                            <div class="col-md-8">
+	                                <input type="text" class="form-control" name="primerNombre" placeholder="Primer Nombre" required value="<?php echo $datos['primerNombre']?>">
+	                            </div>
+	                         </div>   
+                      
+	                        <div class="form-group">
+	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+	                            <div class="col-md-8">
+	                            	<input type="text" class="form-control" name="segundoNombre" placeholder="Segundo Nombre" value="<?php echo $datos['segundoNombre']?>">
+	                               
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user-o"></i></span>
+	                            <div class="col-md-8">
+	                            	<input type="text" class="form-control" name="primerApellido" placeholder="Primer apellido" value="<?php echo $datos['primerApellido']?>">
+	                               
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user-o"></i></span>
+	                            <div class="col-md-8">
+	                            	<input type="text" class="form-control" name="segundoApellido" placeholder="Segundo apellido" value="<?php echo $datos['segundoApellido']?>">
+	                               
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-address-book"></i></span>
+	                            <div class="col-md-8">
+	                            	<input type="text" class="form-control" name="documentoIdentidad" placeholder="Documento" value="<?php echo $datos['documentoIdentidad']?>">
+	                               
+	                            </div>
+	                        </div>
+
+	                        <div class="form-group">
+	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-calendar"></i></span>
+	                            <div class="col-md-8">
+	                            	<input type="date" class="form-control" name="fechaNacimiento" placeholder="Fecha de nacimiento" value="<?php echo $datos['fechaNacimiento']?>">
+	                               
+	                            </div>
+	                        </div>
+
+	                        <div class="form-group">
+	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+	                            <div class="col-md-8">
+	                                <input type="email" class="form-control"  name="correo" placeholder="Coreo electrónico" value="<?php echo $datos['correo']?>" >
+	                            </div>
+	                        </div>
+
+
+	                        <div class="form-group">
+	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+	                            <div class="col-md-8">
+	                                <input type="`text" class="form-control" name="numeroContacto" placeholder="Número de contácto" required value="<?php echo $datos['numeroContacto']?>">
+	                            </div>
+	                        </div>
+	                         <div class="form-group">
+	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-map-marker"></i></span>
+	                            <div class="col-md-8">
+	                                <input type="text" class="form-control" name="direccion" placeholder="Dirección" value="<?php echo $datos['direccion']?>">
+	                            </div>
+	                        </div>
+	                         <div class="form-group">
+	                         	<ul>
+	                         		<li>
+		                         		<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-male"></i></span>
+			                            <div class="col-md-8">
+			                            	<input type="radio" name="sexo" value="Masculino" <?php echo  $datos['sexo'] == 'Masculino' ? 'checked':'' ?> required>Masculino			                                
+			                            </div>		                           
+		                             	<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-female"></i></span>
+		                           		 <div class="col-md-8">
+		                            		<input type="radio" name="sexo" value="Femenino" <?php echo $datos['sexo'] =='Femenino' ? 'checked':'' ?>>Femenino		                                
+		                           		 </div>
+		                            	
+		                            </li>
+	                            </ul>
+	                        </div>
+	                        <div class="form-group">
+	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-chevron-down"></i></span>
+	                            <div class="col-md-8">
+	                            	<select name="estado" required aria-required="true">
+					   					<option value="Activo" <?php echo $datos['estado']=='Activo'? print "selected='selected'" : "";?>>Activo</option>
+					   					<option value="Inactivo" <?php echo $datos['estado']=='Inactivo'? print "selected='selected'" : "";?>>Inactivo</option>
+				 					 </select>	                                
+	                            </div>
+	                        </div>
+
+
+	                        <div class="form-group">
+	                            <div class="col-md-12 text-center">
+	                            	<input type="submit"  class="btn btn-primary'" value="Siguiente" >
+	                            
+	                            </div>
+	                        </div>
+	                    </fieldset>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</section>
+
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 

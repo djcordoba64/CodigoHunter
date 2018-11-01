@@ -79,12 +79,12 @@
 			
 				<label for="rol">Rol
 	 			</label> 
-							<select name="rol" required aria-required="true">
-	   					<option value="">Seleccione</option>
-	   					<option value="administrador" <?php  $datos['rol']=='administrador'? print "selected='selected'" : "";?> >Administrador</option>
-		  				<option value="coordinador" <?php $datos['rol']=='coordinador'? print "selected='selected'" : "";?> >Coordinador</option>
-		  			  	<option value="operario" <?php $datos['rol']=='operario'? print "selected='selected'" : "";?> >Operario</option>
-	   					<option value="tostador" <?php $datos['rol']=='tostador'? print "selected='selected'" : "";?> >Tostador</option>
+						<select name="rol" required aria-required="true">
+		   					<option value="">Seleccione</option>
+		   					<option value="administrador" <?php  $datos['rol']=='administrador'? print "selected='selected'" : "";?> >Administrador</option>
+			  				<option value="coordinador" <?php $datos['rol']=='coordinador'? print "selected='selected'" : "";?> >Coordinador</option>
+			  			  	<option value="operario" <?php $datos['rol']=='operario'? print "selected='selected'" : "";?> >Operario</option>
+		   					<option value="tostador" <?php $datos['rol']=='tostador'? print "selected='selected'" : "";?> >Tostador</option>
 	 				 </select>
 				<label for="estado">Estado
 	 			</label>
