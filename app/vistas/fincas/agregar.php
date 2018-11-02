@@ -1,16 +1,104 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
+<!-- CLIENTES_FINCAS- -->
+	<section class="product-single">
+			<div class="container">
+				<div class="row">
+					<div class="container">
+						<div class="woocommerce">
+							<!--FORMULARIO FINCA-->
+							<form action="<?php echo RUTA_URL;?>/Fincas/agregar" method="POST">
+								<div class="woocommerce-tabs wc-tabs-wrapper">
+									<h2>Datos de la finca</h2>		
+								</div >
+								<div id="customer_details">
+									<div class="woocommerce-billing-fields">						        
+										<div class="woocommerce-billing-fields__field-wrapper">										<div class="cold-md-12"></div>					
+												<div class="col-md-6">
+													<!--en el input hidden tare el id del cliente-->
+												    <input type="hidden" name="idCliente" value="<?php echo $datos["idCliente"] ?>" >
+													<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
+													<input type="hidden" name="idDetalleFinca" value="<?php echo isset($datos['idDetalleFinca'])? $datos['idDetalleFinca'] : '-1';?>" >
 
-<!--!-->
-<div class="">
-	<h3>Finca</h3>
-	<h2>Registrar información de la finca</h2>
-	<!-- REGISTRAR INFORMACIÓN DE LA FINCA!-->
-	
+													<p class="form-row form-row-wide" id="billing_company_field" data-priority="10">
+														<label for="billing_first_name" class="">Nombre: <abbr class="required" title="required">*</abbr></label>
+														<input type="text" class="input-text" name="nombreFinca" autofocus="autofocus" required value="<?php echo isset($datos['nombreFinca'])? $datos['nombreFinca'] : '';?>">
+													</p>
+													<!--Departamento--> 										       
+													<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
+														<label for="billing_country" class="">Departamento:</label>
+														<select name="departamento" id="departamento" style="width:100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+														    <option value="0">SELECCIONE...</option>
+														</select>        
+													</p>	                
+													<!--Municipio-->
+													<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
+														<label for="billing_country" class="">Municipio:</label>
+															               
+														<select name="municipio" id="municipio" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+														</select>
+													</p>																										
+													 <div class="cold-md-12">
+														 <div class="col-md-4">
+															 <!--Temperatura-->
+															<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
+															<label for="billing_first_name">Temperatura<abbr class="required" title="required">			
+																	<div class="quantity">
+																		
+				                            								<input type="number"  min="10"  name="Temperatura" value="<?php echo isset($datos['Temperatura'])? $datos['Temperatura'] : '';?>"">
+				                            								<div class="quantity-nav">
+					                            								<div class="quantity-button quantity-up">
+					                            									<i class="fa fa-chevron-up" aria-hidden="true"></i>
+					                            								</div>
+					                            								<div class="quantity-button quantity-down">
+					                            									<i class="fa fa-chevron-down" aria-hidden="true"></i>
+					                            								</div>
+				                            								</div>
+				                       								</div>						
+															</p>
+														</div>
+														<div class="col-md-7"">													 
+															<!--Estado-->
+															<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
+															    <label for="billing_first_name" class="">Estado:</label>
+																<select name="Estado" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+																    <option value="Habilitado" <?php (isset($datos['Estado']) && $datos['Estado'] =='Habilitado')? print "selected='selected'" : print "";?>>Habilitado</
+																    </option>
+																    <option value="Inhabilitado" <?php (isset($datos['Estado']) && $datos['Estado'] =='Inhabilitado')? print "selected='selected'" : print "";?>>Desabilitado</option>							
+																    </select>
+															</p>
+														</div>
+													</div>
+													    		
+												</div>
+												<div class="col-md-6">
+												<!--Coordenadas Google-->  										       
+											         <p class="form-row form-row-wide" validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
+														<label for="billing_company" class="">Coordenadas Google:</label>
+														<input type="text" class="input-text"  name="coordenadasGoogle" autofocus="autofocus" value="<?php echo isset($datos['coordenadasGoogle'])? $datos['coordenadasGoogle'] : '';?>" >	
+													 </p>
+												<!--Vereda-->
+													<p class="form-row form-row-wide" id="billing_company_field" data-priority="10">
+														<label for="billing_first_name" class="">Vereda:</label>
+													     <input type="text" class="input-text" name="vereda" autofocus="autofocus" value="<?php echo isset($datos['vereda'])? $datos['vereda'] : '';?>">
+													 </p>
+																																		 
+									        	</div>									         									    	              	
+										</div>
 
-	<form action="<?php echo RUTA_URL;?>/Fincas/agregar" method="POST">
-
-	 <table class="shop_table shop_table_responsive cart">
+									 </div>	
+									 <!--Dependiendo de si esta editando o no muestro el boton guardar o agregar para que el usuario sepa si esta editando o agregando uno nuevo-->
+									    	<input align="center" class="btn btn-lg btn-brown" type="submit" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>"> 
+								</div>			
+							</form>
+						</div>	
+					</div>		      			      			
+				<div class="container">	
+				<!--Lista de las fincas agregadas al cliente-->			
+					<div class="">
+							<h2>Fincas agregadas</h2>
+							<form action="<?php echo RUTA_URL;?>/Fincas/agregar" method="POST">
+									<table class="shop_table shop_table_responsive cart">
 					                <thead>
 					                    <tr>
 					                        
@@ -62,59 +150,40 @@
 									<?php endforeach; }?>
 					                </tbody>
 					            </table>
+						
+				</div>					
+		</div>
+	</div>
+</section>							      														      														
+											
+										
+					
+<!--CLIENTES_FINCAS-->
 
 
-		<div class="form-group">
-
-			<input type="hidden" name="idCliente" value="<?php echo $datos["idCliente"] ?>" >
-
-			<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
-			<input type="hidden" name="idDetalleFinca" value="<?php echo isset($datos['idDetalleFinca'])? $datos['idDetalleFinca'] : '-1';?>" >
 
 
-			<p>
-				<label for="nombreFinca">Nombre:<sub>*</sub>
-					<input type="text" class="" name="nombreFinca" required value="<?php echo isset($datos['nombreFinca'])? $datos['nombreFinca'] : '';?>">
-				</label>
 
-				<label for="Temperatura">Temperatura:
-					<input type="text" class="" name="Temperatura" value="<?php echo isset($datos['Temperatura'])? $datos['Temperatura'] : '';?>">
-				</label>
-			</p> 
-			<p>
-				<label form="coordenadasGogle">Coordenadas Gogle
-					<input type="text" class="" name="coordenadasGoogle" value="<?php echo isset($datos['coordenadasGoogle'])? $datos['coordenadasGoogle'] : '';?>" >
-				</label>
-			</p>
-			<p>
-				<label for="departamento">Departamento
-					<select id="departamento" name="departamento" value="">
-        			</select>	 				
-		 		</label>
-	 		</p>
-	 		<p>
-	 			<label for="municipio">Municipio
-	      		  	<select id="municipio" name="municipio">
-	        		</select>
-	        	</label>
-    		</p>
-	 		<p>
-	 		 	<label for="vereda">Vereda:
-					<input type="text" class="" name="vereda" value="<?php echo isset($datos['vereda'])? $datos['vereda'] : '';?>">
-				</label>
-	 		 </p>
-	 		 <label for="Estado">Estado
-					<select name="Estado">
-						<option value="0">--Seleccione--</option>
-	   					<option value="Habilitado" <?php (isset($datos['Estado']) && $datos['Estado'] =='Habilitado')? print "selected='selected'" : print "";?>>Habilitado</option>
-	   					<option value="Inhabilitado" <?php (isset($datos['Estado']) && $datos['Estado'] =='Inhabilitado')? print "selected='selected'" : print "";?>>Desabilitado</option>		  				
-	 				</select>
-	 		</label>
-	 		<!--Dependiendo de si esta editando o no muestro el boton guardar o agregar para que el usuario sepa si esta editando o agregando uno nuevo-->
-	 		<input class="" type="submit" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>">
-		</div>		
-	</form>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 

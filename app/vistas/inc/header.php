@@ -23,7 +23,11 @@
 <link href="<?php echo RUTA_URL ?>/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL ?>/css/owl.carousel.min.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL ?>/css/zoomslider.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo RUTA_URL ?>/css/select2.min.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo RUTA_URL?>/css/woocommerce-layout.css" rel="stylesheet" type="text/css" />
+
+
 
   <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL ?>/css/estilos.css">
 </head>

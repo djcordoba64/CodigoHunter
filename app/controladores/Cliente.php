@@ -91,6 +91,8 @@
 					return;
 				}
 				else{
+
+				 	//var_dump($datos);
 					// Si se realizo el insert, se redirecciona a la lista de crear Finca. Y se envia el último ID del cliente registrado.
 					//redireccionar('/fincas/agregar');
 
@@ -106,7 +108,7 @@
 					$datos["municipios"]=$municipios;
 
 					$this->vista('/Fincas/agregar', $datos);
-
+					
 					
 				}
 			/*
