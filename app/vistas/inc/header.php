@@ -40,7 +40,7 @@
           <ul class="top-bar-contacts">
             <li><i class="fa fa-phone" aria-hidden="true"></i>+80 (041) 2824 504 43</li>
             <li class="mail"><i class="fa fa-envelope-o" aria-hidden="true"></i>orders@mistercoffee.us</li>
-            <li class="skype"><i class="fa fa-user" aria-hidden="true"></i><?php echo $_SESSION["nombreCompleto"];?></li>
+            <li class="skype"><i class="fa fa-user" aria-hidden="true"></i><?php echo isset($_SESSION["nombreCompleto"])? $_SESSION["nombreCompleto"]:"Bienvenido Invitado";?></li>
           </ul>
         </div>
         <div class="col-md-2 col-sm-3 top-social-wrap">
@@ -88,9 +88,9 @@
               </div>
               <div class="col-lg-2 col-md-12">
                 <div class="top-right">
-                  <a href="/Hunter/Login/cerrarSesion" class="cart">
+                  <a href="/Hunter<?php echo isset($_SESSION["nombreCompleto"])? "/Login/cerrarSesion":"";?>" class="cart">
                     <span class="name">Cart</span>
-                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <i class="fa fa-sign-<?php echo isset($_SESSION["nombreCompleto"])? "out":"in";?>" aria-hidden="true"></i>
                   </a>
                   <a href="cart.html" class="cart">
                     <span class="name">Cart</span>
