@@ -88,7 +88,7 @@
               </div>
               <div class="col-lg-2 col-md-12">
                 <div class="top-right">
-                  <a href="/Hunter<?php echo isset($_SESSION["nombreCompleto"])? "/Login/cerrarSesion":"";?>" class="cart">
+                  <a href="/Hunter<?php echo isset($_SESSION["nombreCompleto"])? "/Login/cerrarSesion":"/Login/index";?>" class="cart">
                     <span class="name">Cart</span>
                     <i class="fa fa-sign-<?php echo isset($_SESSION["nombreCompleto"])? "out":"in";?>" aria-hidden="true"></i>
                   </a>

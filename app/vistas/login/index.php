@@ -40,7 +40,7 @@
 
                         <p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
 
-                          <div class="col-md-6 col-md-offset-3 text-center">
+                          <div class="col-md-12 text-center">
                           <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
                           <span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
                           </div>
