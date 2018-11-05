@@ -26,8 +26,6 @@
 <link href="<?php echo RUTA_URL ?>/css/select2.min.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL?>/css/woocommerce-layout.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo RUTA_URL?>/css/tabsClientes.css"  type="text/css" rel="stylesheet" />
-<link href="<?php echo RUTA_URL?>/css/formulario.css"  type="text/css" rel="stylesheet" />
 
 
 
