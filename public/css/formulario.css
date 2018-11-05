@@ -1,17 +1,4 @@
 
-
-.info p {
-  text-align:center;
-  color: #999;
-  text-transform:none;
-  font-weight:600;
-  font-size:15px;
-  margin-top:2px
-}
-
-.info i {
-  color:#F6AA93;
-}
 form h1 {
   font-size: 18px;
   background: #F6AA93 none repeat scroll 0% 0%;
@@ -24,23 +11,23 @@ form h1 {
 }
 
 form {
-  border-radius: 5px;
-  max-width:700px;
+  border-radius: 1px;
+  max-width:900px;
   width:100%;
-  margin: 5% auto;
-  background-color: #FFFFFF;
+  margin: 2% auto;
+  background-color: ;
   overflow: hidden;
 }
 
 p span {
-  color: #F00;
+  color: red;
 }
 
 p {
   margin: 0px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 2;
-  color:#333;
+  color:#2c1910;
 }
 
 h1 {
@@ -51,64 +38,45 @@ h1 {
 }
 
 input {
-  border-radius: 0px 5px 5px 0px;
-  border: 1px solid #eee;
+ 
+ border-radius: 0px 3px 3px 3px;
+  border: none;
   margin-bottom: 15px;
-  width: 75%;
-  height: 40px;
-  float: left;
-  padding: 0px 15px;
+
+  transition: all 400ms;
+  background: #f5f2eb;
+  border-color: #e3ded4
 }
 
-a {
-  text-decoration:inherit
-}
-
-textarea {
-  border-radius: 0px 5px 5px 0px;
-  border: 1px solid #EEE;
-  margin: 0;
-  width: 75%;
-  height: 130px; 
-  float: left;
-  padding: 0px 15px;
-}
 
 .form-group {
   overflow: hidden;
+  clear: both;
+}
+.form-groupBTN {
+  width:49.5%;
+  float:right;
+  box-sizing: border-box;
+  padding: 0px 0px 0px 15px;
   clear: both;
 }
 
 .icon-case {
   width: 35px;
   float: left;
-  border-radius: 5px 0px 0px 5px;
-  background:#eeeeee;
-  height:42px;
+  border-radius: 3px 0px 0px 3px;
+  height: 50px;
   position: relative;
   text-align: center;
-  line-height:40px;
+  line-height:70px;
 }
 
 i {
-  color:#555;
+  color:#b89d64;
 }
 
 .contentform {
   padding: 40px 30px;
-}
-
-.bouton-contact{
-  background-color: #81BDA4;
-  color: #FFF;
-  text-align: center;
-  width: 100%;
-  border:0;
-  padding: 17px 25px;
-  border-radius: 0px 0px 5px 5px;
-  cursor: pointer;
-  margin-top: 40px;
-  font-size: 18px;
 }
 
 .leftcontact {
