@@ -6,6 +6,23 @@
     }
 ?>
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
+
+  <!-- PAGE HEAD -->
+    <section class="page-head">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="breadcrumb">
+              <li><a href="<?php echo RUTA_URL;?>/paginas">Inicio</a></li>
+              <li>Usuarios</li>
+            </ul>
+            <h1>Editar</h1> 
+          </div>
+        </div>
+      </div>
+    </section>
+  <!-- PAGE HEAD END -->
+
 <a href="<?php echo RUTA_URL;?>/Usuarios/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
   
 <div class="">

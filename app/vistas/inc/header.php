@@ -117,18 +117,4 @@
   </div>
   <!-- HEADER END -->
 
-  <!-- PAGE HEAD -->
-    <section class="page-head">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <ul class="breadcrumb">
-              <li><a href="<?php echo RUTA_URL;?>/paginas">Inicio</a></li>
-              <li>Administrar clientes</li>
-            </ul>
-            <h1>Administrar</h1> 
-          </div>
-        </div>
-      </div>
-    </section>
-  <!-- PAGE HEAD END -->
+
