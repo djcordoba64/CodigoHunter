@@ -75,7 +75,7 @@
 												<!--Coordenadas Google-->  										       
 											         <p class="form-row form-row-wide" validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 														<label for="billing_company" class="">Coordenadas Google:</label>
-														<input type="text" class="input-text"  name="coordenadasGoogle" autofocus="autofocus" value="<?php echo isset($datos['coordenadasGoogle'])? $datos['coordenadasGoogle'] : '';?>" >	
+														<input type="text" class="input-text"  name="coordenadasGoogle" autofocus="autofocus" value='<?php echo isset($datos['coordenadasGoogle'])? $datos['coordenadasGoogle'] : '';?>'>	
 													 </p>
 												<!--Vereda-->
 													<p class="form-row form-row-wide" id="billing_company_field" data-priority="10">

@@ -9,7 +9,6 @@
 		}
 
 		//---AGREGAR UNA NUEVA FINCA------------------------------------------
-		//modificar el campo coordenadasGoocle por coordenadasGoogle.
 		public function agregarFinca($datosFinca){
 			//preparamos la consulata
 			$this->db->query('INSERT INTO detallefinca (nombreFinca,Temperatura,coordenadasGoogle,idmunicipio,idCliente,Estado,vereda,created_at,created_by) 
