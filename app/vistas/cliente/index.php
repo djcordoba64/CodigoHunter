@@ -38,7 +38,7 @@
 													<?php echo $usuario->primerNombre;?>
 													<?php echo $usuario->segundoNombre;?>
 												</a>
-											</td class="cart_item">
+											</td>
 										
 											<td class="product-remove">
 												<?php echo $usuario->primerApellido;?>

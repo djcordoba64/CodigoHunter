@@ -133,20 +133,46 @@
 				//Nos redirecciona a la vista agregar--(formulario de registro de un cliente)
 				$this->vista('/Cliente/crear', $datos);
 			}
+		}
+
+		
+		//----------------------------------------------------------------------------------------
+		//Ver detalle del cliente
+
+		public function detalle($idPersona){
+			
+			//validacion de rol
+			if($_SESSION["rol"]!="coordinador" )
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados.
+				$this->vista('/paginas/index',$datos);
+				return;
+			}
+			$cliente=$this->personaModelo->obtenerClienteFinca($idPersona);
+				
+				$datos=[
+					'idPersona'			=> $cliente->idPersona,				
+					'primerNombre'		=> $cliente->primerNombre,
+					'segundoNombre'		=> $cliente->segundoNombre,
+					'primerApellido'	=> $cliente->primerApellido,
+					'segundoApellido'	=> $cliente->segundoApellido,
+					'documentoIdentidad'=> $cliente->documentoIdentidad,
+					'fechaNacimiento'	=> $cliente->fechaNacimiento,
+					'sexo'				=> $cliente->sexo,
+					'correo'			=> $cliente->correo,
+					'numeroContacto'	=> $cliente->numeroContacto,
+					'direccion'			=> $cliente->direccion,								
+					'estado'			=> $cliente->estado,					
+					'nombreFinca' 		=> $cliente->nombreFinca,
+					'Temperatura'		=> $cliente->Temperatura,
+					'vereda'			=> $cliente->vereda,
+
+				];
+			$this->vista('/Cliente/detalle', $datos);
 
 		}
-		//----------------------------------------------------------------------------------------
-
-
-
-
-
-
-
 
 	}
-
-
-
-
  ?>

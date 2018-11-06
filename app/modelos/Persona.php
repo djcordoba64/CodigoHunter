@@ -91,7 +91,6 @@
                 correo=:correo,
                 numeroContacto=:numeroContacto,
                 direccion=:direccion,
-                usuario=:usuario,
                 rol=:rol,
                 contrasena=:contrasena, 
                 estado=:estado, 
@@ -111,7 +110,6 @@
             $this->db->bind(':correo'          ,  $datos['correo']);       
             $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
             $this->db->bind(':direccion'       ,  $datos['direccion']);
-            $this->db->bind(':usuario'         ,  $datos['usuario']);
             $this->db->bind(':rol'             ,  $datos['rol']);
             $this->db->bind(':contrasena'      ,  $datos['contrasena']);
             $this->db->bind(':estado'          ,  $datos['estado']);
@@ -198,6 +196,20 @@
             return -1;
            }      
 
+        }
+      //Obtener el cliente y la fincas para ver el detalle.
+        public function obtenerClienteFinca($idPersona){
+          $this->db->query(           
+          " SELECT p.primerNombre,p.segundoNombre,p.primerApellido,p.segundoApellido,p.documentoIdentidad,p.fechaNacimiento,p.sexo,p.correo,p.numeroContacto,p.direccion,p.estado,dt.nombreFinca,dt.Temperatura,dt.vereda,dt.Estado,dp.departamento,m.municipio
+            FROM detallefinca as dt 
+            INNER JOIN personas as p on dt.idCliente=p.idPersona
+            INNER JOIN municipios as m on dt.idmunicipio = m.id_municipio 
+            INNER JOIN departamentos as dp on m.departamento_id =dp.id_departamento 
+            where idPersona=:idPersona AND tipoPersona='cliente'");
+          
+          $this->db->bind(':idPersona', $idPersona);
+          $clienteFinca=$this->db->registro();
+          return $clienteFinca;
         }
         
     }
