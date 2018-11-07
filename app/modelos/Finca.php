@@ -58,7 +58,7 @@
             	return false;
            }
 		}
-
+		//lista de las fincas del cliente
 		public function obtenerFincasCliente($idCliente){
          $this->db->query("SELECT f.*, m.municipio, d.departamento FROM detallefinca as f  join municipios as m on f.idmunicipio = m.id_municipio join departamentos as d on d.id_departamento = m.departamento_id WHERE f.idCliente=:idCliente");	
 			 $this->db->bind(':idCliente', $idCliente);	

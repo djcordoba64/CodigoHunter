@@ -10,6 +10,7 @@
 		{
 			//instanciamos la clase del modelo Persona.
 			$this->personaModelo = $this->modelo('Persona');
+			$this->fincaModelo = $this->modelo('Finca');
 
 			$this->UbicacionModelo = $this->modelo('Ubicacion');
 		}
@@ -150,7 +151,8 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
-			$cliente=$this->personaModelo->obtenerClienteFinca($idPersona);
+			var_dump($idPersona);
+			$cliente=$this->personaModelo->obtenerClienteID($idPersona);
 				
 				$datos=[
 					'idPersona'			=> $cliente->idPersona,				
@@ -164,12 +166,12 @@
 					'correo'			=> $cliente->correo,
 					'numeroContacto'	=> $cliente->numeroContacto,
 					'direccion'			=> $cliente->direccion,								
-					'estado'			=> $cliente->estado,					
-					'nombreFinca' 		=> $cliente->nombreFinca,
-					'Temperatura'		=> $cliente->Temperatura,
-					'vereda'			=> $cliente->vereda,
+					'estado'			=> $cliente->estado,
+
 
 				];
+				var_dump($datos);
+				//echo var_dump($datos);
 			$this->vista('/Cliente/detalle', $datos);
 
 		}

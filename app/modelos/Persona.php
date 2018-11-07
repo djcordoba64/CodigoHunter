@@ -197,20 +197,27 @@
            }      
 
         }
-      //Obtener el cliente y la fincas para ver el detalle.
-        public function obtenerClienteFinca($idPersona){
-          $this->db->query(           
-          " SELECT p.primerNombre,p.segundoNombre,p.primerApellido,p.segundoApellido,p.documentoIdentidad,p.fechaNacimiento,p.sexo,p.correo,p.numeroContacto,p.direccion,p.estado,dt.nombreFinca,dt.Temperatura,dt.vereda,dt.Estado,dp.departamento,m.municipio
-            FROM detallefinca as dt 
-            INNER JOIN personas as p on dt.idCliente=p.idPersona
-            INNER JOIN municipios as m on dt.idmunicipio = m.id_municipio 
-            INNER JOIN departamentos as dp on m.departamento_id =dp.id_departamento 
-            where idPersona=:idPersona AND tipoPersona='cliente'");
-          
-          $this->db->bind(':idPersona', $idPersona);
-          $clienteFinca=$this->db->registro();
-          return $clienteFinca;
+      //Obtener el cliente con el id para ver el  detalle.
+        public function obtenerClienteID($idPersona){
+            $this->db->query( "SELECT p.primerNombre,p.segundoNombre,p.primerApellido,p.segundoApellido,p.documentoIdentidad,p.fechaNacimiento,p.sexo,p.correo,p.numeroContacto,p.direccion,p.estado,dt.nombreFinca,dt.Temperatura,dt.vereda,dt.Estado,dp.departamento,m.municipio
+              FROM personas as p 
+              LEFT JOIN detallefinca as dt on dt.idCliente=p.idPersona 
+              LEFT JOIN municipios as m on dt.idmunicipio = m.id_municipio 
+              LEFT JOIN departamentos as dp on m.departamento_id =dp.id_departamento 
+              where p.idPersona=:idPersona AND p.tipoPersona='cliente'"
+              );
+            $this->db->bind(':idPersona',$idPersona);
+            $fila=$this->db->registro();
+            return $fila;
+
         }
+      //buscar si existe el cliente con el número de documento ingresado en la recepción.
+        public function obtenerclienteDocumento($documento){
+        $this->db->query(" SELECT * FROM personas WHERE tipoPersona='cliente' and documentoIdentidad=:documentoIdentidad ");
+        $this->db->bind(':documentoIdentidad', $documentoIdentidad);
+        $clienteExiste=$this->db->registro();
+          return $clientExiste;
+  }
         
     }
        

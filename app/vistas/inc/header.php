@@ -82,6 +82,13 @@
                       <li><a href="/Hunter/Cliente/crear">Registrar</a></li>
                     </ul>
                   </li>
+                  <li class="parent">
+                    <a href="#">Recepción</a>
+                    <ul class="sub-menu">
+                      <li><a href="/Hunter/Recepciones/consultar">Registrar</a></li>
+                      <li><a href="/Hunter/Recepciones/listar">Buscar</a></li>                     
+                   </ul>     
+                  </li>
                   
                   
                 </ul>
