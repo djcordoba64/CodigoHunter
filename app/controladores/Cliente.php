@@ -151,8 +151,8 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
-			
-			$cliente=$this->personaModelo->obtenerClienteId($idPersona);
+			//var_dump($idPersona);
+			$cliente=$this->personaModelo->obtenerClienteID($idPersona);
 				
 				$datos=[
 					'idPersona'			=> $cliente->idPersona,				
@@ -167,15 +167,16 @@
 					'numeroContacto'	=> $cliente->numeroContacto,
 					'direccion'			=> $cliente->direccion,								
 					'estado'			=> $cliente->estado,
+					
 
 
 				];
-
+				//var_dump($datos);
 				//consulto datos para la tabla de fincas registradas para el cliente
 				$datos["fincas"] = $this -> fincaModelo -> obtenerFincasCliente($idPersona);
 
-				var_dump($datos);
-				//echo var_dump($datos);
+				//var_dump($datos);
+				
 			$this->vista('/Cliente/detalle', $datos);
 
 		}

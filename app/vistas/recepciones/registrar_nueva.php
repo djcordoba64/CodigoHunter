@@ -1,32 +1,30 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
-<!--Recepción del café-->
-<h1>Recepción</h1>
-<section class="cart-wrap">
+
+<!-- CONTACTS -->
+<div class="container">
 	<div class="col-md-12">
-		<h2>Agregar cliente</h2>
+		<h2>Recepción del café</h2>
 	</div>
-		<div class="container">
-			<div class="woocommerce">
-				<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Cliente/registrar_consultar" method="POST">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-6">
-								<div id="customer_details">
-								    <div class="woocommerce-billing-fields">
-								    	<p>
-										<span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>							 
-			      						</p>						        
-								        <div class="woocommerce-billing-fields__field-wrapper">
-									        <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
-									        <label for="billing_first_name" class="">Primer Nombre: <abbr class="required" title="required">*</abbr></label>
-									        <input type="text" class="input-text"  name="primerNombre" autofocus="autofocus" required value="<?php echo $datos['primerNombre']?>">							
-							  			</p>
+	<div class="contact-wrap">		
+			<div class="row">
+				<div class="col-md-12">
+						<form class="contact-form" action="<?php echo RUTA_URL;?>/Recepciones/registrar_consultar" method="POST">
+							<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
+						        <label for="billing_first_name" class="">Ingrese el númeo de documento del cliente.<abbr class="required" title="required">*</abbr></label>
+							</p>
+							<div class="row">
+								<div class="col-md-6">
+									<input class="contact-input" type="text" placeholder="Número de documento" name="documentoIdentidad" value="">
+								</div>
+								<div class="col-md-6">
+									<input value="Consultar" class="btn btn-lg btn-brown" type="submit">
+								</div>
+							</div>	
+						</form>					
 				</div>
 			</div>
 		</div>
-	</div>
-</seption>
-
-
+</div>
+	<!-- CONTACTS END -->
 
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 

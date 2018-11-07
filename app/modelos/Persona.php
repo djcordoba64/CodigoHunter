@@ -198,23 +198,35 @@
 
         }
       
-      //buscar si existe el cliente con el número de documento ingresado en la recepción.
-        public function obtenerClienteDocumento($documento){
-        $this->db->query(" SELECT * FROM personas WHERE tipoPersona='cliente' and documentoIdentidad=:documentoIdentidad ");
-        $this->db->bind(':documentoIdentidad', $documentoIdentidad);
-        $clienteExiste=$this->db->registro();
-          return $clientExiste;
-      }
 
-       //----------------------------EDITAR USUARIO------------
-        //Mostramos la información de un usuario que se haya seleccionado para ser editado.--link->https://www.youtube.com/watch?v=8RwF0zDNjbQ
-        public function obtenerClienteId($idPersona){
+       //----------------------------Ver detalle------------
+        //Mostramos la información de un usuario que se haya seleccionado para mostrar el detalle.
+        public function obtenerClienteID($idPersona){
             $this->db->query( "SELECT * FROM personas where idPersona=:idPersona and tipoPersona='cliente'");
             $this->db->bind(':idPersona',$idPersona);
             $fila=$this->db->registro();
             return $fila;
 
         }
+        //__CLIENTES_RECEPCIÖN--------
+        //validar si existe un cliente con el número de identificación(1=exite)
+        public function clienteExiste($documentoIdentidad){
+            $this->db->query( "SELECT count(1) as existe FROM personas where documentoIdentidad=:documentoIdentidad " );
+            $this->db->bind(':documentoIdentidad',$documentoIdentidad);
+            $fila=$this->db->registro();
+            return $fila->existe==1;
+        }
+        //Obtenemos la información del cliente
+        public function obtenerClienteDocumento($documentoIdentidad){
+        $this->db->query(" SELECT * FROM personas WHERE documentoIdentidad=:documentoIdentidad ");
+
+        //vinculamos los valores de la consulta
+        $this->db->bind(':documentoIdentidad', $documentoIdentidad);
+
+        $datoscliente=$this->db->registro();
+        return $datoscliente;
+      }
+        
         
     }
        

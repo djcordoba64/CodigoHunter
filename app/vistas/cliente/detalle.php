@@ -49,22 +49,21 @@
   	<div class="container">	
 				<!--Lista de las fincas agregadas al cliente-->			
 					<div class="">
-							<h2>Fincas registradas</h2>
+						<div class="col-md-12"><h2>Fincas</h2></div> 
 									<table class="shop_table shop_table_responsive cart">
 					                <thead>
 					                    <tr>
 					                        
 					                    	<th class="product-remove">Nombre</th>
 											<th class="product-remove">Temperatura</th>
-											<th class="product-remove">Coordenadas Google</th>
 											<th class="product-remove">Departamento</th>
 											<th class="product-remove">Municipio</th>
 											<th class="product-remove">Vereda</th>
 											<th class="product-remove">Estado</th>
-											<th class="product-remove">Acciones</th>
 					                    </tr>
 					                </thead>
 					                <tbody  class="cart_item">
+					             
 									<?php if (isset($datos['fincas'])) { foreach($datos['fincas'] as $finca): ?>
 										<tr class="cart_item">
 											<td class="product-remove">					
@@ -74,10 +73,6 @@
 											<td class="product-remove">
 													<?php echo $finca->Temperatura;?>
 											</td class="cart_item">
-										
-											<td class="product-remove">
-												<?php echo $finca->coordenadasGoogle;?>
-											</td>
 											<td class="product-remove">
 												<?php echo $finca->departamento;?>				
 											</td>
@@ -89,13 +84,6 @@
 											</td>
 											<td class="product-remove">
 												<?php echo $finca->Estado;?>				
-											</td class="product-remove">
-											<td class="product-remove">
-
-												<!--esto me esta redireccionando al metodo fincas/agregar y le pasa el id de la finca (parametro $idFinca del metodo)-->
-												<a href="<?php echo RUTA_URL;?>/Fincas/agregar/<?php echo $finca->idDetalleFinca;?>">
-													Editar
-												</a>		
 											</td>
 
 										</tr>

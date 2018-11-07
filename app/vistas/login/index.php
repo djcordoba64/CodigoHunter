@@ -18,7 +18,7 @@
           <div class="col-md-6 col-md-offset-3">
             <div id="customer_details">
                 <div class="woocommerce-billing-fields">
-                    <h2>Iniciar Sesión</h2>
+                    <div class="col-md-12"><h3>Iniciar Sesión</h3></div>
                     <div class="woocommerce-billing-fields__field-wrapper">
                         
                         <p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
@@ -28,7 +28,7 @@
 
                         <p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
                             <label for="billing_company" class="">Contraseña</label>
-                            <input class="input-text " name="contrasena" id="billing_company" placeholder="Numero de identificación" value="" autocomplete="Numero de identificación" type="password">
+                            <input class="input-text " name="contrasena" id="billing_company" placeholder=" Contraseña" value="" autocomplete="Numero de identificación" type="password">
                         </p>
                         
                         <div class="form-row place-order">

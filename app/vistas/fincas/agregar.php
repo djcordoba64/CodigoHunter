@@ -6,6 +6,7 @@
 				<div class="row">
 					<div class="container">
 						<div class="woocommerce">
+							<a href="<?php echo RUTA_URL;?>/Clientes/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
 							<!--FORMULARIO FINCA-->
 							<form action="<?php echo RUTA_URL;?>/Fincas/agregar" method="POST">
 								<div class="woocommerce-tabs wc-tabs-wrapper">
@@ -37,7 +38,18 @@
 															               
 														<select name="municipio" id="municipio" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
 														</select>
-													</p>																										
+													</p>
+													<!--Vereda-->
+													<p class="form-row form-row-wide" id="billing_company_field" data-priority="10">
+														<label for="billing_first_name" class="">Vereda:</label>
+													     <input type="text" class="input-text" name="vereda" autofocus="autofocus" value="<?php echo isset($datos['vereda'])? $datos['vereda'] : '';?>">
+													 </p>
+													<!--Coordenadas Google-->  										       
+											         <p class="form-row form-row-wide" validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
+														<label for="billing_company" class="">Coordenadas Google:</label>
+														<input type="text" class="input-text"  name="coordenadasGoogle" autofocus="autofocus" value='<?php echo isset($datos['coordenadasGoogle'])? $datos['coordenadasGoogle'] : '';?>'>	
+													 </p>
+																																							
 													 <div class="cold-md-12">
 														 <div class="col-md-4">
 															 <!--Temperatura-->
@@ -71,24 +83,13 @@
 													</div>
 													    		
 												</div>
-												<div class="col-md-6">
-												<!--Coordenadas Google-->  										       
-											         <p class="form-row form-row-wide" validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
-														<label for="billing_company" class="">Coordenadas Google:</label>
-														<input type="text" class="input-text"  name="coordenadasGoogle" autofocus="autofocus" value='<?php echo isset($datos['coordenadasGoogle'])? $datos['coordenadasGoogle'] : '';?>'>	
-													 </p>
-												<!--Vereda-->
-													<p class="form-row form-row-wide" id="billing_company_field" data-priority="10">
-														<label for="billing_first_name" class="">Vereda:</label>
-													     <input type="text" class="input-text" name="vereda" autofocus="autofocus" value="<?php echo isset($datos['vereda'])? $datos['vereda'] : '';?>">
-													 </p>
-																																		 
-									        	</div>									         									    	              	
+																				         									    	              	
 										</div>
 
 									 </div>	
 									 <!--Dependiendo de si esta editando o no muestro el boton guardar o agregar para que el usuario sepa si esta editando o agregando uno nuevo-->
-									    	<input align="center" class="btn btn-lg btn-brown" type="submit" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>"> 
+									    <input align="center" class="btn btn-lg btn-brown" type="submit" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>">
+									    
 								</div>			
 							</form>
 						</div>	
@@ -103,7 +104,6 @@
 					                        
 					                    	<th class="product-remove">Nombre</th>
 											<th class="product-remove">Temperatura</th>
-											<th class="product-remove">Coordenadas Google</th>
 											<th class="product-remove">Departamento</th>
 											<th class="product-remove">Municipio</th>
 											<th class="product-remove">Vereda</th>
@@ -121,10 +121,6 @@
 											<td class="product-remove">
 													<?php echo $finca->Temperatura;?>
 											</td class="cart_item">
-										
-											<td class="product-remove">
-												<?php echo $finca->coordenadasGoogle;?>
-											</td>
 											<td class="product-remove">
 												<?php echo $finca->departamento;?>				
 											</td>
