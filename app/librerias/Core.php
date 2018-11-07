@@ -1,4 +1,4 @@
-<?php 
+	<?php 
 	/*papear la url ingresada en el navegador
 	1-Controlador
 	2-método

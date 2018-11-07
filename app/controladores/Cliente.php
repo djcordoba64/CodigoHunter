@@ -151,8 +151,8 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
-			var_dump($idPersona);
-			$cliente=$this->personaModelo->obtenerClienteID($idPersona);
+			
+			$cliente=$this->personaModelo->obtenerClienteId($idPersona);
 				
 				$datos=[
 					'idPersona'			=> $cliente->idPersona,				
@@ -170,6 +170,10 @@
 
 
 				];
+
+				//consulto datos para la tabla de fincas registradas para el cliente
+				$datos["fincas"] = $this -> fincaModelo -> obtenerFincasCliente($idPersona);
+
 				var_dump($datos);
 				//echo var_dump($datos);
 			$this->vista('/Cliente/detalle', $datos);

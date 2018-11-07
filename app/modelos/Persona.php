@@ -73,7 +73,7 @@
         //----------------------------EDITAR USUARIO------------
         //Mostramos la información de un usuario que se haya seleccionado para ser editado.--link->https://www.youtube.com/watch?v=8RwF0zDNjbQ
         public function obtenerUsuarioId($idPersona){
-            $this->db->query( 'SELECT * FROM personas where idPersona=:idPersona');
+            $this->db->query( "SELECT * FROM personas where idPersona=:idPersona and tipoPersona='usuario'");
             $this->db->bind(':idPersona',$idPersona);
             $fila=$this->db->registro();
             return $fila;
@@ -197,27 +197,24 @@
            }      
 
         }
-      //Obtener el cliente con el id para ver el  detalle.
-        public function obtenerClienteID($idPersona){
-            $this->db->query( "SELECT p.primerNombre,p.segundoNombre,p.primerApellido,p.segundoApellido,p.documentoIdentidad,p.fechaNacimiento,p.sexo,p.correo,p.numeroContacto,p.direccion,p.estado,dt.nombreFinca,dt.Temperatura,dt.vereda,dt.Estado,dp.departamento,m.municipio
-              FROM personas as p 
-              LEFT JOIN detallefinca as dt on dt.idCliente=p.idPersona 
-              LEFT JOIN municipios as m on dt.idmunicipio = m.id_municipio 
-              LEFT JOIN departamentos as dp on m.departamento_id =dp.id_departamento 
-              where p.idPersona=:idPersona AND p.tipoPersona='cliente'"
-              );
+      
+      //buscar si existe el cliente con el número de documento ingresado en la recepción.
+        public function obtenerClienteDocumento($documento){
+        $this->db->query(" SELECT * FROM personas WHERE tipoPersona='cliente' and documentoIdentidad=:documentoIdentidad ");
+        $this->db->bind(':documentoIdentidad', $documentoIdentidad);
+        $clienteExiste=$this->db->registro();
+          return $clientExiste;
+      }
+
+       //----------------------------EDITAR USUARIO------------
+        //Mostramos la información de un usuario que se haya seleccionado para ser editado.--link->https://www.youtube.com/watch?v=8RwF0zDNjbQ
+        public function obtenerClienteId($idPersona){
+            $this->db->query( "SELECT * FROM personas where idPersona=:idPersona and tipoPersona='cliente'");
             $this->db->bind(':idPersona',$idPersona);
             $fila=$this->db->registro();
             return $fila;
 
         }
-      //buscar si existe el cliente con el número de documento ingresado en la recepción.
-        public function obtenerclienteDocumento($documento){
-        $this->db->query(" SELECT * FROM personas WHERE tipoPersona='cliente' and documentoIdentidad=:documentoIdentidad ");
-        $this->db->bind(':documentoIdentidad', $documentoIdentidad);
-        $clienteExiste=$this->db->registro();
-          return $clientExiste;
-  }
         
     }
        

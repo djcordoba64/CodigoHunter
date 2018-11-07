@@ -97,7 +97,6 @@
 				<!--Lista de las fincas agregadas al cliente-->			
 					<div class="">
 							<h2>Fincas agregadas</h2>
-							<form action="<?php echo RUTA_URL;?>/Fincas/agregar" method="POST">
 									<table class="shop_table shop_table_responsive cart">
 					                <thead>
 					                    <tr>

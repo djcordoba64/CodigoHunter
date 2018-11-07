@@ -85,7 +85,7 @@
                   <li class="parent">
                     <a href="#">Recepción</a>
                     <ul class="sub-menu">
-                      <li><a href="/Hunter/Recepciones/consultar">Registrar</a></li>
+                      <li><a href="/Hunter/Recepciones/registrar_nueva">Registrar</a></li>
                       <li><a href="/Hunter/Recepciones/listar">Buscar</a></li>                     
                    </ul>     
                   </li>
