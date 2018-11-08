@@ -106,7 +106,6 @@
 
 	});
 
-
 		$( "#departamento" ).change(function() {
 			$('#municipio').empty();
 
@@ -130,6 +129,23 @@
 	var municipios = <?php echo $datos["municipios"];?>;
 
 
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.each(fincas, function(idx, fincas)
+		{
+			var o = new Option(fincas.nombreFinca,fincas.idDetalleFinca);
+			$(o).html(fincas.nombreFinca);
+			$("#nombreFinca").append(o);
+		}
+		);
+
+
+		
+
+
+	});
+	
 </script>
 
 </body>

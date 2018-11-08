@@ -41,7 +41,7 @@
 									<p>
 									<label for="" class="">Seleccione una finca:</label></p>
 									<p>
-									<select name="finca" id="finca" style="width: 80%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+									<select name="finca" id="fincas" style="width: 80%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
 									   	<option value="0">Seleccione..
 									    </option>
 									</select>																	
