@@ -18,7 +18,7 @@
 
 									<p>
 									<label for="" class="">Nombre completo:</label>
-									<input class="contact-input" type="text"  name="nombreCompleto" disabled="nombreCompleto" value="<?php echo $datos['primerNombre'].' '. $datos['segundoNombre'].' '.$datos['primerApellido'].' '.$datos['segundoApellido'] ?>">
+									<input class="contact-input" type="text"  name="nombreCompleto" disabled="disabled" value="<?php echo $datos['primerNombre'].' '. $datos['segundoNombre'].' '.$datos['primerApellido'].' '.$datos['segundoApellido'] ?>">
 									</p>
 									<p>
 									<label for="" class="">Correo:</label>
@@ -32,7 +32,7 @@
 								<div class="col-md-7">
 									<p>
 									<label for="" class="">Documento Identidad:</label>
-									<input class="contact-input" type="text" disabled="documentoIdentidad" name="documentoIdentidad" value="<?php echo $datos['documentoIdentidad']?>">
+									<input class="contact-input" type="text" disabled="disabled" name="documentoIdentidad" value="<?php echo $datos['documentoIdentidad']?>">
 									</p>
 									<p>
 									<label for="" class="">Número de contácto:</label>
@@ -41,11 +41,25 @@
 									<p>
 									<label for="" class="">Seleccione una finca:</label></p>
 									<p>
-									<select name="finca" id="fincas" style="width: 80%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+									<select name="fincas" id="fincas" style="width: 80%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
 									   	<option value="0">Seleccione..
 									    </option>
 									</select>																	
 									</p>
+
+
+							<div id="divDetalleFinca" style="display: none;">
+
+								<h3>Datos de la finca</h3>
+									<p>
+									<label for="" class="">Nombre de la finca:</label>
+									<input class="contact-input" type="text" disabled name="nombreFinca" id="nombreFinca">
+									</p>
+									<p>
+									<label for="" class="">Municipio:</label>
+									<input class="contact-input" type="text" disabled name="municipio" id="municipio">
+									</p>
+							</div>
 								</div>
 
 								<div class="col-md-12 text-center">

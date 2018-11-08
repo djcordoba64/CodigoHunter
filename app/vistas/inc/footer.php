@@ -134,6 +134,44 @@
 			);
 		});
 
+		//esto es para cargar los datos de la finca en los campos
+		$( "#fincas" ).change(function() {
+			
+			// sacar id finca seleccionada
+			var fincaId = $("#fincas").val();
+
+			// encontrar ojecto del arreglo de fincas de javascript mediante su id
+  			var finca = $.grep(fincas, function (element, index) {
+    			return element.idDetalleFinca === fincaId;
+			});
+
+  			if(finca.length>0){
+			//despues de encontrado se cargan los datos en los campos
+  			$('#municipio').val(finca[0].municipio);
+
+  			$('#nombreFinca').val(finca[0].nombreFinca);
+
+
+  			//por ultimo mostrar el div de los datos de la finca
+
+  			$('#divDetalleFinca').show();
+  		}
+  		else
+		{
+
+			$('#municipio').val("");
+
+  			$('#nombreFinca').val("");
+
+
+  			//por ultimo mostrar el div de los datos de la finca
+
+  			$('#divDetalleFinca').hide();
+		}
+
+
+		});
+
 	var deptos = <?php echo isset($datos["deptos"])? $datos["deptos"]:"[]";?>;
 
 
