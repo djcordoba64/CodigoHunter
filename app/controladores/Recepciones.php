@@ -60,11 +60,15 @@
 					];
 
 					$datos["idPersona"]=$cliente;
-					$fincas=$this->fincaModelo-> obtenerFincasCliente();
 
+					//se obtienen array (php) de objetos para el select
+					$fincas=$this->fincaModelo-> obtenerFincasCliente($cliente->idPersona);
+					// se convierte en string que representa un array de javascript
+					$fincas = json_encode($fincas);
+					// se envia en variable para que la vista tenga disponible los datos para los script de javascript
 					$datos["fincas"]=$fincas;
 					
-
+					var_dump($datos);
 
 				//var_dump($datos);
 

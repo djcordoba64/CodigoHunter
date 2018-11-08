@@ -90,15 +90,26 @@
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.swipebox.min.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/main.js"></script>
 <script type="text/javascript">
+	//document.ready: todo lo que este dentro de esta funcion se ejecuta solo cuando el documento esta completamente cargado
 	$(document).ready(function(){
-		/*cargar_Departamentos();
-		$("#departamento").change(function(){dependencia_municipio();});
-		$("#municipio").attr("disabled",true);*/
+		
+		//2.crear los items del combo a partir de la variable javascript creada en el paso 1
+
+		$.each(fincas, function(idx, finca)// primer parametro (idx)  = variable "i" que uno crea para los ciclos, la segunda es el objeto que nos llego de php
+		{
+			// esto se ejecuta por cada objeto de el arreglo de php
+			// crear una option individual con el texto y el value deseado
+			var o = new Option(finca.nombreFinca, finca.idDetalleFinca);
+			
+			$(o).html(fincas.nombreFinca);
+			// finalmente agrega al combo el nuevo item
+			$("#fincas").append(o);
+		}
+		);
 
 		$.each(deptos, function(idx, depto)
 		{
 			var o = new Option(depto.departamento, depto.id_departamento);
-			/// jquerify the DOM object 'o' so we can use the html method
 			$(o).html(depto.departamento);
 			$("#departamento").append(o);
 		}
@@ -106,6 +117,7 @@
 
 	});
 
+		//esto es solo para que el segundo combo se cargue en cascada dependiendo del primero
 		$( "#departamento" ).change(function() {
 			$('#municipio').empty();
 
@@ -116,37 +128,22 @@
     		}).each(function(idx, municipio)
 			{				
 				var o = new Option(municipio.municipio, municipio.id_municipio);
-			/// jquerify the DOM object 'o' so we can use the html method
 				$(o).html(municipio.municipio);
 				$("#municipio").append(o);
 			}
 			);
 		});
 
-	var deptos = <?php echo $datos["deptos"];?>;
+	var deptos = <?php echo isset($datos["deptos"])? $datos["deptos"]:"[]";?>;
 
 
-	var municipios = <?php echo $datos["municipios"];?>;
+	var municipios = <?php echo isset($datos["municipios"])? $datos["municipios"]:"[]";?>;
 
+	// 1. crear una variable javascript con la variable donde estan los items de php.
+	var fincas = <?php echo isset($datos["fincas"])? $datos["fincas"]:"[]";?>;
 
 </script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$.each(fincas, function(idx, fincas)
-		{
-			var o = new Option(fincas.nombreFinca,fincas.idDetalleFinca);
-			$(o).html(fincas.nombreFinca);
-			$("#nombreFinca").append(o);
-		}
-		);
 
-
-		
-
-
-	});
-	
-</script>
 
 </body>
 
