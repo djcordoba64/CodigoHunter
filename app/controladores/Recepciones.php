@@ -68,7 +68,7 @@
 					// se envia en variable para que la vista tenga disponible los datos para los script de javascript
 					$datos["fincas"]=$fincas;
 					
-					var_dump($datos);
+					//var_dump($datos);
 
 				//var_dump($datos);
 
@@ -83,7 +83,7 @@
 
 		//me llega el cliente y la finca seleccionada (campos hidden) (POST - submit boton "agregra cafe") 
 		// si cliente existe muestra formulario  campos solo lectura del cliente y lista de fincas para que usuario seleccione finca, mostrar boton siguiente (agregar cafe)
-		public function registrar_finca_seleccionada($datos){
+		public function agregar_finca_seleccionada($datos){
 		//consultamos el cliente si existe
 		$cliente=$this->personaModelo->obtenerClienteDocumento($documento);
 				

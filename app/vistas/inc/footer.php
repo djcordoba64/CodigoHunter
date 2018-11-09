@@ -147,9 +147,11 @@
 
   			if(finca.length>0){
 			//despues de encontrado se cargan los datos en los campos
+			$('#nombreFinca').val(finca[0].nombreFinca);
   			$('#municipio').val(finca[0].municipio);
-
-  			$('#nombreFinca').val(finca[0].nombreFinca);
+  			$('#vereda').val(finca[0].vereda);
+  			$('#Temperatura').val(finca[0].Temperatura);
+  			
 
 
   			//por ultimo mostrar el div de los datos de la finca
@@ -158,10 +160,12 @@
   		}
   		else
 		{
-
+			$('#nombreFinca').val("");
 			$('#municipio').val("");
+			$('#vereda').val("");
+			$('#Temperatura').val("");
 
-  			$('#nombreFinca').val("");
+  			
 
 
   			//por ultimo mostrar el div de los datos de la finca
