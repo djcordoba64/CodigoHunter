@@ -34,6 +34,29 @@
 			$errors_message=array('mensaje_error'=>$message);
 			$this->render(__CLASS__, $params);
 		}
+
+		public function redirectToAction($controlador, $metodo, $datos)
+		{
+			if (file_exists('../app/controladores/' .$controlador.'.php')) {
+					require_once '../app/controladores/' .$controlador. '.php';
+
+				if (method_exists($controlador,$metodo)) {
+					$controlador= new $controlador;
+					call_user_func_array([$controlador, $metodo],array($datos));
+				}
+				else 
+				{
+					die("ERROR!!! El Metodo :'".$metodo."' NO existe en el controlador".$controlador." ; Url solicitada: /".$controlador."/".$metodo." <a href='".RUTA_URL."'>ir al inicio</a>");
+				}
+			}
+			else 
+			{
+				
+
+				die("ERROR!!! El Controlador :'".$controlador."' NO existe; Url solicitada: /".$controlador."/".$metodo." <a href='".RUTA_URL."'>ir al inicio</a>");
+			}
+
+		}
 	}
 
  ?>

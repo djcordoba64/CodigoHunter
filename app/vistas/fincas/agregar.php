@@ -1,5 +1,8 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
+
+				
+
 <!-- CLIENTES_FINCAS- -->
 	<section class="product-single">
 			<div class="container">
@@ -8,7 +11,26 @@
 						<div class="woocommerce">
 							<a href="<?php echo RUTA_URL;?>/Clientes/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
 							<!--FORMULARIO FINCA-->
-							<form action="<?php echo RUTA_URL;?>/Fincas/agregar" method="POST">
+							<form action="<?php echo RUTA_URL;?>/Fincas/agregar_guardar_temporalmente" method="POST">
+
+	<!--hiddens para guardar temporalmente datos del cliente-->
+					<input type="hidden" name="primerNombre" value="<?php echo isset($datos['primerNombre'])? $datos['primerNombre'] : '';?>">
+					<input type="hidden" name="segundoNombre" value="<?php echo isset($datos['segundoNombre'])? $datos['segundoNombre'] : '';?>">
+					<input type="hidden" name="primerApellido" value="<?php echo isset($datos['primerApellido'])? $datos['primerApellido'] : '';?>">
+					<input type="hidden" name="segundoApellido" value="<?php echo isset($datos['segundoApellido'])? $datos['segundoApellido'] : '';?>">
+					<input type="hidden" name="documentoIdentidad" value="<?php echo isset($datos['documentoIdentidad'])? $datos['documentoIdentidad'] : '';?>">
+					<input type="hidden" name="fechaNacimiento" value="<?php echo isset($datos['fechaNacimiento'])? $datos['fechaNacimiento'] : '';?>">
+					<input type="hidden" name="sexo" value="<?php echo isset($datos['sexo'])? $datos['sexo'] : '';?>">
+					<input type="hidden" name="correo" value="<?php echo isset($datos['correo'])? $datos['correo'] : '';?>">
+					<input type="hidden" name="numeroContacto" value="<?php echo isset($datos['numeroContacto'])? $datos['numeroContacto'] : '';?>">
+					<input type="hidden" name="direccion" value="<?php echo isset($datos['direccion'])? $datos['direccion'] : '';?>">
+					<input type="hidden" name="estado" value="<?php echo isset($datos['estado'])? $datos['estado'] : '';?>">
+					<!--hiddens para guardar temporalmente datos del cliente-->
+
+
+					<!--hiddens para guardar temporalmente las fincas que se van creando y poder guardarlas todas al final junto con el cliente-->				
+					<input type="hidden" name="fincasJson" value="<?php echo isset($datos['fincasJson'])? $datos['fincasJson'] : '';?>"><!--array de fincas en una cadena de json-->
+
 								<div class="woocommerce-tabs wc-tabs-wrapper">
 									<h2>Datos de la finca</h2>		
 								</div >
@@ -16,8 +38,6 @@
 									<div class="woocommerce-billing-fields">						        
 										<div class="woocommerce-billing-fields__field-wrapper">										<div class="cold-md-12"></div>					
 												<div class="col-md-6">
-													<!--en el input hidden tare el id del cliente-->
-												    <input type="hidden" name="idCliente" value="<?php echo $datos["idCliente"] ?>" >
 													<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
 													<input type="hidden" name="idDetalleFinca" value="<?php echo isset($datos['idDetalleFinca'])? $datos['idDetalleFinca'] : '-1';?>" >
 
@@ -112,31 +132,31 @@
 					                    </tr>
 					                </thead>
 					                <tbody  class="cart_item">
-									<?php if (isset($datos['fincas'])) { foreach($datos['fincas'] as $finca): ?>
+									<?php if (isset($datos['fincasArr'])) { foreach($datos['fincasArr'] as $finca): ?>
 										<tr class="cart_item">
 											<td class="product-remove">					
-												<?php echo $finca->nombreFinca;?>								
+												<?php echo $finca["nombreFinca"];?>								
 											</td>
 										
 											<td class="product-remove">
-													<?php echo $finca->Temperatura;?>
+													<?php echo $finca["Temperatura"];?>
 											</td class="cart_item">
 											<td class="product-remove">
-												<?php echo $finca->departamento;?>				
+												<?php echo $finca["departamento"];?>				
 											</td>
 											<td class="product-remove">
-												<?php echo $finca->municipio;?>				
+												<?php echo $finca["municipio"];?>				
 											</td>
 											<td class="product-remove">
-												<?php echo $finca->vereda;?>				
+												<?php echo $finca["vereda"];?>				
 											</td>
 											<td class="product-remove">
-												<?php echo $finca->Estado;?>				
+												<?php echo $finca["Estado"];?>				
 											</td class="product-remove">
 											<td class="product-remove">
 
 												<!--esto me esta redireccionando al metodo fincas/agregar y le pasa el id de la finca (parametro $idFinca del metodo)-->
-												<a href="<?php echo RUTA_URL;?>/Fincas/agregar/<?php echo $finca->idDetalleFinca;?>">
+												<a href="<?php echo RUTA_URL;?>/Fincas/agregar/<?php echo $finca["idDetalleFinca"];?>">
 													Editar
 												</a>		
 											</td>

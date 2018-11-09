@@ -38,7 +38,85 @@
 		}
 		//-------------------****CREAR UN CLIENTE****--------------------------------------
 		
-		public function crear(){
+		//muestra formulario con los campos vacios (GET)
+		public function crear_mostrar_formulario(){
+
+
+			//validacion de rol
+			if($_SESSION["rol"]!="coordinador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+			}
+			
+				$datos=[				
+					'primerNombre'		=> '',
+					'segundoNombre'		=> '',
+					'primerApellido'	=> '',
+					'segundoApellido'	=> '',
+					'documentoIdentidad'=> '',
+					'fechaNacimiento'	=> '',
+					'sexo'				=> '',
+					'correo'			=> '',
+					'numeroContacto'	=> '',
+					'direccion'			=> '',
+					'estado'			=> '',	
+
+				];
+				//Nos redirecciona a la vista agregar--(formulario de registro de un cliente)
+				$this->vista('/Cliente/crear', $datos);
+		}
+
+		//al dar clic en siguiente, valida que el cliente no exista, y procede a cargar la vista de agregar fincas
+		//le manda a esa vista los datos del cliente ingresados para que sean guardados en campos hidden y poder guardarlos al final con las fincas
+		public function crear_validar_mostrar_fincas(){
+
+
+			//validacion de rol
+			if($_SESSION["rol"]!="coordinador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+			}
+		
+				// guardo los datos para pasarselos a la vista de agregar finca y puedan ser guardados despues
+				$datos=[				
+					'primerNombre'		=>trim($_POST['primerNombre']),
+					'segundoNombre'		=>trim($_POST['segundoNombre']),
+					'primerApellido'	=>trim($_POST['primerApellido']),
+					'segundoApellido'	=>trim($_POST['segundoApellido']),
+					'documentoIdentidad'=>trim($_POST['documentoIdentidad']),
+					'fechaNacimiento'	=>trim($_POST['fechaNacimiento']),
+					'sexo'				=>trim($_POST['sexo']),
+					'correo'			=>trim($_POST['correo']),
+					'numeroContacto'	=>trim($_POST['numeroContacto']),
+					'direccion'			=>trim($_POST['direccion']),
+					'estado'			=>trim($_POST['estado']),	
+				];
+				
+				//valida
+				if($this->personaModelo->clienteExiste( $_POST['documentoIdentidad'] ))
+				{
+					// El cliente ya existe
+					// agrego mensaje al arreglo de datos para ser mostrado 
+					$datos['mensaje_error'] ='El usuario ya existe, el numero de identificacion ya esta registrado';
+					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+					$this->vista('/Cliente/crear', $datos);
+					return;
+
+				}
+					
+					//redirecciono a fincas formulario vacio y le paso datos de cliente 
+					$this->redirectToAction('Fincas', "agregar_formulario_inicial", $datos);			
+		}
+
+		public function crear_guardar(){
 
 
 			//validacion de rol

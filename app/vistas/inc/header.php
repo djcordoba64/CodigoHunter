@@ -79,7 +79,7 @@
                     <a href="#">Clientes</a>
                     <ul class="sub-menu">
                       <li><a href="/Hunter/Cliente/index">Administrar</a></li>
-                      <li><a href="/Hunter/Cliente/crear">Registrar</a></li>
+                      <li><a href="/Hunter/Cliente/crear_mostrar_formulario">Registrar</a></li>
                     </ul>
                   </li>
                   <li class="parent">

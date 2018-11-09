@@ -7,7 +7,7 @@
 	</div>
 		<div class="container">
 			<div class="woocommerce">
-				<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Cliente/crear" method="POST">
+				<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Cliente/crear_validar_mostrar_fincas" method="POST">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-6">
