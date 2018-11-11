@@ -215,6 +215,17 @@
 		// usuario hizo clic en el link de editar de una finca en la grilla de fincas, cuando esta creando las fincas y todavia no se han guardado en DB (GET)
 		public function agregar_editar_temporal($idFincaEditar){
 
+
+			//validacion de rol
+			if($_SESSION["rol"]!="coordinador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+			}
+
 			//consultas datos para los select del formulario
 			$deptos = $this->UbicacionModelo -> obtenerDepartamentos();
 			$deptos = json_encode($deptos);
