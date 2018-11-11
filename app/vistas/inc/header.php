@@ -89,8 +89,8 @@
                       <li><a href="/Hunter/Recepciones/listar">Buscar</a></li>                     
                    </ul>     
                   </li>
-                  
-                  
+                  <li><a href="/Hunter/Perfiles/consultar">Perfil</a></li>
+                                   
                 </ul>
               </div>
               <div class="col-lg-2 col-md-12">

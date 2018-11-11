@@ -20,7 +20,7 @@
 									        <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
 									        <label for="billing_first_name" class="">Primer Nombre: <abbr class="required" title="required">*</abbr></label>
 									        <input type="text" class="input-text"  name="primerNombre" autofocus="autofocus" required value="<?php echo $datos['primerNombre']?>">							
-							  			</p>
+							  				</p>
 										<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 										    <label for="billing_last_name" class="">Segundo nombre:</label>
 										    <input type="text" class="input-text" name="segundoNombre" autofocus="autofocus" value="<?php echo $datos['segundoNombre']?>">

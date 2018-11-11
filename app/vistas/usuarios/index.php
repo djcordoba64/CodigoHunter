@@ -26,24 +26,39 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
   	<div class="col-md-12">
 		<h3>Usuarios Registrados</h3>
   	</div>
+    <div class="col-md-12">
+      <div  class="col-md-4">
+          <div class="widget-area" role="complementary">
+            <aside class="widget">
+              <h4>Buscar</h4>
+              <div class="content">
+                <div class="form wp-searchform" method="get">
+                  <input  type="text" name="search"  id="buscar" onkeyup="buscarUsuario()" placeholder="Documento">
+                  <button type="submit" class="fa fa-search"></button>
+                </div>
+              </div>
+            </aside>
+        </div>
+      </div>
+    </div>
   	<section class="cart-wrap">
   		<div class="container">
   			<div class="row">
   				<div class="woocommerce">
   					<div class="page_woo woo_cart">
   						<form method="post">
-  							<table class="shop_table shop_table_responsive cart">
-  								<thead>
-  									<tr>
-  										<th class="product-remove">Documento</th>
-										<th class="product-remove">Nombre</th>
-										<th class="product-remove">Apellidos</th>
-										<th class="product-remove">Correo</th>
-										<th class="product-remove">Contácto</th>
-										<th class="product-remove">Dirección</th>
-										<th class="product-remove">Rol</th>
-										<th class="product-remove">Estado</th>
-										<th class="product-remove">Acciones</th>
+  							<table class="shop_table shop_table_responsive cart" id="tbl_Usuarios">
+  								<thead >
+  									<tr  class="header">
+    									<th class="product-remove">Documento</th>
+  										<th class="product-remove">Nombre</th>
+  										<th class="product-remove">Apellidos</th>
+  										<th class="product-remove">Correo</th>
+  										<th class="product-remove">Contácto</th>
+  										<th class="product-remove">Dirección</th>
+  										<th class="product-remove">Rol</th>
+  										<th class="product-remove">Estado</th>
+  										<th class="product-remove">Acciones</th>
   									</tr>
   								</thead>
   								<tbody  class="cart_item">
@@ -51,7 +66,7 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
   									<tr class="cart_item">
   										<td class="product-remove">					
 											<?php echo $usuario->documentoIdentidad;?>								
-										</td>
+										  </td>
 	  									<td class="product-remove">
 											<a href="<?php echo RUTA_URL;?>/Usuarios/detalle/<?php echo $usuario->idPersona;?>">
 												<?php echo $usuario->primerNombre;?>
@@ -87,6 +102,19 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
   								</tbody>
   							</table>
   						</form>
+              <div class="col-md-12">
+             <div class="paging-navigation">
+              <hr>
+              <div class="pagination">
+                  <a href="#" class="prev disabled"><i class="fa fa-chevron-left" aria-hidden="true"></i> Prev</a>
+                  <a href="#" class="page-numbers current">1</a>
+                  <a href="#" class="page-numbers">2</a>
+                  <a href="#" class="page-numbers">3</a>
+                  <a href="#" class="page-numbers">4</a>
+                  <a href="#" class="next">Siguiente<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+              </div>
+          </div>
+        </div>
   					</div>
   				</div>
   			</div>

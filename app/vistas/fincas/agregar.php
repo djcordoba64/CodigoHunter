@@ -32,6 +32,7 @@
 					<!--hiddens para guardar temporalmente las fincas que se van creando y poder guardarlas todas al final junto con el cliente-->				
 					<input type="hidden" name="fincasJson" value='<?php echo isset($datos['fincasJson'])? $datos['fincasJson'] : '';?>'><!--array de fincas en una cadena de json-->
 
+
 								<div class="woocommerce-tabs wc-tabs-wrapper">
 									<h2>Datos de la finca</h2>		
 								</div >
@@ -72,7 +73,7 @@
 													 </p>
 																																							
 													 <div class="cold-md-12">
-														 <div class="col-md-4">
+														<div class="col-md-4">
 															 <!--Temperatura-->
 															<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 															<label for="billing_first_name">Temperatura<abbr class="required" title="required">			
@@ -113,7 +114,7 @@
 
 									<!--boton de guardar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
 									    <input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Fincas/agregar_guardar_temporalmente')" class="btn btn-lg btn-brown" type="button" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>">
-									    
+					
 								</div>		
 						</div>	
 					</div>		      			      			
@@ -182,37 +183,6 @@
 									<?php }     ?>
 			</form>			
 		</div>
-	</div>
-</section>							      														      														
-											
-										
-					
-<!--CLIENTES_FINCAS-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
+		</div>
+	</section>							      														      																							
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 
