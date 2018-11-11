@@ -80,6 +80,7 @@
 				$this->vista('/Recepciones/registrar_nueva', $mensaje_error);
 			}
 		}
+		/*
 
 		//me llega el cliente y la finca seleccionada (campos hidden) (POST - submit boton "agregra cafe") 
 		// si cliente existe muestra formulario  campos solo lectura del cliente y lista de fincas para que usuario seleccione finca, mostrar boton siguiente (agregar cafe)
@@ -93,6 +94,7 @@
 			$this->vista('/Recepciones/registrar_agregar_cafes', $datos);
 			
 		}
+		*/
 	}
 
 

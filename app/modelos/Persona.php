@@ -123,6 +123,14 @@
             }
 
         }
+        //PERFIL---
+        public function obtenerDatosPorIdUsuario($idUsuario){
+          $this->db->query( "SELECT * FROM personas where idPersona=:idUsuario and tipoPersona='usuario'");
+            $this->db->bind(':idPersona',$idUsuario);
+            $fila=$this->db->registro();
+            return $fila;
+        }
+
         //-------LOGIN---------------------------------------------------------------------
 
         public function credencialesCorrectas($identificacion, $contrasena){
@@ -208,6 +216,27 @@
             return $fila;
 
         }
+        //-------EDITAR PERFIL DEL USUARIO----
+        public function editarUsuarioPerfil($datos){
+          $this->db->query('UPDATE personas SET correo=:correo, numeroContacto=:numeroContacto,direccion=:direccion, updated_at= NOW(), updated_by = :updated_by where idPersona= :idPersona');
+
+           //vinculamos los valores
+            $this->db->bind(':idPersona',  $datos['idPersona']);
+             $this->db->bind(':correo'       ,  $datos['correo']);
+            $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
+            $this->db->bind(':direccion'       ,  $datos['direccion']);           
+            $this->db->bind(':updated_by'      ,  $_SESSION['idUsuario']);
+
+            if ($this->db->execute()){           
+                return 0;
+            }
+            else{
+                return -1;
+            }
+        }
+
+
+        //--------------------------------------------
         //__CLIENTES_RECEPCIÖN--------
         //validar si existe un cliente con el número de identificación(1=exite)
         public function clienteExiste($documentoIdentidad){

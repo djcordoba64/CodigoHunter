@@ -9,12 +9,13 @@
 				<!--FORMULAIO DEL CAFÉ-->														
 				<form class="contact-form" action="<?php echo RUTA_URL;?>/Cafes/registrar_agregar_cafes" method="POST">
 					<div class="row" style="background-color:#fff" >
+						<?php echo $datos["idPersona"] ?>
 						<!--en el input hidden tare el id del cliente-->
-						<input type="hidden" name="idCliente" value="<?php echo $datos["idCliente"] ?>" >
+						<input type="hidden" name="idCliente" value="<?php echo $datos["idPersona"] ?>" >
 							<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
 						<input type="hidden" name="idDetalleFinca" value="<?php echo isset($datos['idDetalleFinca'])? $datos['idDetalleFinca'] : '-1';?>" >
 						<!--datos del café lado izquierdo-->														
-						<div class="col-md-6" >
+						<div class="col-md-6">
 							<h4>Datos del café</h4>
 							<div class="col-md-12" >
 								<label for="" class="">Codigo</label>
@@ -22,7 +23,7 @@
 							</div>
 							<div class="col-md-12">
 								<label for="" class="">Foto</label>
-								<input type="text" name="foto" >						
+								<input type="file" name="archivo" /><br />				
 							</div>
 
 							<div class="col-md-12" >

@@ -13,6 +13,8 @@
 					<div class="row">								
 						<div class="col-md-6" style="background-color:#fff">
 							<h4>Datos del cliente</h4>
+							<?php var_dump($datos["idPersona"]) ?>
+							<?php var_dump($datos["fincas"]) ?>
 							<div class="col-md-12">
 								<p>
 									<label for="" class="">Nombre completo:</label>
@@ -28,7 +30,7 @@
 								</div>
 								<div  class="col-md-6">
 									<label for="" class="">Contácto</label>
-										<input class="contact-input" type="text" disabled="disabled" name="numeroContacto" value="<?php echo $datos['numeroContacto']?>">											
+										<input class="contact-input" type="text" disabled name="numeroContacto" value="<?php echo $datos['numeroContacto']?>">											
 								</div>
 							</div>
 								<p>
@@ -72,8 +74,6 @@
 								<div class="col-md-5">
 									<label>Temperatura promedio:</label>
 										<input class="contact-input" type="number" name="Temperatura" id="Temperatura">
-									
-
 								</div>																				
 							</div>								
 						</div>

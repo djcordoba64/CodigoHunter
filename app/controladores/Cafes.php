@@ -14,6 +14,7 @@
  	}
  	//me muestra el formulario vacio del café y envio el idCliente y idFinca
  	public function agregar_finca_seleccionada($datos){
+ 		
 
  		$datos=[				
 					

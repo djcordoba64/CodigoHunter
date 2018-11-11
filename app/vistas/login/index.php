@@ -8,8 +8,6 @@
 
 <?php require RUTA_APP . '/vistas/inc/header.php' ?> 
 
-
-
 <section class="cart-wrap">
     <div class="woocommerce">
       <form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Login/validar" method="POST">
