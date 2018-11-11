@@ -46,7 +46,6 @@
 
 			$datos["idDetalleFinca"]=-1;
 
-			var_dump($datos);
 			//renderiza formulario vacio
 			$this->vista('/Fincas/agregar', $datos);
 
@@ -100,13 +99,30 @@
 			$datos["idDetalleFinca"]=$_POST['idDetalleFinca'];
 				
 			//recupero datos de las fincas que se han creado temporalmente (guardadas en el hidden y no se han guardado en BD)
-			if(!empty($datos["fincasJson"])){
-				$datos["fincasArr"]=json_decode($datos["fincasJson"]);
+			if(!empty($_POST["fincasJson"])){
+				$datos["fincasArr"]=json_decode($_POST["fincasJson"]);
+				//El siguiente codigo arregla un error que se genera al mandar los datos de las fincas por post, y estas se convierten en objetos, pero las necesitamos como array
+				$temp_array=array();
+				foreach ($datos['fincasArr'] as $finca) {
+					$finca_temp = array('nombreFinca' => $finca->nombreFinca, 
+												'Temperatura' => $finca->Temperatura, 
+												'coordenadasGoogle' => $finca->coordenadasGoogle, 
+												'municipio' => $finca->municipio, 
+												'nombreMunicipio' => $finca->nombreMunicipio,  
+												'nombreDepartamento' => $finca->nombreDepartamento,  
+												'Estado' => $finca->Estado, 
+												'vereda' => $finca->vereda, 
+												'idDetalleFinca' => $finca->idDetalleFinca);
+					array_push($temp_array, $finca_temp);
+
+				}
+				$datos["fincasArr"] = $temp_array;//fin del arreglo
 			}
 			else
 			{
 				$datos["fincasArr"]=array();
 			}
+
 
 				if($datos["idDetalleFinca"] == -1 )
 				{
@@ -121,9 +137,17 @@
 											'vereda' => $_POST['vereda'], 
 											'idDetalleFinca' => count($datos["fincasArr"])//agrega un id ficticio para poder editarlo despues, coincide con la pocision en el arreglo para que al editar se pueda usar este mismo id como indice en el arreglo
 								);
+						//consultar nombres departamento y municipio
+						$nombres = $this->UbicacionModelo->obtenerNombresMunicipioId($_POST['municipio']);
+
+						//aregar a modelo para visualizarlos en tabla de fincas areggadas
+						$nuevaFinca["nombreMunicipio"]= $nombres->municipio;						
+						$nuevaFinca["nombreDepartamento"]= $nombres->departamento;
 					
 						//agrego la finca al array de fincas para renderizar tabla de fincas creadas temporalmente en el formulario
 						array_push($datos["fincasArr"], $nuevaFinca);
+
+
 
 						//envio datos de fincas existentes para gurdarlas en el campo hidden para poder editar las temporales o finalmente guardarlas en BD 
 						$datos["fincasJson"]=json_encode($datos["fincasArr"]);
@@ -138,7 +162,6 @@
 						unset($datos["idDetalleFinca"]);
 
 
-			var_dump($datos);
 
 						// carga formulario vacio solo fincas existentes
 						$this->vista('Fincas/agregar', $datos);
@@ -154,10 +177,19 @@
 											'municipio' => $_POST['municipio'], 
 											'Estado' => $_POST['Estado'], 
 											'vereda' => $_POST['vereda'], 
-											'idDetalleFinca' => count($datos["idDetalleFinca"]));//usa el id temporal de la finca que se esta editando
+											'idDetalleFinca' => $_POST['idDetalleFinca']);//usa el id temporal de la finca que se esta editando
+
+						//consultar nombres departamento y municipio
+						$nombres = $this->UbicacionModelo->obtenerNombresMunicipioId($_POST['municipio']);
+
+						//aregar a modelo para visualizarlos en tabla de fincas areggadas
+						$datosModificados["nombreMunicipio"]= $nombres->municipio;						
+						$datosModificados["nombreDepartamento"]= $nombres->departamento;
 
 						//reemplazo la finca en el indice especificado por los datos modificados
 						$datos["fincasArr"][$datos["idDetalleFinca"]]=$datosModificados;
+
+
 
 						//envio datos de fincas existentes para gurdarlas en el campo hidden para poder editar las temporales o finalmente guardarlas en BD 
 						$datos["fincasJson"]=json_encode($datos["fincasArr"]);
@@ -172,7 +204,6 @@
 						unset($datos["idDetalleFinca"]);
 
 
-			var_dump($datos);
 
 						// cargar vista vacia (solo fincas existentes)
 						$this->vista('Fincas/agregar', $datos);
@@ -182,7 +213,7 @@
 		}
 
 		// usuario hizo clic en el link de editar de una finca en la grilla de fincas, cuando esta creando las fincas y todavia no se han guardado en DB (GET)
-		public function agregar_editar_temporal(){
+		public function agregar_editar_temporal($idFincaEditar){
 
 			//consultas datos para los select del formulario
 			$deptos = $this->UbicacionModelo -> obtenerDepartamentos();
@@ -193,25 +224,60 @@
 			$datos["deptos"]=$deptos;
 			$datos["municipios"]=$municipios;
 
+			// recupero y guardo de nuevo datos del cliente (vienen de los hidden y van para los hidden de nuevo)
+			$datos["primerNombre"]=$_POST['primerNombre'];
+			$datos['segundoNombre']=$_POST['segundoNombre'];
+			$datos['primerApellido']=$_POST['primerApellido'];
+			$datos['segundoApellido']=$_POST['segundoApellido'];
+			$datos['documentoIdentidad']=$_POST['documentoIdentidad'];
+			$datos['fechaNacimiento']=$_POST['fechaNacimiento'];
+			$datos['sexo']=$_POST['sexo'];
+			$datos['correo']=$_POST['correo'];
+			$datos['numeroContacto']=$_POST['numeroContacto'];
+			$datos['direccion']=$_POST['direccion'];
+			$datos['estado']=$_POST['estado'];
+			
+			//recupero datos de las fincas que se han creado temporalmente (guardadas en el hidden y no se han guardado en BD)
+			$datos["fincasArr"]=json_decode($_POST["fincasJson"]);
+			
+
+			//El siguiente codigo arregla un error que se genera al mandar los datos de las fincas por post, y estas se convierten en objetos, pero las necesitamos como array
+			$temp_array=array();
+			foreach ($datos['fincasArr'] as $finca) {
+				$finca_temp = array('nombreFinca' => $finca->nombreFinca, 
+											'Temperatura' => $finca->Temperatura, 
+											'coordenadasGoogle' => $finca->coordenadasGoogle, 
+											'municipio' => $finca->municipio, 
+											'nombreMunicipio' => $finca->nombreMunicipio,  
+											'nombreDepartamento' => $finca->nombreDepartamento,  
+											'Estado' => $finca->Estado, 
+											'vereda' => $finca->vereda, 
+											'idDetalleFinca' => $finca->idDetalleFinca);
+				array_push($temp_array, $finca_temp);
+
+			}
+			$datos["fincasArr"] = $temp_array;//fin del arreglo
 			
 				//si entra aqui es porque estan editando (GET - url)
 
-				//consulto datos de la finca a editar
-					$datosFinca = $this -> fincaModelo -> obtenerFincaId($idFinca);
-				//consulto datos para la tabla de fincas registradas para el cliente
-					$datos["fincasArr"] = $this -> fincaModelo -> obtenerFincasCliente($datosFinca->idCliente);
+				//consulto datos de la finca a editar desde el array guardado, mediante el id falso (el asignado temporalmente) de la finca 
+					$datosFinca = $datos["fincasArr"][$idFincaEditar];
 
-					$datos["nombreFinca"]=$datosFinca->nombreFinca;
-					$datos["Temperatura"]=$datosFinca->Temperatura;
-					$datos["coordenadasGoogle"]=$datosFinca->coordenadasGoogle;
-					$datos["municipio"]=$datosFinca->idmunicipio;
-					$datos["idCliente"]=$datosFinca->idCliente;
-					$datos["Estado"]=$datosFinca->Estado;
-					$datos["vereda"]=$datosFinca->vereda;
-					$datos["idDetalleFinca"]=$idFinca;
+				//asigno
+					$datos["nombreFinca"]=$datosFinca["nombreFinca"];
+					$datos["Temperatura"]=$datosFinca["Temperatura"];
+					$datos["coordenadasGoogle"]=$datosFinca["coordenadasGoogle"];
+					$datos["municipio"]=$datosFinca["municipio"];
+					$datos["nombreMunicipio"]=$datosFinca["nombreMunicipio"];
+					$datos["nombreDepartamento"]=$datosFinca["nombreDepartamento"];
+					$datos["Estado"]=$datosFinca["Estado"];
+					$datos["vereda"]=$datosFinca["vereda"];
+					$datos["idDetalleFinca"]=$idFincaEditar;
 
+				//envio datos de fincas existentes para gurdarlas en el campo hidden para poder editar las temporales o finalmente guardarlas en BD despues
+						$datos["fincasJson"]=json_encode($datos["fincasArr"]);
 
-				//Nos carga la vista con los campos a editar 
+				// carga la vista con los campos a editar 
 				$this->vista('/Fincas/agregar', $datos);
 			
 		//----------------------------------------------------------------

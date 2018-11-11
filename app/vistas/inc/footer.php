@@ -180,6 +180,12 @@
 	// 1. crear una variable javascript con la variable donde estan los items de php.
 	var fincas = <?php echo isset($datos["fincas"])? $datos["fincas"]:"[]";?>;
 
+	  function submitForm(action) {
+	    var form = document.getElementById('form1');
+	    form.action = action;
+	    form.submit();
+	  }
+
 </script>
 
 

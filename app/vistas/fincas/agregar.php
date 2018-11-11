@@ -4,16 +4,17 @@
 				
 
 <!-- CLIENTES_FINCAS- -->
-	<section class="product-single">
-			<div class="container">
-				<div class="row">
-					<div class="container">
-						<div class="woocommerce">
-							<a href="<?php echo RUTA_URL;?>/Clientes/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
-							<!--FORMULARIO FINCA-->
-							<form action="<?php echo RUTA_URL;?>/Fincas/agregar_guardar_temporalmente" method="POST">
+<section class="product-single">
+	<div class="container">
+		<div class="row">
+						<!--FORMULARIO FINCA, se le pone id, para poder ponerle varios botones submit y que este formulario vaya a dos acciones dependientes dependiendo de si va a editar o guardar, por eso se remueve el action, el cual se setea desde el input cuando se llama a la funcion onclick del boton-->
+			<form id="form1" method="POST">
+				<div class="container">
+					<div class="woocommerce">
+					<a href="<?php echo RUTA_URL;?>/Clientes/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
+						
 
-	<!--hiddens para guardar temporalmente datos del cliente-->
+					<!--hiddens para guardar temporalmente datos del cliente-->
 					<input type="hidden" name="primerNombre" value="<?php echo isset($datos['primerNombre'])? $datos['primerNombre'] : '';?>">
 					<input type="hidden" name="segundoNombre" value="<?php echo isset($datos['segundoNombre'])? $datos['segundoNombre'] : '';?>">
 					<input type="hidden" name="primerApellido" value="<?php echo isset($datos['primerApellido'])? $datos['primerApellido'] : '';?>">
@@ -29,7 +30,7 @@
 
 
 					<!--hiddens para guardar temporalmente las fincas que se van creando y poder guardarlas todas al final junto con el cliente-->				
-					<input type="hidden" name="fincasJson" value="<?php echo isset($datos['fincasJson'])? $datos['fincasJson'] : '';?>"><!--array de fincas en una cadena de json-->
+					<input type="hidden" name="fincasJson" value='<?php echo isset($datos['fincasJson'])? $datos['fincasJson'] : '';?>'><!--array de fincas en una cadena de json-->
 
 								<div class="woocommerce-tabs wc-tabs-wrapper">
 									<h2>Datos de la finca</h2>		
@@ -108,10 +109,12 @@
 
 									 </div>	
 									 <!--Dependiendo de si esta editando o no muestro el boton guardar o agregar para que el usuario sepa si esta editando o agregando uno nuevo-->
-									    <input align="center" class="btn btn-lg btn-brown" type="submit" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>">
+									    <!--<input align="center" class="btn btn-lg btn-brown" type="submit" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>">-->
+
+									<!--boton de guardar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
+									    <input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Fincas/agregar_guardar_temporalmente')" class="btn btn-lg btn-brown" type="button" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>">
 									    
-								</div>			
-							</form>
+								</div>		
 						</div>	
 					</div>		      			      			
 				<div class="container">	
@@ -142,10 +145,10 @@
 													<?php echo $finca["Temperatura"];?>
 											</td class="cart_item">
 											<td class="product-remove">
-												<?php echo $finca["departamento"];?>				
+												<?php echo $finca["nombreDepartamento"];?>				
 											</td>
 											<td class="product-remove">
-												<?php echo $finca["municipio"];?>				
+												<?php echo $finca["nombreMunicipio"];?>				
 											</td>
 											<td class="product-remove">
 												<?php echo $finca["vereda"];?>				
@@ -156,9 +159,13 @@
 											<td class="product-remove">
 
 												<!--esto me esta redireccionando al metodo fincas/agregar y le pasa el id de la finca (parametro $idFinca del metodo)-->
-												<a href="<?php echo RUTA_URL;?>/Fincas/agregar/<?php echo $finca["idDetalleFinca"];?>">
+												<!--<a href="<?php echo RUTA_URL;?>/Fincas/agregar/<?php echo $finca["idDetalleFinca"];?>">
 													Editar
-												</a>		
+												</a>	-->
+
+												<!--boton de editar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
+
+												<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Fincas/agregar_editar_temporal/<?php echo $finca["idDetalleFinca"];?>')" class="btn btn-lg btn-brown" type="button" value="Editar">	
 											</td>
 
 										</tr>
@@ -166,7 +173,9 @@
 					                </tbody>
 					            </table>
 						
-				</div>					
+				</div>		
+
+			</form>			
 		</div>
 	</div>
 </section>							      														      														

@@ -24,6 +24,16 @@
 
 		}
 
+		public function obtenerNombresMunicipioId($idMunicipio){
+            
+			$this->db->query("SELECT m.municipio, d.departamento FROM municipios as m join departamentos as d on m.departamento_id=d.id_departamento where id_municipio=:id_municipio");
+			$this->db->bind(':id_municipio',$idMunicipio);
+
+			$datos=$this->db->registro();
+    		 return $datos;
+
+		}
+
 
 	}
 
