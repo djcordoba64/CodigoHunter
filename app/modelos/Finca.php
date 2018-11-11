@@ -35,6 +35,34 @@
            }
 		}
 
+		public function agregarFincas($datosFinca, $idCliente){
+
+			$this->db->empezarTransaccion();
+
+
+			foreach ($datosFinca as $finca) {
+						//preparamos la consulata
+					$datos["nombreFinca"]=$finca->nombreFinca;
+					$datos["Temperatura"]=$finca->Temperatura;
+					$datos["coordenadasGoogle"]=$finca->coordenadasGoogle;
+					$datos["municipio"]=$finca->municipio;
+					$datos["idCliente"]=$idCliente;
+					$datos["Estado"]=$finca->Estado;
+					$datos["vereda"]=$finca->vereda;
+
+					// agregar POST (el id enviado es -1)
+					if(!$this->agregarFinca($datos)){
+						//hubo un error
+						$this->db->descartarTransaccion();
+						return false;
+					}
+       		}
+       		$this->db->guardarTransaccion();
+       		return true;
+		}
+
+
+
 		public function actualizarFinca($datosFinca){
 			//preparamos la consulata
 			$this->db->query("update detallefinca set nombreFinca = :nombreFinca, Temperatura = :Temperatura, coordenadasGoogle = :coordenadasGoogle, idmunicipio = :idmunicipio, idCliente = :idCliente, Estado = :Estado, vereda = :vereda, updated_at = NOW(), updated_by = :updated_by where idDetallefinca = :idDetalleFinca

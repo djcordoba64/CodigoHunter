@@ -15,7 +15,7 @@
 			$this->UbicacionModelo = $this->modelo('Ubicacion');
 		}
 
-		public function index(){
+		public function index($mensaje='',$error=''){
 			//validacion de rol
 			if($_SESSION["rol"]!="coordinador")
 			{
@@ -25,6 +25,8 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
+
+
 			//obtener la lista de los clientes
 			$personas=$this->personaModelo->obtenerClientes();
 
@@ -32,6 +34,17 @@
 				
 			'personas'=> $personas
 			];
+
+
+			if(!empty($error))
+			{
+				$datos['mensaje_error'] =$error;
+			}
+
+			if(!empty($mensaje))
+			{
+				$datos['mensaje_advertencia'] =$mensaje;
+			}
 			//echo var_dump($datos);
 			$this->vista('/Cliente/index',$datos);
 			
@@ -116,8 +129,8 @@
 					$this->redirectToAction('Fincas', "agregar_formulario_inicial", $datos);			
 		}
 
+		// despues de agregar las fincas (Fincas/agregar) se llama a este metodo desde alla (POST) para guardar todos los datos (cliente y fincas) en una sola transaccion
 		public function crear_guardar(){
-
 
 			//validacion de rol
 			if($_SESSION["rol"]!="coordinador")
@@ -128,11 +141,11 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
-			/*
-			Si se ha enviado el formulario por el método POST. Guardamos la información ingresada en una variable.
-			*/ 
-			if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
 
+			
+			
+			// recupero y guardo en variable losdatos del cliente (vienen desde fincas/agregar)
+	
 				$datos=[				
 					'primerNombre'		=>trim($_POST['primerNombre']),
 					'segundoNombre'		=>trim($_POST['segundoNombre']),
@@ -146,11 +159,10 @@
 					'direccion'			=>trim($_POST['direccion']),
 					'estado'			=>trim($_POST['estado']),	
 				];
-				/*
-				Si los datos fueron enviador correcatmente ejecutamos el método agregarCliente()
-				*/
-			
+				
+				//
 				$idCliente= $this->personaModelo->agregarCliente($datos);
+
 
 				if($idCliente==-2)
 				{
@@ -171,22 +183,29 @@
 				}
 				else{
 
-				 	//var_dump($datos);
-					// Si se realizo el insert, se redirecciona a la lista de crear Finca. Y se envia el último ID del cliente registrado.
+					// Sí se realizó el insert, se redirecciona a la lista de clientes. Y se envia el último ID del cliente registrado.
 					//redireccionar('/fincas/agregar');
 
-					$datos["idCliente"]=$idCliente;
+					//recupero datos de las fincas que se han creado temporalmente (guardadas en el hidden y no se han guardado en BD)
+					$datos["fincasArr"]=json_decode($_POST["fincasJson"]);
 
+					// inserto las fincas en una sola transaccion, mano id de cliente creado
 
-					$deptos = $this->UbicacionModelo -> obtenerDepartamentos();
-					$deptos = json_encode($deptos);
-					$municipios = $this->UbicacionModelo -> obtenerMunicipios();
-					$municipios = json_encode($municipios);
+						if(!$this->fincaModelo->agregarFincas($datos["fincasArr"], $idCliente)){
+							
+							// no se inserto ninguna, elimino al cliente para que no quede incompleto
+							$this->personaModelo->eliminarClienteId($idCliente);
+							// agrego mensaje a arreglo de datos para ser mostrado 
+							$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+							
+							//retorna a vista de creacion del cliente}
+							$this->vista('/Cliente/crear', $datos);
+							return;
+						}
 
-					$datos["deptos"]=$deptos;
-					$datos["municipios"]=$municipios;
+					// no hubo ningun problema , redirecciono a formulario de creacion de cliente vacio e indicando que hubo exito 
 
-					$this->vista('/Fincas/agregar', $datos);
+					$this->index('Exito al guardar el nuevo cliente.');
 					
 					
 				}
@@ -194,24 +213,7 @@
 			Si no ha sido enviado por el metodo POST. Es porque se va hacer por primera vez un registro.
 				
 			*/	
-			}else{
-				$datos=[				
-					'primerNombre'		=> '',
-					'segundoNombre'		=> '',
-					'primerApellido'	=> '',
-					'segundoApellido'	=> '',
-					'documentoIdentidad'=> '',
-					'fechaNacimiento'	=> '',
-					'sexo'				=> '',
-					'correo'			=> '',
-					'numeroContacto'	=> '',
-					'direccion'			=> '',
-					'estado'			=> '',	
-
-				];
-				//Nos redirecciona a la vista agregar--(formulario de registro de un cliente)
-				$this->vista('/Cliente/crear', $datos);
-			}
+			
 		}
 
 		

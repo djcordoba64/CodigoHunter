@@ -174,7 +174,12 @@
 					            </table>
 						
 				</div>		
+	<!--boton de guardar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
 
+	<?php if (isset($datos['fincasArr']) and count($datos['fincasArr'])>0) { ?>
+									    <input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cliente/crear_guardar')" class="btn btn-lg btn-brown" type="button" value="finalizar">
+
+									<?php }     ?>
 			</form>			
 		</div>
 	</div>

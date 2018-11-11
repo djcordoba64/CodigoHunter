@@ -227,6 +227,13 @@
         return $datoscliente;
       }
         
+        //se usa cuando el cliente esta mal creado y se necesita deshacer los datos guardados
+        public function eliminarClienteId($idPersona){
+            $this->db->query( "delete FROM personas where idPersona=:idPersona and tipoPersona='cliente'");
+            $this->db->bind(':idPersona',$idPersona);
+            return $this->db->execute();
+            
+        }
         
     }
        

@@ -12,6 +12,11 @@
 					<div class="woocommerce">
 					    <div class="page_woo woo_cart">
 					        <form method="post">
+
+
+        <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
+        <span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
+        
 					            <table class="shop_table shop_table_responsive cart">
 					                <thead>
 					                    <tr>

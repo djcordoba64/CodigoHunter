@@ -87,8 +87,15 @@ class Base{
 		return $this->dbh->lastInsertId(); 
 	}
 
-	public function guardar(){
+	public function guardarTransaccion(){
 		return $this->dbh->commit(); 
+	}
+
+	public function empezarTransaccion(){
+		return $this->dbh->beginTransaction(); 
+	}
+	public function descartarTransaccion(){
+		return $this->dbh->rollBack(); 
 	}
 
 }
