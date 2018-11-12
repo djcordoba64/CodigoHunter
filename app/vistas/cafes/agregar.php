@@ -6,14 +6,19 @@
 	<div class="contact-wrap">		
 		<div class="row">
 			<div class="col-md-12">
-				<!--FORMULAIO DEL CAFÉ-->														
-				<form class="contact-form" action="<?php echo RUTA_URL;?>/Cafes/registrar_agregar_cafes" method="POST">
+				<!--FORMULAIO DEL CAFÉ-->	
+
+				<form id="form1" method="POST">													
+				<div class="contact-form">
 					<div class="row" style="background-color:#fff" >
-						<?php echo $datos["idPersona"] ?>
 						<!--en el input hidden tare el id del cliente-->
-						<input type="hidden" name="idCliente" value="<?php echo $datos["idPersona"] ?>" >
+						<input type="hidden" name="idCliente" value="<?php echo $datos["idCliente"] ?>" >
 							<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
 						<input type="hidden" name="idDetalleFinca" value="<?php echo isset($datos['idDetalleFinca'])? $datos['idDetalleFinca'] : '-1';?>" >
+						<!--hidden para guardar temporalmente los lotes de cafe que se van creando y poder guardarlas todas al final junto con el cliente y la finca-->	
+						<input type="hidden" name="lotesJson" value='<?php echo isset($datos['lotesJson'])? $datos['lotesJson'] : '';?>'><!--array de lotes de cafe en una cadena de json-->
+						<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
+						<input type="hidden" name="idLoteCafe" value="<?php echo isset($datos['idLoteCafe'])? $datos['idLoteCafe'] : '-1';?>" >
 						<!--datos del café lado izquierdo-->														
 						<div class="col-md-6">
 							<h4>Datos del café</h4>
@@ -47,7 +52,7 @@
 								</div>
 								<div  class="col-md-6">
 									<label>Materia prima:</label>
-									<select name="materiaPrima" id="materiaPrima" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+									<select name="materias" id="materias" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
 										   	<option value="0">Seleccione..
 										    </option>
 										</select>																				
@@ -56,7 +61,7 @@
 							<div class="col-md-12" >
 								<div class="col-md-6">
 									<label>Tipo de beneficio:</label>
-									<select name="tipoBeneficio" id="tipoBeneficio" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+									<select name="beneficios" id="beneficios" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
 										   	<option value="0">Seleccione..
 										    </option>
 										</select>
@@ -105,8 +110,8 @@
 							    </p>
 							    <h6 align="center">En grano</h6>
 							    <p class="swipebox col-lg-4 col-md-4 col-sm-6 col-xs-6">
-							            <label for="" class="">granoLibra</label>
-										<input class="contact-input" type="number" name="peso" value="">
+							            <label for="" class="">Libra</label>
+										<input class="contact-input" type="number" name="granoLibra" value="">
 							    </p>
 							    <p class="swipebox col-lg-4 col-md-4 col-sm-6 col-xs-6">
 							        <label for="" class="">Media Libra</label>
@@ -138,11 +143,14 @@
 							</div>
 							<!--Boton submit-->
 							<div class="col-md-12 text-right">
-								<input class="btn btn-lg btn-brown" type="submit" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>" >
+								<!--<input class="btn btn-lg btn-brown" type="submit" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>" >-->
+	<!--boton de guardar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
+									    <input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cafes/agregar_guardar_temporalmente')" class="btn btn-lg btn-brown" type="button" value="<?php echo (isset($datos['idLoteCafe']))? "Guardar Cambios" : "Agregar";?>">
+					
 							</div>
 						</div>																				
 					</div>					
-				</form>
+				</div>
 				<div class="contact-form">
 					<div style="background-color:#fff">
 						<div class="col-md-12">
@@ -152,7 +160,7 @@
 						<table class="shop_table shop_table_responsive cart" >
 							<thead>
 								<tr>
-							        <th class="product-remove">Codigo</th>
+							        <!--<th class="product-remove">Codigo</th>-->
 									<th class="product-remove">Peso</th>
 									<th class="product-remove">Especie</th>
 									<th class="product-remove">Variedad</th>
@@ -166,48 +174,58 @@
 							    </tr>
 							</thead>
 							<tbody class="cart_item">
-								<?php if (isset($datos['cafes'])) { foreach($datos['cafes'] as $cafe): ?>
+								<?php if (isset($datos['lotesArr'])) { foreach($datos['lotesArr'] as $cafe): ?>
 								<tr class="">
+									<!--<td class="product-remove">					
+										<?php echo $cafe['codigoCafe']?>								
+									</td>-->
 									<td class="product-remove">					
-										<?php echo $cafe->codigoCafe;?>								
+										<?php echo $cafe['peso']?>								
 									</td>
 									<td class="product-remove">					
-										<?php echo $cafe->peso;?>								
+										<?php echo $cafe['especie']?>								
 									</td>
 									<td class="product-remove">					
-										<?php echo $cafe->especie;?>								
+										<?php echo $cafe['variedad']?>								
 									</td>
 									<td class="product-remove">					
-										<?php echo $cafe->variedad;?>								
+										<?php echo $cafe['PorcentajeHumedad']?>								
 									</td>
 									<td class="product-remove">					
-										<?php echo $cafe->PorcentajeHumedad;?>								
+										<?php echo $cafe['factorRendimiento']?>								
 									</td>
 									<td class="product-remove">					
-										<?php echo $cafe->factorRendimiento;?>								
+										<?php echo $cafe['tipoTueste']?>								
 									</td>
 									<td class="product-remove">					
-										<?php echo $cafe->tipoTueste;?>								
+										<?php echo $cafe['cantidad']?>								
 									</td>
 									<td class="product-remove">					
-										<?php echo $cafe->cantidad;?>								
+										<?php echo $cafe['valorUnitario']?>								
 									</td>
 									<td class="product-remove">					
-										<?php echo $cafe->valorUnitario;?>								
-									</td>
-									<td class="product-remove">					
-										<?php echo $cafe->estado;?>								
+										<?php echo $cafe['estado']?>								
 									</td>
 									<td class="product-remove">
-										<a href="<?php echo RUTA_URL;?>/Fincas/agregar/<?php echo $cafe->idcafe;?>">
-										Editar</a>
+										<!--<a href="<?php echo RUTA_URL;?>/Fincas/agregar/<?php echo $cafe->idcafe;?>">
+										Editar</a>-->
+										<!--boton de editar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
+
+												<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cafes/agregar_editar_temporal/<?php echo $cafe["idLoteCafe"];?>')" class="btn btn-lg btn-brown" type="button" value="Editar">	
 									</td>
 								</tr>
 							<?php endforeach; }?>
 							</tbody>
 						</table>
 					</div>
-				</div>					
+				</div>	
+				<!--boton de guardar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
+
+				<?php if (isset($datos['lotesArr']) and count($datos['lotesArr'])>0) { ?>
+									    <input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Recepciones/crear_guardar')" class="btn btn-lg btn-brown" type="button" value="finalizar">
+
+									<?php }     ?>
+				</form>				
 			</div>
 		</div>
 	</div>

@@ -59,7 +59,7 @@
 
 					];
 
-					$datos["idPersona"]=$cliente;
+					$datos["idCliente"]=$cliente->idPersona;
 
 					//se obtienen array (php) de objetos para el select
 					$fincas=$this->fincaModelo-> obtenerFincasCliente($cliente->idPersona);
@@ -79,6 +79,7 @@
 				$mensaje_error=array('mensaje_error'=>'El cliente no esta registrado');
 				$this->vista('/Recepciones/registrar_nueva', $mensaje_error);
 			}
+			var_dump($datos);
 		}
 		/*
 

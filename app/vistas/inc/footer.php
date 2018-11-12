@@ -115,6 +115,22 @@
 		}
 		);
 
+		$.each(materias, function(idx, materia)
+		{
+			var o = new Option(materia.nombre, materia.idmateriaprima);
+			$(o).html(materia.nombre);
+			$("#materias").append(o);
+		}
+		);
+
+		$.each(beneficios, function(idx, beneficio)
+		{
+			var o = new Option(beneficio.nombre, beneficio.idtipoBeneficio);
+			$(o).html(beneficio.departamento);
+			$("#beneficios").append(o);
+		}
+		);
+
 	});
 
 		//esto es solo para que el segundo combo se cargue en cascada dependiendo del primero
@@ -183,6 +199,10 @@
 
 	// 1. crear una variable javascript con la variable donde estan los items de php.
 	var fincas = <?php echo isset($datos["fincas"])? $datos["fincas"]:"[]";?>;
+
+	var materias = <?php echo isset($datos["materias"])? $datos["materias"]:"[]";?>;
+
+	var beneficios = <?php echo isset($datos["beneficios"])? $datos["beneficios"]:"[]";?>;
 
 	  function submitForm(action) {
 	    var form = document.getElementById('form1');
