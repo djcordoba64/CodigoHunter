@@ -26,6 +26,24 @@
 			 $this->db->bind(':tipoTueste' , $cafe['tipoTueste']);
 			 $this->db->bind(':molidaMediaLibra',$cafes['molidaMediaLibra']);
 			
+	 	 }
+
+	 	 //Validar si esta registrado el codigo del café
+	 	 public function cafeExiste($codigoCafe){
+            $this->db->query( "SELECT count(1) as existe FROM cafes where codigoCafe=:codigoCafe " );
+            $this->db->bind(':codigoCafe',$codigoCafe);
+            $fila=$this->db->registro();
+            return $fila->existe==1;
+        }
+
+	 	 //obtener el id del café
+	 	 public function optenerId($codigoCafe){
+
+	 	 	$this->db->query("SELECT  idcafe, codigoCafe FROM cafes WHERE codigoCafe=:codigoCafe and estado=1"
+	 	 	);
+        	$this->db->bind(':codigoCafe', $codigoCafe);
+			$idcafe=$this->db->registro();
+     		return $idcafe;
 	 	 } 
 
 	}
