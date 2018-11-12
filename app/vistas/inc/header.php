@@ -90,7 +90,12 @@
                    </ul>     
                   </li>
                   <li><a href="/Hunter/Perfiles/consultar">Perfil</a></li>
-                                   
+                  <li class="parent">
+                    <a href="#">Torrefacción</a>
+                    <ul class="sub-menu">
+                      <li><a href="/Hunter/Torrefaccion/registrar_inicio">Gestionar</a></li>                    
+                   </ul>     
+                  </li>                
                 </ul>
               </div>
               <div class="col-lg-2 col-md-12">
