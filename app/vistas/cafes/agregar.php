@@ -23,8 +23,8 @@
 						<div class="col-md-6">
 							<h4>Datos del café</h4>
 							<div class="col-md-12" >
-								<label for="" class="">Codigo</label>
-								<input type="text" name="codigoCafe" disabled >						
+								<!--<label for="" class="">Codigo</label>
+								<input type="text" name="codigoCafe" disabled >	-->					
 							</div>
 							<div class="col-md-12">
 								<label for="" class="">Foto</label>
@@ -35,19 +35,19 @@
 								<div class="col-md-6">
 									<p>
 										<label for="" class="">Peso</label>
-										<input class="contact-input" type="number" name="peso" value="">
+										<input class="contact-input" type="number" name="peso" value="<?php echo isset($datos['peso'])? $datos['peso'] : '';?>">
 									</p>
 								</div>
 								<div  class="col-md-6">
 									<label for="" class="">Variedad</label>
-										<input class="contact-input" type="text"  name="variedad" value="">											
+										<input class="contact-input" type="text"  name="variedad" value="<?php echo isset($datos['variedad'])? $datos['variedad'] : '';?>">											
 								</div>
 							</div>
 							<div class="col-md-12" >
 								<div class="col-md-6">
 									<p>
 										<label for="" class="">Tipo de tueste</label>
-										<input class="contact-input" type="text"  name="tipoTueste" value="">
+										<input class="contact-input" type="text"  name="tipoTueste" value="<?php echo isset($datos['tipoTueste'])? $datos['tipoTueste'] : '';?>">
 									</p>
 								</div>
 								<div  class="col-md-6">
@@ -69,13 +69,13 @@
 								<div  class="col-md-6">
 									<p>
 										<label for="" class="">Porcentaje de humedad</label>
-										<input class="contact-input" type="number" name="PorcentajeHumedad" value="">
+										<input class="contact-input" type="number" name="PorcentajeHumedad" value="<?php echo isset($datos['PorcentajeHumedad'])? $datos['PorcentajeHumedad'] : '';?>">
 									</p>																				
 								</div>
 								<div class="col-md-6">
 									<p>
 										<label for="" class="">Factor de rendimiento</label>
-										<input class="contact-input" type="number" name="factorRendimiento" value="">
+										<input class="contact-input" type="number" name="factorRendimiento" value="<?php echo isset($datos['factorRendimiento'])? $datos['factorRendimiento'] : '';?>">
 									</p>
 								</div>
 								<div class="col-md-6">
@@ -83,8 +83,8 @@
 										<label for="billing_first_name" class="">Especie:</abbr></label>
 										<ul>
 								            <li>									        
-										        <input type="radio" name="especie" value="obusta" >Robusta
-										        <input type="radio" name="especie" value="arabiga" >Arábiga
+										        <input type="radio" name="especie" value="robusta"  <?php echo  ( isset($datos['especie']) and $datos['especie'] == 'robusta') ? 'checked':'' ?>  >Robusta
+										        <input type="radio" name="especie" value="arabiga" <?php echo  (isset($datos['especie']) and $datos['especie'] == 'arabiga') ? 'checked':'' ?>>Arábiga
 									         </li>
 								        </ul>
 									</p>	
@@ -98,38 +98,38 @@
 							    <h6 align="center">Molida</h6>
 							    <p class="swipebox col-lg-4 col-md-4 col-sm-6 col-xs-6">
 							    	<label for="" class="">Libra</label>
-									<input class="contact-input" type="number" name="molidaLibra" value="">
+									<input class="contact-input" type="number" name="molidaLibra" value="<?php echo isset($datos['molidaLibra'])? $datos['molidaLibra'] : '';?>">
 							     </p>
 							    <p class="swipebox col-lg-4 col-md-4 col-sm-6 col-xs-6">
 							        <label for="" class="">Media Libra</label>
-									<input class="contact-input" type="number" name="molidaMediaLibra" value="">
+									<input class="contact-input" type="number" name="molidaMediaLibra" value="<?php echo isset($datos['molidaMediaLibra'])? $datos['molidaMediaLibra'] : '';?>">
 							    </p>
 							    <p class="swipebox col-lg-4 col-md-4 col-sm-6 col-xs-6">
 							        <label for="" class="">Cinco libras</label>
-									<input class="contact-input" type="number" name="molidaCincoLibras" value="">
+									<input class="contact-input" type="number" name="molidaCincoLibras" value="<?php echo isset($datos['molidaCincoLibras'])? $datos['molidaCincoLibras'] : '';?>">
 							    </p>
 							    <h6 align="center">En grano</h6>
 							    <p class="swipebox col-lg-4 col-md-4 col-sm-6 col-xs-6">
 							            <label for="" class="">Libra</label>
-										<input class="contact-input" type="number" name="granoLibra" value="">
+										<input class="contact-input" type="number" name="granoLibra" value="<?php echo isset($datos['granoLibra'])? $datos['granoLibra'] : '';?>">
 							    </p>
 							    <p class="swipebox col-lg-4 col-md-4 col-sm-6 col-xs-6">
 							        <label for="" class="">Media Libra</label>
-										<input class="contact-input" type="number" name="granoMediLibra" value="">
+										<input class="contact-input" type="number" name="granoMediaLibra" value="<?php echo isset($datos['granoMediaLibra'])? $datos['granoMediaLibra'] : '';?>">
 							    </p>
 							    <p class="swipebox col-lg-4 col-md-4 col-sm-6 col-xs-6">
 							        <label for="" class="">Cinco libras</label>
-									<input class="contact-input" type="number" name="granoCincoLibras" value="">
+									<input class="contact-input" type="number" name="granoCincoLibras" value="<?php echo isset($datos['granoCincoLibras'])? $datos['granoCincoLibras'] : '';?>">
 							    </p>
 							</div>
 							<div class="col-md-12" >
 								<div  class="col-md-6">
 									<label for="" class="">Cantidad</label>
-										<input class="contact-input" type="text"  name="cantidad" value="">
+										<input class="contact-input" type="text"  name="cantidad" value="<?php echo isset($datos['cantidad'])? $datos['cantidad'] : '';?>">
 								</div>
 								<div  class="col-md-6" >
 									<label for="" class="">Valor unitario</label>
-										<input class="contact-input" type="text"  name="valorUnitario" value="">											
+										<input class="contact-input" type="text"  name="valorUnitario" value="<?php echo isset($datos['valorUnitario'])? $datos['valorUnitario'] : '';?>">											
 								</div>
 								<div  class="col-md-6">
 									<label>Estado:</label>
@@ -145,7 +145,7 @@
 							<div class="col-md-12 text-right">
 								<!--<input class="btn btn-lg btn-brown" type="submit" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>" >-->
 	<!--boton de guardar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
-									    <input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cafes/agregar_guardar_temporalmente')" class="btn btn-lg btn-brown" type="button" value="<?php echo (isset($datos['idLoteCafe']))? "Guardar Cambios" : "Agregar";?>">
+									    <input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cafes/agregar_guardar_temporalmente')" class="btn btn-lg btn-brown" type="button" value="<?php echo (($datos['idLoteCafe'])!='-1')? "Guardar Cambios" : "Agregar";?>">
 					
 							</div>
 						</div>																				
