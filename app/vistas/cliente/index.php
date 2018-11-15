@@ -4,6 +4,23 @@
 <div class="col-md-12">
 	<h2>Lista de  Clientes</h2>
 </div>
+<span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
+<span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
+<div class="col-md-12">
+      <div  class="col-md-4">
+          <div class="widget-area" role="complementary">
+            <aside class="widget">
+              <h4>Buscar</h4>
+              <div class="content">
+                <div class="form wp-searchform" method="get">
+                  <input  type="text" name="search"  id="buscar" onkeyup="buscarCliente()" placeholder="Documento">
+                  <button type="submit" class="fa fa-search"></button>
+                </div>
+              </div>
+            </aside>
+        </div>
+      </div>
+    </div>
 	<section class="cart-wrap">
 
 		<div class="container">
@@ -12,14 +29,10 @@
 					<div class="woocommerce">
 					    <div class="page_woo woo_cart">
 					        <form method="post">
-
-
-        <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
-        <span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
         
-					            <table class="shop_table shop_table_responsive cart">
+					            <table class="shop_table shop_table_responsive cart" id="tbl_Cliente" >
 					                <thead>
-					                    <tr>
+					                    <tr class="header">
 					                        
 					                    	<th class="product-remove">Documento</th>
 											<th class="product-remove">Nombre</th>
@@ -62,7 +75,9 @@
 												<?php echo $usuario->estado;?>				
 											</td class="product-remove">
 											<td class="product-remove">
-												<a href="<?php echo RUTA_URL;?>/Cliente/editar/<?php echo $usuario->idPersona;?>">Editar</a>				
+												<a href="<?php echo RUTA_URL;?>/Cliente/editar/<?php echo $usuario->idPersona;?>" class="btn btn-sm btn-default" >
+												 <span class="glyphicon glyphicon-edit"></span> Editar
+												 </a>				
 											</td>
 
 										</tr>
@@ -70,6 +85,19 @@
 					                </tbody>
 					            </table>
 					        </form>
+					        <div class="col-md-12">
+             <div class="paging-navigation">
+              <hr>
+              <div class="pagination">
+                  <a href="#" class="prev disabled"><i class="fa fa-chevron-left" aria-hidden="true"></i> Prev</a>
+                  <a href="#" class="page-numbers current">1</a>
+                  <a href="#" class="page-numbers">2</a>
+                  <a href="#" class="page-numbers">3</a>
+                  <a href="#" class="page-numbers">4</a>
+                  <a href="#" class="next">Siguiente<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+              </div>
+          </div>
+        </div>
 					    </div>
 					</div>
 				</div>

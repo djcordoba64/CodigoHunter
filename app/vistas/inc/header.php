@@ -26,10 +26,12 @@
 <link href="<?php echo RUTA_URL ?>/css/select2.min.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL?>/css/woocommerce-layout.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo RUTA_URL?>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
 
 
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL ?>/css/estilos.css">
 
-  <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL ?>/css/estilos.css">
+
 </head>
 <body>
   <!-- TOP BAR -->
@@ -93,7 +95,7 @@
                   <li class="parent">
                     <a href="#">Torrefacción</a>
                     <ul class="sub-menu">
-                      <li><a href="/Hunter/Torrefaccion/registrar_inicio">Gestionar</a></li>                    
+                      <li><a href="/Hunter/EstadosTorrefaccion/registrar_inicio">Gestionar</a></li>                    
                    </ul>     
                   </li>                
                 </ul>

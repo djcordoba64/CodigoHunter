@@ -5,7 +5,7 @@
   			<a href="<?php echo RUTA_URL;?>/Usuarios/index" class="btn btn-light"><i class="glyphicon glyphicon-hand-left"></i> Volver</a>
   			<div class="col-md-12"><h2>Información del cliente</h2></div> 			
 				<div class="contact-left">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="item">
 							<div class="title"><i class="fa fa-user" aria-hidden="true"></i> Documento</div>
 							<p>*<?php echo $datos['documentoIdentidad']?></p>
@@ -24,7 +24,7 @@
 						</div>
 																		
 					</div>
-					<div class="col-md-8">
+					<div class="col-md-3">
 						<div class="item">
 							<div class="title"><i class="fa fa-envelope-o" aria-hidden="true"></i> Correo</div>
 							<p>*<?php echo $datos['correo']?></p>
@@ -41,22 +41,18 @@
 							<div class="title"><i class="glyphicon glyphicon-retweet" aria-hidden="true"></i> Estado</div>
 							<p>*<?php echo $datos['estado']?></p>
 						</div>
-					
-				</div>
-			</div>
-  		</div>
-  	</div>
-  	<div class="container">	
-				<!--Lista de las fincas agregadas al cliente-->			
+					</div>
+					<div class="col-md-6">
+				<!--Lista de las fincas agregadas al cliente-->	
+				<div class="col-md-12"><h3>Fincas</h3></div> 		
 					<div class="">
-						<div class="col-md-12"><h2>Fincas</h2></div> 
-									<table class="shop_table shop_table_responsive cart">
+						
+									<table class="shop_table shop_table_responsive cart" width="600">
 					                <thead>
 					                    <tr>
 					                        
 					                    	<th class="product-remove">Nombre</th>
 											<th class="product-remove">Temperatura</th>
-											<th class="product-remove">Departamento</th>
 											<th class="product-remove">Municipio</th>
 											<th class="product-remove">Vereda</th>
 											<th class="product-remove">Estado</th>
@@ -74,9 +70,6 @@
 													<?php echo $finca->Temperatura;?>
 											</td class="cart_item">
 											<td class="product-remove">
-												<?php echo $finca->departamento;?>				
-											</td>
-											<td class="product-remove">
 												<?php echo $finca->municipio;?>				
 											</td>
 											<td class="product-remove">
@@ -91,8 +84,14 @@
 					                </tbody>
 					            </table>
 						
-				</div>					
-		</div>
+									
+			</div>
+					</div>
+			</div>
+  		</div>
+  	</div>
+
+  	
   </section>
 
 

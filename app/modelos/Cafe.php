@@ -38,9 +38,7 @@
 
 	 	 //obtener el id del café
 	 	 public function optenerId($codigoCafe){
-
-	 	 	$this->db->query("SELECT  idcafe, codigoCafe FROM cafes WHERE codigoCafe=:codigoCafe and estado=1"
-	 	 	);
+	 	 	$this->db->query("SELECT  idcafe, codigoCafe FROM cafes WHERE codigoCafe=:codigoCafe and estado=1");
         	$this->db->bind(':codigoCafe', $codigoCafe);
 			$idcafe=$this->db->registro();
      		return $idcafe;

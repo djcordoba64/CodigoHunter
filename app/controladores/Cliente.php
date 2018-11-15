@@ -118,7 +118,7 @@
 				{
 					// El cliente ya existe
 					// agrego mensaje al arreglo de datos para ser mostrado 
-					$datos['mensaje_error'] ='El usuario ya existe, el numero de identificacion ya esta registrado';
+					$datos['mensaje_error'] ='El usuario ya existe, el número de identificación ya esta registrado';
 					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
 					$this->vista('/Cliente/crear', $datos);
 					return;
@@ -163,6 +163,7 @@
 				//
 				$idCliente= $this->personaModelo->agregarCliente($datos);
 
+				
 
 				if($idCliente==-2)
 				{
