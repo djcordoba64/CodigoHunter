@@ -3,6 +3,7 @@
 	<div class="col-md-12">
 		<h2>Gestionar trazabilidad del café</h2>
 	</div>
+	<?php var_dump($datos) ?>
 	<div class="contact-wrap">		
 		<div class="row">
 			<div class="col-md-12">														
@@ -15,7 +16,7 @@
 									<label for="codigoCafe" class="">Código del café</label>
 								</div>
 								<div class="col-md-8">
-									<input required class="contact-input" type="text" disabled name="codigoCafe"  value="<?php echo $datos['codigoCafe']?>">
+									<input type="tex" name="codigoCafe" disabled value="<?php echo $datos['codigoCafe']?>">
 								</div>
 							</div>							
 						</div>

@@ -27,7 +27,7 @@ class Torrefaccion
 	}
 
 	public function consultar_ultimo_estado($datos){
-		$this->db->query ("SELECT codigoEstado FROM estadostorrefaccion as e LEFT join cafes as c on c.idcafe= e.idcafe where codigoCafe=:codigoCafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion)");
+		$this->db->query ("SELECT e.codigoEstado, e.idcafe, c.codigoCafe FROM estadostorrefaccion as e LEFT join cafes as c on c.idcafe= e.idcafe where codigoCafe=:codigoCafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion)");
 		 $this->db->bind(':codigoCafe',$datos['codigoCafe']);
             $fila=$this->db->registro();
            	return $fila;

@@ -13,8 +13,29 @@
         //Hacemos la consulta para obtener todos lo usuarios registrados.
     		$this->db->query("SELECT * FROM personas WHERE tipoPersona='usuario'");
             $listaUsuarios=$this->db->registros();
-    		    return $listaUsuarios;
+    		   return $listaUsuarios;
     	}
+
+      public function obtenerUsuariosLimit($iniciar,$usuarios_x_pagina){
+        //Hacemos la consulta para obtener todos lo usuarios registrados.
+        $this->db->query(" SELECT * FROM personas where tipoPersona='usuario' LIMIT :iniciar,:nusuarios");
+        $this->db->bind(':iniciar',$iniciar,PDO::PARAM_INT);
+        $this->db->bind(':nusuarios',$usuarios_x_pagina,PDO::PARAM_INT);
+            $listaUsuarios=$this->db->registros();
+           return $listaUsuarios;
+      }
+
+
+      public function contarUsuarios(){
+        $this->db->query("SELECT * FROM personas where tipoPersona='usuario'");
+            $existe=$this->db->execute();
+           $existe=$this->db->contarFilas();
+           return $existe;
+
+
+
+            
+      }
       //--------AGREGAR UN NUEVO USURIO-------------------------------------------------------------
       //Agregamos un nuevo usuario ---CRUD con MVC(PDO)-link->https://www.youtube.com/watch?v=rTzwrVQFMHs
       public function agregarUsuario($datos){

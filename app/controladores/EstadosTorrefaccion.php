@@ -54,16 +54,25 @@ class EstadosTorrefaccion extends Controlador
 
 		//valido si el café esta registrado.
 		if($this->cafesModelo->cafeExiste( $_POST['codigoCafe'] ) ){
-
-			// guardo los datos
-				$datos=[				
-					'codigoCafe'=>trim($_POST['codigoCafe']),	
+			$datos=[				
+					'codigoCafe'=>trim($_POST['codigoCafe']),
+			
 				];
 
-			//var_dump($datos);
+			//obtengo los datos del café
+			$datosCafe=$this->cafesModelo->optenerDatoscafes($_POST['codigoCafe']);
 
-			$this->redirectToAction('EstadosTorrefaccion', "validar_estados", $datos);	
-			
+				//var_dump($datos);
+
+			if ($datosCafe->estado == 'recibido'){
+
+				$this->redirectToAction('EstadosTorrefaccion', "validar_estados", $datos);
+			}else {
+				//el suario no esta activo mostrar error
+						$mensaje_error=array('mensaje_error'=>'El café esta registrado pero el estado es "Rechazado"');
+						$this->vista('/EstadosTorrefaccion/registrar_inicio', $mensaje_error);
+			}
+
 		}else
 			{
 					//Si no esta registrado muestra mensaje de error.
@@ -95,6 +104,8 @@ class EstadosTorrefaccion extends Controlador
 		
 				$datos=[
 						'codigoEstado'=>$estadoActual->codigoEstado,
+						'idcafe'=>$estadoActual->idcafe,
+						'codigoCafe'=>$estadoActual->codigoCafe,
 
 					];
 
@@ -152,7 +163,7 @@ class EstadosTorrefaccion extends Controlador
 
 	}
 
-	public function	mostrar_formulario_trilla($datos){
+	public function	mostrar_formulario_trilla(){
 
 		if($_SESSION["rol"]!="coordinador")
 		{
@@ -162,6 +173,8 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/paginas/index',$datos);
 				return;
 		}
+
+
 		var_dump($datos);
 
 		$this->vista('/EstadosTorrefaccion/iniciar_trilla', $datos);

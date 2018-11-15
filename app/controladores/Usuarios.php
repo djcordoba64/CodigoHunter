@@ -19,14 +19,43 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
+			 
 
+			if(!$_GET){
+
+				$this->vista('/Usuarios/index',$datos);
+			}
+
+			$usuarios_x_pagina=2;
+			if($_GET['pagina']>=$usuarios_x_pagina){
+				$this->vista('/Usuarios/index');
+
+
+			}
+			
+			
 			//obtener los usuarios
-			$personas=$this->personaModelo->obtenerUsuarios();
+			$iniciar=($_GET['pagina']-1)*$usuarios_x_pagina ;
+			echo $iniciar;
 
-			$datos=[
-				
-				'personas'=> $personas
-			];
+			
+			//$personas=$this->personaModelo->obtenerUsuarios();
+			$personas=$this->personaModelo->obtenerUsuariosLimit($iniciar,$usuarios_x_pagina);
+
+			$datos["personas"]=$personas;
+
+			//contar los usuarios de nuestra base d edatos
+			$total_usuarios_db=$this->personaModelo->contarUsuarios();
+
+			//var_dump($datos);
+			
+			//calculo es total de paginas
+			$paginas=$total_usuarios_db/2;
+			$numeroPaginas= ceil($paginas);
+
+			$datos['numeroPaginas']=$numeroPaginas;
+			//echo $numeroPaginas;
+
 			$this->vista('/Usuarios/index',$datos);
 		}
 

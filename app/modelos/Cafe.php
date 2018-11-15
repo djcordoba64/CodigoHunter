@@ -36,13 +36,15 @@
             return $fila->existe==1;
         }
 
-	 	 //obtener el id del café
-	 	 public function optenerId($codigoCafe){
-	 	 	$this->db->query("SELECT  idcafe, codigoCafe FROM cafes WHERE codigoCafe=:codigoCafe and estado=1");
+
+	 	 //obtener los datos del café
+	 	 public function optenerDatoscafes($codigoCafe){
+	 	 	$this->db->query("SELECT * FROM cafes WHERE codigoCafe=:codigoCafe ");
         	$this->db->bind(':codigoCafe', $codigoCafe);
 			$idcafe=$this->db->registro();
      		return $idcafe;
 	 	 } 
+
 
 	}
 ?>
