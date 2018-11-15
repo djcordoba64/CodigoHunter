@@ -103,11 +103,11 @@ class EstadosTorrefaccion extends Controlador
 				//echo $letrasEstado;
 
 				//obtengo la ultima letra
-				$datos=substr($letrasEstado, -1);
+				$ultimaletra=substr($letrasEstado, -1);
 
 				//echo "$ultimaletra";
 					
-				$this->redirectToAction('EstadosTorrefaccion', "posibles_estados", $datos);
+				$this->redirectToAction('EstadosTorrefaccion', "posibles_estados", $ultimaletra);
 
 					
 			}else {
@@ -154,7 +154,6 @@ class EstadosTorrefaccion extends Controlador
 
 	public function	mostrar_formulario_trilla($datos){
 
-
 		if($_SESSION["rol"]!="coordinador")
 		{
 				// agrego mensaje a arreglo de datos para ser mostrado 
@@ -163,6 +162,7 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/paginas/index',$datos);
 				return;
 		}
+		var_dump($datos);
 
 		$this->vista('/EstadosTorrefaccion/iniciar_trilla', $datos);
 

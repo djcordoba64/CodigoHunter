@@ -8,7 +8,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>     
-						<form class="contact-form" action="<?php echo RUTA_URL;?>/EstadosTorrefaccion/mostrar_formulario_trilla" method="POST">
+						<form class="contact-form" action="<?php echo RUTA_URL;?>/EstadosTorrefaccion/mostrar_formulario_trilla/<?php echo $datos['codigoCafe']?>" method="POST">
 
 							<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
 						        <label for="codigoCafe" class="">Código del café<abbr class="required" title="required">*</abbr></label>

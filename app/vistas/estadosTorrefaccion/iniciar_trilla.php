@@ -6,7 +6,7 @@
 	<div class="contact-wrap">		
 		<div class="row">
 			<div class="col-md-12">														
-				<form class="contact-form" action="<?php echo RUTA_URL;?>/Cafes/agregar_formulario_vacio" method="POST">
+				<form class="contact-form" action="<?php echo RUTA_URL;?>/EstadosTorrefaccion/" method="POST">
 					<div class="row">								
 						<div class="col-md-12" style="background-color:#fff">
 							<h4>Proceso de trilla</h4>
