@@ -52,7 +52,7 @@
 								</div>
 								<div  class="col-md-6">
 									<label>Materia prima:</label>
-									<select name="materias" id="materias" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+									<select name="materia" id="materia" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
 										   	<option value="0">Seleccione..
 										    </option>
 										</select>																				
@@ -61,7 +61,7 @@
 							<div class="col-md-12" >
 								<div class="col-md-6">
 									<label>Tipo de beneficio:</label>
-									<select name="beneficios" id="beneficios" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+									<select name="beneficio" id="beneficio" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
 										   	<option value="0">Seleccione..
 										    </option>
 										</select>
@@ -145,7 +145,7 @@
 							<div class="col-md-12 text-right">
 								<!--<input class="btn btn-lg btn-brown" type="submit" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>" >-->
 	<!--boton de guardar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
-									    <input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cafes/agregar_guardar_temporalmente')" class="btn btn-lg btn-brown" type="button" value="<?php echo (($datos['idLoteCafe'])!='-1')? "Guardar Cambios" : "Agregar";?>">
+									    <input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cafes/agregar_guardar_temporalmente')" class="btn btn-lg btn-brown" type="button" value="<?php echo (isset($datos['idLoteCafe']) and $datos['idLoteCafe'] !='-1')? "Guardar Cambios" : "Agregar";?>">
 					
 							</div>
 						</div>																				

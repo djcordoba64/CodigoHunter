@@ -119,7 +119,7 @@
 		{
 			var o = new Option(materia.nombre, materia.idmateriaprima);
 			$(o).html(materia.nombre);
-			$("#materias").append(o);
+			$("#materia").append(o);
 		}
 		);
 
@@ -127,7 +127,7 @@
 		{
 			var o = new Option(beneficio.nombre, beneficio.idtipoBeneficio);
 			$(o).html(beneficio.departamento);
-			$("#beneficios").append(o);
+			$("#beneficio").append(o);
 		}
 		);
 

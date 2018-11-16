@@ -109,8 +109,8 @@
 			$datos["peso"]=$_POST['peso'];
 			$datos["variedad"]=$_POST['variedad'];
 			$datos["tipoTueste"]=$_POST['tipoTueste'];
-			$datos["materias"]=$_POST['materias'];
-			$datos["beneficios"]=$_POST['beneficios'];
+			$datos["materia"]=$_POST['materia'];
+			$datos["beneficio"]=$_POST['beneficio'];
 			$datos["PorcentajeHumedad"]=$_POST['PorcentajeHumedad'];
 			$datos["factorRendimiento"]=$_POST['factorRendimiento'];
 			$datos["especie"]=$_POST['especie'];
@@ -135,8 +135,8 @@
 										'peso'=>$lote->peso,
 										'variedad'=>$lote->variedad,
 										'tipoTueste'=>$lote->tipoTueste,
-										'materias'=>$lote->materias,
-										'beneficios'=>$lote->beneficios,
+										'materia'=>$lote->materia,
+										'beneficio'=>$lote->beneficio,
 										'PorcentajeHumedad'=>$lote->PorcentajeHumedad,
 										'factorRendimiento'=>$lote->factorRendimiento,
 										'especie'=>$lote->especie,
@@ -148,7 +148,8 @@
 										'granoCincoLibras'=>$lote->granoCincoLibras,
 										'cantidad'=>$lote->cantidad,
 										'valorUnitario'=>$lote->valorUnitario,
-										'estado'=>$lote->estado);
+										'estado'=>$lote->estado,
+										'idLoteCafe' => $lote->idLoteCafe);
 					array_push($temp_array, $lote_temp);
 
 				}
@@ -169,8 +170,8 @@
 										'peso'=>$_POST['peso'],
 										'variedad'=>$_POST['variedad'],
 										'tipoTueste'=>$_POST['tipoTueste'],
-										'materias'=>$_POST['materias'],
-										'beneficios'=>$_POST['beneficios'],
+										'materia'=>$_POST['materia'],
+										'beneficio'=>$_POST['beneficio'],
 										'PorcentajeHumedad'=>$_POST['PorcentajeHumedad'],
 										'factorRendimiento'=>$_POST['factorRendimiento'],
 										'especie'=>$_POST['especie'],
@@ -206,8 +207,8 @@
 						unset($datos["peso"]);
 						unset($datos["variedad"]);
 						unset($datos["tipoTueste"]);
-						unset($datos["materias"]);
-						unset($datos["beneficios"]);
+						unset($datos["materia"]);
+						unset($datos["beneficio"]);
 						unset($datos["PorcentajeHumedad"]);
 						unset($datos["factorRendimiento"]);
 						unset($datos["especie"]);
@@ -220,6 +221,7 @@
 						unset($datos["cantidad"]);
 						unset($datos["valorUnitario"]);
 						unset($datos["estado"]);
+						unset($datos["idLoteCafe"]);
 
 
 
@@ -236,8 +238,8 @@
 										'peso'=>$_POST['peso'],
 										'variedad'=>$_POST['variedad'],
 										'tipoTueste'=>$_POST['tipoTueste'],
-										'materias'=>$_POST['materias'],
-										'beneficios'=>$_POST['beneficios'],
+										'materia'=>$_POST['materia'],
+										'beneficio'=>$_POST['beneficio'],
 										'PorcentajeHumedad'=>$_POST['PorcentajeHumedad'],
 										'factorRendimiento'=>$_POST['factorRendimiento'],
 										'especie'=>$_POST['especie'],
@@ -273,8 +275,8 @@
 						unset($datos["peso"]);
 						unset($datos["variedad"]);
 						unset($datos["tipoTueste"]);
-						unset($datos["materias"]);
-						unset($datos["beneficios"]);
+						unset($datos["materia"]);
+						unset($datos["beneficio"]);
 						unset($datos["PorcentajeHumedad"]);
 						unset($datos["factorRendimiento"]);
 						unset($datos["especie"]);
@@ -287,6 +289,7 @@
 						unset($datos["cantidad"]);
 						unset($datos["valorUnitario"]);
 						unset($datos["estado"]);
+						unset($datos["idLoteCafe"]);
 
 
 						var_dump($datos);
@@ -337,8 +340,8 @@
 							'peso'=>$lote->peso,
 							'variedad'=>$lote->variedad,
 							'tipoTueste'=>$lote->tipoTueste,
-							'materias'=>$lote->materias,
-							'beneficios'=>$lote->beneficios,
+							'materia'=>$lote->materia,
+							'beneficios'=>$lote->beneficio,
 							'PorcentajeHumedad'=>$lote->PorcentajeHumedad,
 							'factorRendimiento'=>$lote->factorRendimiento,
 							'especie'=>$lote->especie,
@@ -368,8 +371,8 @@
 				$datos["peso"]=$datosLote['peso'];
 				$datos["variedad"]=$datosLote['variedad'];
 				$datos["tipoTueste"]=$datosLote['tipoTueste'];
-				$datos["materias"]=$datosLote['materias'];
-				$datos["beneficios"]=$datosLote['beneficios'];
+				$datos["materia"]=$datosLote['materia'];
+				$datos["beneficio"]=$datosLote['beneficio'];
 				$datos["PorcentajeHumedad"]=$datosLote['PorcentajeHumedad'];
 				$datos["factorRendimiento"]=$datosLote['factorRendimiento'];
 				$datos["especie"]=$datosLote['especie'];
