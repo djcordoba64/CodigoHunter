@@ -109,17 +109,17 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
               <div class="pagination">
 
 
-                  <a class="prev <?php  echo $_GET['pagina']<= 1? 'disabled' :'' ?>  " href="<?php echo RUTA_URL;?>/Usuarios/index?pagina=<?php echo $_GET['pagina'] -1?>" >
+                  <a class="prev <?php  echo $datos['pagina']<= 1? 'disabled' :'' ?>  " href="<?php echo RUTA_URL;?>/Usuarios/index/<?php echo ($datos['pagina'])?>" >
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>Anterior
                   </a>
 
                   <?php for ($i=0; $i<$datos['numeroPaginas'] ; $i++): ?>
 
-                    <a href="<?php echo RUTA_URL;?>/Usuarios/index?pagina=<?php echo $i+1 ?> " class="page-numbers current <?php echo $_GET['pagina']==$i+1 ? 'active':''?> "><?php echo $i+1 ?></a>
+                    <a href="<?php echo RUTA_URL;?>/Usuarios/index/<?php echo $i+1 ?> " class="page-numbers current <?php echo $datos['pagina']==$i+1 ? 'active':''?> "><?php echo $i+1 ?></a>
                   
                   <?php endfor?>
                 
-                  <a class="next <?php  echo $_GET['pagina']>= $datos['numeroPaginas'] ? 'disabled' :'' ?>"  href="<?php echo RUTA_URL;?>/Usuarios/index?pagina=<?php echo $_GET['pagina']+1 ?>">Siguiente
+                  <a class="next <?php  echo $datos['pagina']>= $datos['numeroPaginas'] ? 'disabled' :'' ?>"  href="<?php echo RUTA_URL;?>/Usuarios/index/<?php echo $datos['pagina']+1 ?>">Siguiente
                   <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
               </div>
           </div>

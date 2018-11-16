@@ -27,15 +27,10 @@
 
 
       public function contarUsuarios(){
-        $this->db->query("SELECT * FROM personas where tipoPersona='usuario'");
-            $existe=$this->db->execute();
-           $existe=$this->db->contarFilas();
-           return $existe;
-
-
-
-            
+        $this->db->query("SELECT count(*) as cuenta FROM personas where tipoPersona='usuario'");
+            return $this->db->registro();                
       }
+
       //--------AGREGAR UN NUEVO USURIO-------------------------------------------------------------
       //Agregamos un nuevo usuario ---CRUD con MVC(PDO)-link->https://www.youtube.com/watch?v=rTzwrVQFMHs
       public function agregarUsuario($datos){

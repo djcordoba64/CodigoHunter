@@ -8,7 +8,7 @@
 			
 
 		}
-		public function index(){
+		public function index($pagina=1){
 
 			//validacion de rol
 			if($_SESSION["rol"]!="administrador")
@@ -21,21 +21,22 @@
 			}
 			 
 
-			if(!$_GET){
+			/*if(!$_GET){
 
 				$this->vista('/Usuarios/index',$datos);
 			}
-
-			$usuarios_x_pagina=2;
+*/
+			echo $pagina;
+			$usuarios_x_pagina=2;/*
 			if($_GET['pagina']>=$usuarios_x_pagina){
 				$this->vista('/Usuarios/index');
 
 
-			}
+			}*/
 			
 			
 			//obtener los usuarios
-			$iniciar=($_GET['pagina']-1)*$usuarios_x_pagina ;
+			$iniciar=($pagina-1)*$usuarios_x_pagina ;
 			echo $iniciar;
 
 			
@@ -47,14 +48,16 @@
 			//contar los usuarios de nuestra base d edatos
 			$total_usuarios_db=$this->personaModelo->contarUsuarios();
 
+			echo $total_usuarios_db->cuenta;
 			//var_dump($datos);
 			
 			//calculo es total de paginas
-			$paginas=$total_usuarios_db/2;
+			$paginas=$total_usuarios_db->cuenta/$usuarios_x_pagina;
 			$numeroPaginas= ceil($paginas);
 
 			$datos['numeroPaginas']=$numeroPaginas;
 			//echo $numeroPaginas;
+			$datos["pagina"]=$pagina;
 
 			$this->vista('/Usuarios/index',$datos);
 		}
