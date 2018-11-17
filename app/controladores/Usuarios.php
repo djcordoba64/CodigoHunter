@@ -21,26 +21,13 @@
 			}
 			 
 
-			/*if(!$_GET){
-
-				$this->vista('/Usuarios/index',$datos);
-			}
-*/
-			echo $pagina;
-			$usuarios_x_pagina=2;/*
-			if($_GET['pagina']>=$usuarios_x_pagina){
-				$this->vista('/Usuarios/index');
-
-
-			}*/
-			
+			//echo $pagina;
+			$usuarios_x_pagina=2;			
 			
 			//obtener los usuarios
 			$iniciar=($pagina-1)*$usuarios_x_pagina ;
 			echo $iniciar;
 
-			
-			//$personas=$this->personaModelo->obtenerUsuarios();
 			$personas=$this->personaModelo->obtenerUsuariosLimit($iniciar,$usuarios_x_pagina);
 
 			$datos["personas"]=$personas;

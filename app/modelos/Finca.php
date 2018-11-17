@@ -101,7 +101,12 @@
         return $fincas;
        }
 		//------------------------------------------------------------------------------------------------
-		
+		public function obtener_datos_x_id($idFinca){
+         $this->db->query("SELECT nombreFinca,Temperatura,coordenadasGoogle,idmunicipio,dt.Estado,vereda,m.municipio,d.departamento FROM detallefinca as dt left join municipios as m on m.id_municipio=dt.idmunicipio left JOIN departamentos as d on d.id_departamento =m.departamento_id WHERE idDetalleFinca=:idDetalleFinca");	
+			 $this->db->bind(':idDetalleFinca', $idFinca);	
+            $fincas=$this->db->registro();
+        return $fincas;
+       }
 	}
 
 ?>

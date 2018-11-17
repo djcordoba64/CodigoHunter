@@ -89,6 +89,10 @@
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.select2.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.swipebox.min.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/main.js"></script>
+
+
+
+
 <script type="text/javascript">
 	//document.ready: todo lo que este dentro de esta funcion se ejecuta solo cuando el documento esta completamente cargado
 	$(document).ready(function(){
@@ -252,6 +256,8 @@
 	    } 
 	  }
 	}
+
+	
 
 
 

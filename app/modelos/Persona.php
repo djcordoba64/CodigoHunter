@@ -8,7 +8,7 @@
     		$this->db = new Base;
     	}
     #---------------------------------------****USUARIOS*******-------------------------------       
-      
+      //--Index (Lista de los usuarios)
     	public function obtenerUsuarios(){
         //Hacemos la consulta para obtener todos lo usuarios registrados.
     		$this->db->query("SELECT * FROM personas WHERE tipoPersona='usuario'");
@@ -18,7 +18,7 @@
 
       public function obtenerUsuariosLimit($iniciar,$usuarios_x_pagina){
         //Hacemos la consulta para obtener todos lo usuarios registrados.
-        $this->db->query(" SELECT * FROM personas where tipoPersona='usuario' LIMIT :iniciar,:nusuarios");
+        $this->db->query(" SELECT * FROM personas where tipoPersona='usuario'  ORDER BY created_at DESC LIMIT :iniciar,:nusuarios");
         $this->db->bind(':iniciar',$iniciar,PDO::PARAM_INT);
         $this->db->bind(':nusuarios',$usuarios_x_pagina,PDO::PARAM_INT);
             $listaUsuarios=$this->db->registros();
@@ -170,8 +170,22 @@
         public function obtenerClientes(){
          $this->db->query("SELECT * FROM personas WHERE tipoPersona='cliente'");
             $listaClientes=$this->db->registros();
-        return $listaClientes;
-       }
+            return $listaClientes;
+        }
+        //Hacemos la consulta para obtener todos lo usuarios registrados.
+        public function obtenerClienteLimit($iniciar,$cliente_x_pagina){       
+          $this->db->query(" SELECT * FROM personas where tipoPersona='cliente' ORDER BY created_at ASC  LIMIT :iniciar,:nclientes");
+          $this->db->bind(':iniciar',$iniciar,PDO::PARAM_INT);
+          $this->db->bind(':nclientes',$cliente_x_pagina,PDO::PARAM_INT);
+            $listaCliente=$this->db->registros();
+            return $listaCliente;
+        }
+
+        public function contarClientes(){
+          $this->db->query("SELECT count(*) as cuenta FROM personas where tipoPersona='cliente'");
+          return $this->db->registro();                
+        }
+       
        //----REGISTRAR UN NUEVO CLIENTE------------------
      
         public function agregarCliente($datos){
@@ -221,7 +235,46 @@
            }      
 
         }
-      
+        //----editar un cliente
+         //Preparamos la consulta
+        public function editarCliente($datos){
+             $this->db->query('UPDATE personas SET primerNombre=:primerNombre, 
+                segundoNombre=:segundoNombre, 
+                primerApellido=:primerApellido,
+                segundoApellido=:segundoApellido,
+                fechaNacimiento=:fechaNacimiento,
+                sexo=:sexo,
+                correo=:correo,
+                numeroContacto=:numeroContacto,
+                direccion=:direccion,
+                estado=:estado, 
+                updated_at= NOW(),
+                updated_by = :updated_by 
+                where idPersona= :idPersona
+                ');
+        
+            //vinculamos los valores
+            $this->db->bind(':idPersona', $datos['idPersona']);
+            $this->db->bind(':primerNombre'  , $datos['primerNombre']);
+            $this->db->bind(':segundoNombre' , $datos['segundoNombre']);
+            $this->db->bind(':primerApellido' ,$datos['primerApellido']);
+            $this->db->bind(':segundoApellido' ,$datos['segundoApellido']);
+            $this->db->bind(':fechaNacimiento' , $datos['fechaNacimiento']);
+            $this->db->bind(':sexo'   ,  $datos['sexo']);
+            $this->db->bind(':correo' ,  $datos['correo']);       
+            $this->db->bind(':numeroContacto' ,$datos['numeroContacto']);
+            $this->db->bind(':direccion',  $datos['direccion']);
+            $this->db->bind(':estado' ,  $datos['estado']);
+            $this->db->bind(':updated_by'  , $_SESSION['idUsuario']);
+
+            if ($this->db->execute()){           
+                return 0;
+            }
+            else{
+                return -1;
+            }
+
+        }      
 
        //----------------------------Ver detalle------------
         //Mostramos la información de un usuario que se haya seleccionado para mostrar el detalle.

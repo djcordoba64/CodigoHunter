@@ -43,8 +43,8 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-				<!--Lista de las fincas agregadas al cliente-->	
-				<div class="col-md-12"><h3>Fincas</h3></div> 		
+					<!--Lista de las fincas agregadas al cliente-->	
+					<div class="col-md-12"><h3>Fincas</h3></div> 		
 					<div class="">
 						
 									<table class="shop_table shop_table_responsive cart" width="600">
@@ -85,14 +85,14 @@
 					            </table>
 						
 									
-			</div>
 					</div>
+				</div>
 			</div>
   		</div>
   	</div>
 
   	
-  </section>
+ </section>
 
 
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 

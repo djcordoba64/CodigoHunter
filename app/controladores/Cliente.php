@@ -15,7 +15,8 @@
 			$this->UbicacionModelo = $this->modelo('Ubicacion');
 		}
 
-		public function index($mensaje='',$error=''){
+		//$mensaje='',$error=''
+		public function index($pagina=1){
 			//validacion de rol
 			if($_SESSION["rol"]!="coordinador")
 			{
@@ -26,16 +27,31 @@
 				return;
 			}
 
+			//echo $pagina;
+			$clientes_x_pagina=3;			
+			
+			//obtener los usuarios
+			$iniciar=($pagina-1)*$clientes_x_pagina ;
+			//echo $iniciar;
 
-			//obtener la lista de los clientes
-			$personas=$this->personaModelo->obtenerClientes();
+			$personas=$this->personaModelo->obtenerClienteLimit($iniciar,$clientes_x_pagina);
 
-			$datos=[
-				
-			'personas'=> $personas
-			];
+			$datos["personas"]=$personas;
 
+			//contar los usuarios de nuestra base d edatos
+			$total_clientes_db=$this->personaModelo->contarClientes();
 
+			//echo $total_clientes_db->cuenta;
+			//var_dump($datos);
+			
+			//calculo es total de paginas
+			$paginas=$total_clientes_db->cuenta/$clientes_x_pagina;
+			$numeroPaginas= ceil($paginas);
+
+			$datos['numeroPaginas']=$numeroPaginas;
+			//echo $numeroPaginas;
+			$datos["pagina"]=$pagina;
+			/*
 			if(!empty($error))
 			{
 				$datos['mensaje_error'] =$error;
@@ -45,6 +61,7 @@
 			{
 				$datos['mensaje_advertencia'] =$mensaje;
 			}
+			*/
 			//echo var_dump($datos);
 			$this->vista('/Cliente/index',$datos);
 			
@@ -259,6 +276,84 @@
 				//var_dump($datos);
 				
 			$this->vista('/Cliente/detalle', $datos);
+
+		}
+
+		//---------editar datos del cliente-------------
+
+		public function editar($idPersona){
+
+			//validacion de rol
+			if($_SESSION["rol"]!="coordinador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+			}
+			if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
+				//es un submit y no es la redireccion despues de haber encontrado un error al actualizar el usuario (no existe mensaje de error entre los parametros)
+				$datos=[
+					'idPersona'			=>$idPersona,				
+					'primerNombre'		=>trim($_POST['primerNombre']),
+					'segundoNombre'		=>trim($_POST['segundoNombre']),
+					'primerApellido'	=>trim($_POST['primerApellido']),
+					'segundoApellido'	=>trim($_POST['segundoApellido']),
+					'documentoIdentidad'=>trim($_POST['documentoIdentidad']),
+					'fechaNacimiento'	=>trim($_POST['fechaNacimiento']),
+					'sexo'				=>trim($_POST['sexo']),
+					'correo'			=>trim($_POST['correo']),
+					'numeroContacto'	=>trim($_POST['numeroContacto']),
+					'direccion'			=>trim($_POST['direccion']),
+					'estado'			=>trim($_POST['estado']),				
+				];
+
+				//SE EJECUTA EL MÉTODO 	editarUsuario() del Modelo Persona.
+				$id = $this->personaModelo->editarCliente($datos);
+				if($id==-1){
+					// no se ejecutó el update
+					// agrego mensaje a arreglo de datos para ser mostrado 
+					$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario intente de nuevo
+					$this->vista('/Cliente/editar', $datos);
+					return;
+
+				}
+				else{
+					// exito, redireccionar al index
+					redireccionar('/Cliente/index');
+				}
+
+			}
+			else
+			{
+				if(empty($datos)){
+					$cliente=$this->personaModelo->obtenerClienteID($idPersona);
+				
+					$datos=[
+						'idPersona'			=> $cliente->idPersona,				
+						'primerNombre'		=> $cliente->primerNombre,
+						'segundoNombre'		=> $cliente->segundoNombre,
+						'primerApellido'	=> $cliente->primerApellido,
+						'segundoApellido'	=> $cliente->segundoApellido,
+						'documentoIdentidad'=> $cliente->documentoIdentidad,
+						'fechaNacimiento'	=> $cliente->fechaNacimiento,
+						'sexo'				=> $cliente->sexo,
+						'correo'			=> $cliente->correo,
+						'numeroContacto'	=> $cliente->numeroContacto,
+						'direccion'			=> $cliente->direccion,								
+						'estado'			=> $cliente->estado,
+					];
+					//var_dump($datos);
+					//consulto datos para la tabla de fincas registradas para el cliente
+					$datos["fincas"] = $this -> fincaModelo -> obtenerFincasCliente($idPersona);
+				}
+	
+				$this->vista('/Cliente/editar', $datos);
+
+			}
+			
 
 		}
 

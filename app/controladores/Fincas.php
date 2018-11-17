@@ -428,6 +428,62 @@
 		
 
 		}
+	public function editar_finca_index($idFinca){
+		//validacion de rol
+		/*
+			if($_SESSION["rol"]!="coordinador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+			}
+			*/
+			if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
+				$datos=[
+					'idDetalleFinca'=>$idDetalleFinca,				
+					'Temperatura'	=>trim($_POST['Temperatura']),
+					'coordenadasGogle'=>trim($_POST['coordenadasGogle']),
+					'Estado'=>trim($_POST['Estado']),								
+				];
+
+				$id = $this->fincaModelo ->editar_finca($datos);
+
+				if($id==-1){
+					$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+					$this->vista('/Fincas/editar', $datos);
+					return;
+				}
+				else{
+					// exito, redireccionar al index
+					redireccionar('/Cliente/editar');
+				}
+
+			}
+			else
+			{
+				if(empty($datos)){
+					$datosfinca=$this->fincaModelo ->obtener_datos_x_id($idFinca);
+				
+					$datos=[
+						'idDetalleFinca'=> $datosfinca->idDetalleFinca,
+						'nombreFinca'=> $datosfinca->nombreFinca,
+						'Temperatura'=>$datosfinca->Temperatura,
+						'coordenadasGoogle'=>$datosfinca->coordenadasGoogle,
+						'municipio'=>$datosfinca->municipio,
+						'departamento'=>$datosfinca->departamento,
+						'Estado'=>$datosfinca->Estado,
+						'vereda'=>$datosfinca->vereda,										
+					];
+					
+				}
+	
+				$this->vista('/Fincas/editar', $datos);
+
+			}
+	}
+
 
 
 	}	
