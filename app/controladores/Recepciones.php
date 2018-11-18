@@ -133,8 +133,9 @@
 					//recupero datos de las fincas que se han creado temporalmente (guardadas en el hidden y no se han guardado en BD)
 					$datos["lotesArr"]=json_decode($_POST["lotesJson"]);
 
+					var_dump($datos["lotesArr"]);
 					// inserto las fincas en una sola transaccion, mano id de cliente creado
-						if(!$this->cafeModelo->agregarLotes($datos["lotesArr"], $numero)){
+						if(!$this->cafeModelo->agregarLotes($datos["lotesArr"], $numero, trim($_POST['idCliente']))){
 							
 							// no se inserto ninguna, elimino al cliente para que no quede incompleto
 							$this->RecepcionModelo->eliminarRecepcionNumero($numero);
