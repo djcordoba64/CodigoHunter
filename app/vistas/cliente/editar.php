@@ -19,7 +19,9 @@
 					                    <!--Primer Nombre--> 
 					                    <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
 					                      <label for="billing_first_name" class="">Primer Nombre: <abbr class="required" title="required">*</abbr></label>
-					                      <input type="text" class="input-text"  name="primerNombre" autofocus="autofocus" required value="<?php echo $datos['primerNombre']?>">              
+					                      <input type="text" class="input-text"  name="primerNombre" autofocus="autofocus" required  value="<?php echo $datos['primerNombre']?>"  onkeypress="return soloLetras(event);" id="primerNombre">
+
+					                                  
 					                    </p>
 					                    <!--Segundo Nombre--> 
 					                    <p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
@@ -56,7 +58,7 @@
 					                    <p class="form-row form-row-first validate-required validate-phone" id="billing_phone_field" data-priority="100">
 					                      <label for="billing_phone" class="">Número de contácto<abbr class="required" title="required">*</abbr>
 					                      </label>
-					                      <input type="text" class="input-text"  name="numeroContacto"  autofocus="autofocus"  value="<?php echo $datos['numeroContacto']?>">
+					                      <input type="text"  class="input-text"  name="numeroContacto"  autofocus="autofocus"  value="<?php echo $datos['numeroContacto']?>"  onkeypress="return SoloNumeros(event);" id="numeroContacto"  maxlength="15" onBlur="validarLenght(this.value);">
 					                    </p>
 					                    <!--Dirección--> 
 					                    <p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
@@ -109,7 +111,7 @@
 					            </tr>
 					        </thead>
 					        <tbody  class="cart_item">					             
-								<?php if (isset($datos['fincas'])) { foreach($datos['fincas'] as $finca): ?>
+								<?php if (isset($datos['finca'])) { foreach($datos['finca'] as $finca): ?>
 									<tr class="cart_item">
 										<td class="product-remove"><?php echo $finca->nombreFinca;?></td>
 										<td class="product-remove"><?php echo $finca->municipio;?></td>

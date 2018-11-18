@@ -26,6 +26,17 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
+			/*
+			if(!empty($error))
+			{
+				$datos['mensaje_error'] =$error;
+			}
+
+			if(!empty($mensaje))
+			{
+				$datos['mensaje_advertencia'] =$mensaje;
+			}
+			*/
 
 			//echo $pagina;
 			$clientes_x_pagina=3;			
@@ -51,17 +62,7 @@
 			$datos['numeroPaginas']=$numeroPaginas;
 			//echo $numeroPaginas;
 			$datos["pagina"]=$pagina;
-			/*
-			if(!empty($error))
-			{
-				$datos['mensaje_error'] =$error;
-			}
-
-			if(!empty($mensaje))
-			{
-				$datos['mensaje_advertencia'] =$mensaje;
-			}
-			*/
+			
 			//echo var_dump($datos);
 			$this->vista('/Cliente/index',$datos);
 			
@@ -323,6 +324,7 @@
 				else{
 
 					// exito, redireccionar al index
+					$datos['mensaje_exito'] ='Se actualizo los datos correctamente';
 
 					redireccionar('/Cliente/index');
 				}
@@ -349,7 +351,7 @@
 					];
 					//var_dump($datos);
 					//consulto datos para la tabla de fincas registradas para el cliente
-					$datos["fincas"] = $this -> fincaModelo -> obtenerFincasCliente($idPersona);
+					$datos["finca"] = $this -> fincaModelo -> obtenerFincasCliente($idPersona);
 				}
 	
 				$this->vista('/Cliente/editar', $datos);
