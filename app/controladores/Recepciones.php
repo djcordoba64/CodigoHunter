@@ -24,6 +24,8 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
+
+			$this->vista('recepciones/index');
 			
 		}
 
@@ -145,8 +147,8 @@
 						}
 
 					// no hubo ningun problema , redirecciono a formulario de creacion de cliente vacio e indicando que hubo exito 
-
-					$this->index('Exito al guardar la nueva recepcion.');
+					$datos['mensaje_informacion'] = 'Exito al guardar la nueva recepcion.';
+					$this->vista('/Recepciones/index', $datos);
 					
 					
 				}

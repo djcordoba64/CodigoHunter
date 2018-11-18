@@ -88,7 +88,7 @@
                     <a href="#">Recepción</a>
                     <ul class="sub-menu">
                       <li><a href="/Hunter/Recepciones/registrar_nueva">Registrar</a></li>
-                      <li><a href="/Hunter/Recepciones/listar">Buscar</a></li>                     
+                      <li><a href="/Hunter/Recepciones/index">Buscar</a></li>                     
                    </ul>     
                   </li>
                   <li><a href="/Hunter/Perfiles/consultar">Perfil</a></li>
@@ -129,6 +129,15 @@
       </div>
     </header>
   </div>
+
+<p>
+  
+
+  <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
+  <span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
+  <span class="badge badge-info"><?php isset($datos["mensaje_informacion"])? print($datos["mensaje_informacion"]):''; ?></span>
+</p>
+
   <!-- HEADER END -->
 
 
