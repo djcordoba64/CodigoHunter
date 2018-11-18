@@ -7,26 +7,34 @@
 
 <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
 <span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
-<div class="col-md-12" >
-      <div  class="col-md-4">
-          <div class="widget-area" role="complementary">
-            <aside class="widget">
-              <h4>Buscar</h4>
-              <div class="content">
-                <div class="form wp-searchform" method="get">
-                  <input  type="text" name="search"  id="buscar" onkeyup="buscarCliente()" placeholder="Documento">
-                  <button type="submit" class="fa fa-search"></button>
-                </div>
-              </div>
-            </aside>
-        </div>
-      </div>
-    </div>
 	<section class="cart-wrap">
 		<div class="container">			
 			<div class="row">				
 					<div class="woocommerce">
 					    <div class="page_woo woo_cart">
+					    	<div class="col-md-12">
+								<div class="col-sm-7">
+									<div class="footer-social">
+										<div class="title"></div>
+											<ul class="social">
+												<li><a href="<?php echo RUTA_URL;?>/Cliente/crear_mostrar_formulario" data-toggle="tooltip" title="Agregar nuevo cliente!" ><i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a></li>
+											</ul>	
+									</div>
+								</div>
+								<div class="col-sm-5" >
+								          <div class="widget-area" role="complementary">
+								            <aside class="widget">
+								              <h4>Buscar</h4>
+								              <div class="content">
+								                <div class="form wp-searchform" method="get">
+								                  <input  type="text" name="search"  id="buscar" onkeyup="buscarCliente()" placeholder="Documento">
+								                  <button type="submit" class="fa fa-search"></button>
+								                </div>
+								              </div>
+								            </aside>
+								        </div>	      
+								</div>
+							</div>
 					        <form method="post">        
 					            <table class="shop_table shop_table_responsive cart" id="tbl_Cliente" >
 					                <thead>

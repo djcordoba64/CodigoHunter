@@ -21,7 +21,7 @@
 								<!--Nombre de la finca--> 
 								<p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
 								<label for="billing_first_name" class="">Nombre de la finca:</label>
-								<input style="background-color: #D3D1D1" type="text" class="input-text" name="nombreFinca" autofocus="autofocus" disabled value="<?php echo $datos['nombreFinca']?>">
+								<input style="background-color: #D3D1D1"   type="text" class="input-text" name="nombreFinca" autofocus="autofocus" disabled value="<?php echo $datos['nombreFinca']?>">
 								</p>
 								<!--Departamento--> 										       
 								<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
