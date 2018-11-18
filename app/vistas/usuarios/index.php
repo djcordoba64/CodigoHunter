@@ -109,7 +109,7 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
               <div class="pagination">
 
 
-                  <a class="prev <?php  echo $datos['pagina']<= 1? 'disabled' :'' ?>  " href="<?php echo RUTA_URL;?>/Usuarios/index/<?php echo ($datos['pagina'])?>" >
+                  <a class="prev <?php  echo $datos['pagina']<= 1? 'disabled' :'' ?>"  href="<?php echo RUTA_URL;?>/Usuarios/index/<?php echo ($datos['pagina'])?>" >
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>Anterior
                   </a>
 

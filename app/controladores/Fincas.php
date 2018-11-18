@@ -442,22 +442,24 @@
 			*/
 			if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
 				$datos=[
-					'idDetalleFinca'=>$idDetalleFinca,				
-					'Temperatura'	=>trim($_POST['Temperatura']),
-					'coordenadasGogle'=>trim($_POST['coordenadasGogle']),
-					'Estado'=>trim($_POST['Estado']),								
+					'idDetalleFinca'	=>$idFinca,					
+					'Temperatura'	=>trim($_POST['Temperatura']),	
+					'coordenadasGoogle'=>trim($_POST['coordenadasGoogle']),
+					'Estado'=>trim($_POST['Estado']),																				
 				];
 
 				$id = $this->fincaModelo ->editar_finca($datos);
 
 				if($id==-1){
 					$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
-					$this->vista('/Fincas/editar', $datos);
+					$this->vista('Fincas/editar', $datos);
 					return;
 				}
 				else{
 					// exito, redireccionar al index
-					redireccionar('/Cliente/editar');
+					$datos["cerrar"]=true;
+					$this->vista('Fincas/editar', $datos);
+					return;
 				}
 
 			}

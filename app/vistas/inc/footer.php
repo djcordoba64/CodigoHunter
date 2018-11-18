@@ -96,8 +96,11 @@
 <script type="text/javascript">
 	//document.ready: todo lo que este dentro de esta funcion se ejecuta solo cuando el documento esta completamente cargado
 	$(document).ready(function(){
+
+		if(cerrar){ close();}
 		
 		//2.crear los items del combo a partir de la variable javascript creada en el paso 1
+
 
 		$.each(fincas, function(idx, finca)// primer parametro (idx)  = variable "i" que uno crea para los ciclos, la segunda es el objeto que nos llego de php
 		{
@@ -207,6 +210,8 @@
 	var materias = <?php echo isset($datos["materias"])? $datos["materias"]:"[]";?>;
 
 	var beneficios = <?php echo isset($datos["beneficios"])? $datos["beneficios"]:"[]";?>;
+
+	var cerrar = <?php echo isset($datos["cerrar"])? $datos["cerrar"]:"false";?>;
 
 	  function submitForm(action) {
 	    var form = document.getElementById('form1');

@@ -1,6 +1,6 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
  <section class="cart-wrap">
-  <a href="<?php echo RUTA_URL;?>/Usuarios/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
+  <a href="<?php echo RUTA_URL;?>/Cliente/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
   	<div class="col-md-12">
 		<h2>Infomación personal del Cliente</h2>
 	</div>
@@ -87,7 +87,10 @@
 					                        </select>
 					                    </p>
 									</div>
-			         			 	<input value="Actualizar" class="btn btn-lg btn-brown" type="submit">                   
+			         			 	<input value="Actualizar" class="btn btn-brown" type="submit">
+			         			 	<a href="<?php echo RUTA_URL;?>/Cliente/index"" class="btn btn-default">Cerrrar</a>
+			     
+
 			                  </div>
 							</div>
 						</div>
@@ -114,7 +117,7 @@
 										<td class="product-remove"><?php echo $finca->Estado;?></td>
 										<td class="product-remove">
 
-										<a  href="<?php echo RUTA_URL;?>/Fincas/editar_finca_index/<?php echo $finca->idDetalleFinca;?>" class="btn btn-sm btn-default">
+										<a  href="<?php echo RUTA_URL;?>/Fincas/editar_finca_index/<?php echo $finca->idDetalleFinca;?>" class="btn btn-sm btn-default" target="_blank">
                        							<span class="glyphicon glyphicon-edit"></span> Editar
                       					</a>           
 										

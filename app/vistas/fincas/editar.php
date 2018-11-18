@@ -5,10 +5,14 @@
 <div class="col-md-12">
 	<h2>Información de la finca</h2>
 </div>
+<?php var_dump($datos);?>
 <section class="cart-wrap">	
 	<div class="container">
 		<div class="woocommerce">
-			<form class="checkout woocommerce-checkout" id="form1" method="POST">
+			<form class="checkout woocommerce-checkout" id="form1" method="POST" action="<?php echo RUTA_URL;?>/Fincas/editar_finca_index/<?php echo $datos['idDetalleFinca']?>"">
+				<p>
+                    <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>              
+                  </p>
 				<div class="row">
 					<div id="customer_details">
 						<div class="woocommerce-billing-fields">
@@ -32,19 +36,19 @@
 								<!--Vereda-->
 								<p class="form-row form-row-wide" id="billing_company_field" data-priority="10">
 									<label for="billing_first_name" class="">Vereda:</label>
-									 <input type="text" class="input-text" name="vereda" autofocus="autofocus" disabled value="<?php echo $datos['vereda']?>"> 
+									 <input type="text" class="input-text" name="vereda" autofocus="autofocus"  value="<?php echo $datos['vereda']?>"> 
 								</p>
 								<!--Coordenadas Google-->  										       
 								<p class="form-row form-row-wide" validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 									<label for="billing_company" class="">Coordenadas Google:</label>
-									 <input type="text" class="input-text" name="coordenadasGoogle" autofocus="autofocus" disabled value="<?php echo $datos['coordenadasGoogle']?>"> 	
+									 <input type="text" class="input-text" name="coordenadasGoogle" autofocus="autofocus"  value="<?php echo $datos['coordenadasGoogle']?>"> 	
 								</p>
 								<div class="cold-md-12">
 									<div class="col-md-4">
 										<!--Temperatura-->
 										<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 										<label for="billing_first_name">Temperatura<abbr class="required" title="required">			
-											<input type="number" class="input-text" name="Temperatura" autofocus="autofocus" disabled value="<?php echo $datos['Temperatura']?>"> 						
+											<input type="number" class="input-text" name="Temperatura" autofocus="autofocus" value="<?php echo $datos['Temperatura']?>"> 						
 										</p>
 									</div>
 									<div class="col-md-8">													 
@@ -59,6 +63,8 @@
 										</p>
 									</div>
 								</div>
+								<input value="Actualizar" class="btn btn-lg btn-brown" type="submit">
+								<input value="Cerrar" class="btn btn-lg btn-brown" type="button" onclick="window.close();">
 								
 							</div>
 						</div>
