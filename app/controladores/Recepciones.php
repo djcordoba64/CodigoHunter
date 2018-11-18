@@ -11,11 +11,12 @@
 			$this->recepcionModelo = $this->modelo('Recepcion');
 			$this->personaModelo = $this->modelo('Persona');
 			$this->fincaModelo = $this->modelo('Finca');
+			$this->cafeModelo = $this->modelo('Cafe');
 		}
 
 		public function index(){
 			//validacion de rol
-			if($_SESSION["rol"]!="coordinador")
+			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -81,6 +82,82 @@
 			}
 			var_dump($datos);
 		}
+
+		// despues de agregar las fincas (Fincas/agregar) se llama a este metodo desde alla (POST) para guardar todos los datos (cliente y fincas) en una sola transaccion
+		public function crear_guardar(){
+
+			//validacion de rol
+			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+			}
+
+			// recupero y guardo de nuevo datos del cliente (vienen de los hidden y van para los hidden de nuevo)
+			$datos["idCliente"]=$_POST['idCliente'];
+			$datos['idDetalleFinca']=$_POST['idDetalleFinca'];
+			$datos["correo"]=$_POST['correo'];
+			$datos['direccion']=$_POST['direccion'];
+			
+			
+			// recupero y guardo en variable losdatos del cliente (vienen desde fincas/agregar)
+	
+				$datos=[				
+					'idCliente'		=>trim($_POST['idCliente']),
+					'idDetalleFinca'		=>trim($_POST['idDetalleFinca']),
+					'correo'	=>trim($_POST['correo']),
+					'direccion'	=>trim($_POST['direccion'])
+				];
+				
+				//
+				$numero= $this->recepcionModelo->agregarNueva($datos);
+
+				if($numero== -1){
+					// no se ejecutó el insert
+					// agrego mensaje a arreglo de datos para ser mostrado 
+					$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario intente de nuevo
+					$this->vista('/Recepciones/registrar_nueva', $datos);
+					return;
+				}
+				else{
+
+					// Sí se realizó el insert, se redirecciona a la lista de clientes. Y se envia el último ID del cliente registrado.
+					//redireccionar('/fincas/agregar');
+
+					//recupero datos de las fincas que se han creado temporalmente (guardadas en el hidden y no se han guardado en BD)
+					$datos["lotesArr"]=json_decode($_POST["lotesJson"]);
+
+					// inserto las fincas en una sola transaccion, mano id de cliente creado
+						if(!$this->cafeModelo->agregarLotes($datos["lotesArr"], $numero)){
+							
+							// no se inserto ninguna, elimino al cliente para que no quede incompleto
+							$this->RecepcionModelo->eliminarRecepcionNumero($numero);
+							// agrego mensaje a arreglo de datos para ser mostrado 
+							$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+							
+							//retorna a vista de creacion del cliente}
+							$this->vista('/Recepciones/registrar_nueva', $datos);
+							return;
+						}
+
+					// no hubo ningun problema , redirecciono a formulario de creacion de cliente vacio e indicando que hubo exito 
+
+					$this->index('Exito al guardar la nueva recepcion.');
+					
+					
+				}
+			/*
+			Si no ha sido enviado por el metodo POST. Es porque se va hacer por primera vez un registro.
+				
+			*/	
+			
+		}
+		
+
 		/*
 
 		//me llega el cliente y la finca seleccionada (campos hidden) (POST - submit boton "agregra cafe") 

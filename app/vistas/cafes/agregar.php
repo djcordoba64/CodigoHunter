@@ -15,6 +15,10 @@
 						<input type="hidden" name="idCliente" value="<?php echo $datos["idCliente"] ?>" >
 							<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
 						<input type="hidden" name="idDetalleFinca" value="<?php echo isset($datos['idDetalleFinca'])? $datos['idDetalleFinca'] : '-1';?>" >
+						<!--en el input hidden tare el id del cliente-->
+						<input type="hidden" name="correo" value="<?php echo $datos["correo"] ?>" >
+						<!--en el input hidden tare el id del cliente-->
+						<input type="hidden" name="direccion" value="<?php echo $datos["direccion"] ?>" >
 						<!--hidden para guardar temporalmente los lotes de cafe que se van creando y poder guardarlas todas al final junto con el cliente y la finca-->	
 						<input type="hidden" name="lotesJson" value='<?php echo isset($datos['lotesJson'])? $datos['lotesJson'] : '';?>'><!--array de lotes de cafe en una cadena de json-->
 						<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->

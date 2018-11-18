@@ -51,6 +51,8 @@
 		// datos del formulario anterior que se guardaran en campos hidden
 		$datos['idCliente']=$_POST["idCliente"];
 		$datos['idDetalleFinca']=$_POST["fincas"];
+		$datos['correo']=$_POST["correo"];
+		$datos['direccion']=$_POST["direccion"];
 
 			//consultas datos para los select del formulario
 			$materias = $this->materiaPrimaModelo -> obtenerMateriasPrimas();
@@ -103,6 +105,8 @@
 			// recupero y guardo de nuevo datos del cliente (vienen de los hidden y van para los hidden de nuevo)
 			$datos["idCliente"]=$_POST['idCliente'];
 			$datos['idDetalleFinca']=$_POST['idDetalleFinca'];
+			$datos['correo']=$_POST["correo"];
+			$datos['direccion']=$_POST["direccion"];
 
 			// recupero los datos del formulario, la finca que se desea agregar/actualizar
 			$datos["archivo"]=$_POST['archivo'];
@@ -327,6 +331,8 @@
 				// recupero y guardo de nuevo datos del cliente (vienen de los hidden y van para los hidden de nuevo)
 				$datos["idCliente"]=$_POST['idCliente'];
 				$datos['idDetalleFinca']=$_POST['idDetalleFinca'];
+				$datos['correo']=$_POST["correo"];
+				$datos['direccion']=$_POST["direccion"];
 
 			
 			//recupero datos de las fincas que se han creado temporalmente (guardadas en el hidden y no se han guardado en BD)

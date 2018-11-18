@@ -43,8 +43,87 @@
         	$this->db->bind(':codigoCafe', $codigoCafe);
 			$idcafe=$this->db->registro();
      		return $idcafe;
-	 	 } 
+		  } 
+		  
+		  public function agregarLotes($datosLote, $idRecepcion){
 
+			$this->db->empezarTransaccion();
+
+
+			foreach ($datosLote as $lote) {
+						//preparamos la consulata
+					$datos["archivo"]=$lote->archivo;
+					$datos["peso"]=$lote->peso;
+					$datos["variedad"]=$lote->variedad;
+					$datos["tipoTueste"]=$lote->tipoTueste;
+					$datos["materia"]=$lote->materia;
+					$datos["beneficio"]=$lote->beneficio;
+					$datos["PorcentajeHumedad"]=$lote->PorcentajeHumedad;
+					$datos["factorRendimiento"]=$lote->factorRendimiento;
+					$datos["especie"]=$lote->especie;
+					$datos["molidaLibra"]=$lote->molidaLibra;
+					$datos["molidaMediaLibra"]=$lote->molidaMediaLibra;
+					$datos["molidaCincoLibras"]=$lote->molidaCincoLibras;
+					$datos["granoLibra"]=$lote->granoLibra;
+					$datos["granoMediaLibra"]=$lote->granoMediaLibra;
+					$datos["granoCincoLibras"]=$lote->granoCincoLibras;
+					$datos["cantidad"]=$lote->cantidad;
+					$datos["valorUnitario"]=$lote->valorUnitario;
+					$datos["estado"]=$lote->estado;
+					$datos["idRecepcion"]=$idRecepcion;
+					// agregar POST (el id enviado es -1)
+					if(!$this->agregarLote($datos)){
+						//hubo un error
+						$this->db->descartarTransaccion();
+						return false;
+					}
+       		}
+       		$this->db->guardarTransaccion();
+       		return true;
+		}
+
+		public function agregarLote($datosLote){
+			//preparamos la consulata
+			$this->db->query('INSERT INTO cafes (codigoCafe,peso,especie,variedad,porcentajeHumedad,factorRendimiento,
+			tipoTueste,molidaLibra,molidaMediaLibra,molidaCincoLibras,granoLibra,granoMediaLibra,granoCincoLibras,cantidad,
+			valorUnitario,estado,idRecepcion,created_at,created_by) 
+			 VALUES (:codigoCafe, :peso, :especie, :variedad, :porcentajeHumedad, :factorRendimiento, 
+			 :tipoTueste, :molidaLibra, :molidaMediaLibra, :molidaCincoLibras, :granoLibra, :granoMediaLibra, 
+			:granoCincoLibras, :cantidad, :valorUnitario, :estado, :idRecepcion, NOW(), :created_by)
+			 ');
+			 
+			 //vinculamos los valores
+			 $this->db->bind(':codigoCafe' , 0);
+			 $this->db->bind(':peso',$datosLote['peso']);
+			 $this->db->bind(':especie', $datosLote['especie']);
+			 $this->db->bind(':variedad', $datosLote['variedad']);	
+			 $this->db->bind(':porcentajeHumedad', $datosLote['PorcentajeHumedad']);		
+			 $this->db->bind(':factorRendimiento', $datosLote['factorRendimiento']);
+			 $this->db->bind(':tipoTueste', $datosLote['tipoTueste']);
+			 $this->db->bind(':molidaLibra', $datosLote['molidaLibra']);
+			 $this->db->bind(':molidaMediaLibra', $datosLote['molidaMediaLibra']);	
+			 $this->db->bind(':molidaCincoLibras', $datosLote['molidaCincoLibras']);		
+			 $this->db->bind(':granoLibra', $datosLote['granoLibra']);
+			 $this->db->bind(':granoMediaLibra', $datosLote['granoMediaLibra']);
+			 $this->db->bind(':granoCincoLibras', $datosLote['granoCincoLibras']);
+			 $this->db->bind(':cantidad', $datosLote['cantidad']);	
+			 $this->db->bind(':valorUnitario', $datosLote['valorUnitario']);		
+			 $this->db->bind(':estado', $datosLote['estado']);
+			 $this->db->bind(':idRecepcion', $datosLote['idRecepcion']);
+
+
+
+			 $this->db->bind(':created_by', $_SESSION['idUsuario']);
+			
+
+
+			 //Ejecutamos la consulta
+			if ($this->db->execute()){           
+            	return true;
+           	}else{
+            	return false;
+           }
+		}
 
 	}
 ?>
