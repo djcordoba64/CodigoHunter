@@ -2,7 +2,7 @@
 <section class="where-buy alt">
   	<div class="container">
   		<div class="row">
-  			<a href="<?php echo RUTA_URL;?>/Usuarios/index" class="btn btn-light"><i class="glyphicon glyphicon-hand-left"></i> Volver</a>
+  			<a href="<?php echo RUTA_URL;?>/Cliente/index" class="btn btn-light"><i class="glyphicon glyphicon-hand-left"></i> Volver</a>
   			<div class="col-md-12"><h2>Información del cliente</h2></div> 			
 				<div class="contact-left">
 					<div class="col-md-3">

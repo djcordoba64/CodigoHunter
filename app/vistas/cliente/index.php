@@ -4,9 +4,10 @@
 <div class="col-md-12">
 	<h2>Lista de  Clientes</h2>
 </div>
+
 <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
 <span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
-<div class="col-md-12">
+<div class="col-md-12" >
       <div  class="col-md-4">
           <div class="widget-area" role="complementary">
             <aside class="widget">
@@ -97,6 +98,8 @@
 						                
 						                  <a class="next <?php  echo $datos['pagina']>= $datos['numeroPaginas'] ? 'disabled' :'' ?>"  href="<?php echo RUTA_URL;?>/Cliente/index/<?php echo $datos['pagina']+1 ?>">Siguiente
 						                  <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+
+						                  
 						              </div>
 						          </div>
         						</div>

@@ -21,22 +21,22 @@
 								<!--Nombre de la finca--> 
 								<p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
 								<label for="billing_first_name" class="">Nombre de la finca:</label>
-								<input type="text" class="input-text" name="nombreFinca" autofocus="autofocus" disabled value="<?php echo $datos['nombreFinca']?>">
+								<input style="background-color: #D3D1D1" type="text" class="input-text" name="nombreFinca" autofocus="autofocus" disabled value="<?php echo $datos['nombreFinca']?>">
 								</p>
 								<!--Departamento--> 										       
 								<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
 									<label for="billing_country" class="">Departamento:</label>
-									 <input type="text" class="input-text" name="departamento" autofocus="autofocus" disabled value="<?php echo $datos['departamento']?>">    
+									 <input style="background-color: #D3D1D1" type="text" class="input-text" name="departamento" autofocus="autofocus" disabled value="<?php echo $datos['departamento']?>">    
 								</p>	                
 								<!--Municipio-->
 								<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 									<label for="billing_country" class="">Municipio:</label>
-									 <input type="text" class="input-text" name="municipio" autofocus="autofocus" disabled value="<?php echo $datos['municipio']?>"> 
+									 <input style="background-color: #D3D1D1" type="text" class="input-text" name="municipio" autofocus="autofocus" disabled value="<?php echo $datos['municipio']?>"> 
 								</p>
 								<!--Vereda-->
 								<p class="form-row form-row-wide" id="billing_company_field" data-priority="10">
 									<label for="billing_first_name" class="">Vereda:</label>
-									 <input type="text" class="input-text" name="vereda" autofocus="autofocus"  value="<?php echo $datos['vereda']?>"> 
+									 <input style="background-color: #D3D1D1" type="text" class="input-text" name="vereda" autofocus="autofocus"  value="<?php echo $datos['vereda']?>"> 
 								</p>
 								<!--Coordenadas Google-->  										       
 								<p class="form-row form-row-wide" validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">

@@ -321,8 +321,9 @@
 
 				}
 				else{
-					
+
 					// exito, redireccionar al index
+
 					redireccionar('/Cliente/index');
 				}
 
