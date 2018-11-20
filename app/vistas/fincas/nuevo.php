@@ -8,16 +8,15 @@
 <section class="cart-wrap">	
 	<div class="container">
 		<div class="woocommerce">
-			<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Fincas/agregar_finca/<?php echo $datos['idPersona']?>" method="POST">
+			<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Fincas/agregar_finca" method="POST">
+				<input  name="idCliente" value="<?php echo isset($datos['idPersona'])? $datos['idPersona'] : '';?>">
+					
 				
-				<input type="hidden" name="fincasJson" value='<?php echo isset($datos['fincasJson'])? $datos['fincasJson'] : '';?>'>
 				<!--array de fincas en una cadena de json-->
 				<div class="row">
 					<div id="customer_details">
 						<div class="woocommerce-billing-fields">
 							<div class="col-md-6" >
-								<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
-								<input type="hidden" name="idDetalleFinca" value="<?php echo isset($datos['idDetalleFinca'])? $datos['idDetalleFinca'] : '-1';?>" >
 								<!--Nombre de la finca--> 
 								<p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
 								<label for="billing_first_name" class="">Nombre de la finca: <abbr class="required" title="required">*</abbr></label>
@@ -39,12 +38,12 @@
 								<!--Vereda-->
 								<p class="form-row form-row-wide" id="billing_company_field" data-priority="10">
 									<label for="billing_first_name" class="">Vereda:</label>
-								<input type="text" class="input-text" name="vereda" autofocus="autofocus" value="<?php echo isset($datos['vereda'])? $datos['vereda'] : '';?>" onkeypress="return soloLetras(event);" id="vereda">
+								<input type="text" class="input-text" name="vereda" autofocus="autofocus" value="<?php echo isset($datos['vereda'])? $datos['vereda'] : '';?>" onkeypress="return soloLetras(event);" id="vereda" >
 								</p>
 								<!--Coordenadas Google-->  										       
 								<p class="form-row form-row-wide" validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 									<label for="billing_company" class="">Coordenadas Google:</label>
-									<input type="text" class="input-text"  name="coordenadasGoogle" autofocus="autofocus" value='<?php echo isset($datos['coordenadasGoogle'])? $datos['coordenadasGoogle'] : '';?>'>	
+									<input type="text" class="input-text"  name="coordenadasGoogle" autofocus="autofocus" value="<?php echo isset($datos['coordenadasGoogle'])? $datos['coordenadasGoogle'] : '';?>">	
 								</p>
 								<div class="cold-md-12">
 									<div class="col-md-4">

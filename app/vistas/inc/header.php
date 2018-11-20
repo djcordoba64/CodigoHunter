@@ -88,7 +88,7 @@
                     <a href="#">Recepción</a>
                     <ul class="sub-menu">
                       <li><a href="/Hunter/Recepciones/registrar_nueva">Registrar</a></li>
-                      <li><a href="/Hunter/Recepciones/index">Buscar</a></li>                     
+                      <li><a href="/Hunter/Recepciones/index">Administrar</a></li>                     
                    </ul>     
                   </li>
                   <li><a href="/Hunter/Perfiles/consultar">Perfil</a></li>

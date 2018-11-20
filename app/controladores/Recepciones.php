@@ -14,7 +14,9 @@
 			$this->cafeModelo = $this->modelo('Cafe');
 		}
 
-		public function index(){
+
+		public function index($pagina=1){
+
 			//validacion de rol
 			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
@@ -24,10 +26,32 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
+			 
 
-			$this->vista('recepciones/index');
+			//echo $pagina;
+			$recepciones_x_pagina=2;			
 			
+			//obtener los usuarios
+			$iniciar=($pagina-1)*$recepciones_x_pagina ;
+			
+
+			$recepciones=$this->recepcionModelo->limit_recepciones($iniciar,$recepciones_x_pagina);
+
+			$datos["recepciones"]=$recepciones;
+
+			$total_recepciones_db=$this->recepcionModelo->contar_recepciones();
+			
+			//calculo es total de paginas
+			$paginas=$total_recepciones_db->cuenta/$recepciones_x_pagina;
+			$numeroPaginas= ceil($paginas);
+
+			$datos['numeroPaginas']=$numeroPaginas;
+			//echo $numeroPaginas;
+			$datos["pagina"]=$pagina;
+
+			$this->vista('/Recepciones/index',$datos);
 		}
+
 
 
 		//muestra formulario vacio (GET - click en en link registrar recepcion)

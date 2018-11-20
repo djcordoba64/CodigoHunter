@@ -292,9 +292,6 @@
 				$this->vista('/Fincas/agregar', $datos);
 			
 		//----------------------------------------------------------------
-	
-		
-
 		}
 
 		public function gestionar($idFinca=-1){
@@ -486,9 +483,11 @@
 			}
 	}
 
-	public function agregar_finca($idPersona){
+	//-------------------------------------------------------------------------
 
-		if($_SESSION["rol"]!="tostador")
+	public function agregar_finca_mostrar_formulario($idPersona){
+	
+			if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -505,8 +504,25 @@
 			$datos["deptos"]=$deptos;
 			$datos["municipios"]=$municipios;
 			$datos["idPersona"]=$idPersona;
+			
 
-			//var_dump($datos);
+		$this->vista('/Fincas/nuevo', $datos);
+
+	}
+
+	public function agregar_finca(){
+
+		if($_SESSION["rol"]!="tostador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+
+			}
+
+
 
 			if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
 
@@ -515,13 +531,13 @@
 					'Temperatura'		=>trim($_POST['Temperatura']),				
 					'coordenadasGoogle'	=>trim($_POST['coordenadasGoogle']),
 					'municipio'		=>trim($_POST['municipio']),
+					'idCliente' =>trim($_POST['idPersona']),
 					'Estado'		=>trim($_POST['Estado']),
 					'vereda'		=>trim($_POST['vereda']),
-					'idDetalleFinca'=>trim($_POST['idDetalleFinca']),
 									
 				];
 
-				$id = $this->personaModelo->agregar_finca($idPersona);
+				$id = $this->fincaModelo->crear($datos);
 
 				if($id== -1){
 					// no se ejecutó el insert
@@ -534,29 +550,11 @@
 				else{
 					$datos["cerrar"]=true;
 					// Si se realizo el insert
-					redireccionar('/Clientes/editar');
+					redireccionar('/Cliente/editar');
 				}
 
 			}
-			else 
-			{ 
-				//primera vez que se carga el formulario
-				if(empty($datos)){
-					//si los datos no se enviaron, mostrar el formulario vacio
-					$datos=[				
-						'nombreFinca'		=>'',
-						'Temperatura'		=>	''	,	
-						'coordenadasGoogle'	=>'',
-						'municipio'		=>'',
-						'Estado'		=>'',
-						'vereda'		=>'',
-						'idDetalleFinca'=>'',				
-					];
-				} 
-
-				//renderiza la pagina con el formulario (lleno o vacio)
-				$this->vista('/Fincas/nuevo', $datos);
-			}
+			
 	}
 
 

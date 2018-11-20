@@ -128,6 +128,35 @@
            }
 		}
 
+		public function crear($datos){
+		//preparamos la consulata
+			$this->db->query('INSERT INTO detallefinca (nombreFinca,Temperatura,coordenadasGoogle,idmunicipio,idCliente,Estado,vereda,created_at,created_by) 
+			 VALUES (:nombreFinca,:Temperatura,:coordenadasGoogle,:idmunicipio,:idCliente,:Estado,:vereda,NOW(),:created_by)
+			 ');
+
+			 //vinculamos los valores
+			$this->db->bind(':nombreFinca' , $datos['nombreFinca']);
+			 $this->db->bind(':Temperatura',$datos['Temperatura']);
+			 $this->db->bind(':coordenadasGoogle', $datos['coordenadasGoogle']);
+			 $this->db->bind(':idmunicipio', $datos['municipio']);	
+			 $this->db->bind(':idCliente', $datos['idPersona']);		
+			 $this->db->bind(':Estado', $datos['Estado']);
+			 $this->db->bind(':vereda', $datos['vereda']);
+			 $this->db->bind(':created_by', $_SESSION['idUsuario']);
+			
+
+
+			 //Ejecutamos la consulta
+			if ($this->db->execute()){           
+            	return true;
+           	}else{
+            	return false;
+           }
+		}
+
+
+		
+
       
 	}
 

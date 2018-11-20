@@ -59,6 +59,22 @@ class Recepcion extends Base
             return $this->db->execute();
             
         }
+
+        //limitar las recepciones para la paginación y mostrar en el index
+        public function limit_recepciones($iniciar,$recepciones_x_pagina){
+
+        $this->db->query(" SELECT * from recepciones WHERE numeroRecibo=numeroRecibo  ORDER BY created_at DESC LIMIT :iniciar,:nusuarios");
+        $this->db->bind(':iniciar',$iniciar,PDO::PARAM_INT);
+        $this->db->bind(':nusuarios',$recepciones_x_pagina,PDO::PARAM_INT);
+            $listaRecepciones=$this->db->registros();
+           return $listaRecepciones;
+
+        }
+
+        public function contar_recepciones(){
+        	$this->db->query("SELECT count(*) as cuenta FROM recepciones");
+            return $this->db->registro(); 
+        }
 	
 }
 ?>

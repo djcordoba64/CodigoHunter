@@ -138,7 +138,7 @@
 											<ul class="social">
 												
 												<li>
-													<a href="<?php echo RUTA_URL;?>/Fincas/agregar_finca/<?php echo $datos['idPersona'];?>" data-toggle="tooltip" title="Agregar una finca!" target="_blank">
+													<a href="<?php echo RUTA_URL;?>/Fincas/agregar_finca_mostrar_formulario/<?php echo $datos['idPersona'];?>" data-toggle="tooltip" title="Agregar una finca!" target="_blank">
 														<i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a>
 												</li>
 											</ul>	
