@@ -76,7 +76,8 @@
 <!-- JAVASCRIPT FILES -->
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTRSHf8sjMCfK9PHPJxjJkwrCIo5asIzE"></script>	
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTRSHf8sjMCfK9PHPJxjJkwrCIo5asIzE"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.0/sweetalert2.min.js"></script>	
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/map-style.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/modernizr-2.6.2.min.js"></script>
@@ -89,6 +90,7 @@
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.select2.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.swipebox.min.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/main.js"></script>
+
 
 
 
@@ -305,7 +307,7 @@ function soloLetras(e) {
         return false;
       }	
 }
-//validar número tele'fonico
+//validar número telefono
 function validarLenght(Objeto){
 	if(Objeto.length < 7){
 		alert('Lo minimo de carácteres son 6.');
@@ -314,22 +316,11 @@ function validarLenght(Objeto){
 		}
 	} 
 
-$('#btnPromt').click(function(){
-    swal({
-        title: "Seguro que quieres hacer esto?",
-          text: "Esta acción ya no se podrá deshacer, Así que piénsalo bien.",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Si, estoy seguro',
-          cancelButtonText: "Cancelar"
-        });
-})
 
 
-
-
+function exito(){
+	swal("Good job!", "You clicked the button!", "success");
+}
 
 
 </script>

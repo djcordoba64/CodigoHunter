@@ -3,6 +3,7 @@
 	/**
 	* 
 	*/
+
 	class Cliente extends Controlador
 	{
 		
@@ -13,12 +14,14 @@
 			$this->fincaModelo = $this->modelo('Finca');
 
 			$this->UbicacionModelo = $this->modelo('Ubicacion');
+			
+	
 		}
 
 		//$mensaje='',$error=''
 		public function index($pagina=1){
 			//validacion de rol
-			if($_SESSION["rol"]!="coordinador")
+			if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -74,7 +77,7 @@
 
 
 			//validacion de rol
-			if($_SESSION["rol"]!="coordinador")
+			if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -107,7 +110,7 @@
 
 
 			//validacion de rol
-			if($_SESSION["rol"]!="coordinador")
+			if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -151,7 +154,7 @@
 		public function crear_guardar(){
 
 			//validacion de rol
-			if($_SESSION["rol"]!="coordinador")
+			if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -242,7 +245,7 @@
 		public function detalle($idPersona){
 			
 			//validacion de rol
-			if($_SESSION["rol"]!="coordinador" )
+			if($_SESSION["rol"]!="tostador" )
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -285,7 +288,7 @@
 		public function editar($idPersona){
 
 			//validacion de rol
-			if($_SESSION["rol"]!="coordinador")
+			if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -322,9 +325,6 @@
 
 				}
 				else{
-
-					// exito, redireccionar al index
-					$datos['mensaje_exito'] ='Se actualizo los datos correctamente';
 
 					redireccionar('/Cliente/index');
 				}

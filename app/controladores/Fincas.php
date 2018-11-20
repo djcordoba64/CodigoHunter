@@ -19,7 +19,7 @@
 		public function agregar_formulario_inicial($datos){
 
 			//validacion de rol
-			if($_SESSION["rol"]!="coordinador")
+			if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -56,7 +56,7 @@
 
 
 			//validacion de rol
-			if($_SESSION["rol"]!="coordinador")
+			if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -217,7 +217,7 @@
 
 
 			//validacion de rol
-			if($_SESSION["rol"]!="coordinador")
+			if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -430,8 +430,8 @@
 		}
 	public function editar_finca_index($idFinca){
 		//validacion de rol
-		/*
-			if($_SESSION["rol"]!="coordinador")
+		
+			if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -439,7 +439,7 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
-			*/
+			
 			if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
 				$datos=[
 					'idDetalleFinca'	=>$idFinca,					
@@ -483,6 +483,79 @@
 	
 				$this->vista('/Fincas/editar', $datos);
 
+			}
+	}
+
+	public function agregar_finca($idPersona){
+
+		if($_SESSION["rol"]!="tostador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+			}
+			//consultas datos para los select del formulario
+			$deptos = $this->UbicacionModelo -> obtenerDepartamentos();
+			$deptos = json_encode($deptos);
+			$municipios = $this->UbicacionModelo -> obtenerMunicipios();
+			$municipios = json_encode($municipios);
+
+			$datos["deptos"]=$deptos;
+			$datos["municipios"]=$municipios;
+			$datos["idPersona"]=$idPersona;
+
+			//var_dump($datos);
+
+			if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
+
+				$datos=[
+					'nombreFinca'		=>trim($_POST['nombreFinca']),
+					'Temperatura'		=>trim($_POST['Temperatura']),				
+					'coordenadasGoogle'	=>trim($_POST['coordenadasGoogle']),
+					'municipio'		=>trim($_POST['municipio']),
+					'Estado'		=>trim($_POST['Estado']),
+					'vereda'		=>trim($_POST['vereda']),
+					'idDetalleFinca'=>trim($_POST['idDetalleFinca']),
+									
+				];
+
+				$id = $this->personaModelo->agregar_finca($idPersona);
+
+				if($id== -1){
+					// no se ejecutó el insert
+					// agrego mensaje a arreglo de datos para ser mostrado 
+					$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario intente de nuevo
+					$this->vista('/Fincas/nuevo', $datos);
+					return;
+				}
+				else{
+					$datos["cerrar"]=true;
+					// Si se realizo el insert
+					redireccionar('/Clientes/editar');
+				}
+
+			}
+			else 
+			{ 
+				//primera vez que se carga el formulario
+				if(empty($datos)){
+					//si los datos no se enviaron, mostrar el formulario vacio
+					$datos=[				
+						'nombreFinca'		=>'',
+						'Temperatura'		=>	''	,	
+						'coordenadasGoogle'	=>'',
+						'municipio'		=>'',
+						'Estado'		=>'',
+						'vereda'		=>'',
+						'idDetalleFinca'=>'',				
+					];
+				} 
+
+				//renderiza la pagina con el formulario (lleno o vacio)
+				$this->vista('/Fincas/nuevo', $datos);
 			}
 	}
 

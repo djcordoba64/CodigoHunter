@@ -3,33 +3,19 @@
 <!-- CLIENTES_FINCAS- -->
 <a href="<?php echo RUTA_URL;?>/Clientes/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
 <div class="col-md-12">
-	<h2>Información de la finca</h2>
+	<h2>Agregar nueva finca</h2>
 </div>
 <section class="cart-wrap">	
 	<div class="container">
 		<div class="woocommerce">
-			<form class="checkout woocommerce-checkout" id="form1" method="POST">
-				<!--hiddens para guardar temporalmente datos del cliente-->
-					<input type="hidden" name="primerNombre" value="<?php echo isset($datos['primerNombre'])? $datos['primerNombre'] : '';?>">
-					<input type="hidden" name="segundoNombre" value="<?php echo isset($datos['segundoNombre'])? $datos['segundoNombre'] : '';?>">
-					<input type="hidden" name="primerApellido" value="<?php echo isset($datos['primerApellido'])? $datos['primerApellido'] : '';?>">
-					<input type="hidden" name="segundoApellido" value="<?php echo isset($datos['segundoApellido'])? $datos['segundoApellido'] : '';?>">
-					<input type="hidden" name="documentoIdentidad" value="<?php echo isset($datos['documentoIdentidad'])? $datos['documentoIdentidad'] : '';?>">
-					<input type="hidden" name="fechaNacimiento" value="<?php echo isset($datos['fechaNacimiento'])? $datos['fechaNacimiento'] : '';?>">
-					<input type="hidden" name="sexo" value="<?php echo isset($datos['sexo'])? $datos['sexo'] : '';?>">
-					<input type="hidden" name="correo" value="<?php echo isset($datos['correo'])? $datos['correo'] : '';?>">
-					<input type="hidden" name="numeroContacto" value="<?php echo isset($datos['numeroContacto'])? $datos['numeroContacto'] : '';?>">
-					<input type="hidden" name="direccion" value="<?php echo isset($datos['direccion'])? $datos['direccion'] : '';?>">
-					<input type="hidden" name="estado" value="<?php echo isset($datos['estado'])? $datos['estado'] : '';?>">
-				<!--hiddens para guardar temporalmente datos del cliente-->
-
-				<!--hiddens para guardar temporalmente las fincas que se van creando y poder guardarlas todas al final junto con el cliente-->	
+			<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Fincas/agregar_finca/<?php echo $datos['idPersona']?>" method="POST">
+				
 				<input type="hidden" name="fincasJson" value='<?php echo isset($datos['fincasJson'])? $datos['fincasJson'] : '';?>'>
 				<!--array de fincas en una cadena de json-->
 				<div class="row">
 					<div id="customer_details">
 						<div class="woocommerce-billing-fields">
-							<div class="col-md-5" >
+							<div class="col-md-6" >
 								<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
 								<input type="hidden" name="idDetalleFinca" value="<?php echo isset($datos['idDetalleFinca'])? $datos['idDetalleFinca'] : '-1';?>" >
 								<!--Nombre de la finca--> 
@@ -90,64 +76,12 @@
 										</p>
 									</div>
 								</div>
-								<!--boton de guardar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
-								<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Fincas/agregar_guardar_temporalmente')" class="btn btn-default" type="button" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>">
-							</div>
-							<div class="col-md-7" >
-								<div class="col-md-12" align="center">
-									<h4>Fincas Agregadas</h4>
-								</div>
-								<div class="">
-									<table class="shop_table shop_table_responsive cart" width="700">
-										<thead>
-						                    <tr>
-						                        
-						                    	<th class="">Nombre</th>
-												<th class="">Dpto</th>
-												<th class="">Municipio</th>
-												<th class="">Vereda</th>
-												<th class="">Temperatura</th>
-												<th class="">Acciones</th>
-						                    </tr>
-					                	</thead>
-					                	<tbody  class="cart_item">
-											<?php if (isset($datos['fincasArr'])) { foreach($datos['fincasArr'] as $finca): ?>
-											<tr class="cart_item">
-												<td class="product-remove">					
-													<?php echo $finca["nombreFinca"];?>								
-												</td>
-												<td class="product-remove">					
-													<?php echo $finca["nombreDepartamento"];?>								
-												</td>
-												<td class="product-remove">
-													<?php echo $finca["nombreMunicipio"];?>				
-												</td>
-												<td class="product-remove">
-													<?php echo $finca["vereda"];?>				
-												</td>
-												<td class="product-remove">
-														<?php echo $finca["Temperatura"];?>
-												</td class="cart_item">
-												
-												<td class="product-remove">
-												<!--boton de editar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
-												<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Fincas/agregar_editar_temporal/<?php echo $finca["idDetalleFinca"];?>')" class="btn btn-sm btn-default" type="button" value="Editar">	
-												</td>
-											</tr>
-											<?php endforeach; }?>
-					                	</tbody>
-									</table>
-								</div>
+
+							 <input value="Guardar" class="btn  btn-brown" type="submit">
+							 <input value="Cerrar" class="btn btn-default" type="button" onclick="window.close();">
 							</div>
 						</div>
-					</div>
-					<hr>					
-					
-				</div>
-				<div class="col-md-12" align="center">
-				<?php if (isset($datos['fincasArr']) and count($datos['fincasArr'])>0) { ?>
-				<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cliente/crear_guardar')" class="btn btn-lg btn-brown" type="button" value="finalizar">
-				<?php }     ?>
+					</div>										
 				</div>
 			</form>
 		</div>

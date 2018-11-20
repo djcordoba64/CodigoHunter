@@ -14,7 +14,8 @@
 								<div class="woocommerce-billing-fields">
 					                <p>
 					                    <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>              
-					                </p>                                    
+					                </p>
+					                                                  
 					                <div class="woocommerce-billing-fields__field-wrapper">
 					                    <!--Primer Nombre--> 
 					                    <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
@@ -26,28 +27,29 @@
 					                    <!--Segundo Nombre--> 
 					                    <p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 					                      <label for="billing_last_name" class="">Segundo nombre:</label>
-					                      <input type="text" class="input-text" name="segundoNombre" autofocus="autofocus" value="<?php echo $datos['segundoNombre']?>">                               
+					                      <input type="text" class="input-text" name="segundoNombre" autofocus="autofocus" value="<?php echo $datos['segundoNombre']?>"   onkeypress="return soloLetras(event);" id="segundoNombre">                               
 					                    </p>
 					                    <!--Primer Apellido--> 
 					                    <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
 					                      <label for="billing_first_name" class="">Primer Apellido: <abbr class="required" title="required">*</abbr>
 					                      </label>
-					                      <input type="text" class="input-text" name="primerApellido" autofocus="autofocus" value="<?php echo $datos['primerApellido']?>">
+					                      <input type="text" class="input-text" name="primerApellido" autofocus="autofocus" required value="<?php echo $datos['primerApellido']?>"  onkeypress="return soloLetras(event);" id="primerApellido">
 					                    </p>
 					                    <!--Segundo Apelido--> 
 					                    <p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 					                       <label for="billing_last_name" class="">Segundo Apellido:</label>
-					                        <input type="text" class="input-text" name="segundoApellido" autofocus="autofocus" value="<?php echo $datos['segundoApellido']?>">
+					                        <input type="text" class="input-text" name="segundoApellido" autofocus="autofocus" value="<?php echo $datos['segundoApellido']?>"  onkeypress="return soloLetras(event);" id="segundoApellido">
 					                    </p>
 					                    <!--Documento de Identidad-->  
 					                    <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
 					                      <label for="billing_first_name" class="">Documento identidad: <abbr class="required" title="required">*</abbr></label>
-					                      <input type="text" class="input-text" name="documentoIdentidad" autofocus="autofocus" value="<?php echo $datos['documentoIdentidad']?>">
+
+					                      <input type="text" class="input-text" name="documentoIdentidad" autofocus="autofocus" required value="<?php echo $datos['documentoIdentidad']?>" >
 					                    </p>
 					                    <!--Fecha de nacimiento--> 
 					                    <p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 					                      <label for="billing_last_name" class="">Fecha Nacimiento:</label>
-					                        <input type="date" class="input-text" name="fechaNacimiento" autofocus="autofocus" value="<?php echo $datos['fechaNacimiento']?>">
+					                        <input type="date" class="input-text" name="fechaNacimiento" autofocus="autofocus"  value="<?php echo $datos['fechaNacimiento']?>">
 					                    </p>
 					                    <!--Correo Electónico-->  
 					                    <p class="form-row form-row-last validate-required validate-email" id="billing_email_field" data-priority="110">
@@ -63,7 +65,7 @@
 					                    <!--Dirección--> 
 					                    <p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
 					                        <label for="billing_company" class="">Dirección:<abbr class="required" title="required">*</abbr></label>
-					                        <input type="text" class="input-text " name="direccion" autocomplete="organization" value="<?php echo $datos['direccion']?>">
+					                        <input type="text" class="input-text " name="direccion" autocomplete="organization" required value="<?php echo $datos['direccion']?>">
 					                    </p>
 					                    <!--sexo--> 
 					                    <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
@@ -83,52 +85,67 @@
 					                    <!--Estado--> 
 					                    <p class="form-row form-row-wide address-field update_totals_on_change validate-required" id="billing_country_field" data-priority="40">
 					                      <label for="billing_country" class="">Estado:</label>
-					                        <select name="estado" style="width: 30%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+					                        <select name="estado" style="width: 30%" class="country_to_state country_select select2-hidden-accessible" required autocomplete="country">
 					                          <option value="Activo" <?php echo $datos['estado']=='Activo'? print "selected='selected'" : "";?> >Activo</option>
 					                          <option value="Inactivo" <?php echo $datos['estado']=='Inactivo'? print "selected='selected'" : "";?> >Inactivo</option>
 					                        </select>
 					                    </p>
-									</div>
-			         			 	<input value="Actualizar" class="btn btn-brown" type="submit">
-			         			 	<a href="<?php echo RUTA_URL;?>/Cliente/index"" class="btn btn-default">Cerrrar</a>
-			     
-
-			                  </div>
+									</div>			         			 				         			 	
+			         			 	<a href="<?php echo RUTA_URL;?>/Cliente/index" class="btn btn-default" />Cerrrar</a>
+			         			 	<button onclick="exito();"  class="btn btn-brown">Actualizar</button>
+			         			 </div>
 							</div>
 						</div>
-					
-				</div>
-				<div class="col-md-6">
-						<label>Fincas del cliente</label>
-						<table class="shop_table shop_table_responsive cart" width="800">
-					        <thead>
-					            <tr>					                        
-					                <th class="product-remove">Nombre</th>									
-									<th class="product-remove">Municipio</th>
-									<th class="product-remove">Vereda</th>
-									<th class="product-remove">Estado</th>
-									<th class="product-remove">Acciones</th>
-					            </tr>
-					        </thead>
-					        <tbody  class="cart_item">					             
-								<?php if (isset($datos['finca'])) { foreach($datos['finca'] as $finca): ?>
-									<tr class="cart_item">
-										<td class="product-remove"><?php echo $finca->nombreFinca;?></td>
-										<td class="product-remove"><?php echo $finca->municipio;?></td>
-										<td class="product-remove"><?php echo $finca->vereda;?></td>
-										<td class="product-remove"><?php echo $finca->Estado;?></td>
-										<td class="product-remove">
-
-										<a  href="<?php echo RUTA_URL;?>/Fincas/editar_finca_index/<?php echo $finca->idDetalleFinca;?>" class="btn btn-sm btn-default" target="_blank">
-                       							<span class="glyphicon glyphicon-edit"></span> Editar
-                      					</a>           
-										
-										</td>
-									</tr>
-								<?php endforeach; }?>
-					        </tbody>
-					    </table>
 					</div>
+					<div class="col-md-6">
+							<div class="col-md-12" align="center">
+									<h4>Fincas del cliente</h4>
+								</div>
+							
+							<table class="shop_table shop_table_responsive cart" width="800">
+						        <thead>
+						            <tr>					                        
+						                <th class="product-remove">Nombre</th>									
+										<th class="product-remove">Municipio</th>
+										<th class="product-remove">Vereda</th>
+										<th class="product-remove">Estado</th>
+										<th class="product-remove">Acciones</th>
+						            </tr>
+						        </thead>
+						        <tbody  class="cart_item">					             
+									<?php if (isset($datos['finca'])) { foreach($datos['finca'] as $finca): ?>
+										<tr class="cart_item">
+											<td class="product-remove"><?php echo $finca->nombreFinca;?></td>
+											<td class="product-remove"><?php echo $finca->municipio;?></td>
+											<td class="product-remove"><?php echo $finca->vereda;?></td>
+											<td class="product-remove"><?php echo $finca->Estado;?></td>
+											<td class="product-remove">
+
+											<a  href="<?php echo RUTA_URL;?>/Fincas/editar_finca_index/<?php echo $finca->idDetalleFinca;?>" class="btn btn-sm btn-default" target="_blank">
+	                       							<span class="glyphicon glyphicon-edit"></span> Editar
+	                      					</a>
+
+
+											
+											</td>
+										</tr>
+									<?php endforeach; }?>
+						        </tbody>
+						    </table>
+						    <div class="col-sm-4">
+									<div class="footer-social">
+										<div class="title"></div>
+											<ul class="social">
+												
+												<li>
+													<a href="<?php echo RUTA_URL;?>/Fincas/agregar_finca/<?php echo $datos['idPersona'];?>" data-toggle="tooltip" title="Agregar una finca!" target="_blank">
+														<i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a>
+												</li>
+											</ul>	
+									</div>
+								</div>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>
