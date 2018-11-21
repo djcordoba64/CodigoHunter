@@ -38,7 +38,7 @@
 
 
 	 	 //obtener los datos del café
-	 	 public function optenerDatoscafes($codigoCafe){
+	 	 public function optenerDatoscafe($codigoCafe){
 	 	 	$this->db->query("SELECT * FROM cafes WHERE codigoCafe=:codigoCafe ");
         	$this->db->bind(':codigoCafe', $codigoCafe);
 			$idcafe=$this->db->registro();

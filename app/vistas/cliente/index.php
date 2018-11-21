@@ -2,7 +2,7 @@
 
 <!-- CART -->
 <div class="col-md-12">
-	<h2>Lista de  Clientes</h2>
+	<h2>Agregar-editar-buscar</h2>
 </div>
 
 <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
@@ -22,7 +22,7 @@
 									</div>
 								</div>
 								<div class="col-sm-5" >
-								          <div class="widget-area" role="complementary">
+								        <div class="widget-area" role="complementary" style="margin: 20px;">
 								            <aside class="widget">
 								              <h4>Buscar</h4>
 								              <div class="content">

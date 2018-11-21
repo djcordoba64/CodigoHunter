@@ -32,7 +32,7 @@
 								<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
 									<label for="billing_first_name" class="">Documento identidad: <abbr class="required" title="required">*</abbr>
 									</label>
-									<input type="text" class="input-text" name="documentoIdentidad" autofocus="autofocus" value="<?php echo $datos['documentoIdentidad']?>">
+									<input type="text" class="input-text" name="documentoIdentidad" autofocus="autofocus" value="<?php echo $datos['documentoIdentidad']?>" maxlength="15">
 								</p>
 								<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 									<label for="billing_last_name" class="">Fecha Nacimiento:</label>

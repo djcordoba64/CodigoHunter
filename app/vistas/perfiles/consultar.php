@@ -65,8 +65,8 @@
 							        	<p class="form-row form-row-wide address-field update_totals_on_change validate-required" id="billing_country_field" data-priority="40">
 							                <label for="billing_country" class="">Foto</label>
 							            </p>
-							            <div class="col-md-2 col-sm-6">
-											<img src="<?php echo $datos['foto']?>"  height="100" width="100">
+							            <div class="col-md-3 col-sm-6">
+											<p><img src="<?php echo RUTA_URL.'/images/perfiles/usuario'.$datos['idPersona'].'.jpg'?>"  height="100" width="100"></p>
 										</div>
 										<input type="file" name="foto">							            
 							            

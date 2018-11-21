@@ -27,6 +27,7 @@
 <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL?>/css/woocommerce-layout.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL?>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo RUTA_URL ?>/css/estilos.css" rel="stylesheet" type="text/css" />
 
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL ?>/css/estilos.css">

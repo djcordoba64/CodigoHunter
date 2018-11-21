@@ -44,7 +44,7 @@
 							            </p>
 							            <p class="form-row form-row-last validate-required validate-email" data-priority="110">
 							                <label for="billing_email" class="">Número de contácto<abbr class="required" title="required">*</abbr></label>
-							                <input class="input-text " required name="numeroContacto" type="text" value="<?php echo $datos['numeroContacto']?>" />
+							                <input class="input-text " required name="numeroContacto" type="text" onkeypress="return SoloNumeros(event);" id="numeroContacto"  maxlength="15" onBlur="validarLenght(this.value);"  value="<?php echo $datos['numeroContacto']?>" />
 							            </p>
 							            <p class="form-row form-row-wide address-field update_totals_on_change validate-required" data-priority="40">
 							                <label for="billing_country" class="">Dirección<abbr class="required" title="required">*</abbr>
@@ -67,7 +67,8 @@
 								             <!--Asignar contrasena--> 
 						                    <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" data-priority="10">
 						                      <label for="billing_first_name" class="">Contrasena: <abbr title="required">*</abbr></label>
-						                      <input type="password" class="input-text"  name="contrasena" autofocus="autofocus" value="" id="contrasena" >              
+						                      <input type="password" class="input-text"  name="contrasena" autofocus="autofocus" value="" id="contrasena" >
+						                                   
 						                    </p>
 						                    <!--Confirmar ontrasena--> 
 						                    <p class="form-row form-row-last validate-required woocommerce-validated"  data-priority="20">
@@ -78,7 +79,7 @@
 					                    <div id="noMostrar" style="display:;">
 								             <!--contrasena--> 
 						             
-						                      <input  type="password" class="input-text" disabled  name="contrasena" autofocus="autofocus" id="contrasena"  value="">              
+						                      <input hidden  type="password" class="input-text" disabled  name="contrasena" autofocus="autofocus" id="contrasena"  value="">              
 						                    </p>
 						 
 					                    </div>
@@ -90,13 +91,10 @@
 						<div class="col-md-6">
 							<div class="order_box">
 								<h6>foto de perfil</h6>	
-							    <div id="order_review" class="woocommerce-checkout-review-order">					        
-							        <div id="payment" class="woocommerce-checkout-payment">
-							        	<p class="form-row form-row-wide address-field update_totals_on_change validate-required" data-priority="40">
-							                <label for="billing_country" class="">Foto</label>
-							            </p>
-							            <div class="col-md-3 col-sm-6">
-											<p><img src="<?php echo RUTA_URL.'/images/perfiles/usuario'.$datos['idPersona'].'.jpg'?>"  height="100" width="100"></p>
+							    <div id="order_review" class="woocommerce-checkout-review-order">				 	<div id="payment" class="woocommerce-checkout-payment">
+							            
+							            <div class="col-md-3 col-sm-6" >
+											<p><img  src="<?php echo RUTA_URL.'/images/perfiles/usuario'.$datos['idPersona'].'.jpg'?>"  ></p>
 										</div>
 										<div class="col-md-3 col-sm-6">
 										<input type="file" name="foto">							            

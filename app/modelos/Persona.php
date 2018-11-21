@@ -97,7 +97,7 @@
         }
         
         //Preparamos la consulta
-        public function editarUsuario($datos){
+        public function editarUsuario_x_admin($datos){
              $this->db->query('UPDATE personas SET primerNombre=:primerNombre, 
                 segundoNombre=:segundoNombre, 
                 primerApellido=:primerApellido,
@@ -107,8 +107,7 @@
                 correo=:correo,
                 numeroContacto=:numeroContacto,
                 direccion=:direccion,
-                rol=:rol,
-                contrasena=:contrasena, 
+                rol=:rol, 
                 estado=:estado, 
                 updated_at= NOW(),
                 updated_by = :updated_by 
@@ -127,7 +126,6 @@
             $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
             $this->db->bind(':direccion'       ,  $datos['direccion']);
             $this->db->bind(':rol'             ,  $datos['rol']);
-            $this->db->bind(':contrasena'      ,  $datos['contrasena']);
             $this->db->bind(':estado'          ,  $datos['estado']);
             $this->db->bind(':updated_by'      ,  $_SESSION['idUsuario']);
 

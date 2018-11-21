@@ -73,7 +73,7 @@
 					                        <ul>
 					                          <li>
 					                            <div class="col-md-8">
-					                              <input type="radio" name="sexo" value="Masculino" <?php echo  $datos['sexo'] == 'Masculino' ? '':'checked' ?> required>Masculino                                      
+					                              <input type="radio" name="sexo" value="Masculino" <?php echo  $datos['sexo'] == 'Masculino' ? 'checked':'' ?> required>Masculino                                      
 					                            </div>                               
 					                            <div class="col-md-8">
 					                            <input type="radio" name="sexo" value="Femenino" <?php echo $datos['sexo'] =='Femenino' ? 'checked':'' ?>>Femenino                                    

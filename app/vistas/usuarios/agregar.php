@@ -42,23 +42,23 @@
                     <!--Primer Nombre--> 
                     <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
                       <label for="billing_first_name" class="">Primer Nombre: <abbr class="required" title="required">*</abbr></label>
-                      <input type="text" class="input-text"  name="primerNombre" autofocus="autofocus" required value="<?php echo $datos['primerNombre']?>">              
+                      <input type="text" class="input-text"  name="primerNombre" autofocus="autofocus" required value="<?php echo $datos['primerNombre']?>" onkeypress="return soloLetras(event);" id="primerNombre">              
                     </p>
                     <!--Segundo Nombre--> 
                     <p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
                       <label for="billing_last_name" class="">Segundo nombre:</label>
-                      <input type="text" class="input-text" name="segundoNombre" autofocus="autofocus" value="<?php echo $datos['segundoNombre']?>">                               
+                      <input type="text" class="input-text" name="segundoNombre" autofocus="autofocus" value="<?php echo $datos['segundoNombre']?>" onkeypress="return soloLetras(event);" id="segundoNombre">                               
                     </p>
                     <!--Primer Apellido--> 
                     <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
                       <label for="billing_first_name" class="">Primer Apellido: <abbr class="required" title="required">*</abbr>
                       </label>
-                      <input type="text" class="input-text" name="primerApellido" autofocus="autofocus" value="<?php echo $datos['primerApellido']?>">
+                      <input type="text" class="input-text" name="primerApellido" autofocus="autofocus" value="<?php echo $datos['primerApellido']?>" onkeypress="return soloLetras(event);" id="primerApellido" >
                     </p>
                     <!--Segundo Apelido--> 
                     <p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
                        <label for="billing_last_name" class="">Segundo Apellido:</label>
-                        <input type="text" class="input-text" name="segundoApellido" autofocus="autofocus" value="<?php echo $datos['segundoApellido']?>">
+                        <input type="text" class="input-text" name="segundoApellido" autofocus="autofocus" value="<?php echo $datos['segundoApellido']?>" onkeypress="return soloLetras(event);" id="segundoApellido">
                     </p>
                     <!--Documento de Identidad-->  
                     <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
@@ -79,7 +79,7 @@
                     <p class="form-row form-row-first validate-required validate-phone" id="billing_phone_field" data-priority="100">
                       <label for="billing_phone" class="">Número de contácto<abbr class="required" title="required">*</abbr>
                       </label>
-                      <input type="text" class="input-text"  name="numeroContacto"  autofocus="autofocus"  value="<?php echo $datos['numeroContacto']?>">
+                      <input type="text" class="input-text"  name="numeroContacto"  autofocus="autofocus"  value="<?php echo $datos['numeroContacto']?>" onkeypress="return SoloNumeros(event);" id="numeroContacto"  maxlength="15" onBlur="validarLenght(this.value);">
                     </p>
                     <!--Dirección--> 
                     <p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
@@ -111,9 +111,9 @@
                       <input type="password" class="input-text" name="confi_Contrasena" autofocus="autofocus" value="<?php echo $datos['confi_Contrasena']?>">                                
                     </p>
                     <!--Rol--> 
-                    <p class="form-row form-row-wide address-field update_totals_on_change validate-required" id="billing_country_field" data-priority="40">
+                    <p  class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
                       <label for="billing_country" class="">Rol:</label>
-                        <select name="rol" style="width: 30%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+                        <select name="rol" style="width: 90%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
                           <option value="">Seleccione..</option>
                           <option value="administrador" <?php  $datos['rol']=='administrador'? print "selected='selected'" : "";?> >Administrador</option>
                           <option value="coordinador" <?php $datos['rol']=='coordinador'? print "selected='selected'" : "";?> >Coordinador</option>
@@ -123,19 +123,20 @@
                     </p>
 
                     <!--Estado--> 
-                    <p class="form-row form-row-wide address-field update_totals_on_change validate-required" id="billing_country_field" data-priority="40">
+                    <p  class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
                       <label for="billing_country" class="">Estado:</label>
-                        <select name="estado" style="width: 30%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+                        <select name="estado" style="width: 90%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
                           <option value="Activo" <?php echo $datos['estado']=='Activo'? print "selected='selected'" : "";?> >Activo</option>
                           <option value="Inactivo" <?php echo $datos['estado']=='Inactivo'? print "selected='selected'" : "";?> >Inactivo</option>
                         </select>
                     </p>
-                      <input value="SIGUIENTE" class="btn btn-lg btn-brown" type="submit">
+                      
                                                                                         
-                    </div>                     
+                    </div>                   
                   </div>
 							</div>
 						</div>
+            <input value="Guardar" class="btn btn-lg btn-brown" type="submit"> 
 					</div>
 				</div>
 			</form>

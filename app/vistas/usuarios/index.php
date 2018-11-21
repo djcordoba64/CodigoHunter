@@ -24,29 +24,36 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
   <!-- PAGE HEAD END -->
   <!--Lista de los usuarios registrador-->
   	<div class="col-md-12">
-		<h3>Usuarios Registrados</h3>
-  
-  	</div>
-    <div class="col-md-12">
-      <div  class="col-md-4">
-          <div class="widget-area" role="complementary">
-            <aside class="widget">
-              <h4>Buscar</h4>
-              <div class="content">
-                <div class="form wp-searchform" method="get">
-                  <input  type="text" name="search"  id="buscar" onkeyup="buscarUsuario()" placeholder="Documento">
-                  <button type="submit" class="fa fa-search"></button>
-                </div>
-              </div>
-            </aside>
-        </div>
-      </div>
-    </div>
+    <h2>Consultar-editar-Agregar</h2>
+  </div>
   	<section class="cart-wrap">
   		<div class="container">
   			<div class="row">
   				<div class="woocommerce">
   					<div class="page_woo woo_cart">
+              <div class="col-md-12">
+                <div class="col-sm-7">
+                  <div class="footer-social">
+                    <div class="title"></div>
+                      <ul class="social">
+                        <li><a href="<?php echo RUTA_URL;?>/Usuarios/agregar" data-toggle="tooltip" title="Agregar nuevo usuario!" ><i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a></li>
+                      </ul> 
+                  </div>
+                </div>
+                <div class="col-sm-5" >
+                        <div class="widget-area" role="complementary" style="margin: 20px;">
+                            <aside class="widget">
+                              <h4>Buscar</h4>
+                              <div class="content">
+                                <div class="form wp-searchform" method="get">
+                                  <input  type="text" name="search"  id="buscar" onkeyup="buscarUsuario()" placeholder="Documento">
+                                  <button type="submit" class="fa fa-search"></button>
+                                </div>
+                              </div>
+                            </aside>
+                        </div>        
+                </div>
+              </div>
   						<form method="post">
   							<table class="shop_table shop_table_responsive cart" id="tbl_Usuarios">
   								<thead >

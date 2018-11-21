@@ -26,7 +26,7 @@
 			
 			//obtener los usuarios
 			$iniciar=($pagina-1)*$usuarios_x_pagina ;
-			echo $iniciar;
+			//echo $iniciar;
 
 			$personas=$this->personaModelo->obtenerUsuariosLimit($iniciar,$usuarios_x_pagina);
 
@@ -35,7 +35,7 @@
 			//contar los usuarios de nuestra base d edatos
 			$total_usuarios_db=$this->personaModelo->contarUsuarios();
 
-			echo $total_usuarios_db->cuenta;
+			//echo $total_usuarios_db->cuenta;
 			//var_dump($datos);
 			
 			//calculo es total de paginas
@@ -179,37 +179,49 @@
 					'numeroContacto'	=>trim($_POST['numeroContacto']),
 					'direccion'			=>trim($_POST['direccion']),
 					'rol'				=>trim($_POST['rol']),
-					'contrasena'		=>trim($_POST['contrasena']),
-					'confi_Contrasena'		=>trim($_POST['confi_Contrasena']),
 					'estado'			=>trim($_POST['estado']),				
 				];
 
-				//validaciones antes de realizar la operacion:
-				if($datos["contrasena"]!=$datos["confi_Contrasena"])
-				{					
-					// agrego mensaje a arreglo de datos para ser mostrado 
-					$datos['mensaje_error'] ='Las contraseñas no coinciden';
-					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
-					$this->vista('/usuarios/editar', $datos);
-					return;
-				}
-
 				//SE EJECUTA EL MÉTODO 	editarUsuario() del Modelo Persona.
-				$id = $this->personaModelo->editarUsuario($datos);
-				if($id==-1){
-					// no se ejecutó el update
-					// agrego mensaje a arreglo de datos para ser mostrado 
-					$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
-					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario intente de nuevo
-					$this->vista('/usuarios/editar', $datos);
-					return;
+				$id = $this->personaModelo->editarUsuario_x_admin($datos);
+				if($id==0){
 
-				}
-				else{
-					// exito, redireccionar al index
-					redireccionar('/Usuarios/index');
+					if ($_POST['contrasena']!='')
+					{
+						//validaciones antes de realizar la operacion:
+						if($_POST["contrasena"]!=$_POST["confi_Contrasena"])
+						{					
+							// agrego mensaje al arreglo de datos para ser mostrado 
+							$datos['mensaje_error'] ='Las contraseñas no coinciden';
+							// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+							$this->vista('/perfiles/consultar_admin', $datos);
+							return;
+						}else{
+
+							$resultado= $this->personaModelo->cambiarContrasena($idPersona, $_POST['contrasena']);
+						}
+	 					
+		 				}
+		 				if ($resultado==0){
+							$datos=[				
+							'mensaje_advertencia'=> 'Perfil Actualizado'
+							];
+							redireccionar('/Usuarios/index');
+						}
+
+						// no se ejecutó el update
+						// agrego mensaje a arreglo de datos para ser mostrado 
+						$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+						// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario intente de nuevo
+						$this->vista('/usuarios/editar', $datos);
+						return;
 				}
 
+				if ($id!=0){
+	 				$datos=[				
+						'mensaje_advertencia'		=> 'Ocurrio un error al procesar la solicitud'
+					];
+ 				}
 			}
 			else
 			{
