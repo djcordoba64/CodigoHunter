@@ -14,8 +14,9 @@
 		<div class="col-md-12">
 		<h2>Datos personales</h2>
 		</div>
+
 		<div class="woocommerce">
-			<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Perfiles/actualizar/<?php echo $datos['idPersona']?>" method="POST">
+			<form class="checkout woocommerce-checkout" enctype="multipart/form-data"  action="<?php echo RUTA_URL;?>/Perfiles/actualizar/<?php echo $datos['idPersona']?>" method="POST">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6">
@@ -50,6 +51,7 @@
 							                </label>
 							                 <input class="input-text" required name="direccion" id="" type="text" value="<?php echo $datos['direccion']?>" >
 							            </p>
+
 							        </div>
 							    </div>
 							   
@@ -62,8 +64,11 @@
 							        <div id="payment" class="woocommerce-checkout-payment">
 							        	<p class="form-row form-row-wide address-field update_totals_on_change validate-required" id="billing_country_field" data-priority="40">
 							                <label for="billing_country" class="">Foto</label>
-							                <input type="file" name="foto">
 							            </p>
+							            <div class="col-md-2 col-sm-6">
+										<img src="<?php echo $datos['foto']?>"  height="100" width="100">
+										 <input type="file" name="foto">
+										</div>							            
 							            
 							        </div>
 							    </div>

@@ -531,13 +531,14 @@
 					'Temperatura'		=>trim($_POST['Temperatura']),				
 					'coordenadasGoogle'	=>trim($_POST['coordenadasGoogle']),
 					'municipio'		=>trim($_POST['municipio']),
-					'idCliente' =>trim($_POST['idPersona']),
+					'idCliente' =>trim($_POST['idCliente']),
 					'Estado'		=>trim($_POST['Estado']),
 					'vereda'		=>trim($_POST['vereda']),
 									
 				];
 
-				$id = $this->fincaModelo->crear($datos);
+
+				$id = $this->fincaModelo->crear_nueva($datos);
 
 				if($id== -1){
 					// no se ejecutó el insert
@@ -549,8 +550,10 @@
 				}
 				else{
 					$datos["cerrar"]=true;
-					// Si se realizo el insert
-					redireccionar('/Cliente/editar');
+					// Si se realizo el inser
+					$this->vista('Cliente/editar', $datos);
+					return;
+					//redireccionar('/Cliente/editar');
 				}
 
 			}

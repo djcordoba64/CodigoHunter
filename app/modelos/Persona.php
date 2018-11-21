@@ -286,15 +286,16 @@
 
         }
         //-------EDITAR PERFIL DEL USUARIO----
-        public function editarUsuarioPerfil($datos){
-          $this->db->query('UPDATE personas SET correo=:correo, numeroContacto=:numeroContacto,direccion=:direccion, updated_at= NOW(), updated_by = :updated_by where idPersona= :idPersona');
+        public function editarUsuarioPerfil($datos,$destino1){
+          $this->db->query('UPDATE personas SET correo=:correo, numeroContacto=:numeroContacto,direccion=:direccion,foto=:foto, updated_at= NOW(), updated_by = :updated_by where idPersona= :idPersona');
 
            //vinculamos los valores
             $this->db->bind(':idPersona',  $datos['idPersona']);
              $this->db->bind(':correo'       ,  $datos['correo']);
             $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
-            $this->db->bind(':direccion'       ,  $datos['direccion']);           
-            $this->db->bind(':updated_by'      ,  $_SESSION['idUsuario']);
+            $this->db->bind(':direccion'       ,  $datos['direccion']);
+            $this->db->bind(':foto'  ,  $destino1);           
+            $this->db->bind(':updated_by' ,$_SESSION['idUsuario']);
 
             if ($this->db->execute()){           
                 return 0;

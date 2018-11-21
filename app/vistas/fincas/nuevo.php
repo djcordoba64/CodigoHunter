@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="woocommerce">
 			<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Fincas/agregar_finca" method="POST">
-				<input  name="idCliente" value="<?php echo isset($datos['idPersona'])? $datos['idPersona'] : '';?>">
+				<input hidden name="idCliente" value="<?php echo isset($datos['idPersona'])? $datos['idPersona'] : '';?>">
 					
 				
 				<!--array de fincas en una cadena de json-->
