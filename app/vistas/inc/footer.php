@@ -322,6 +322,27 @@ function exito(){
 	swal("Good job!", "You clicked the button!", "success");
 }
 
+//mostrar opción para cambiar contrasena
+   
+function MostrarSiNoContrasena(sel) {
+      if (sel.value=="opc1"){
+           divSi = document.getElementById("mostrar");
+           divSi.style.display = "";
+
+           divNo = document.getElementById("noMostrar");
+           divNo.style.display = "none";
+
+      }else{
+
+           divSi= document.getElementById("mostrar");
+           divSi.style.display="none";
+
+           divNo = document.getElementById("noMostrar");
+           divNo.style.display = "";
+      }
+}
+    
+
 
 </script>
 

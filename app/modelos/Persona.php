@@ -286,7 +286,9 @@
 
         }
         //-------EDITAR PERFIL DEL USUARIO----
-        public function editarUsuarioPerfil($datos,$destino1){
+
+        //perfil del usuario direrente al administrador
+        public function editarPerfil($datos,$destino1){
           $this->db->query('UPDATE personas SET correo=:correo, numeroContacto=:numeroContacto,direccion=:direccion,foto=:foto, updated_at= NOW(), updated_by = :updated_by where idPersona= :idPersona');
 
            //vinculamos los valores
@@ -304,7 +306,26 @@
                 return -1;
             }
         }
+        //editar perfil administrador
+        public function editarPerfilAdmin($datos,$destino1){
+          $this->db->query('UPDATE personas SET correo=:correo, numeroContacto=:numeroContacto,direccion=:direccion,contrasena=:contrasena, foto=:foto, updated_at= NOW(), updated_by = :updated_by where idPersona= :idPersona');
 
+           //vinculamos los valores
+            $this->db->bind(':idPersona',  $datos['idPersona']);
+             $this->db->bind(':correo'       ,  $datos['correo']);
+            $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
+            $this->db->bind(':direccion'       ,  $datos['direccion']);
+            $this->db->bind(':contrasena'       ,  $datos['contrasena']);
+            $this->db->bind(':foto'  ,  $destino1);           
+            $this->db->bind(':updated_by' ,$_SESSION['idUsuario']);
+
+            if ($this->db->execute()){           
+                return 0;
+            }
+            else{
+                return -1;
+            }
+        }
 
         //--------------------------------------------
         //__CLIENTES_RECEPCIÖN--------
