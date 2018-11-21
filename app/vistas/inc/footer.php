@@ -332,6 +332,10 @@ function MostrarSiNoContrasena(sel) {
            divNo = document.getElementById("noMostrar");
            divNo.style.display = "none";
 
+           document.getElementById("contrasena").required = true;
+
+           document.getElementById("confi_Contrasena").required = true;
+
       }else{
 
            divSi= document.getElementById("mostrar");
@@ -339,6 +343,10 @@ function MostrarSiNoContrasena(sel) {
 
            divNo = document.getElementById("noMostrar");
            divNo.style.display = "";
+
+           document.getElementById("contrasena").removeAttribute("required");
+
+           document.getElementById("confi_Contrasena").removeAttribute("required");
       }
 }
     

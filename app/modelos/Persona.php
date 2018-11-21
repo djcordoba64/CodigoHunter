@@ -307,17 +307,12 @@
             }
         }
         //editar perfil administrador
-        public function editarPerfilAdmin($datos,$destino1){
-          $this->db->query('UPDATE personas SET correo=:correo, numeroContacto=:numeroContacto,direccion=:direccion,contrasena=:contrasena, foto=:foto, updated_at= NOW(), updated_by = :updated_by where idPersona= :idPersona');
+        public function cambiarContrasena($idPersona,$contrasena){
+          $this->db->query('UPDATE personas SET contrasena=:contrasena where idPersona= :idPersona');
 
            //vinculamos los valores
-            $this->db->bind(':idPersona',  $datos['idPersona']);
-             $this->db->bind(':correo'       ,  $datos['correo']);
-            $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
-            $this->db->bind(':direccion'       ,  $datos['direccion']);
-            $this->db->bind(':contrasena'       ,  $datos['contrasena']);
-            $this->db->bind(':foto'  ,  $destino1);           
-            $this->db->bind(':updated_by' ,$_SESSION['idUsuario']);
+            $this->db->bind(':idPersona',  $idPersona);
+            $this->db->bind(':contrasena',  $contrasena);
 
             if ($this->db->execute()){           
                 return 0;

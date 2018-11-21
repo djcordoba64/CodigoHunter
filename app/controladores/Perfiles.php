@@ -112,18 +112,40 @@
 
  		}
 
+ 		
 
  		if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
+
 				$datos=[
 					'idPersona'			=>$idPersona,
 					'correo'			=>trim($_POST['correo']),				
 					'numeroContacto'	=>trim($_POST['numeroContacto']),
-					'direccion'			=>trim($_POST['direccion']),
-					'contrasena'		=>trim($_POST['contrasena']),			
+					'direccion'			=>trim($_POST['direccion'])		
 				];
 
-			$this->personaModelo->editarPerfilAdmin($datos,$destino1);
- 		$this->vista('/paginas/index');
+			$resultado = $this->personaModelo->editarPerfil($datos,$destino1);
+
+			if ($resultado==0){
+				if ($_POST['contrasena']!='')
+				{
+ 					$resultado= $this->personaModelo->cambiarContrasena($idPersona, $_POST['contrasena']);
+ 				}
+
+ 				if ($resultado==0){
+					$datos=[				
+					'mensaje_advertencia'		=> 'Perfil Aactualizado'
+					];
+				}
+ 			}
+
+ 			if ($resultado!=0){
+ 				$datos=[				
+					'mensaje_advertencia'		=> 'Ocurrio un error al procesar la solicitud'
+				];
+ 			}
+
+
+ 			$this->vista('/paginas/index', $datos);
  		}
  	}
 
