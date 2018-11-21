@@ -53,6 +53,7 @@
 		$datos['idDetalleFinca']=$_POST["fincas"];
 		$datos['correo']=$_POST["correo"];
 		$datos['direccion']=$_POST["direccion"];
+		$datos['Temperatura']=$_POST["Temperatura"];
 
 			//consultas datos para los select del formulario
 			$materias = $this->materiaPrimaModelo -> obtenerMateriasPrimas();
@@ -107,6 +108,7 @@
 			$datos['idDetalleFinca']=$_POST['idDetalleFinca'];
 			$datos['correo']=$_POST["correo"];
 			$datos['direccion']=$_POST["direccion"];
+			$datos['Temperatura']=$_POST["Temperatura"];
 
 			// recupero los datos del formulario, la finca que se desea agregar/actualizar
 			$datos["archivo"]=$_POST['archivo'];
@@ -333,6 +335,7 @@
 				$datos['idDetalleFinca']=$_POST['idDetalleFinca'];
 				$datos['correo']=$_POST["correo"];
 				$datos['direccion']=$_POST["direccion"];
+				$datos['Temperatura']=$_POST["Temperatura"];
 
 			
 			//recupero datos de las fincas que se han creado temporalmente (guardadas en el hidden y no se han guardado en BD)

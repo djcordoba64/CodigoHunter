@@ -37,15 +37,15 @@
 								</p>
 								<p>
 									<label for="direccion" class="">Dirección:</label>
-									<input class="contact-input" type="text"  name="direccion" value="<?php echo $datos['direccion']?>"/>
+									<input class="contact-input" type="text" required  name="direccion" value="<?php echo $datos['direccion']?>"/>
 								</p>
 						</div>
 						<div class="col-md-6">
 							<div class="col-md-12" style="background-color: #fff">
 								<h4 class="">Lista de las fincas del cliente</h4>
 									<p>Seleccione una finca: 
-									<select name="fincas" id="fincas" style="width: 50%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
-										   	<option value="0">Seleccione..
+									<select required name="fincas" id="fincas" style="width: 50%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
+										   	<option value="">Seleccione..
 										    </option>
 										</select>
 									</p>																		

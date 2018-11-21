@@ -218,7 +218,14 @@
 	  function submitForm(action) {
 	    var form = document.getElementById('form1');
 	    form.action = action;
-	    form.submit();
+		$("#form1").validate();
+		if($("#form1").valid()){
+	    	form.submit();
+		}
+		else
+		{
+			$("#form1").reportValidity();
+		}
 	  }
 	//buscar usuarios.
 	function buscarUsuario() {

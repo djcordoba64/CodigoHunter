@@ -127,6 +127,7 @@
 			$datos['idDetalleFinca']=$_POST['idDetalleFinca'];
 			$datos["correo"]=$_POST['correo'];
 			$datos['direccion']=$_POST['direccion'];
+			$datos['Temperatura']=$_POST['Temperatura'];
 			
 			
 			// recupero y guardo en variable losdatos del cliente (vienen desde fincas/agregar)
@@ -135,7 +136,8 @@
 					'idCliente'		=>trim($_POST['idCliente']),
 					'idDetalleFinca'		=>trim($_POST['idDetalleFinca']),
 					'correo'	=>trim($_POST['correo']),
-					'direccion'	=>trim($_POST['direccion'])
+					'direccion'	=>trim($_POST['direccion']),
+					'Temperatura'	=>trim($_POST['Temperatura'])
 				];
 				
 				//

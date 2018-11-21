@@ -23,10 +23,10 @@ class Recepcion extends Base
 		  return -2;       
 		 }  */  
 		 $this->db->query("INSERT INTO recepciones (
-							  idcliente, numeroFactura, idFinca, Estado, created_at,created_by, correo, direccion) 
+							  idcliente, numeroFactura, idFinca, Estado, created_at,created_by, correo, direccion, temperatura) 
 							  VALUES (
 							  :idcliente,:numeroFactura, :idFinca, 'Activo', 
-							  NOW(),:created_by, :correo, :direccion)
+							  NOW(),:created_by, :correo, :direccion, :temperatura)
 						  ");
 
 		 //VINCULAR LOS VALORES --- BIND(sentencias preparadas)---
@@ -36,6 +36,7 @@ class Recepcion extends Base
 		 $this->db->bind(':created_by', $_SESSION['idUsuario']);
 		 $this->db->bind(':correo'  ,  $datos['correo']);
 		 $this->db->bind(':direccion'  ,  $datos['direccion']);
+		 $this->db->bind(':temperatura'  ,  $datos['Temperatura']);
 
 		//EJECUTAMOS LA CONSULTA ----Execute
 

@@ -15,7 +15,7 @@
 							</p>
 							<div class="row">
 								<div class="col-md-6">
-									<input class="contact-input" type="text" placeholder="Número de documento" name="documentoIdentidad" value="">
+									<input class="contact-input" type="text" placeholder="Número de documento" name="documentoIdentidad" value="" required>
 								</div>
 								<div class="col-md-6">
 									<input value="Consultar" class="btn btn-lg btn-brown" type="submit">
