@@ -127,6 +127,10 @@
 		$.each(materias, function(idx, materia)
 		{
 			var o = new Option(materia.nombre, materia.idmateriaprima);
+			
+			if(idMateria!='' && idMateria == materia.idmateriaprima)
+				o.selected=true;
+
 			$(o).html(materia.nombre);
 			$("#materia").append(o);
 		}
@@ -135,6 +139,10 @@
 		$.each(beneficios, function(idx, beneficio)
 		{
 			var o = new Option(beneficio.nombre, beneficio.idtipoBeneficio);
+
+			if(idBeneficio!='' && idBeneficio == beneficio.idtipoBeneficio)
+				o.selected=true;
+
 			$(o).html(beneficio.departamento);
 			$("#beneficio").append(o);
 		}
@@ -210,8 +218,10 @@
 	var fincas = <?php echo isset($datos["fincas"])? $datos["fincas"]:"[]";?>;
 
 	var materias = <?php echo isset($datos["materias"])? $datos["materias"]:"[]";?>;
+	var idMateria = <?php echo isset($datos["materia"])? $datos["materia"]:"''";?>;
 
 	var beneficios = <?php echo isset($datos["beneficios"])? $datos["beneficios"]:"[]";?>;
+	var idBeneficio = <?php echo isset($datos["beneficio"])? $datos["beneficio"]:"''";?>;
 
 	var cerrar = <?php echo isset($datos["cerrar"])? $datos["cerrar"]:"false";?>;
 
