@@ -127,6 +127,10 @@
 		$.each(materias, function(idx, materia)
 		{
 			var o = new Option(materia.nombre, materia.idmateriaprima);
+			
+			if(idMateria!='' && idMateria == materia.idmateriaprima)
+				o.selected=true;
+
 			$(o).html(materia.nombre);
 			$("#materia").append(o);
 		}
@@ -135,6 +139,10 @@
 		$.each(beneficios, function(idx, beneficio)
 		{
 			var o = new Option(beneficio.nombre, beneficio.idtipoBeneficio);
+
+			if(idBeneficio!='' && idBeneficio == beneficio.idtipoBeneficio)
+				o.selected=true;
+
 			$(o).html(beneficio.departamento);
 			$("#beneficio").append(o);
 		}
@@ -210,13 +218,31 @@
 	var fincas = <?php echo isset($datos["fincas"])? $datos["fincas"]:"[]";?>;
 
 	var materias = <?php echo isset($datos["materias"])? $datos["materias"]:"[]";?>;
+	var idMateria = <?php echo isset($datos["materia"])? $datos["materia"]:"''";?>;
 
 	var beneficios = <?php echo isset($datos["beneficios"])? $datos["beneficios"]:"[]";?>;
+	var idBeneficio = <?php echo isset($datos["beneficio"])? $datos["beneficio"]:"''";?>;
 
 	var cerrar = <?php echo isset($datos["cerrar"])? $datos["cerrar"]:"false";?>;
 
-	  function submitForm(action) {
-	    var form = document.getElementById('form1');
+	  function submitForm(action,checkForm=false) {
+
+
+if (!form1.checkValidity()&& checkForm) {
+    // Create the temporary button, click and remove it
+    const tmpSubmit = document.createElement('button')
+    form1.appendChild(tmpSubmit)
+    tmpSubmit.click()
+    form1.removeChild(tmpSubmit)
+
+  } else {
+	// Form is valid, let the user proceed or do whatever we need to
+	var form = document.getElementById('form1');
+	    form.action = action;
+	form.submit();
+  }
+
+	    /*var form = document.getElementById('form1');
 	    form.action = action;
 		$("#form1").validate();
 		if($("#form1").valid()){
@@ -225,7 +251,7 @@
 		else
 		{
 			$("#form1").reportValidity();
-		}
+		}*/
 	  }
 	//buscar usuarios.
 	function buscarUsuario() {
