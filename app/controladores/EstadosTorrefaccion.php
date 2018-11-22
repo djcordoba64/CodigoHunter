@@ -135,94 +135,77 @@ class EstadosTorrefaccion extends Controlador
 		
 		// obtener los estados las primeras dos letras
 		$proceso=substr($estadoDb,0,2);
-		var_dump($proceso);//TRTrilla en proceso
 
-		if ($proceso=="TR"){
-			var_dump($proceso);
-			//obtengo La ultima letra
+		//var_dump($estadoDb);
+		
+		// ESTA EN PROCESO TRILLA	
+		if ($proceso=="TR"){ 		
+			//obtengo La ultima letra del proceso
 			$ultimaletra=substr($estadoDb, -1);
 
-			var_dump($ultimaletra);
 			if ($ultimaletra=='F') {
+				
+				echo "ultimaletra:".' '.$ultimaletra;
 
 				$datos["proceSg"]=$PLP;
 
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 			if ($ultimaletra=='P') {
+				//var_dump($ultimaletra);
 
-				echo "opciones del proceso";
+				echo "ultimaletra:".' '.$ultimaletra;
 				
-				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+				//$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 
 		}
 
+		// ESTA EN PRUEBAS DE LABORATORIO
 		if ($proceso=="PL") {
 			var_dump($proceso);
-
 			echo "Pruebas de Laboratorio";
+			//obtengo La ultima letra del proceso
+			$ultimaletra=substr($estadoDb, -1);
 		}
+
+		// ESTA EN PROCESO TORREFACTOR	
+		if($proceso=="TO"){
+			var_dump($proceso);
+			echo "TORREFACTO";
+			//obtengo La ultima letra del proceso
+			$ultimaletra=substr($estadoDb, -1);
+		}
+		// ESTA EN PROCESO TESTABILIZACIÓN DEL CAFÉ
+		if($proceso=="EC"){
+			var_dump($proceso);
+			echo "ESTABILIZACION DEL CAFE";
+			//obtengo La ultima letra del proceso
+			$ultimaletra=substr($estadoDb, -1);
+		}
+		// ESTA EN LABORATORIO
+		if($proceso=="LA"){
+			var_dump($proceso);
+			echo "LABOLARORIO";
+
+			//obtengo La ultima letra del proceso
+			$ultimaletra=substr($estadoDb, -1);
+		}
+		// ESTA EN EMPAQUE
+		if($proceso=="EM"){
+			var_dump($proceso);
+			echo "EMPAQUE";
+
+			//obtengo La ultima letra del proceso
+			$ultimaletra=substr($estadoDb, -1);
+		}
+
+
+
+		
 
 		
 	}
-
-
-
-
-
-
-
-			/*
-			
-				
-				$estadoActual=$this->TorrefaccionModelo->consultar_ultimo_estado($datos);
-		
-				$datos=[
-						'codigoEstado'=>$estadoActual->codigoEstado,
-						'idcafe'=>$estadoActual->idcafe,
-						'codigoCafe'=>$estadoActual->codigoCafe,
-
-					];
-
-				//guardo en una variable el ultimo estado de un café.
-				$letrasEstado=$datos['codigoEstado'];
-				//echo $letrasEstado;
-
-				//obtengo la ultima letra
-				$ultimaletra=substr($letrasEstado, -1);
-
-				//echo "$ultimaletra";
-					
-				$this->redirectToAction('EstadosTorrefaccion', "posibles_estados", $ultimaletra);
-
-				*/	
-	/*
-	public function posibles_estados($datos){
-		$P="P";
-		$D="D";
-		$F="F";
-		//var_dump($datos);
-		if ($datos==$P){
-			echo "detener-finalizar-modificar";
-
-		}
-		if ($datos==$D) {
-			echo "continuar-finalizar-modificar";
-		}
-		if ($datos==$F) {
-			echo "proceso siguiente";
-		}
-
-	}
-	*/
-
-
-	
-
-	
-	
-
 	
 }
 

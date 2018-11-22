@@ -26,7 +26,7 @@ class Torrefaccion
      }
    
     public function consultar_idEstados($datos){
-		$this->db->query ("SELECT * FROM cafes as c LEFT join estadostorrefaccion as e on e.idcafe=e.idcafe where c.idcafe=:idcafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion)");
+		$this->db->query ("SELECT * FROM cafes as c inner join estadostorrefaccion as e on e.idcafe=e.idcafe where c.idcafe=:idcafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion where idcafe=c.idcafe)");
 		 $this->db->bind(':idcafe',$datos['idcafe']);
         $idEstados=$this->db->registro();
      		return $idEstados;
