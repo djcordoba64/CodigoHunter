@@ -10,8 +10,7 @@
 				<div class="col-md-12">
 					<span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>     
 						<form class="contact-form" action="<?php echo RUTA_URL;?>/EstadosTorrefaccion/mostrar_formulario_trilla/" method="POST">
-							<input  name="codigoCafe" value="<?php echo isset($datos['codigoCafe'])? $datos['codigoCafe'] : '';?>">
-							
+
 
 							<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
 						        <label for="codigoCafe" class="">Código del café<abbr class="required" title="required">*</abbr></label>
@@ -21,7 +20,7 @@
 									<input class="contact-input" type="text" disabled name="codigoCafe"  value="<?php echo $datos['codigoCafe']?>">
 								</div>
 								<div class="col-m9">
-									<input value="Iniciar [ Proceso de Trilla ]" class="btn btn-lg btn-brown" type="submit">
+									<input value="<?php echo $datos["proceSg"]?>" class="btn btn-lg btn-brown" type="submit" name="PLP" >
 
 								</div>
 

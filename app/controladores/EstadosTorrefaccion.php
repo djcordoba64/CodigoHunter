@@ -64,6 +64,7 @@ class EstadosTorrefaccion extends Controlador
 						'codigoCafe'=>$datosCafe->codigoCafe,			
 					];
 
+
 				if ($datosCafe->estado == 'recibido'){
 
 				//se los mando al método validar_estados().
@@ -86,49 +87,94 @@ class EstadosTorrefaccion extends Controlador
 	public function validar_estados($datos){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
-			{
+		{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
 				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
 				$this->vista('/paginas/index',$datos);
 				return;
-			}
+		}
 
 			//valido si existe el café en la tabla estadosTorrefacción
 
-			$existe=$this->TorrefaccionModelo->existeCafe_en_estados( $datos);
+		$existe=$this->TorrefaccionModelo-> existeCafe_en_estados( $datos);
 
-			if ($existe==1) // Tiene uno o varios estados
-			{
+		if ($existe==1) // Tiene uno o varios estados
+		{
 				//consulto cual es el ultimo proceso
-				$procesoActual=$this->TorrefaccionModelo->consultar_ultimo_proceso($datos);
-		
+				$estados=$this->TorrefaccionModelo->consultar_idEstados($datos);
+
+				//var_dump($IdEstadoUltimo);
 				$datos=[
-						'idestadosTorrefaccion'=>$procesoActual->idestadosTorrefaccion,
-						'codigoEstado'=>$procesoActual->codigoEstado,
-						'idcafe'=>$procesoActual->idcafe,
-						'codigoCafe'=>$procesoActual->codigoCafe,
+						'idestadosTorrefaccion'=>$estados->idestadosTorrefaccion,
+						'idcafe'=>$estados->idcafe,
+						'codigoEstado'=>$estados->codigoEstado,
+						'codigoCafe'=>$estados->codigoCafe,
 
-					];
+				];
+
+				//var_dump($datos);
+				//echo "tiene uno o varios estados";
+				$this->redirectToAction('EstadosTorrefaccion', "consultar_proceso_sig", $datos);
+		}else
+		{	//Es primera ver que se va ha registrar
+			//echo "es primera vez";
+			//var_dump($datos);
+			$this->redirectToAction('EstadosTorrefaccion', "iniciar_primer_proceso", $datos);
+		}
 				
+	}
+
+	public function consultar_proceso_sig($datos){
+		//declaro las variables para los proceso
+
+		$PLP="Pruebas de Laboratorio";
+		$ETP="Estados de torrefacción"; 	
+		
+		$estadoDb=$datos['codigoEstado'];
+		
+		// obtener los estados las primeras dos letras
+		$proceso=substr($estadoDb,0,2);
+		var_dump($proceso);//TRTrilla en proceso
+
+		if ($proceso=="TR"){
+			var_dump($proceso);
+			//obtengo La ultima letra
+			$ultimaletra=substr($estadoDb, -1);
+
+			var_dump($ultimaletra);
+			if ($ultimaletra=='F') {
+
+				$datos["proceSg"]=$PLP;
+
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+			if ($ultimaletra=='P') {
+
+				echo "opciones del proceso";
+				
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 
-			if ($existe!=1) { //Es primera ver que se va ha registrar
+		}
 
-				$this->redirectToAction('EstadosTorrefaccion', "iniciar_primer_proceso", $datos);
-			}
+		if ($proceso=="PL") {
+			var_dump($proceso);
+
+			echo "Pruebas de Laboratorio";
+		}
+
+		
+	}
 
 
 
 
 
-			//verifico si tiene un estado el café
-			$CantEstado=$this->TorrefaccionModelo->validar_ExisteEstado($datos);
-			//var_dump($CantEstado);
 
-			// si tine un estado consultao cual es el último estado actual.
-			if($CantEstado==true)
-				{
+
+			/*
+			
 				
 				$estadoActual=$this->TorrefaccionModelo->consultar_ultimo_estado($datos);
 		
@@ -150,10 +196,8 @@ class EstadosTorrefaccion extends Controlador
 					
 				$this->redirectToAction('EstadosTorrefaccion', "posibles_estados", $ultimaletra);
 
-					
-				
-	}
-
+				*/	
+	/*
 	public function posibles_estados($datos){
 		$P="P";
 		$D="D";
@@ -171,6 +215,7 @@ class EstadosTorrefaccion extends Controlador
 		}
 
 	}
+	*/
 
 
 	

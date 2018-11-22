@@ -13,17 +13,25 @@ class Torrefaccion
 
 	//Validar si esta registrado el codigo del café
 	public function existeCafe_en_estados($datos){
-        $this->db->query( "SELECT count(1) as existe FROM estadostorrefaccion where idcafe=:idcafe " );
+        $this->db->query( "SELECT idcafe as existe FROM estadostorrefaccion where idcafe=:idcafe " );
         $this->db->bind(':idcafe',$datos['idcafe']);
-        $existe=$this->db->registro();
-       	$existe=$this->db->contarFilas();           
-
-        if( $existe>0){
-            	return 1; // existe
-        }else{
-        	 return 0; // no existe
-        }
+       $fila=$this->db->registro();
+        $fila=$this->db->contarFilas();
+       if($fila>0){
+       		return 1;
+       }else{
+       	return 0;
+       }
+           
      }
+   
+    public function consultar_idEstados($datos){
+		$this->db->query ("SELECT * FROM cafes as c LEFT join estadostorrefaccion as e on e.idcafe=e.idcafe where c.idcafe=:idcafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion)");
+		 $this->db->bind(':idcafe',$datos['idcafe']);
+        $idEstados=$this->db->registro();
+     		return $idEstados;
+           
+	}
 
 
 	//consultar el estado.
@@ -43,8 +51,8 @@ class Torrefaccion
 	}
 
 	public function consultar_ultimo_proceso($datos){
-		$this->db->query ("SELECT e.codigoEstado, e.idcafe, c.codigoCafe FROM estadostorrefaccion as e LEFT join cafes as c on c.idcafe= e.idcafe where codigoCafe=:codigoCafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion)");
-		 $this->db->bind(':codigoCafe',$datos['codigoCafe']);
+		$this->db->query ("SELECT * FROM estadostorrefaccion where idcafe=:idcafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion)");
+		 $this->db->bind(':codigoCafe',$datos['idcafe']);
             $fila=$this->db->registro();
            	return $fila;
            
