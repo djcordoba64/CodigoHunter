@@ -19,7 +19,7 @@
 		}
 
 		//$mensaje='',$error=''
-		public function index($pagina=1){
+		public function index($pagina=1,$mensaje='',$error=''){
 			//validacion de rol
 			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
@@ -29,7 +29,7 @@
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
-			/*
+			
 			if(!empty($error))
 			{
 				$datos['mensaje_error'] =$error;
@@ -39,7 +39,7 @@
 			{
 				$datos['mensaje_advertencia'] =$mensaje;
 			}
-			*/
+			
 
 			//echo $pagina;
 			$clientes_x_pagina=3;			
@@ -227,7 +227,7 @@
 
 					// no hubo ningun problema , redirecciono a formulario de creacion de cliente vacio e indicando que hubo exito 
 
-					$this->index('Exito al guardar el nuevo cliente.');
+					$this->index(1,'Exito al guardar el nuevo cliente.');
 					
 					
 				}
