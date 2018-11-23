@@ -58,24 +58,26 @@ class Torrefaccion
            
 	}
 
-  //agregar los campos a la BD created_at,created_by
-  public function registrar_inicioTrilla($idcafe){
-    //preparamos la consulata
-    $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
-       VALUES (:idcafe,NOW(),"TRP",NOW(),:created_by)
-       ');
 
-       //vinculamos los valores
-    $this->db->bind(':idcafe',$idcafe);   
-    $this->db->bind(':created_by', $_SESSION['idUsuario']);
-       
-       //Ejecutamos la consulta
-      if ($this->db->execute()){           
-              return 0;
-      }else{
-              return -1;
+  //agregar los campos a la BD created_at,created_by
+  public function insertarEstado($idcafe, $codigoEstado){
+        //preparamos la consulata
+        $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
+           VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
+           ');
+    
+           //vinculamos los valores
+        $this->db->bind(':idcafe',$idcafe);   
+        $this->db->bind(':codigoEstado',$codigoEstado);  
+        $this->db->bind(':created_by', $_SESSION['idUsuario']);
+           
+           //Ejecutamos la consulta
+          if ($this->db->execute()){           
+                  return 0;
+          }else{
+                  return -1;
+          }
       }
-  }
 
 
 }

@@ -19,8 +19,17 @@
   									<input disabled name="codigoCafe" value="<?php echo isset($datos['codigoCafe'])? $datos['codigoCafe'] : '';?>">
   								</div>
   								<div class="col-m9">
-                    <?php if ( $datos["nombreProceso"]=="TRP") { ?>
-                    <input type="button" class="btn btn-brown" data-toggle="modal" data-target="#IniciarTrilla" onclick="registrar_estadoTR(<?php echo $datos['idcafe']?>)" value="<?php echo "Iniciar"." ".$datos["proceso"]?>">
+                  <!--Boton iniciar siguiente proceso-->
+                    <?php if ( isset($datos["nombreSiguiente"])) { ?>
+                    <input type="button" class="btn btn-brown" data-toggle="modal" data-target="#IniciarTrilla" onclick="registrar_estadoTR(<?php echo $datos['idcafe']?>)" value="<?php echo $datos["nombreSiguiente"]?>">
+                    <?php }?>
+                    <!--Boton detener  proceso-->
+                    <?php if ( isset($datos["nombreDetener"])) { ?>
+                      <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/cambiar_estado/<?php echo $datos['idcafe'].'/'.$datos['codigoDetener']?>"><?php echo $datos["nombreDetener"]?></a>   
+                    <?php }?>
+                    <!--Boton finalizar  proceso-->
+                    <?php if ( isset($datos["nombreFinalizar"])) { ?>
+                      <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/cambiar_estado/<?php echo $datos['idcafe'].'/'.$datos['codigoFinalizar']?>"><?php echo $datos["nombreFinalizar"]?></a>   
                     <?php }?>
                   						
   								</div>							
@@ -55,7 +64,7 @@
         
       </div>
       <div class="modal-footer">
-      <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/registrar_inicio_Trilla/<?php echo $datos['idcafe']?>">Iniciar</a>       
+      <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/cambiar_estado/<?php echo $datos['idcafe'].'/'.$datos['codigoIniciar']?>">Iniciar</a>       
       </div>
     </div>
   </div>

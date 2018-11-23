@@ -126,9 +126,6 @@ class EstadosTorrefaccion extends Controlador
 
 	public function consultar_proceso_sig($datos){
 		//declaro las variables para los proceso
-
-		$PLP="Pruebas de Laboratorio";
-		$ETP="Estados de torrefacción"; 	
 		
 		$estadoDb=$datos['codigoEstado'];
 		
@@ -144,16 +141,18 @@ class EstadosTorrefaccion extends Controlador
 
 			if ($ultimaletra=='F') {
 				
-				echo "ultimaletra:".' '.$ultimaletra;
-
-				$datos["proceSg"]=$PLP;
+				$datos["nombreSiguiente"]="Iniciar Pruebas de Laboratorio";
+				$datos["codigoSiguiente"]="PLP";
 
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 			if ($ultimaletra=='P') {
-				var_dump($ultimaletra);
 
-				echo "ultimaletra:".' '.$ultimaletra;
+				$datos["nombreDetener"]="Detener proceso de trilla";
+				$datos["codigoDetener"]="TRD";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso de trilla";
+				$datos["codigoFinalizar"]="TRF";
 				
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
@@ -203,14 +202,9 @@ class EstadosTorrefaccion extends Controlador
 
 	public function iniciar_primer_proceso($datos){
 
-		$iniciar="Proceso de Trilla";
-		$TRP="TRP";
-
-		//recupero los datos y los vuelvo a meter en un array
-
 		//var_dump($datos);
-		$datos["proceso"]=$iniciar;
-		$datos["nombreProceso"]=$TRP;
+		$datos["nombreSiguiente"]="Proceso de Trilla";
+		$datos["codigoSiguiente"]="TRP";
 
 		//echo 'iniciar primer proceso';
 
@@ -218,7 +212,7 @@ class EstadosTorrefaccion extends Controlador
 	}
 
 	//Se va ha registrar el inicio del proceso Trilla(TR) y es estado seria en 'proceso'(P)
-	public function registrar_inicio_Trilla($idcafe){
+	public function cambiar_estado($idcafe, $estado){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
@@ -230,7 +224,7 @@ class EstadosTorrefaccion extends Controlador
 
 			}
 
-			$id = $this->TorrefaccionModelo->registrar_inicioTrilla($idcafe);
+			$id = $this->TorrefaccionModelo->insertarEstado($idcafe,$estado);
 
 				if($id==0){
 					
@@ -249,6 +243,8 @@ class EstadosTorrefaccion extends Controlador
 
 			
 	}
+
+	
 
 
 	

@@ -29,7 +29,7 @@
       	
       </div>
       <div class="modal-footer">
-      <a href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/registrar_inicio_Trilla/<?php echo $datos['idcafe']?>">Iniciar</a>       
+      <a href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/cambiar_estado/<?php echo $datos['idcafe']?>">Iniciar</a>       
       </div>
     </div>
   </div>
