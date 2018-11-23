@@ -41,7 +41,7 @@ class EstadosTorrefaccion extends Controlador
 			$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);	
 	}
 
-	public function registrar_consultar_cafe(){
+	public function validar_cafeExiste(){
 		//validacion de rol
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
@@ -57,22 +57,21 @@ class EstadosTorrefaccion extends Controlador
 			//si está registrado y estado es 'recibido' se sigue con el proceso.
 
 				//obtengo los datos del café
-				$datosCafe=$this->cafesModelo->optenerDatoscafe($_POST['codigoCafe']);
-				$datos=[				
-						
-						'idcafe'=>$datosCafe->idcafe,
-						'codigoCafe'=>$datosCafe->codigoCafe,			
+			$datosCafe=$this->cafesModelo->optenerDatoscafe($_POST['codigoCafe']);
+			$datos=[										
+					'idcafe'=>$datosCafe->idcafe,
+					'codigoCafe'=>$datosCafe->codigoCafe,			
 					];
 
 
-				if ($datosCafe->estado == 'recibido'){
+			if ($datosCafe->estado == 'recibido'){
 
 				//se los mando al método validar_estados().
 				$this->redirectToAction('EstadosTorrefaccion', "validar_estados", $datos);
 			}else {
 				//el suario no esta activo mostrar error
-						$datos=array('mensaje_error'=>'El café esta registrado pero el estado es "Rechazado"');
-						$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				$datos=array('mensaje_error'=>'El café esta registrado pero el estado es "Rechazado"');
+				$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
 			}
 
 		}else
@@ -95,7 +94,7 @@ class EstadosTorrefaccion extends Controlador
 				return;
 		}
 
-			//valido si existe el café en la tabla estadosTorrefacción
+		//valido si existe el café en la tabla estadosTorrefacción
 
 		$existe=$this->TorrefaccionModelo-> existeCafe_en_estados( $datos);
 
@@ -152,11 +151,11 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 			if ($ultimaletra=='P') {
-				//var_dump($ultimaletra);
+				var_dump($ultimaletra);
 
 				echo "ultimaletra:".' '.$ultimaletra;
 				
-				//$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 
 		}
@@ -199,13 +198,60 @@ class EstadosTorrefaccion extends Controlador
 			//obtengo La ultima letra del proceso
 			$ultimaletra=substr($estadoDb, -1);
 		}
-
-
-
-		
-
 		
 	}
+
+	public function iniciar_primer_proceso($datos){
+
+		$iniciar="Proceso de Trilla";
+		$TRP="TRP";
+
+		//recupero los datos y los vuelvo a meter en un array
+
+		//var_dump($datos);
+		$datos["proceso"]=$iniciar;
+		$datos["nombreProceso"]=$TRP;
+
+		//echo 'iniciar primer proceso';
+
+		$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+	}
+
+	//Se va ha registrar el inicio del proceso Trilla(TR) y es estado seria en 'proceso'(P)
+	public function registrar_inicio_Trilla($idcafe){
+
+		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+
+			}
+
+			$id = $this->TorrefaccionModelo->registrar_inicioTrilla($idcafe);
+
+				if($id==0){
+					
+					$this->vista('/Trilla/agregar_datos', $idcafe);
+					return;
+				}
+				else{
+					
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/iniciar_primer_proceso', $idcafe);
+					//return;
+
+					echo "NO";
+					
+				}
+
+			
+	}
+
+
+	
 	
 }
 

@@ -94,7 +94,6 @@
 
 
 
-
 <script type="text/javascript">
 	//document.ready: todo lo que este dentro de esta funcion se ejecuta solo cuando el documento esta completamente cargado
 	$(document).ready(function(){
@@ -228,167 +227,168 @@
 	  function submitForm(action,checkForm=false) {
 
 
-if (!form1.checkValidity()&& checkForm) {
-    // Create the temporary button, click and remove it
-    const tmpSubmit = document.createElement('button')
-    form1.appendChild(tmpSubmit)
-    tmpSubmit.click()
-    form1.removeChild(tmpSubmit)
+	if (!form1.checkValidity()&& checkForm) {
+	    // Create the temporary button, click and remove it
+	    const tmpSubmit = document.createElement('button')
+	    form1.appendChild(tmpSubmit)
+	    tmpSubmit.click()
+	    form1.removeChild(tmpSubmit)
 
-  } else {
-	// Form is valid, let the user proceed or do whatever we need to
-	var form = document.getElementById('form1');
-	    form.action = action;
-	form.submit();
-  }
+	  } else {
+		// Form is valid, let the user proceed or do whatever we need to
+		var form = document.getElementById('form1');
+		    form.action = action;
+		form.submit();
+	  }
 
-	    /*var form = document.getElementById('form1');
-	    form.action = action;
-		$("#form1").validate();
-		if($("#form1").valid()){
-	    	form.submit();
+		    /*var form = document.getElementById('form1');
+		    form.action = action;
+			$("#form1").validate();
+			if($("#form1").valid()){
+		    	form.submit();
+			}
+			else
+			{
+				$("#form1").reportValidity();
+			}*/
+		  }
+		//buscar usuarios.
+		function buscarUsuario() {
+		  // Declare variables 
+		  var input, filter, table, tr, td, i;
+		  input = document.getElementById("buscar");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("tbl_Usuarios");
+		  tr = table.getElementsByTagName("tr");
+
+		  // Loop through all table rows, and hide those who don't match the search query
+		  for (i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[0];
+		    if (td) {
+		      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		        tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+		      }
+		    } 
+		  }
 		}
-		else
-		{
-			$("#form1").reportValidity();
-		}*/
-	  }
-	//buscar usuarios.
-	function buscarUsuario() {
-	  // Declare variables 
-	  var input, filter, table, tr, td, i;
-	  input = document.getElementById("buscar");
-	  filter = input.value.toUpperCase();
-	  table = document.getElementById("tbl_Usuarios");
-	  tr = table.getElementsByTagName("tr");
 
-	  // Loop through all table rows, and hide those who don't match the search query
-	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[0];
-	    if (td) {
-	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-	        tr[i].style.display = "";
-	      } else {
-	        tr[i].style.display = "none";
-	      }
-	    } 
-	  }
+		//buscar Cliente.
+		function buscarCliente() {
+		  // Declare variables 
+		  var input, filter, table, tr, td, i;
+		  input = document.getElementById("buscar");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("tbl_Cliente");
+		  tr = table.getElementsByTagName("tr");
+
+		  // Loop through all table rows, and hide those who don't match the search query
+		  for (i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[0];
+		    if (td) {
+		      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		        tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+		      }
+		    } 
+		  }
+		}
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+	//mensaje 
+	$('[data-toggle="tooltip"]').tooltip(); 
+
+
+	//Se utiliza para que el campo de texto solo acepte numeros
+	function SoloNumeros(evt){
+	 if(window.event){//asignamos el valor de la tecla a keynum
+	  keynum = evt.keyCode; //IE
+	 }
+	 else{
+	  keynum = evt.which; //FF
+	 } 
+	 //comprobamos si se encuentra en el rango numérico y que teclas no recibirá.
+	 if((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6 ){
+	  return true;
+	 }
+	 else{
+	  return false;
+	 }
 	}
 
-	//buscar Cliente.
-	function buscarCliente() {
-	  // Declare variables 
-	  var input, filter, table, tr, td, i;
-	  input = document.getElementById("buscar");
-	  filter = input.value.toUpperCase();
-	  table = document.getElementById("tbl_Cliente");
-	  tr = table.getElementsByTagName("tr");
+	//Se utiliza para que el campo de texto solo acepte letras
+	function soloLetras(e) {
+	    key = e.keyCode || e.which;
+	    tecla = String.fromCharCode(key).toString();
+	    letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ";//Se define todo el abecedario que se quiere que se muestre.
+	    especiales = [8, 37, 39, 46, 6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
 
-	  // Loop through all table rows, and hide those who don't match the search query
-	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[0];
-	    if (td) {
-	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-	        tr[i].style.display = "";
-	      } else {
-	        tr[i].style.display = "none";
-	      }
-	    } 
-	  }
+	    tecla_especial = false
+	    for(var i in especiales) {
+	        if(key == especiales[i]) {
+	            tecla_especial = true;
+	            break;
+	        }
+	    }
+
+	    if(letras.indexOf(tecla) == -1 && !tecla_especial){
+	        return false;
+	      }	
 	}
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-
-//mensaje 
-$('[data-toggle="tooltip"]').tooltip(); 
-
-
-//Se utiliza para que el campo de texto solo acepte numeros
-function SoloNumeros(evt){
- if(window.event){//asignamos el valor de la tecla a keynum
-  keynum = evt.keyCode; //IE
- }
- else{
-  keynum = evt.which; //FF
- } 
- //comprobamos si se encuentra en el rango numérico y que teclas no recibirá.
- if((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6 ){
-  return true;
- }
- else{
-  return false;
- }
-}
-
-//Se utiliza para que el campo de texto solo acepte letras
-function soloLetras(e) {
-    key = e.keyCode || e.which;
-    tecla = String.fromCharCode(key).toString();
-    letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ";//Se define todo el abecedario que se quiere que se muestre.
-    especiales = [8, 37, 39, 46, 6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
-
-    tecla_especial = false
-    for(var i in especiales) {
-        if(key == especiales[i]) {
-            tecla_especial = true;
-            break;
-        }
-    }
-
-    if(letras.indexOf(tecla) == -1 && !tecla_especial){
-        return false;
-      }	
-}
-//validar número telefono
-function validarLenght(Objeto){
-	if(Objeto.length < 7){
-		alert('Lo minimo de carácteres son 6.');
-		}
-	else if(Objeto.length > 15){ 
-		}
-	} 
+	//validar número telefono
+	function validarLenght(Objeto){
+		if(Objeto.length < 7){
+			alert('Lo minimo de carácteres son 6.');
+			}
+		else if(Objeto.length > 15){ 
+			}
+		} 
 
 
 
-function exito(){
-	swal("Good job!", "You clicked the button!", "success");
-}
+	function exito(){
+		swal("Good job!", "You clicked the button!", "success");
+	}
 
-//mostrar opción para cambiar contrasena
-   
-function MostrarSiNoContrasena(sel) {
-      if (sel.value=="opc1"){
-           divSi = document.getElementById("mostrar");
-           divSi.style.display = "";
+	//mostrar opción para cambiar contrasena
+	   
+	function MostrarSiNoContrasena(sel) {
+	      if (sel.value=="opc1"){
+	           divSi = document.getElementById("mostrar");
+	           divSi.style.display = "";
 
-           divNo = document.getElementById("noMostrar");
-           divNo.style.display = "none";
+	           divNo = document.getElementById("noMostrar");
+	           divNo.style.display = "none";
 
-           document.getElementById("contrasena").required = true;
+	           document.getElementById("contrasena").required = true;
 
-           document.getElementById("confi_Contrasena").required = true;
+	           document.getElementById("confi_Contrasena").required = true;
 
-      }else{
+	      }else{
 
-           divSi= document.getElementById("mostrar");
-           divSi.style.display="none";
+	           divSi= document.getElementById("mostrar");
+	           divSi.style.display="none";
 
-           divNo = document.getElementById("noMostrar");
-           divNo.style.display = "";
+	           divNo = document.getElementById("noMostrar");
+	           divNo.style.display = "";
 
-           document.getElementById("contrasena").removeAttribute("required");
+	           document.getElementById("contrasena").removeAttribute("required");
 
-           document.getElementById("confi_Contrasena").removeAttribute("required");
-      }
-}
+	           document.getElementById("confi_Contrasena").removeAttribute("required");
+	      }
+	}
 
+	function registrar_estadoTR(datos){
+		//alert(datos);
+		$('#idcafe').val(datos[0].idcafe);
 
-    
-
+	}
 
 </script>
-
 
 </body>
 
