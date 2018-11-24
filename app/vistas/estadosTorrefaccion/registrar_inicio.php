@@ -4,10 +4,10 @@
 	<div class="col-md-12">
 		<h2>Gestionar trazabilidad del café</h2>
 	</div>
-	<div class="container">
+	<div class="container" >
 	    <div class="row">
 	        <div class="col-md-12">
-	            <div class="well well-sm">
+	            <div class="well well-sm" style="background: #f5f2eb">
 	                <form class="form-horizontal" action="<?php echo RUTA_URL;?>/EstadosTorrefaccion/validar_cafeExiste" method="POST">
 	                	<span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>  
 	                    <fieldset>

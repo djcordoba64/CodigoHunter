@@ -63,7 +63,7 @@ class EstadosTorrefaccion extends Controlador
 					'codigoCafe'=>$datosCafe->codigoCafe,			
 					];
 
-					
+
 			if ($datosCafe->estado == 'recibido'){
 
 				//se los mando al método validar_estados().
@@ -202,7 +202,8 @@ class EstadosTorrefaccion extends Controlador
 	public function iniciar_primer_proceso($datos){
 
 		//var_dump($datos);
-		$datos["nombreSiguiente"]="Proceso de Trilla";
+		$datos['leyenda']="Actualmente no tiene registrado ningun proceso";
+		$datos["nombreSiguiente"]="Iniciar proceso de Trilla";
 		$datos["codigoSiguiente"]="TRP";
 
 		//echo 'iniciar primer proceso';

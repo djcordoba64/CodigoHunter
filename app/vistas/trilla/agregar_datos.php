@@ -1,11 +1,12 @@
 
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
+
 <div class="container">
   <div class="col-md-12">
     <h2>Proceso de Trilla</h2>
   </div>
 <?php var_dump($datos) ?>
-  <div class="contact-wrap">    
+  <div class="well well-sm">    
     <div class="row">
       <div class="col-md-12">                           
         <form class="contact-form" action="<?php echo RUTA_URL;?>/DatosTrilla/registrar_datos/<?php echo $datos['idcafe']?>" method="POST">
@@ -24,23 +25,23 @@
                     <input class="contact-input" type="text" disabled name="fechaHora" value="<?php echo date("m/d/Y g:ia"); ?>"/>                     
                 </div>               
               </div>
-               <div class="col-md-12" >
+              <div class="col-md-12" >
                 <div class="col-md-6">
                   <p>
                     <label for="mermaTrilla" class="">Merma en trilla</label>
-                    <input class="contact-input" type="number"   name="mermaTrilla" value=""/>
+                    <input class="contact-input" type="number" required  name="mermaTrilla" value=""/>
                   </p>
                 </div>
                 <div  class="col-md-6">
                   <label for="mallas" class="">Mallas</label>
-                    <input class="contact-input" type="number"   name="mallas" value=""/>                     
+                    <input class="contact-input" type="number" required name="mallas" value=""/>                     
                 </div>               
               </div>
               <div class="col-md-12" >
                 <div class="col-md-6">
                   <p>
                     <label for="pesoCafeVerde" class="">Peso Cafe Verde</label>
-                    <input class="contact-input" type="number"   name="pesoCafeVerde" value=""/>
+                    <input class="contact-input" type="number" required name="pesoCafeVerde" value=""/>
                   </p>
                 </div>             
               </div>
@@ -50,10 +51,12 @@
               <div class="col-md-12" >
                   <textarea name="observacion"></textarea>                                                                 
               </div>
-              <div class="col-md-12 text-center">
+               <div class="col-md-12 text-center">
                 <input value="Guardar" class="btn btn-lg btn-brown" type="submit"/>
-            </div>  
             </div>
+               
+            </div>
+
 
           </div>  
         </form>         
