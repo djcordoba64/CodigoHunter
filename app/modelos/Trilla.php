@@ -40,15 +40,14 @@ class Trilla
 
 	}
 
-	public function crear($datos){
+	public function crear($datos,$idcafe){
 		//preparamos la consulata
 		$this->db->query('INSERT INTO datostrilla (fechaHora,idCafe,mermaTrilla,mallas,observacion,created_at,created_by) 
-			 VALUES (:fechaHora,:idcafe,:mermaTrilla,:mallas,:observacion,NOW(),:created_by)
+			 VALUES (NOW(),:idcafe,:mermaTrilla,:mallas,:observacion,NOW(),:created_by)
 			 ');
 
 			 //vinculamos los valores
-			$this->db->bind(':fechaHora' , $datos['fechaHora']);
-			 $this->db->bind(':idcafe',$datos['idcafe']);
+			 $this->db->bind(':idcafe',$idcafe);
 			 $this->db->bind(':mermaTrilla', $datos['mermaTrilla']);
 			 $this->db->bind(':mallas', $datos['mallas']);	
 			 $this->db->bind(':observacion', $datos['observacion']);		
@@ -60,10 +59,6 @@ class Trilla
            	}else{
             	return -1;
            }
-
-	}
-
-	
 
 	}
 

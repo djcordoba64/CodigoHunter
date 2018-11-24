@@ -24,12 +24,22 @@ class DatosTrilla extends Controlador
 				$this->vista('/paginas/index',$datos);
 				return;
 		}
-		$datos["idcafe"]=$idcafe;
+	
 
-		$this->vista('/>Trilla/agregar_datos', $datos);
+		$datosCafe=$this->cafesModelo->consultar_x_idCafe($idcafe);
+
+				$datos=[
+						'idcafe'=>$datosCafe->idcafe,
+						'codigoCafe'=>$datosCafe->codigoCafe,
+
+				];
+
+				//var_dump($datosCafe);
+
+		$this->vista('/Trilla/agregar_datos', $datos);
 	}
 
-	public function registrar_datos(){
+	public function registrar_datos($idcafe){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
@@ -44,9 +54,8 @@ class DatosTrilla extends Controlador
 			if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
 
 				$datos=[
-					'fechaHora'	=>trim($_POST['fechaHora']),
-					'idcafe'	=>trim($_POST['idcafe']),		
-					'mermaTrilla'	=>trim($_POST['mermaTrilla']),					
+	
+					'mermaTrilla'=>trim($_POST['mermaTrilla']),					
 					'mallas'	=>trim($_POST['mallas']),	
 					'observacion'=>trim($_POST['observacion']),
 					'pesoCafeVerde'=>trim($_POST['pesoCafeVerde']),
@@ -54,7 +63,7 @@ class DatosTrilla extends Controlador
 				];
 
 
-				$id = $this->TrillaModelo->crear($datos);
+				$id = $this->TrillaModelo->crear($datos,$idcafe);
 
 				if($id== -1){
 					// no se ejecutó el insert
@@ -68,7 +77,7 @@ class DatosTrilla extends Controlador
 					
 					// Si se realizo el insert
 					$datos['mensaje_exito'] ='Exito al guardar los datos';
-					$this->vista('EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+					$this->vista('EstadosTorrefaccion/registrar_inicio', $datos);
 					return;
 					//redireccionar('/Cliente/editar');
 				}

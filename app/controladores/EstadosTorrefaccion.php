@@ -55,7 +55,7 @@ class EstadosTorrefaccion extends Controlador
 		//valido si el café  esta registrado.
 		if($this->cafesModelo->cafeExiste( $_POST['codigoCafe'] ) ){
 			//si está registrado y estado es 'recibido' se sigue con el proceso.
-
+			var_dump( $_POST['codigoCafe']);
 				//obtengo los datos del café
 			$datosCafe=$this->cafesModelo->optenerDatoscafe($_POST['codigoCafe']);
 			$datos=[										
@@ -63,7 +63,7 @@ class EstadosTorrefaccion extends Controlador
 					'codigoCafe'=>$datosCafe->codigoCafe,			
 					];
 
-
+					
 			if ($datosCafe->estado == 'recibido'){
 
 				//se los mando al método validar_estados().
@@ -103,7 +103,6 @@ class EstadosTorrefaccion extends Controlador
 				//consulto cual es el ultimo proceso
 				$estados=$this->TorrefaccionModelo->consultar_idEstados($datos);
 
-				//var_dump($IdEstadoUltimo);
 				$datos=[
 						'idestadosTorrefaccion'=>$estados->idestadosTorrefaccion,
 						'idcafe'=>$estados->idcafe,
@@ -212,7 +211,7 @@ class EstadosTorrefaccion extends Controlador
 	}
 
 	//Se va ha registrar el inicio del proceso Trilla(TR) y es estado seria en 'proceso'(P)
-	public function cambiar_estado($idcafe, $estado){
+	public function cambiar_estado($idcafe, $codigoSiguiente){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
@@ -224,25 +223,22 @@ class EstadosTorrefaccion extends Controlador
 
 			}
 
-			$id = $this->TorrefaccionModelo->insertarEstado($idcafe,$estado);
+			$id = $this->TorrefaccionModelo->insertarEstado($idcafe,$codigoSiguiente);
 
 				if($id==0){
 					
-					$this->vista('/Trilla/agregar_datos', $idcafe);
+					$this->redirectToAction('DatosTrilla', "mostrar_formulario_trilla", $idcafe);
 					return;
 				}
 				else{
 					
 					//$datos['mensaje_advertencia'] ='no se realizo el insert';
-					$this->vista('/EstadosTorrefaccion/iniciar_primer_proceso', $idcafe);
+					$this->vista('/EstadosTorrefaccion/mostrar_formulario_trilla', $idcafe);
 					//return;
-
-					echo "NO";
 					
-				}
-
-			
+				}			
 	}
+	
 
 	
 

@@ -60,7 +60,7 @@ class Torrefaccion
 
 
   //agregar los campos a la BD created_at,created_by
-  public function insertarEstado($idcafe, $codigoEstado){
+  public function insertarEstado($idcafe, $codigoSiguiente){
         //preparamos la consulata
         $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
            VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
@@ -68,7 +68,7 @@ class Torrefaccion
     
            //vinculamos los valores
         $this->db->bind(':idcafe',$idcafe);   
-        $this->db->bind(':codigoEstado',$codigoEstado);  
+        $this->db->bind(':codigoEstado',$codigoSiguiente);  
         $this->db->bind(':created_by', $_SESSION['idUsuario']);
            
            //Ejecutamos la consulta
