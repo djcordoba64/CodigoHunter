@@ -350,7 +350,7 @@
 							'variedad'=>$lote->variedad,
 							'tipoTueste'=>$lote->tipoTueste,
 							'materia'=>$lote->materia,
-							'beneficios'=>$lote->beneficio,
+							'beneficio'=>$lote->beneficio,
 							'PorcentajeHumedad'=>$lote->PorcentajeHumedad,
 							'factorRendimiento'=>$lote->factorRendimiento,
 							'especie'=>$lote->especie,
