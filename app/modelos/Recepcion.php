@@ -64,9 +64,9 @@ class Recepcion extends Base
         //limitar las recepciones para la paginación y mostrar en el index
         public function limit_recepciones($iniciar,$recepciones_x_pagina){
 
-        $this->db->query(" SELECT * from recepciones WHERE numeroRecibo=numeroRecibo  ORDER BY created_at DESC LIMIT :iniciar,:nusuarios");
+        $this->db->query(" SELECT  r.created_at as fecha, c.documentoIdentidad as documento, concat(c.primerNombre , ' ' , c.primerApellido) as Cliente,  r.estado, r.numeroRecibo from recepciones as r inner join personas as c on r.idcliente=c.idPersona  ORDER BY r.created_at DESC LIMIT :iniciar,:nrecepciones");
         $this->db->bind(':iniciar',$iniciar,PDO::PARAM_INT);
-        $this->db->bind(':nusuarios',$recepciones_x_pagina,PDO::PARAM_INT);
+        $this->db->bind(':nrecepciones',$recepciones_x_pagina,PDO::PARAM_INT);
             $listaRecepciones=$this->db->registros();
            return $listaRecepciones;
 

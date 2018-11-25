@@ -41,7 +41,7 @@
 					                    	<th class="product-remove">Fecha</th>                    
 					                    	<th class="product-remove">Recibo</th>
 											<th class="product-remove">Cliente</th>
-											<th class="product-remove">Docuemento</th>							
+											<th class="product-remove">Documento</th>							
 											<th class="product-remove">Estado</th>
 											<th class="product-remove">Acciones</th>
 					                    </tr>
@@ -63,7 +63,7 @@
 												<?php echo $recepcion->Cliente;?>				
 											</td>
 											<td class="product-remove">
-												<?php echo $recepcion->docuemento;?>				
+												<?php echo $recepcion->documento;?>				
 											</td>
 											<td class="product-remove">
 												<?php echo $recepcion->estado;?>				
@@ -83,7 +83,7 @@
 						              <div class="pagination">
 
 
-						                  <a class="prev <?php  echo $datos['pagina']<= 1? 'disabled' :'' ?>  " href="<?php echo RUTA_URL;?>/Recepciones/index/<?php echo ($datos['pagina'])?>" >
+						                  <a class="prev <?php  echo $datos['pagina']<= 1? 'disabled' :'' ?>  " href="<?php echo RUTA_URL;?>/Recepciones/index/<?php echo ($datos['pagina']-1)?>" >
 						                    <i class="fa fa-chevron-left" aria-hidden="true"></i>Anterior
 						                  </a>
 
