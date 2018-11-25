@@ -11,11 +11,17 @@
                     <legend class="text-center header">Administrar</legend>                     
                     <div class="col-md-12" style="background-color:#fff;" >
                       <div style="background-color: #fff;margin: 40px;">
-                      <label><span></span><?php echo $datos['leyenda']?> el lote</span>
-                      <label style="color: #b89d64;font-size:25px"><?php echo $datos['codigoCafe']?></label>. De clic aquí para:<!--Boton iniciar siguiente proceso-->
+                      <label><span></span><?php echo $datos['leyenda']?></span>
+                      <label style="color: #b89d64;font-size:25px"><span></span><?php echo $datos['nombreProceso']?></span></label>, el lote
+                      <label style="color: #b89d64;font-size:25px"><?php echo $datos['codigoCafe']?></label>. De clic aquí para:<!--Boton Modificar datos delproceso de trilla-->
+                                    <?php if ( isset($datos["nombreModificar"])) { ?>
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosTrilla/editar_crgarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificar"]?></a><?php }?>
+
+                                     <!--Boton iniciar siguiente proceso-->
                                     <?php if ( isset($datos["nombreSiguiente"])) { ?>
                                     <input type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#IniciarTrilla" onclick="registrar_estadoTR(<?php echo $datos['idcafe']?>)" value="<?php echo $datos["nombreSiguiente"]?>">
                                     <?php }?>
+                                   
                                     <!--Boton detener  proceso-->
                                     <?php if ( isset($datos["nombreDetener"])) { ?>
                                       <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/cambiar_estado/<?php echo $datos['idcafe'].'/'.$datos['codigoDetener']?>"><?php echo $datos["nombreDetener"]?></a>   
