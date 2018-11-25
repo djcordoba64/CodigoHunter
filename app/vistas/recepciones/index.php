@@ -16,7 +16,7 @@
 									<div class="footer-social">
 										<div class="title"></div>
 											<ul class="social">
-												<li><a href="<?php echo RUTA_URL;?>/Recepciones/" data-toggle="tooltip" title="Nueva recepcion!" ><i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a></li>
+												<li><a href="<?php echo RUTA_URL;?>/Recepciones/registrar_nueva" data-toggle="tooltip" title="Nueva recepcion" ><i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a></li>
 											</ul>	
 									</div>
 								</div>
@@ -35,7 +35,7 @@
 								</div>
 							</div>
 					        <form method="post">        
-					            <table class="shop_table shop_table_responsive cart" id="tbl_Cliente" >
+					            <table class="shop_table shop_table_responsive cart" id="tbl_Recepcion" >
 					                <thead>
 					                    <tr class="header">	
 					                    	<th class="product-remove">Fecha</th>                    
