@@ -91,6 +91,35 @@ class DatosTrilla extends Controlador
 
 	//---------**EDITAR***----------------------------------------------------//
 
+	public function editar_crgarDatos($idcafe){
+		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+		{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+		}
+
+		//consulatos los datos
+		$datostrilla= $this->TrillaModelo->obtenerDatos_x_id($idcafe);
+
+			$datos=[	
+					'fechaHora'=>$datostrilla->fechaHora,
+					'idcafe'=>$datostrilla->idcafe,
+					'mermaTrilla'=>$datostrilla->mermaTrilla,
+					'mallas'=>$datostrilla->mallas,
+					'observacion'=>$datostrilla->observacion,
+					'pesoCafeVerde'=>$datostrilla->pesoCafeVerde,
+					'codigoCafe'=>$datostrilla->codigoCafe,
+			];				
+
+					$this->vista('/trilla/editar', $datos);
+
+	}
+
+
+
 	public function editar($idcafe){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -117,7 +146,7 @@ class DatosTrilla extends Controlador
 
 			if($id==-1){
 					$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
-					$this->vista('Trilla/editar', $datos);
+					$this->vista('trilla/editar', $datos);
 					return;
 			}
 			else{
@@ -130,20 +159,25 @@ class DatosTrilla extends Controlador
 		}else
 		{
 			if(empty($datos)){
+				
 				//consulatos los datos
 				$datostrilla= $this->TrillaModelo->obtenerDatos_x_id($idcafe);
 
-				$datos=[				
+				$datos=[
+
 						'idDatoTrilla'=>$datostrilla->idDatoTrilla,	
 						'fechaHora'=>$datostrilla->fechaHora,
 						'idcafe'=>$datostrilla->idcafe,
 						'mermaTrilla'=>$datostrilla->mermaTrilla,
 						'mallas'=>$datostrilla->mallas,
 						'observacion'=>$datostrilla->observacion,
-						'pesoCasfeverde'=>$datostrilla->pesoCasfeverde,
+						'pesoCafeVerde'=>$datostrilla->pesoCafeVerde,
+						'codigoCafe'=>$datostrilla->codigoCafe,
 					];
 
-					$this->vista('/Trila/editar', $datos);
+				
+
+					$this->vista('/trilla/editar', $datos);
 			}
 		}
 	}

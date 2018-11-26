@@ -147,11 +147,17 @@ class EstadosTorrefaccion extends Controlador
 			}
 			if ($ultimaletra=='P') {
 
-				$datos["nombreDetener"]="Detener proceso de trilla";
+				$datos['leyenda']="Actualmente está en el proceso de ";
+				$datos['nombreProceso']="Trilla";
+				
+				$datos["nombreDetener"]="Detener proceso";
 				$datos["codigoDetener"]="TRD";
 				
-				$datos["nombreFinalizar"]="Finalizar proceso de trilla";
+				$datos["nombreFinalizar"]="Finalizar proceso";
 				$datos["codigoFinalizar"]="TRF";
+
+				$datos["nombreModificar"]="Modificar datos ";
+	
 				
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
@@ -226,24 +232,20 @@ class EstadosTorrefaccion extends Controlador
 
 			$id = $this->TorrefaccionModelo->insertarEstado($idcafe,$codigoSiguiente);
 
-				if($id==0){
-					
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
 					$this->redirectToAction('DatosTrilla', "mostrar_formulario_trilla", $idcafe);
 					return;
 				}
 				else{
-					
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
 					//$datos['mensaje_advertencia'] ='no se realizo el insert';
-					$this->vista('/EstadosTorrefaccion/mostrar_formulario_trilla', $idcafe);
-					//return;
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
 					
 				}			
 	}
-	
-
-	
-
-
 	
 	
 }

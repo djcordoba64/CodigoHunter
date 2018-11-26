@@ -11,8 +11,8 @@ class Trilla
 		$this->db = new Base;
 	}
 
-	public function obtenerDatos_x_id($idCafe){
-    	$this->db->query("SELECT * FROM datostrilla WHERE idcafe=:idcafe");
+	public function obtenerDatos_x_id($idcafe){
+    	$this->db->query("SELECT c.codigoCafe,d.fechaHora,d.mermaTrilla,d.mallas,d.observacion,d.pesoCafeVerde FROM datostrilla d inner join cafes c on c.idcafe=d.idcafe WHERE d.idcafe=:idcafe");
         $this->db->bind(':idcafe',$idcafe);
         $fila=$this->db->registro();
         return $fila;
@@ -24,7 +24,6 @@ class Trilla
             where idcafe= :idcafe');
 
 		 //vinculamos los valores
-            $this->db->bind(':idcafe',  $datos['idcafe']);
             $this->db->bind(':mermaTrilla',  $datos['mermatrilla']);
             $this->db->bind(':mallas',  $datos['mallas']);
             $this->db->bind(':observacion',  $datos['observacion']);
