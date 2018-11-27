@@ -211,6 +211,38 @@
 			
 		}
 		*/
+
+
+
+		public function detalle($idRecepcion){
+			//validacion de rol
+			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+			}
+
+			//consulatos los datos de la recepcion
+			$datosRecepcion= $this->recepcionModelo->ConsultarDatos_x_id($idRecepcion);
+				
+					$datos=[
+						'fecha'	=> $datosRecepcion->created_at,	
+						//'codigoRecibo'	=> $datosRecepcion->codigorecibo,				
+						'direccion'	=> $datosRecepcion->direccion,
+						'correo'	=> $datosRecepcion->correo,
+						'temperatura'	=> $datosRecepcion->temperatura,										
+						'estado'=> $datosRecepcion->Estado,
+					];
+
+			//consulto datos de los  cafés registrados  a esa recepción
+			$datos["ArCafes"] = $this ->cafeModelo ->obtenerCafesRecepcion($idRecepcion);				
+
+					$this->vista('/recepciones/detalle', $datos);
+
+		}
 	}
 
 

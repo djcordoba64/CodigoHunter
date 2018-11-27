@@ -64,7 +64,7 @@ class Recepcion extends Base
         //limitar las recepciones para la paginación y mostrar en el index
         public function limit_recepciones($iniciar,$recepciones_x_pagina){
 
-        $this->db->query(" SELECT  r.created_at as fecha, c.documentoIdentidad as documento, concat(c.primerNombre , ' ' , c.primerApellido) as Cliente,  r.estado, r.numeroRecibo from recepciones as r inner join personas as c on r.idcliente=c.idPersona  ORDER BY r.created_at DESC LIMIT :iniciar,:nrecepciones");
+        $this->db->query(" SELECT r.idRecepcion, r.created_at as fecha, c.documentoIdentidad as documento, concat(c.primerNombre , ' ' , c.primerApellido) as Cliente,  r.estado, r.numeroRecibo from recepciones as r inner join personas as c on r.idcliente=c.idPersona  ORDER BY r.created_at DESC LIMIT :iniciar,:nrecepciones");
         $this->db->bind(':iniciar',$iniciar,PDO::PARAM_INT);
         $this->db->bind(':nrecepciones',$recepciones_x_pagina,PDO::PARAM_INT);
             $listaRecepciones=$this->db->registros();
@@ -75,6 +75,17 @@ class Recepcion extends Base
         public function contar_recepciones(){
         	$this->db->query("SELECT count(*) as cuenta FROM recepciones");
             return $this->db->registro(); 
+        }
+
+
+        //-----ACTUALIZAR--------------------------------------------------
+        //consulto los datos para cargarlos en el formulario de edición.
+        public function ConsultarDatos_x_id($idRecepcion){
+        	$this->db->query("SELECT r.codigoRecibo,r.Estado,r.created_at,r.correo,r.direccion,r.temperatura,p.primerNombre,p.primerApellido, f.nombreFinca FROM recepciones as r inner join personas as p on p.idPersona=r.idcliente INNER join detallefinca as f on f.idCliente=p.idPersona WHERE r.idRecepcion=:idRecepcion");
+        	$this->db->bind(':idRecepcion',$idRecepcion);
+        	 $fila=$this->db->registro();
+            return $fila;
+
         }
 	
 }

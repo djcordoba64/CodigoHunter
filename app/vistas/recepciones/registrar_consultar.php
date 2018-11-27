@@ -40,25 +40,35 @@
 									<input class="contact-input" type="text" required  name="direccion" value="<?php echo $datos['direccion']?>"/>
 								</p>
 						</div>
-						<div class="col-md-6">
-							<div class="col-md-12" style="background-color: #fff">
+						<div class="col-md-6" style="background-color: #fff">
+							<div class="col-md-8" >
 								<h4 class="">Lista de las fincas del cliente</h4>
 									<p>Seleccione una finca: 
 									<select required name="fincas" id="fincas" style="width: 50%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country">
 										   	<option value="">Seleccione..
 										    </option>
 										</select>
-									</p>																		
-								
-							</div>	
+									</p>								
+							</div>
+							<div class="col-sm-4">
+									<div class="footer-social">
+										<div class="title" align="center"></div>
+											<ul class="social" style="margin: 84px;" >												
+												<li>
+													<a href="<?php echo RUTA_URL;?>/Fincas/agregar_finca_mostrar_formulario/<?php echo $datos['idPersona'];?>" data-toggle="tooltip" title="Agregar una finca!" target="_blank">
+														<i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a>
+												</li>
+											</ul>	
+									</div>
+								</div>	
 							<div class="col-md-12" id="divDetalleFinca" style="display: none; background-color: #fff">
-								<h4>Datos de la finca</h4>
+								 <label style="color: #b89d64;font-size:18px;"><span></span>Datos de la finca</span></label>
 								<p>
 									<label for="nombreFinca" class="">Nombre de la finca:</label>
 									<input class="contact-input" type="text" disabled name="nombreFinca" id="nombreFinca"/>
 								</p>
 								<div class="col-md-6">
-											<p>
+											<p >
 											<label for="municipio" class="">Municipio:</label>
 											<input class="contact-input" type="text" disabled name="municipio" id="municipio"/>
 											</p>											
@@ -69,14 +79,21 @@
 											<input class="contact-input" type="text" disabled name="vereda" id="vereda"/>
 											</p>											
 								</div>
-								<div class="col-md-5">
+								<div class="col-md-6">
 									<label>Temperatura promedio:</label>
 										<input class="contact-input" type="number" name="Temperatura" id="Temperatura"/>
 								</div>																				
 							</div>								
 						</div>
-						<div class="col-md-12 text-center">
-								<input value="Siguiente" class="btn btn-lg btn-brown" type="submit"/>
+						<div class="col-md-12" style="margin: 20px;">
+							<div class="col-md-6" align="center" >									
+
+									<a href="<?php echo RUTA_URL;?>/paginas/index" class="btn btn-lg btn-default">Cancelar</a>
+
+							</div>
+							<div class="col-md-6" align="center">
+									<input value="Siguiente>>" class="btn btn-lg btn-brown" type="submit"/>
+							</div>
 						</div>
 					</div>	
 

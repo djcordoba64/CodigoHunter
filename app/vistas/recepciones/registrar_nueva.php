@@ -11,7 +11,7 @@
 					<span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>     
 						<form class="contact-form" action="<?php echo RUTA_URL;?>/Recepciones/registrar_consultar" method="POST">
 							<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
-						        <label for="billing_first_name" class="">Ingrese el númeo de documento del cliente.<abbr class="required" title="required">*</abbr></label>
+						        <label for="billing_first_name" class="">Ingrese el número de documento del cliente.<abbr class="required" title="required">*</abbr></label>
 							</p>
 							<div class="row">
 								<div class="col-md-6">

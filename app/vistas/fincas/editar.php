@@ -20,23 +20,23 @@
 								<!--Nombre de la finca--> 
 								<p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
 								<label for="billing_first_name" class="">Nombre de la finca:</label>
-								<input style="background-color: #D3D1D1"   type="text" class="input-text" name="nombreFinca"  disabled value="<?php echo $datos['nombreFinca']?>">
+								<input    type="text" class="input-text" name="nombreFinca"  disabled value="<?php echo $datos['nombreFinca']?>">
 								</p>
 								<!--Departamento--> 										       
 								<p class="form-row form-row-first "  >
 									<label for="billing_country" class="">Departamento:</label>
 
-									 <input style="background-color: #D3D1D1" type="text" class="input-text" name="departamento"  disabled value="<?php echo $datos['departamento']?>">    
+									 <input type="text" class="input-text" name="departamento"  disabled value="<?php echo $datos['departamento']?>">    
 								</p>	                
 								<!--Municipio-->
 								<p class="form-row form-row-last">
 									<label for="billing_country" class="">Municipio:</label>
-									 <input style="background-color: #D3D1D1" type="text" class="input-text" name="municipio" disabled value="<?php echo $datos['municipio']?>"> 
+									 <input  type="text" class="input-text" name="municipio" disabled value="<?php echo $datos['municipio']?>"> 
 								</p>
 								<!--Vereda-->
 								<p class="form-row form-row-wide" id="billing_company_field" data-priority="10">
 									<label for="billing_first_name" class="">Vereda:</label>
-									 <input style="background-color: #D3D1D1" type="text" class="input-text" name="vereda"  disabled  value="<?php echo $datos['vereda']?>"> 
+									 <input  type="text" class="input-text" name="vereda"  disabled  value="<?php echo $datos['vereda']?>"> 
 								</p>
 								<!--Coordenadas Google-->  										       
 								<p class="form-row form-row-wide" validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">

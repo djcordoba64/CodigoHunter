@@ -11,6 +11,7 @@
 			<div class="row">				
 					<div class="woocommerce">
 					    <div class="page_woo woo_cart">
+					    	<a href="<?php echo RUTA_URL;?>/paginas/index" class="btn btn-light"><i class="glyphicon glyphicon-hand-left"></i> Salir</a>
 					    	<div class="col-md-12">
 								<div class="col-sm-7">
 									<div class="footer-social">
@@ -21,7 +22,7 @@
 									</div>
 								</div>
 								<div class="col-sm-5" >
-								          <div class="widget-area" role="complementary">
+								          <div class="widget-area" role="complementary" style="margin: 20px;" >
 								            <aside class="widget">
 								              <h4>Buscar</h4>
 								              <div class="content">
@@ -37,10 +38,10 @@
 					        <form method="post">        
 					            <table class="shop_table shop_table_responsive cart" id="tbl_Recepcion" >
 					                <thead>
-					                    <tr class="header">	
-					                    	<th class="product-remove">Fecha</th>                    
-					                    	<th class="product-remove">Recibo</th>
-											<th class="product-remove">Cliente</th>
+					                    <tr class="header">
+					                    	<th class="product-remove">Recibo</th>	
+					                    	<th class="product-remove">Fecha</th>                    		
+					                    	<th class="product-remove">Cliente</th>
 											<th class="product-remove">Documento</th>							
 											<th class="product-remove">Estado</th>
 											<th class="product-remove">Acciones</th>
@@ -49,15 +50,16 @@
 					                <tbody  class="cart_item">
 									<?php foreach($datos['recepciones']  as $recepcion): ?>
 										<tr class="cart_item">
+											<td class="product-remove">
+												<a href="<?php echo RUTA_URL;?>/Recepciones/detalle/<?php echo $recepcion->idRecepcion;?>">
+													<?php echo $recepcion->numeroRecibo;?>					
+												</a>
+											</td>
 											<td class="product-remove">					
 												<?php echo $recepcion->fecha;?>								
 											</td>
 										
-											<td class="product-remove">
-												<a href="<?php echo RUTA_URL;?>/Rececepciones/detalle/<?php echo $recepcion->numeroRecibo;?>">
-													<?php echo $recepcion->numeroRecibo;?>					
-												</a>
-											</td>
+											
 										
 											<td class="product-remove">
 												<?php echo $recepcion->Cliente;?>				
@@ -69,7 +71,9 @@
 												<?php echo $recepcion->estado;?>				
 											</td class="product-remove">
 											<td class="product-remove">
-																
+												<a href="<?php echo RUTA_URL;?>/Recepciones/CambiarEstado/<?php echo $recepcion->idRecepcion;?>" class="btn btn-sm btn-default" >
+												 <span class="glyphicon glyphicon-edit"></span>Anular
+												 </a>				
 											</td class="product-remove">
 
 										</tr>

@@ -208,6 +208,7 @@ class EstadosTorrefaccion extends Controlador
 	public function iniciar_primer_proceso($datos){
 
 		//var_dump($datos);
+		
 		$datos['leyenda']="Actualmente no tiene registrado ningun proceso";
 		$datos["nombreSiguiente"]="Iniciar proceso de Trilla";
 		$datos["codigoSiguiente"]="TRP";
