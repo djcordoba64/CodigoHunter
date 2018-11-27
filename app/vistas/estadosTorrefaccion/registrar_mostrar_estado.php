@@ -15,14 +15,16 @@
                       <?php if ( isset($datos["nombreProceso"])) { ?>
                       <label style="color: #b89d64;font-size:25px"><span></span><?php echo $datos['nombreProceso']?></span> <?php }?></label>, el lote
                       <label style="color: #b89d64;font-size:25px"><?php echo $datos['codigoCafe']?></label>. 
-                      <br>De clic en una de las opciones para:<!--Boton Modificar datos delproceso de trilla-->
+                      <br>De clic en una de las opciones para:
+                      <div style="margin: 20px;">
+                                    <!--Boton Modificar datos delproceso de trilla-->
                                     <?php if ( isset($datos["nombreModificar"])) { ?>
-                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosTrilla/editar_crgarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificar"]?></a><?php }?><br>
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosTrilla/editar_crgarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificar"]?></a><?php }?>
 
                                      <!--Boton iniciar siguiente proceso-->
                                     <?php if ( isset($datos["nombreSiguiente"])) { ?>
                                     <input type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#IniciarTrilla" onclick="registrar_estadoTR(<?php echo $datos['idcafe']?>)" value="<?php echo $datos["nombreSiguiente"]?>">
-                                    <?php }?><br>
+                                    <?php }?>
                                    
                                     <!--Boton detener  proceso-->
                                     <?php if ( isset($datos["nombreDetener"])) { ?>
@@ -32,7 +34,7 @@
                                     <?php if ( isset($datos["nombreFinalizar"])) { ?>
                                       <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/cambiar_estado/<?php echo $datos['idcafe'].'/'.$datos['codigoFinalizar']?>"><?php echo $datos["nombreFinalizar"]?></a>   
                                     <?php }?>
-                        
+                      </div>
                       </div>
                       <div class="form-group">
                             <div class="col-md-12 text-center">

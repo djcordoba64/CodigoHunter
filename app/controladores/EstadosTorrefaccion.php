@@ -55,7 +55,7 @@ class EstadosTorrefaccion extends Controlador
 		//valido si el café  esta registrado.
 		if($this->cafesModelo->cafeExiste( $_POST['codigoCafe'] ) ){
 			//si está registrado y estado es 'recibido' se sigue con el proceso.
-			var_dump( $_POST['codigoCafe']);
+			//var_dump( $_POST['codigoCafe']);
 				//obtengo los datos del café
 			$datosCafe=$this->cafesModelo->optenerDatoscafe($_POST['codigoCafe']);
 			$datos=[										
@@ -65,7 +65,9 @@ class EstadosTorrefaccion extends Controlador
 
 
 			if ($datosCafe->estado == 'recibido'){
+				//var_dump($datosCafe);
 
+				//echo "recibido";
 				//se los mando al método validar_estados().
 				$this->redirectToAction('EstadosTorrefaccion', "validar_estados", $datos);
 			}else {
@@ -85,6 +87,7 @@ class EstadosTorrefaccion extends Controlador
 
 	public function validar_estados($datos){
 
+
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
 				// agrego mensaje a arreglo de datos para ser mostrado 
@@ -103,6 +106,8 @@ class EstadosTorrefaccion extends Controlador
 				//consulto cual es el ultimo proceso
 				$estados=$this->TorrefaccionModelo->consultar_idEstados($datos);
 
+				var_dump($estados);
+
 				$datos=[
 						'idestadosTorrefaccion'=>$estados->idestadosTorrefaccion,
 						'idcafe'=>$estados->idcafe,
@@ -111,7 +116,7 @@ class EstadosTorrefaccion extends Controlador
 
 				];
 
-				//var_dump($datos);
+				
 				//echo "tiene uno o varios estados";
 				$this->redirectToAction('EstadosTorrefaccion', "consultar_proceso_sig", $datos);
 		}else
@@ -125,13 +130,13 @@ class EstadosTorrefaccion extends Controlador
 
 	public function consultar_proceso_sig($datos){
 		//declaro las variables para los proceso
-		
+		var_dump($datos);
 		$estadoDb=$datos['codigoEstado'];
 		
 		// obtener los estados las primeras dos letras
-		$proceso=substr($estadoDb,0,2);
+		$proceso=substr($estadoDb,0,2);//images
 
-		//var_dump($estadoDb);
+		var_dump($estadoDb);
 		
 		// ESTA EN PROCESO TRILLA	
 		if ($proceso=="TR"){ 		

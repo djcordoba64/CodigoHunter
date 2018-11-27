@@ -184,8 +184,8 @@
 
 					// no hubo ningun problema , redirecciono a formulario de creacion de cliente vacio e indicando que hubo exito 
 					$datos['mensaje_informacion'] = 'Exito al guardar la nueva recepcion.';
-					$this->index(1,'Exito al guardar la nueva recepcion.');
-					
+					//$this->index(1,'Exito al guardar la nueva recepcion.');
+					$this->vista('/Recepciones/generarRecibo', $datos);
 					
 				}
 			/*

@@ -75,7 +75,7 @@
 								<div  class="col-md-6">
 									<p>
 										<label for="" class="">Porcentaje de humedad</label>
-										<input class="contact-input" type="number"  name="PorcentajeHumedad" value="<?php echo isset($datos['PorcentajeHumedad'])? $datos['PorcentajeHumedad'] : '';?>" required>
+										<input class="contact-input" min="1" type="number"  name="PorcentajeHumedad" value="<?php echo isset($datos['PorcentajeHumedad'])? $datos['PorcentajeHumedad'] : '';?>" required>
 									</p>																				
 								</div>
 								<div class="col-md-6">
@@ -163,20 +163,20 @@
 							<h4>Cafés agregados a la recepción</h4>
 						</div>
 						<!--TABLA CON EL CAFE(S) AGREGADOS A LA RECEPCIÓN-->
-						<table class="shop_table shop_table_responsive cart" >
+						<table class="shop_table shop_table_responsive cart"  >
 							<thead>
 								<tr>
 							        <!--<th class="product-remove">Codigo</th>-->
-									<th class="product-remove">Peso</th>
-									<th class="product-remove">Especie</th>
-									<th class="product-remove">Variedad</th>
-									<th class="product-remove">Humedad</th>
-									<th class="product-remove">Factor rendimiento</th>
-									<th class="product-remove">Tipo tueste</th>
-									<th class="product-remove">Cantidad</th>
-									<th class="product-remove">Valor</th>
-									<th class="product-remove">Estado</th>
-									<th class="product-remove">Acciones</th>
+									<th style="font-size:18px" class="product-remove">Peso</th>
+									<th style="font-size:18px" class="product-remove">Especie</th>
+									<th style="font-size:18px" class="product-remove">Variedad</th>
+									<th style="font-size:18px" class="product-remove">Humedad</th>
+									<th style="font-size:18px" class="product-remove">Factor rendimiento</th>
+									<th style="font-size:18px" class="product-remove">Tipo tueste</th>
+									<th style="font-size:18px" class="product-remove">Cantidad</th>
+									<th style="font-size:18px" class="product-remove">Valor</th>
+									<th style="font-size:18px" class="product-remove">Estado</th>
+									<th style="font-size:18px" class="product-remove">Acciones</th>
 							    </tr>
 							</thead>
 							<tbody class="cart_item">
@@ -213,11 +213,13 @@
 										<?php echo $cafe['estado']?>								
 									</td>
 									<td class="product-remove">
-										<!--<a href="<?php echo RUTA_URL;?>/Fincas/agregar/<?php echo $cafe->idcafe;?>">
-										Editar</a>-->
 										<!--boton de editar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
-
-										<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cafes/agregar_editar_temporal/<?php echo $cafe["idLoteCafe"];?>')" class="btn btn-sm btn-default" type="button" value="Editar">	
+										<div class="col-md-6">
+										<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cafes/agregar_editar_temporal/<?php echo $cafe["idLoteCafe"];?>')" class="btn btn-sm btn-default" type="button" value="Editar">
+										</div>
+										<div class="col-md-6">
+										<input align="center"  class="btn btn-sm btn-bordered" type="button" value="Eliminar">
+										</div>	
 									</td>
 								</tr>
 							<?php endforeach; }?>
@@ -229,7 +231,7 @@
 				<?php if (isset($datos['lotesArr']) and count($datos['lotesArr'])>0) { ?>
 
 					<div style="margin: 20px;" align="center">
-					<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Recepciones/crear_guardar')" class="btn btn-lg btn-default" type="button" value="finalizar">
+					<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Recepciones/crear_guardar')" class="btn btn-lg btn-brown" type="button" value="finalizar">
 					</div>
 				<?php }     ?>
 				</form>				

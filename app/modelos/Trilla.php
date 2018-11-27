@@ -12,26 +12,32 @@ class Trilla
 	}
 
 	public function obtenerDatos_x_id($idcafe){
-    	$this->db->query("SELECT c.codigoCafe,d.fechaHora,d.mermaTrilla,d.mallas,d.observacion,d.pesoCafeVerde FROM datostrilla d inner join cafes c on c.idcafe=d.idcafe WHERE d.idcafe=:idcafe");
+    	$this->db->query("SELECT d.idDatoTrilla, d.idcafe, c.codigoCafe,d.fechaHora,d.mermaTrilla,d.mallas,d.observacion,d.pesoCafeVerde FROM datostrilla d inner join cafes c on c.idcafe=d.idcafe WHERE d.idcafe=:idcafe");
         $this->db->bind(':idcafe',$idcafe);
         $fila=$this->db->registro();
         return $fila;
 	}
 
-	//agregar  a la BD (updated_by)
 	public function actualizarDatos($datos){
-		$this->db->query('UPDATE datostrilla SET mermaTrilla=:mermaTrilla,mallas=:mallas,observacion=:observacion, pesoCafeVerde=:pesoCafeVerde,updated_at= NOW(),updated_by = :updated_by 
+		$this->db->query('UPDATE datostrilla SET 
+			mermaTrilla=:mermaTrilla,
+			mallas=:mallas,
+			observacion=:observacion, 
+			pesoCafeVerde=:pesoCafeVerde,
+			updated_at= NOW(),
+			updated_by = :updated_by 
             where idcafe= :idcafe');
 
 		 //vinculamos los valores
-            $this->db->bind(':mermaTrilla',  $datos['mermatrilla']);
+		 	$this->db->bind(':idDatoTrilla',  $datos['idDatoTrilla']);
+            $this->db->bind(':mermaTrilla',  $datos['mermaTrilla']);
             $this->db->bind(':mallas',  $datos['mallas']);
             $this->db->bind(':observacion',  $datos['observacion']);
             $this->db->bind(':pesoCafeVerde',  $datos['pesoCafeVerde']);
             $this->db->bind(':updated_by',  $_SESSION['idUsuario']);
 
             if ($this->db->execute()){           
-                return 0;
+                return 0; //se hizo el update
             }
             else{
                 return -1;

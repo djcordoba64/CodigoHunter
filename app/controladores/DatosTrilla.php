@@ -104,7 +104,8 @@ class DatosTrilla extends Controlador
 		//consulatos los datos
 		$datostrilla= $this->TrillaModelo->obtenerDatos_x_id($idcafe);
 
-			$datos=[	
+			$datos=[
+					'idDatoTrilla'=>$datostrilla->idDatoTrilla,	
 					'fechaHora'=>$datostrilla->fechaHora,
 					'idcafe'=>$datostrilla->idcafe,
 					'mermaTrilla'=>$datostrilla->mermaTrilla,
@@ -113,14 +114,14 @@ class DatosTrilla extends Controlador
 					'pesoCafeVerde'=>$datostrilla->pesoCafeVerde,
 					'codigoCafe'=>$datostrilla->codigoCafe,
 			];				
-
+					//me redirecciona a la vista Editar, para cargar los datos en el formulario de edicion.
 					$this->vista('/trilla/editar', $datos);
 
 	}
 
 
 
-	public function editar($idcafe){
+	public function editar($idDatoTrilla){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
@@ -138,47 +139,29 @@ class DatosTrilla extends Controlador
 					'mermaTrilla'	=>trim($_POST['mermaTrilla']),					
 					'mallas'	=>trim($_POST['mallas']),	
 					'observacion'=>trim($_POST['observacion']),
-					'pesoCafeverde'=>trim($_POST['pesoCafeverde']),
+					'pesoCafeVerde'=>trim($_POST['pesoCafeVerde']),
 																									
 			];
 
+			var_dump($datos);
+
 			$id = $this->TrillaModelo->actualizarDatos($datos);
 
-			if($id==-1){
-					$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
-					$this->vista('trilla/editar', $datos);
-					return;
-			}
-			else{
-					// exito
+			echo $id;
+			if($id==0){
+
 				$datos['mensaje_exito'] ='Exito al editar los datos';
 				$this->vista('EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 				return;
+					
+			}
+			else{
+					
+				$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+					$this->vista('trilla/editar', $datos);
+					return;
 			}
 
-		}else
-		{
-			if(empty($datos)){
-				
-				//consulatos los datos
-				$datostrilla= $this->TrillaModelo->obtenerDatos_x_id($idcafe);
-
-				$datos=[
-
-						'idDatoTrilla'=>$datostrilla->idDatoTrilla,	
-						'fechaHora'=>$datostrilla->fechaHora,
-						'idcafe'=>$datostrilla->idcafe,
-						'mermaTrilla'=>$datostrilla->mermaTrilla,
-						'mallas'=>$datostrilla->mallas,
-						'observacion'=>$datostrilla->observacion,
-						'pesoCafeVerde'=>$datostrilla->pesoCafeVerde,
-						'codigoCafe'=>$datostrilla->codigoCafe,
-					];
-
-				
-
-					$this->vista('/trilla/editar', $datos);
-			}
 		}
 	}
 	//-------------------------------------------------------------------//
