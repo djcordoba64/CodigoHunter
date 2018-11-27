@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="/images/favicon.png">
 <title>Hunter</title>
 
 <!-- FONTS -->
@@ -63,7 +63,7 @@
       <div class="container">
         <div class="row position-relative">
           <div class="col-lg-2 col-md-2">
-            <a href="<?php echo RUTA_URL."/paginas/index";?>" class="small-logo alt"><img src="images/small-logo.png" alt=""></a>  
+            <a href="<?php echo RUTA_URL."/paginas/index";?>" class="small-logo alt"><img src="/images/small-logo.png" alt=""></a>  
           </div>
           <div class="col-lg-10 col-md-10">
             <nav class="navbar collapse navbar-collapse" id="coffee-menu">

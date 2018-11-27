@@ -33,7 +33,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-2 col-sm-6">
-						<a href="#" class="footer-logo"><img src="images/footer-logo.png" alt=""></a>
+						<a href="#" class="footer-logo"><img src="/images/footer-logo.png" alt=""></a>
 					</div>
 					<div class="col-md-4 col-sm-6">
 						<div class="footer-about">
