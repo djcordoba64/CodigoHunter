@@ -29,13 +29,13 @@ class Trilla
             where idcafe= :idcafe');
 
 		 //vinculamos los valores
-		 	$this->db->bind(':idDatoTrilla',  $datos['idDatoTrilla']);
-		 	$this->db->bind(':idcafe',  $datos['idcafe']);
+		 	//$this->db->bind(':idDatoTrilla',  $datos['idDatoTrilla']);
             $this->db->bind(':mermaTrilla',  $datos['mermaTrilla']);
             $this->db->bind(':mallas',  $datos['mallas']);
             $this->db->bind(':observacion',  $datos['observacion']);
             $this->db->bind(':pesoCafeVerde',  $datos['pesoCafeVerde']);
             $this->db->bind(':updated_by',  $_SESSION['idUsuario']);
+			$this->db->bind(':idcafe',  $datos['idcafe']);
 
             if ($this->db->execute()){           
                 return 0; //se hizo el update
