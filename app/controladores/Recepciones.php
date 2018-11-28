@@ -168,7 +168,7 @@
 					//recupero datos de las fincas que se han creado temporalmente (guardadas en el hidden y no se han guardado en BD)
 					$datos["lotesArr"]=json_decode($_POST["lotesJson"]);
 
-					var_dump($datos["lotesArr"]);
+					//var_dump($datos["lotesArr"]);
 					// inserto las fincas en una sola transaccion, mano id de cliente creado
 						if(!$this->cafeModelo->agregarLotes($datos["lotesArr"], $numero, trim($_POST['idCliente']))){
 							
@@ -229,16 +229,23 @@
 			$datosRecepcion= $this->recepcionModelo->ConsultarDatos_x_id($idRecepcion);
 				
 					$datos=[
+						'codigoRecibo'	=> $datosRecepcion->codigorecibo,
 						'fecha'	=> $datosRecepcion->created_at,	
-						//'codigoRecibo'	=> $datosRecepcion->codigorecibo,				
+						'primerNombre'	=> $datosRecepcion->primerNombre,
+						'primerApellido'	=> $datosRecepcion->primerApellido,
+						'documentoIdentidad'	=> $datosRecepcion->documentoIdentidad,
 						'direccion'	=> $datosRecepcion->direccion,
+						'numeroContacto'	=> $datosRecepcion->numeroContacto,
 						'correo'	=> $datosRecepcion->correo,
+						'nombreFinca'=>$datosRecepcion->nombreFinca,
+						'municipio'=>$datosRecepcion->municipio,
+						'Vereda'=>$datosRecepcion->vereda,
 						'temperatura'	=> $datosRecepcion->temperatura,										
-						'estado'=> $datosRecepcion->Estado,
+
 					];
 
 			//consulto datos de los  cafés registrados  a esa recepción
-			$datos["ArCafes"] = $this ->cafeModelo ->obtenerCafesRecepcion($idRecepcion);				
+			$datos["lotes"] = $this ->cafeModelo ->obtenerCafesRecepcion($idRecepcion);				
 
 					$this->vista('/recepciones/detalle', $datos);
 

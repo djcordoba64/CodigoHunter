@@ -28,7 +28,7 @@
 				return;
 			}
 
- 		var_dump($_POST);
+ 		//var_dump($_POST);
  		//limpiando formulario
  		$datos['idCafe']='';
 		$datos['codigoCafe']='';
@@ -231,7 +231,7 @@
 
 
 
-						var_dump($datos);
+						//var_dump($datos);
 						// carga formulario vacio solo fincas existentes
 						$this->vista('Cafes/agregar', $datos);
 						
@@ -298,7 +298,7 @@
 						unset($datos["idLoteCafe"]);
 
 
-						var_dump($datos);
+						//var_dump($datos);
 						// cargar vista vacia (solo fincas existentes)
 						$this->vista('Cafes/agregar', $datos);
 						

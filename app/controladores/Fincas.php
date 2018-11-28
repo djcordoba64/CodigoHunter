@@ -19,7 +19,7 @@
 		public function agregar_formulario_inicial($datos){
 
 			//validacion de rol
-			if($_SESSION["rol"]!="tostador")
+			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -56,7 +56,7 @@
 
 
 			//validacion de rol
-			if($_SESSION["rol"]!="tostador")
+			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -217,7 +217,7 @@
 
 
 			//validacion de rol
-			if($_SESSION["rol"]!="tostador")
+			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -428,7 +428,7 @@
 	public function editar_finca_index($idFinca){
 		//validacion de rol
 		
-			if($_SESSION["rol"]!="tostador")
+			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
@@ -487,7 +487,7 @@
 
 	public function agregar_finca_mostrar_formulario($idPersona){
 	
-			if($_SESSION["rol"]!="tostador")
+			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';

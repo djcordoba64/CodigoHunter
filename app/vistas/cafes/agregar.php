@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<!--FORMULAIO DEL CAFÉ-->	
-				<?php var_dump( $datos) ?>
+				
 				<form id="form1" method="POST">													
 				<div class="contact-form">
 					<div class="row" style="background-color:#fff" >

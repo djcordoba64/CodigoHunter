@@ -15,6 +15,7 @@
 <link rel="icon" type="image/png" href="/images/favicon.png">
 <title>Hunter</title>
 
+
 <!-- FONTS -->
 <link href="  https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700|Raleway:300,400,700,800" rel="stylesheet">
 
@@ -31,6 +32,13 @@
 
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL ?>/css/estilos.css">
+
+
+
+
+
+
+
 
 
 </head>

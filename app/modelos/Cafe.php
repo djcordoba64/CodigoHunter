@@ -172,8 +172,10 @@
 		public function obtenerCafesRecepcion($idRecepcion){
 			$this->db->query("SELECT * from cafes where idRecepcion=:idRecepcion");	
 			 $this->db->bind(':idRecepcion', $idRecepcion);	
-            $fincas=$this->db->registros();
-        return $fincas;
+            $cafes=$this->db->registros();
+        return $cafes;
+
+
 		}
 
 	}

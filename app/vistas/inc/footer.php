@@ -377,8 +377,7 @@
 		swal("Good job!", "You clicked the button!", "success");
 	}
 
-	//mostrar opción para cambiar contrasena
-	   
+	//mostrar opción para cambiar contrasena	   
 	function MostrarSiNoContrasena(sel) {
 	      if (sel.value=="opc1"){
 	           divSi = document.getElementById("mostrar");
@@ -403,6 +402,17 @@
 
 	           document.getElementById("confi_Contrasena").removeAttribute("required");
 	      }
+	}
+
+	function MostrarRecibo(sel){
+		if(se.value=="generarRecibo"){
+			 divfactura = document.getElementById("tbl_recibo");
+	         divfactura.style.display = "";
+
+		}else{
+			 divfactura = document.getElementById("tbl_recibo");
+	         divfactura .style.display="none";
+		}
 	}
 
 
