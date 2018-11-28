@@ -283,7 +283,7 @@ class EstadosTorrefaccion extends Controlador
 		if($codigoSiguiente=="PLP"){
 
 			echo "Registrar";
-			$this->redirectToAction('DatosPruebasLaboratorio', "mostrar_formulario_PLaboratorio",$datos );
+			$this->redirectToAction('DatosPruebasLaboratorio', "mostrar_formulario",$datos );
 		}
 
 	}
