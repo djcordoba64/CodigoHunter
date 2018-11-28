@@ -15,6 +15,7 @@
               <h4>Datos a registrar del proceso</h4>
               <div class="col-md-12" >
                 <div class="col-md-6">
+                   <input hidden class="contact-input" type="text" name="idcafe" value="<?php echo $datos['idcafe']?>"/>
                   <input hidden class="contact-input" type="text" name="idDatoTrilla" value="<?php echo $datos['idDatoTrilla']?>"/>
                   <p>
                     <label for="codigoCafe" class="">Codigo café</label>

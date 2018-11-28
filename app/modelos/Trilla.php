@@ -30,6 +30,7 @@ class Trilla
 
 		 //vinculamos los valores
 		 	$this->db->bind(':idDatoTrilla',  $datos['idDatoTrilla']);
+		 	$this->db->bind(':idcafe',  $datos['idcafe']);
             $this->db->bind(':mermaTrilla',  $datos['mermaTrilla']);
             $this->db->bind(':mallas',  $datos['mallas']);
             $this->db->bind(':observacion',  $datos['observacion']);
@@ -47,15 +48,16 @@ class Trilla
 
 	public function crear($datos,$idcafe){
 		//preparamos la consulata
-		$this->db->query('INSERT INTO datostrilla (fechaHora,idCafe,mermaTrilla,mallas,observacion,created_at,created_by) 
-			 VALUES (NOW(),:idcafe,:mermaTrilla,:mallas,:observacion,NOW(),:created_by)
+		$this->db->query('INSERT INTO datostrilla (fechaHora,idCafe,mermaTrilla,mallas,observacion,pesoCafeVerde,created_at,created_by) 
+			 VALUES (NOW(),:idcafe,:mermaTrilla,:mallas,:observacion,:pesoCafeVerde,NOW(),:created_by)
 			 ');
 
 			 //vinculamos los valores
 			 $this->db->bind(':idcafe',$idcafe);
 			 $this->db->bind(':mermaTrilla', $datos['mermaTrilla']);
 			 $this->db->bind(':mallas', $datos['mallas']);	
-			 $this->db->bind(':observacion', $datos['observacion']);		
+			 $this->db->bind(':observacion', $datos['observacion']);
+			 $this->db->bind(':pesoCafeVerde', $datos['pesoCafeVerde']);		
 			 $this->db->bind(':created_by', $_SESSION['idUsuario']);
 
 			 //Ejecutamos la consulta

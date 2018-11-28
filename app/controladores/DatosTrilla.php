@@ -14,7 +14,7 @@ class DatosTrilla extends Controlador
 	}
 
 	//--------------REGISTRAR DATOS---------------------------------------
-	public function mostrar_formulario_trilla($idcafe){
+	public function mostrar_formulario_trilla($datos){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
@@ -24,22 +24,13 @@ class DatosTrilla extends Controlador
 				$this->vista('/paginas/index',$datos);
 				return;
 		}
-	
 
-		$datosCafe=$this->cafesModelo->consultar_x_idCafe($idcafe);
-
-				$datos=[
-						'idcafe'=>$datosCafe->idcafe,
-						'codigoCafe'=>$datosCafe->codigoCafe,
-
-				];
-
-				//var_dump($datosCafe);
+		//var_dump($datos);		
 
 		$this->vista('/Trilla/agregar_datos', $datos);
 	}
 
-	public function registrar_datos($idcafe){
+	public function registrar_datos(){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
@@ -51,41 +42,56 @@ class DatosTrilla extends Controlador
 
 			}
 
-			if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error'])){
+		//recupero los datos del los input tipo hidden
+		$codigoSiguiente=$_POST['codigoSiguiente'];
+		$idcafe=$_POST['idcafe'];
 
-				$datos=[
+				
+		$id = $this->TorrefaccionModelo->insertarEstado($idcafe,$codigoSiguiente);
+
+		if($id!==1){
+			$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+			//$datos['mensaje_advertencia'] ='no se realizo el insert';
+			$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+			return;
+		}
+		else{
+			//recupero los datos que vienes por POST
+			$datos["mermaTrilla"]=$_POST['mermaTrilla'];
+			$datos["mallas"]=$_POST['mallas'];
+			$datos["observacion"]=$_POST['observacion'];
+			$datos["pesoCafeVerde"]=$_POST['pesoCafeVerde'];
+
+			//Y los guardo en la variable datos para hacer el Insert en la BD
+			$datos=[
 	
-					'mermaTrilla'=>trim($_POST['mermaTrilla']),					
-					'mallas'	=>trim($_POST['mallas']),	
-					'observacion'=>trim($_POST['observacion']),
-					'pesoCafeVerde'=>trim($_POST['pesoCafeVerde']),
-									
-				];
+				'mermaTrilla'=>trim($_POST['mermaTrilla']),					
+				'mallas'	=>trim($_POST['mallas']),	
+				'observacion'=>trim($_POST['observacion']),
+				'pesoCafeVerde'=>trim($_POST['pesoCafeVerde']),
+			];
 
+			$id = $this->TrillaModelo->crear($datos,$idcafe);
 
-				$id = $this->TrillaModelo->crear($datos,$idcafe);
-
-				if($id== -1){
-					// no se ejecutó el insert
-					// agrego mensaje a arreglo de datos para ser mostrado 
-					$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+			if($id== -1){
+				// no se ejecutó el insert
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
 					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario intente de nuevo
 					$this->vista('/Trilla/agregar_datos', $datos);
-					return;
-				}
-				else{
-					
-					// Si se realizo el insert
-					$datos['mensaje_exito'] ='Exito al guardar los datos';
-					$this->vista('EstadosTorrefaccion/registrar_inicio', $datos);
-					return;
-					//redireccionar('/Cliente/editar');
-				}
-
+				return;
 			}
-			
+			else{
+					
+				// Si se realizo el insert
+				$datos['mensaje_exito'] ='Exito al guardar los datos';
+				$this->vista('EstadosTorrefaccion/registrar_inicio', $datos);
+				return;
+				//redireccionar('/Cliente/editar');
+			}
+					
+		}
 	}
-
 
 	//----------------------------------------------------------------
 
@@ -119,8 +125,6 @@ class DatosTrilla extends Controlador
 
 	}
 
-
-
 	public function editar($idDatoTrilla){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -136,12 +140,13 @@ class DatosTrilla extends Controlador
 		{
 			$datos=[
 					'idDatoTrilla'	=>$idDatoTrilla,
+					'idcafe'		=>trim($_POST['idcafe']),
 					'mermaTrilla'	=>trim($_POST['mermaTrilla']),					
-					'mallas'	=>trim($_POST['mallas']),	
-					'observacion'=>trim($_POST['observacion']),
-					'pesoCafeVerde'=>trim($_POST['pesoCafeVerde']),
-																									
-			];
+					'mallas'		=>trim($_POST['mallas']),
+					'pesoCafeVerde'	=>trim($_POST['pesoCafeVerde']),	
+					'observacion'	=>trim($_POST['observacion']),
+					
+				];
 
 			var_dump($datos);
 

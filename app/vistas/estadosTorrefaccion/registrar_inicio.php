@@ -2,7 +2,7 @@
 
 <div>
 	<div class="col-md-12">
-		<h2>Gestionar trazabilidad del café</h2>
+		<h2>Gestionar trazabilidad de Torrefacción</h2>
 	</div>
 	<div class="container" >
 	    <div class="row">
@@ -11,7 +11,7 @@
 	                <form class="form-horizontal" action="<?php echo RUTA_URL;?>/EstadosTorrefaccion/validar_cafeExiste" method="POST">
 	                	<span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>  
 	                    <fieldset>
-	                        <legend class="text-center header">*Ingrese el código del café para seguir con el proceso.</legend>
+	                        <legend class="text-center header">*Ingrese el código de lote del  café para seguir con el proceso.</legend>
 
 	                        <div class="form-group">
 	                            <span class="col-md-1 col-md-offset-2 text-center">

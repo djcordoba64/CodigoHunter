@@ -405,12 +405,6 @@
 	      }
 	}
 
-	function registrar_estadoTR(datos){
-		//alert(datos);
-		$('#idcafe').val(datos[0].idcafe);
-		$('#codigoSiguiente').val(datos[0].codigoSiguiente);
-
-	}
 
 </script>
 

@@ -13,7 +13,8 @@ class EstadosTorrefaccion extends Controlador
 		$this->TorrefaccionModelo=$this->modelo('Torrefaccion');
 	}
 
-	public function index(){
+	public function index()
+	{
 			//validacion de rol
 			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
@@ -23,11 +24,11 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/paginas/index',$datos);
 				return;
 			}
-			
-		}
+	}
 
 	//Mustra el campo para ingresar el codigo del café.
-	public function registrar_inicio($datos=[]){
+	public function registrar_inicio($datos=[])
+	{
 			//validacion de rol
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
@@ -37,11 +38,12 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/paginas/index',$datos);
 				return;
 		}
-
+			//me retorna a la vista.
 			$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);	
 	}
 
-	public function validar_cafeExiste(){
+	public function validar_cafeExiste()
+	{
 		//validacion de rol
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
@@ -55,8 +57,8 @@ class EstadosTorrefaccion extends Controlador
 		//valido si el café  esta registrado.
 		if($this->cafesModelo->cafeExiste( $_POST['codigoCafe'] ) ){
 			//si está registrado y estado es 'recibido' se sigue con el proceso.
-			//var_dump( $_POST['codigoCafe']);
-				//obtengo los datos del café
+
+			//obtengo los datos del café que necesito
 			$datosCafe=$this->cafesModelo->optenerDatoscafe($_POST['codigoCafe']);
 			$datos=[										
 					'idcafe'=>$datosCafe->idcafe,
@@ -65,9 +67,7 @@ class EstadosTorrefaccion extends Controlador
 
 
 			if ($datosCafe->estado == 'recibido'){
-				//var_dump($datosCafe);
 
-				//echo "recibido";
 				//se los mando al método validar_estados().
 				$this->redirectToAction('EstadosTorrefaccion', "validar_estados", $datos);
 			}else {
@@ -84,10 +84,10 @@ class EstadosTorrefaccion extends Controlador
 			$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
 		}
 	}
+	
+	//---------------------------------------
 
 	public function validar_estados($datos){
-
-
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
 				// agrego mensaje a arreglo de datos para ser mostrado 
@@ -106,7 +106,7 @@ class EstadosTorrefaccion extends Controlador
 				//consulto cual es el ultimo proceso
 				$estados=$this->TorrefaccionModelo->consultar_idEstados($datos);
 
-				var_dump($estados);
+				//var_dump($estados);
 
 				$datos=[
 						'idestadosTorrefaccion'=>$estados->idestadosTorrefaccion,
@@ -117,15 +117,13 @@ class EstadosTorrefaccion extends Controlador
 				];
 
 				
-				//echo "tiene uno o varios estados";
+				echo "tiene uno o varios estados";
 				$this->redirectToAction('EstadosTorrefaccion', "consultar_proceso_sig", $datos);
 		}else
 		{	//Es primera ver que se va ha registrar
-			//echo "es primera vez";
-			//var_dump($datos);
-			$this->redirectToAction('EstadosTorrefaccion', "iniciar_primer_proceso", $datos);
-		}
 				
+			$this->redirectToAction('EstadosTorrefaccion', "iniciar_primer_proceso", $datos);
+		}			
 	}
 
 	public function consultar_proceso_sig($datos){
@@ -211,20 +209,47 @@ class EstadosTorrefaccion extends Controlador
 	}
 
 	public function iniciar_primer_proceso($datos){
-
-		//var_dump($datos);
+		//var_dump($datos);		
+		$datos['leyenda']=" no tiene registrado ningún proceso, el primer proceso a registrar es ";
+		$datos["nombreProceso"]="TRILLA";
+		$datos["nombreSiguiente"]="Iniciar el proceso de Trilla";
 		
-		$datos['leyenda']="Actualmente no tiene registrado ningun proceso";
-		$datos["nombreSiguiente"]="Iniciar proceso de Trilla";
 		$datos["codigoSiguiente"]="TRP";
-
-		//echo 'iniciar primer proceso';
 
 		$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 	}
 
 	//Se va ha registrar el inicio del proceso Trilla(TR) y es estado seria en 'proceso'(P)
-	public function cambiar_estado($idcafe, $codigoSiguiente){
+	public function cambiar_estado($idcafe,$codigoSiguiente){
+
+		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+		}
+
+		//echo $idcafe;
+		//echo $codigoSiguiente;
+
+		$datos['idcafe']=$idcafe;
+		$datos['codigoSiguiente']=$codigoSiguiente;
+		
+		if($codigoSiguiente=="TRP"){
+			//var_dump($datos);
+			$this->redirectToAction('DatosTrilla', "mostrar_formulario_trilla", $datos);
+
+		}
+								
+		
+	}
+	
+	
+
+	//Se va ha registrar el inicio del proceso Trilla(TR) y es estado seria en 'proceso'(P)
+	/*public function cambiar_estado($idcafe, $codigoSiguiente){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
@@ -235,7 +260,7 @@ class EstadosTorrefaccion extends Controlador
 				return;
 
 			}
-
+		
 			$id = $this->TorrefaccionModelo->insertarEstado($idcafe,$codigoSiguiente);
 
 				if($id==1){
@@ -250,8 +275,10 @@ class EstadosTorrefaccion extends Controlador
 					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
 					return;
 					
-				}			
-	}
+				}
+					
+	}*/
+	
 	
 	
 }

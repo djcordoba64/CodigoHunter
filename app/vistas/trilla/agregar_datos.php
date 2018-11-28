@@ -9,12 +9,15 @@
   <div class="well well-sm">    
     <div class="row">
       <div class="col-md-12">                           
-        <form class="contact-form" action="<?php echo RUTA_URL;?>/DatosTrilla/registrar_datos/<?php echo $datos['idcafe']?>" method="POST">
+        <form class="contact-form" action="<?php echo RUTA_URL;?>/DatosTrilla/registrar_datos/" method="POST">
           <div class="row">               
             <div class="col-md-6" style="background-color:#fff">
               <h4>Datos a registrar del proceso</h4>
               <div class="col-md-12" >
                 <div class="col-md-6">
+                  <input hidden  name="codigoSiguiente" value="<?php echo $datos['codigoSiguiente'] ?>"/>
+                  <input hidden  name="idcafe" value="<?php echo $datos['idcafe'] ?>"/>
+                  <input hidden  name="codigoCafe" value="<?php echo $datos['codigoCafe'] ?>"/>
                   <p>
                     <label for="codigoCafe" class="">Codigo café</label>
                     <input class="contact-input" type="text" disabled name="codigoCafe" value="<?php echo $datos['codigoCafe'] ?>"/>

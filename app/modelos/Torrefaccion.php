@@ -51,10 +51,10 @@ class Torrefaccion
 	}
 
 	public function consultar_ultimo_proceso($datos){
-		$this->db->query ("SELECT * FROM estadostorrefaccion where idcafe=:idcafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion)");
-		 $this->db->bind(':codigoCafe',$datos['idcafe']);
-            $fila=$this->db->registro();
-           	return $fila;
+		$this->db->query ("SELECT * FROM estadostorrefaccion where idcafe=:idcafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion where idcafe=:idcafe)");
+		 $this->db->bind(':idcafe',$datos['idcafe']);
+      $listaUsuarios=$this->db->registros();
+      return $listaUsuarios;
            
 	}
 
@@ -65,7 +65,8 @@ class Torrefaccion
         $this->db->bind(':idcafe',$idcafe);     
        $fila=$this->db->registro();
 
-      if($fila->estado!==$codigoSiguiente){
+       //var_dump($fila);
+      if($fila->codigoEstado!==$codigoSiguiente){
           
         //preparamos la consulata
         $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
@@ -85,7 +86,7 @@ class Torrefaccion
           }
       }else{
         return 1;//EL COGIGO YA SE REGISTRO.
-       }
+      }
   }
 
 
