@@ -2,6 +2,7 @@
 <div class="col-md-12">
     <h2>Gestionar trazabilidad de al Torrefacción</h2>
   </div>
+  <?php var_dump($datos) ?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -27,12 +28,17 @@
                                   
                                     <!--Boton detener  proceso-->
                                     <?php if ( isset($datos["nombreDetener"])) { ?>
-                                      <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/cambiar_estado/<?php echo $datos['idcafe'].'/'.$datos['codigoDetener']?>"><?php echo $datos["nombreDetener"]?></a>   
+                                      <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#detener"><?php echo $datos["nombreDetener"]?></a>   
+                                    <?php }?>
+
+                                    <!--Boton Reanudar proceso-->
+                                    <?php if ( isset($datos["nombreReanudar"])) { ?>
+                                      <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#reanudar"><?php echo $datos["nombreReanudar"]?></a>   
                                     <?php }?>
 
                                     <!--Boton finalizar  proceso-->
                                     <?php if ( isset($datos["nombreFinalizar"])) { ?>
-                                      <input type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#finalizar" onclick="finalizar_estado(<?php echo $datos['idcafe'].'/'.$datos['nombreProceso']?>)" value="<?php echo $datos["nombreFinalizar"]?>">  
+                                      <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#finalizar"><?php echo $datos["nombreFinalizar"]?></a>  
                                     <?php }?>
                       </div>
                       </div>
@@ -48,7 +54,7 @@
     </div>
 </div>
 
-<!-- Modal Registrar Trilla-->
+<!-- Modal iniciar proceso-->
 <div class="modal fade" id="IniciarProceso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm " role="document" >
     <div class="modal-content">
@@ -85,35 +91,36 @@
   </div>
 </div>
 
-<!-- Modal Finalizar proceso-->
-<div class="modal fade" id="finalizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal detener proceso-->
+<div class="modal fade" id="detener" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm " role="document" >
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Finalizar proceso</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Detener Proceso</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <div >
-          <p>
-            <label>Nombre del proceso</label>
-            <input  name="nombreProceso" type="text" id="nombreProceso" value="<?php echo $datos['nombreProceso'] ?>" size="10" />
-            </p>
-           <p>
-              <label>codigo Cafe</label>
-              <input  name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" />
-            </p>
+      <div class="modal-body">      
+          <div>
+            <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoDetener'] ?>" />
             <p>
-              <label>Fecha</label>
-              <input  name="fecha" type="text" id="fecha" value="<?php echo date("m/d/Y g:ia"); ?>" size="20"/>
-            </p>
-          </div>                   
+               <label>Nombre del proceso</label>
+               <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
+            </p>       
+             <p>
+                <label>codigo Cafe</label>
+                <input  name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" />
+              </p>
+              <p>
+                <label>Fecha</label>
+                <input  name="fecha" type="text" id="fecha" value="<?php echo date("m/d/Y g:ia"); ?>" size="20"/>
+              </p>
+          </div>                          
       </div>
       <div class="modal-footer">
          
-      <a  class="btn btn-sm btn-brown"  href="<?php echo RUTA_URL;?>/DatosTrilla/mostrar_formulario_trilla/<?php echo $datos['idcafe'].'/'.$datos['codigoSiguiente']?>">Finalizar</a>
+       <a  class="btn btn-sm btn-brown"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/detener_estado/<?php echo $datos['idcafe'].'/'.$datos['codigoDetener']?>">Detener</a>
       
       </div>       
       </div>
@@ -121,6 +128,79 @@
   </div>
 </div>
 
+<!-- Modal reanudar proceso-->
+<div class="modal fade" id="reanudar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm " role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reanudar Proceso</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">      
+          <div>
+            <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoReanudar'] ?>" />
+            <p>
+               <label>Nombre del proceso</label>
+               <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
+            </p>       
+             <p>
+                <label>codigo Cafe</label>
+                <input  name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" />
+              </p>
+              <p>
+                <label>Fecha</label>
+                <input  name="fecha" type="text" id="fecha" value="<?php echo date("m/d/Y g:ia"); ?>" size="20"/>
+              </p>
+          </div>                          
+      </div>
+      <div class="modal-footer">
+         
+       <a  class="btn btn-sm btn-brown"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/reanudar_estado/<?php echo $datos['idcafe'].'/'.$datos['codigoReanudar']?>">Reanudar</a>
+      
+      </div>       
+      </div>
+
+  </div>
+</div>
+
+<!-- Modal finalizar proceso-->
+<div class="modal fade" id="finalizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm " role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Finalizar Proceso</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">      
+          <div>
+            <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoFinalizar'] ?>" />
+            <p>
+               <label>Nombre del proceso</label>
+               <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
+            </p>       
+             <p>
+                <label>codigo Cafe</label>
+                <input  name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" />
+              </p>
+              <p>
+                <label>Fecha</label>
+                <input  name="fecha" type="text" id="fecha" value="<?php echo date("m/d/Y g:ia"); ?>" size="20"/>
+              </p>
+          </div>                          
+      </div>
+      <div class="modal-footer">
+         
+       <a  class="btn btn-sm btn-brown"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/finalizar_estado/<?php echo $datos['idcafe'].'/'.$datos['codigoFinalizar']?>">Finalizar</a>
+      
+      </div>       
+      </div>
+
+  </div>
+</div
 
 
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 

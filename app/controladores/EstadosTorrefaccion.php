@@ -141,16 +141,9 @@ class EstadosTorrefaccion extends Controlador
 			//obtengo La ultima letra del proceso
 			$ultimaletra=substr($estadoDb, -1);
 
-			if ($ultimaletra=='F') {
-				
-				$datos["nombreSiguiente"]="Iniciar Pruebas de Laboratorio";
-				$datos["codigoSiguiente"]="PLP";
-
-				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
-			}
 			if ($ultimaletra=='P') {
 
-				$datos['leyenda']="Actualmente está en el proceso de ";
+				$datos['leyenda']=" está en el proceso de ";
 				$datos['nombreProceso']="Trilla";
 				
 				$datos["nombreDetener"]="Detener proceso";
@@ -165,6 +158,45 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 
+			if ($ultimaletra=='D') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Trilla";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="TRF";
+
+				$datos["nombreReanudar"]="Reanudar proceso";
+				$datos["codigoReanudar"]="TRR";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='R') {
+
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Trilla";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="TRF";
+
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="TRD";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='F') {
+
+				$datos['leyenda']=" ha finalizado  el proceso de Trilla, el proceso siguiente es ";
+				$datos['nombreProceso']="Pruebas de Laboratorio";
+				
+				$datos["nombreSiguiente"]="Iniciar Pruebas de Laboratorio";
+				$datos["codigoSiguiente"]="PLP";
+
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}			
 		}
 
 		// ESTA EN PRUEBAS DE LABORATORIO
@@ -230,26 +262,32 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/paginas/index',$datos);
 				return;
 		}
-
 		//echo $idcafe;
 		//echo $codigoSiguiente;
 
+		$codigoCafe=$this->cafesModelo->consultar_x_idCafe($idcafe);
+
+		$datos=[
+			'codigoCafe'=>$codigoCafe->codigoCafe,			
+		];
+
 		$datos['idcafe']=$idcafe;
 		$datos['codigoSiguiente']=$codigoSiguiente;
-		
+		var_dump($datos);
+
 		if($codigoSiguiente=="TRP"){
 			//var_dump($datos);
-			$this->redirectToAction('DatosTrilla', "mostrar_formulario_trilla", $datos);
+			$this->redirectToAction('DatosTrilla', "mostrar_formulario_trilla",$datos );
 
 		}
-								
-		
-	}
-	
-	
+		if($codigoSiguiente=="PLP"){
 
-	//Se va ha registrar el inicio del proceso Trilla(TR) y es estado seria en 'proceso'(P)
-	/*public function cambiar_estado($idcafe, $codigoSiguiente){
+			echo "Registrar";
+			$this->redirectToAction('DatosPruebasLaboratorio', "mostrar_formulario_PLaboratorio",$datos );
+		}
+
+	}
+	public function detener_estado($idcafe,$codigoDetener){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
@@ -258,16 +296,21 @@ class EstadosTorrefaccion extends Controlador
 				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
 				$this->vista('/paginas/index',$datos);
 				return;
+		}
+	
+	
+		$datos['idcafe']=$idcafe;
+		$datos['codigoDetener']=$codigoDetener;//TRD
 
-			}
-		
-			$id = $this->TorrefaccionModelo->insertarEstado($idcafe,$codigoSiguiente);
+		//$proceso=substr($estadoDb,0,2);
+
+		if($codigoDetener=="TRD"){	
+			$id = $this->TorrefaccionModelo->insertarEstado_detenido($idcafe,$codigoDetener);
 
 				if($id==1){
 
 					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
-					$this->redirectToAction('DatosTrilla', "mostrar_formulario_trilla", $idcafe);
-					return;
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
 				}
 				else{
 					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
@@ -276,9 +319,83 @@ class EstadosTorrefaccion extends Controlador
 					return;
 					
 				}
-					
-	}*/
+			
+		}
+		
+	}
 	
+	public function reanudar_estado($idcafe,$codigoReanudar){
+
+		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+		}
+	
+	
+		$datos['idcafe']=$idcafe;
+		$datos['codigoReanudar']=$codigoReanudar;//TRR
+
+		//$proceso=substr($estadoDb,0,2);
+
+		if($codigoReanudar=="TRR"){	
+			$id = $this->TorrefaccionModelo->insertarEstado_reanudado($idcafe,$codigoReanudar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+		
+	}
+	public function finalizar_estado($idcafe,$codigoFinalizar){
+
+		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+		}
+	
+	
+		$datos['idcafe']=$idcafe;
+		$datos['codigoFinalizar']=$codigoFinalizar;//TRR
+
+		//$proceso=substr($estadoDb,0,2);
+
+		if($codigoFinalizar=="TRF"){	
+			$id = $this->TorrefaccionModelo->insertar_finalizarEstado($idcafe,$codigoFinalizar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+		
+	}
 	
 	
 }

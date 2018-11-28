@@ -25,7 +25,6 @@ class DatosTrilla extends Controlador
 				return;
 		}
 
-		//var_dump($datos);		
 
 		$this->vista('/Trilla/agregar_datos', $datos);
 	}

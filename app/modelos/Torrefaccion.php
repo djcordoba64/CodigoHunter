@@ -90,6 +90,64 @@ class Torrefaccion
   }
 
 
+  public function insertarEstado_detenido($idcafe, $codigoDetener){
+    $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
+           VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
+           ');
+    
+           //vinculamos los valores
+          $this->db->bind(':idcafe',$idcafe);   
+          $this->db->bind(':codigoEstado',$codigoDetener);  
+          $this->db->bind(':created_by', $_SESSION['idUsuario']);
+           
+           //Ejecutamos la consulta
+          if ($this->db->execute()){           
+                  return 1;//SE HIZO EL INSERT
+          }else{
+                  return 0; //no SE HIZO ELINSERT
+          }
+  }
+
+
+  public function insertarEstado_reanudado($idcafe, $codigoReanudar){
+    $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
+           VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
+           ');
+    
+           //vinculamos los valores
+          $this->db->bind(':idcafe',$idcafe);   
+          $this->db->bind(':codigoEstado',$codigoReanudar);  
+          $this->db->bind(':created_by', $_SESSION['idUsuario']);
+           
+           //Ejecutamos la consulta
+          if ($this->db->execute()){           
+                  return 1;//SE HIZO EL INSERT
+          }else{
+                  return 0; //no SE HIZO ELINSERT
+          }
+  }
+
+
+  public function insertar_finalizarEstado($idcafe, $codigoFinalizar){
+    $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
+           VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
+           ');
+    
+           //vinculamos los valores
+          $this->db->bind(':idcafe',$idcafe);   
+          $this->db->bind(':codigoEstado',$codigoFinalizar);  
+          $this->db->bind(':created_by', $_SESSION['idUsuario']);
+           
+           //Ejecutamos la consulta
+          if ($this->db->execute()){           
+                  return 1;//SE HIZO EL INSERT
+          }else{
+                  return 0; //no SE HIZO ELINSERT
+          }
+  }
+
+
+
 }
 
 
