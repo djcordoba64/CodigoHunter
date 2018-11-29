@@ -427,6 +427,8 @@
 
 
 		public function guardar_foto($idcafe){
+
+
  		$tips='jpg';
  		$type=array('image/jpg' => 'jpg' );
  		//$idcafe= $idcafe;

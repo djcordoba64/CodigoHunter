@@ -2,8 +2,9 @@
 <section class="product-single">
 		<div class="container">
 			<div class="row">
+			
+			<form enctype="multipart/form-data"  action="<?php echo RUTA_URL;?>/Cafes/guardar_foto/<?php echo $datos['idcafe']?>" method="POST">
 				<div class="col-md-5">
-					<form   action="<?php echo RUTA_URL;?>/Cafes/guardar_foto/<?php echo $datos['idcafe']?>" method="POST">
 					<div class="product-image"><img src="<?php echo RUTA_URL.'/images/cafes/lote'.$datos['idcafe'].'.jpg'?>" alt=""></div>
 					<div class="col-md-12">
 						<input  type="file" name="imagen">
