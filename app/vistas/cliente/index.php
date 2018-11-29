@@ -56,7 +56,7 @@
 											</td>
 										
 											<td class="product-remove">
-												<a href="<?php echo RUTA_URL;?>/Cliente/detalle/<?php echo $cliente->idPersona;?>">
+												<a  data-toggle="tooltip" title="Ver información detallada del cliente" href="<?php echo RUTA_URL;?>/Cliente/detalle/<?php echo $cliente->idPersona;?>">
 													<?php echo $cliente->primerNombre;?>
 													<?php echo $cliente->segundoNombre;?>
 													<?php echo $cliente->primerApellido?>
@@ -78,7 +78,7 @@
 												<?php echo $cliente->estado;?>				
 											</td class="product-remove">
 											<td class="product-remove">
-												<a href="<?php echo RUTA_URL;?>/Cliente/editar/<?php echo $cliente->idPersona;?>" class="btn btn-sm btn-default" >
+												<a  data-toggle="tooltip" title="Editar información del cliente" href="<?php echo RUTA_URL;?>/Cliente/editar/<?php echo $cliente->idPersona;?>" class="btn btn-sm btn-default" >
 												 <span class="glyphicon glyphicon-edit"></span> Editar
 												 </a>				
 											</td>

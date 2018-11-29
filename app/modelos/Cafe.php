@@ -178,5 +178,21 @@
 
 		}
 
+        public function subir_guardarFoto($idcafe,$destino1){
+          $this->db->query('UPDATE cafes SET foto=:foto, updated_at= NOW(), updated_by = :updated_by where idcafe= :idcafe');
+
+           //vinculamos los valores
+            $this->db->bind(':idcafe',$idcafe);
+            $this->db->bind(':foto'  ,$destino1);           
+            $this->db->bind(':updated_by' ,$_SESSION['idUsuario']);
+
+            if ($this->db->execute()){           
+                return 0;
+            }
+            else{
+                return -1;
+            }
+        }
+
 	}
 ?>

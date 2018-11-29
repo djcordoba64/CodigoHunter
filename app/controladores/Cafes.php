@@ -401,12 +401,62 @@
 
 				// carga la vista con los campos a editar 
 				$this->vista('/Cafes/agregar', $datos);
-			
-		//----------------------------------------------------------------
-	
-		
+		}	
+		//----------------------------------------------------------------		
+		public function cambiar_subir_foto($idcafe){
+			//validacion de rol
+			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+			{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+			}
 
+			$datoscafes= $this->CafeModelo ->consultar_x_idCafe($idcafe);
+				$datos=[
+						'codigoCafe'	=> $datoscafes->codigoCafe,
+						'idcafe'	=> $datoscafes->idcafe,
+															
+					];
+
+
+			$this->vista('/cafes/foto', $datos);
 		}
+
+
+		public function guardar_foto($idcafe){
+ 		$tips='jpg';
+ 		$type=array('image/jpg' => 'jpg' );
+ 		//$idcafe= $idcafe;
+
+ 		$nombreFoto1=$_FILES['imagen']['name'];
+ 		$ruta1=$_FILES['imagen']['tmp_name'];
+ 		$nombre=$idcafe.'.'.$tips;
+
+
+
+ 		if(is_uploaded_file($ruta1)){
+ 			$destino1=('C:\xampp\htdocs\Hunter\public\images\cafes\lote').$nombre;
+ 			
+ 			copy($ruta1,$destino1);
+		}
+
+
+		$resultado = $this->CafeModelo ->subir_guardarFoto($idcafe,$destino1);
+
+		if ($resultado!==0){
+			// agrego mensaje al arreglo de datos para ser mostrado 
+			$datos['mensaje_error'] ='Nos se pudo realizar la acción';
+			// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+			$this->vista('/Recepciones/mostrar_opcion_foto', $datos);
+		}else{
+			$datos=['mensaje_advertencia'=> 'Perfil Aactualizado'];
+		}			
+
+	}
+
 
 
  } 
