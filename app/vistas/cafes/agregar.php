@@ -1,180 +1,5 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
-<section class="product-single">
-		<div class="woocommerce">
-			<form class="checkout woocommerce-checkout">
-			<div class="container">
-				<form id="form1" method="POST">
-					<div class="row">
-						<div class="col-md-12">
-						<div class="col-md-6"><h3>Datos del cafe</h3></div>
-						</div>
-						<div class="col-md-5">
-							<div id="customer_details">
-							    <div class="woocommerce-billing-fields">
-							        <div class="woocommerce-billing-fields__field-wrapper">
-							        	<!--en el input hidden tare el id del cliente-->
-										<input type="hidden" name="idCliente" value="<?php echo $datos["idCliente"] ?>" >
-											<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
-										<input type="hidden" name="idDetalleFinca" value="<?php echo isset($datos['idDetalleFinca'])? $datos['idDetalleFinca'] : '-1';?>" >
-										<!--en el input hidden tare el id del cliente-->
-										<input type="hidden" name="correo" value="<?php echo $datos["correo"] ?>" >
-										<!--en el input hidden tare el id del cliente-->
-										<input type="hidden" name="direccion" value="<?php echo $datos["direccion"] ?>" >
-										<!--en el input hidden tare el id del cliente-->
-										<input type="hidden" name="Temperatura" value="<?php echo $datos["Temperatura"] ?>" >
-										<!--hidden para guardar temporalmente los lotes de cafe que se van creando y poder guardarlas todas al final junto con el cliente y la finca-->	
-										<input type="hidden" name="lotesJson" value='<?php echo isset($datos['lotesJson'])? $datos['lotesJson'] : '';?>'><!--array de lotes de cafe en una cadena de json-->
-										<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
-										<input type="hidden" name="idLoteCafe" value="<?php echo isset($datos['idLoteCafe'])? $datos['idLoteCafe'] : '-1';?>" >
-										<!--datos del café lado izquierdo-->
-										<!--Peso-->
-							            <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="" data-priority="10">
-							                <label for="peso" >Peso Gr <abbr class="required" title="required">*</abbr>
-							                </label>
-							                <input class="input-text " name="peso" id="peso" autofocus="autofocus" autocomplete="given-name"  type="number" min="1" value="<?php echo isset($datos['peso'])? $datos['peso'] : '';?>" required>
-							            </p>
-							            <!--Variedad-->
-							            <p class="form-row form-row-last validate-required woocommerce-validated" id="" data-priority="20">
-							                <label for="variedad" >Variedad <abbr class="required" title="required">*</abbr>
-							                </label>
-							                <input class="input-text " name="variedad" type="text" onkeypress="return soloLetras(event);" id="variedad"  required  autocomplete="family-name"  value="<?php echo isset($datos['variedad'])? $datos['variedad'] : '';?>">
-							            </p>
-							            <!--Tipo de tueste-->
-							            <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="" data-priority="10">
-							                <label for="tipoTueste">Tipo de tueste <abbr class="required" title="required">*</abbr>
-							                </label>
-							                <input class="input-text" onkeypress="return soloLetras(event);" type="text" name="tipoTueste" id="tipoTueste" autofocus="autofocus" autocomplete="given-name" value="<?php echo isset($datos['tipoTueste'])? $datos['tipoTueste'] : '';?>" required>
-							            </p>
-							            <!--Porcentaje de humedad-->
-							            <p class="form-row form-row-last validate-required woocommerce-validated" id="" data-priority="20">
-							                <label for="PorcentajeHumedad">Porcentaje de huemdad ()<abbr class="required" title="required">*</abbr>
-							                </label>
-							                <input class="input-text" autocomplete="family-name"  min="1"  name="PorcentajeHumedad" id="PorcentajeHumedad" type="number"  value="<?php echo isset($datos['PorcentajeHumedad'])? $datos['PorcentajeHumedad'] : '';?>" required>
-							            </p>
-							            <!--Materia prima-->
-							            <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
-							                <label for="materia">Materia prima <abbr class="required" title="required">*</abbr>
-							                </label>
-							                <select name="materia" id="materia" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country" tabindex="-1" aria-hidden="true">
-							                    <option value="">Seleccione...</option>
-							                </select>						            	
-							            </p>
-							            <!--Tipo de beneficio-->
-							            <p class="form-row form-row-last validate-required woocommerce-validated" id="" data-priority="20">
-							                <label for="">Tipo beneficio<abbr class="required" title="required">*</abbr>
-							                </label>
-							                <select name="beneficio" id="beneficio" style="width: 100%" class="country_to_state country_select select2-hidden-accessible" autocomplete="country" tabindex="-1" aria-hidden="true">
-							                    <option value="">Seleccione...</option>
-							                    
-							                </select>
-							            </p>
-							           <!--Factor de rendimiento-->
-							            <p class="form-row form-row-first validate-required validate-phone" id="" data-priority="100">
-							                <label for="factorRendimiento">Factor de rendimiento <abbr class="required" title="required">*</abbr>
-							                </label>
-							                <input class="input-text " name="factorRendimiento" id="factorRendimiento"  autocomplete="tel" type="number" required value="<?php echo isset($datos['factorRendimiento'])? $datos['factorRendimiento'] : '';?>">
-							            </p>
-							            <!--Especie-->
-							             <p class="form-row form-row-last validate-required woocommerce-validated" id="" data-priority="20">
-							             	<div class="col-md-7" >
-							             		<label for="especie" class="">Especie <abbr class="required" title="required">*</abbr></label>
-							             		 <ul>
-									            <li>									        
-											        <input type="radio" name="especie" value="robusta"  <?php echo  ( isset($datos['especie']) and $datos['especie'] == 'robusta') ? 'checked':'' ?>   required>Robusta
-											        <input type="radio" name="especie" value="arabiga" <?php echo  (isset($datos['especie']) and $datos['especie'] == 'arabiga') ? 'checked':'' ?>>Arábiga
-										         </li>
-									        </ul>
-							             	</div>
-							            </p>
-							        </div>
-							 	</div>
-
-				
-							</div >	
-						</div>
-						<div class="col-md-5 col-md-offset-1">
-							<p>Aqui va la foto</p>
-						</div>
-
-					</div>
-					<div class="row">
-						<div class="col-md-12 "  >
-							<div class="order_box" >
-							    <div id="order_review" class="woocommerce-checkout-review-order" >
-							        <div id="payment" class="woocommerce-checkout-payment" >
-							        	<div class="col-md-12" style="background-color:#fff">
-							        		  <h6 id="order_review_heading">Molida</h6>
-								        	<!--MOLIDA-->
-								        	<!--molida Libra Cantidad-->
-								        	<div class="col-md-6">
-								        		<div class="col-md-4">
-								        			<p >
-									                <div class="quantity">
-									                	<label for="molidaLibra" class="">lb</label>
-		                            					<input type="number" min="1"  name="molidaLibra" id="molidaLibra" value="0">
-		                       						 </div>							                
-								            		</p>
-								        		
-								        		<div class="col-md-4">
-								        			<p class="form-row form-row-first " id="billing_first_name_field" data-priority="10">
-								             		 <label for="billing_first_name" class="">Vr unitario</label>
-								                	<input class="input-text " name="VrmolidaLibra" id="molidaMediaLibra"  autocomplete="given-name" autofocus="autofocus" type="number" value="<?php echo isset($datos['VrmolidaLibra'])? $datos['VrmolidaLibra'] : '';?>"" >
-								            		</p>
-	                       						</div>
-								        	</div>
-								        	<!--molida media Libra Cantidad-->
-								        	<div class="col-md-4">
-								        		<div class="col-md-4">
-								        			<p >
-									                <div class="quantity">
-									                	<label for="molidamediaLibra" class="">1/2 lb</label>
-		                            					<input type="number" min="1"  name="molidaLibra" id="molidaLibra" value="0">
-		                       						 </div>							                
-								            		</p>
-								        		</div>
-								        		<div class="col-md-8">
-								        			<p class="form-row form-row-first " id="billing_first_name_field" data-priority="10">
-								             		 <label for="billing_first_name" class="">Vr unitario</label>
-								                	<input class="input-text " name="molidaMediaLibra" id="molidaMediaLibra"  autocomplete="given-name" autofocus="autofocus" type="number" value="<?php echo isset($datos['molidaMediaLibra'])? $datos['molidaMediaLibra'] : '';?>"" >
-								            		</p>
-	                       						</div>
-								        	</div>
-								        	<!--molida cinco Libras Cantidad-->
-								        	<div class="col-md-4">
-								        		<div class="col-md-4">
-								        			<p >
-									                <div class="quantity">
-									                	<label for="molidamediaLibra" class="">5 lb</label>
-		                            					<input type="number" min="1"  name="molidaLibra" id="molidaLibra" value="0">
-		                       						 </div>							                
-								            		</p>
-								        		</div>
-								        		<div class="col-md-8">
-								        			<p class="form-row form-row-first " id="billing_first_name_field" data-priority="10">
-								             		 <label for="billing_first_name" class="">Vr unitario</label>
-								                	<input class="input-text " name="molidaMediaLibra" id="molidaMediaLibra"  autocomplete="given-name" autofocus="autofocus" type="number" value="<?php echo isset($datos['molidaMediaLibra'])? $datos['molidaMediaLibra'] : '';?>"" >
-								            		</p>
-	                       						</div>
-								        	</div>
-								        </div>
-								        
-								     
-
-							        </div>
-
-							    </div>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
-		
-		</form>
-		</div>
-</section>
-
-
 <div class="container">
 	<div class="col-md-12">
 		<h2>Recepción del café</h2>
@@ -182,8 +7,7 @@
 	<div class="contact-wrap">		
 		<div class="row">
 			<div class="col-md-12">
-				<!--FORMULAIO DEL CAFÉ-->	
-				
+				<!--FORMULAIO DEL CAFÉ-->					
 				<form id="form1" method="POST">													
 				<div class="contact-form">
 					<div class="row" style="background-color:#fff" >
@@ -217,7 +41,7 @@
 								</div>
 								<div  class="col-md-6">
 									<label for="" class="">Variedad</label>
-										<input class="contact-input" type="text"  name="variedad" onkeypress="return soloLetras(event);" id="variedad"  value="<?php echo isset($datos['variedad'])? $datos['variedad'] : '';?>" required>											
+									<input class="contact-input" type="text"  name="variedad" onkeypress="return soloLetras(event);" id="variedad"  value="<?php echo isset($datos['variedad'])? $datos['variedad'] : '';?>" required>											
 								</div>
 							</div>
 							<div class="col-md-12" >
