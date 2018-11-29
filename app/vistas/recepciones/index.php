@@ -51,7 +51,7 @@
 									<?php foreach($datos['recepciones']  as $recepcion): ?>
 										<tr class="cart_item">
 											<td class="product-remove">
-												<a data-toggle="tooltip" title="Ver detalle de la recepción" href="<?php echo RUTA_URL;?>/Recepciones/detalle/<?php echo $recepcion->idRecepcion;?>">
+												<a data-toggle="tooltip" title="Ver detalle de la recepción" href="<?php echo RUTA_URL;?>/Recepciones/detalle/<?php echo $recepcion->numeroRecibo;?>">
 													<?php echo $recepcion->numeroRecibo;?>					
 												</a>
 											</td>
@@ -71,10 +71,10 @@
 												<?php echo $recepcion->estado;?>				
 											</td class="product-remove">
 											<td class="product-remove">
-												<a data-toggle="tooltip" title="Subir o cambiar la foto de los lotes de café" href="<?php echo RUTA_URL;?>/Recepciones/mostrar_opcion_foto/<?php echo $recepcion->idRecepcion;?>" class="btn btn-sm btn-default" >
+												<a data-toggle="tooltip" title="Subir o cambiar la foto de los lotes de café" href="<?php echo RUTA_URL;?>/Recepciones/mostrar_opcion_foto/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
 												 <span class="glyphicon glyphicon-picture"></span> Foto
 												 </a>
-												<a data-toggle="tooltip" title="Anular la recepción" href="<?php echo RUTA_URL;?>/Recepciones/CambiarEstado/<?php echo $recepcion->idRecepcion;?>" class="btn btn-sm btn-bordered" >
+												<a data-toggle="tooltip" title="Anular la recepción" href="<?php echo RUTA_URL;?>/Recepciones/CambiarEstado/<?php echo $recepcion->NumeroRecibo;?>" class="btn btn-sm btn-bordered" >
 												 <span class="glyphicon glyphicon-remove"></span> Anular
 												 </a>
 												 				

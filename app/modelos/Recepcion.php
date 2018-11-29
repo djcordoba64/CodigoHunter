@@ -64,7 +64,7 @@ class Recepcion extends Base
         //limitar las recepciones para la paginación y mostrar en el index
         public function limit_recepciones($iniciar,$recepciones_x_pagina){
 
-        $this->db->query(" SELECT r.idRecepcion, r.created_at as fecha, c.documentoIdentidad as documento, concat(c.primerNombre , ' ' , c.primerApellido) as Cliente,  r.estado, r.numeroRecibo from recepciones as r inner join personas as c on r.idcliente=c.idPersona  ORDER BY r.created_at DESC LIMIT :iniciar,:nrecepciones");
+        $this->db->query(" SELECT r.numeroRecibo, r.created_at as fecha, c.documentoIdentidad as documento, concat(c.primerNombre , ' ' , c.primerApellido) as Cliente,  r.estado, r.numeroRecibo from recepciones as r inner join personas as c on r.idcliente=c.idPersona  ORDER BY r.created_at DESC LIMIT :iniciar,:nrecepciones");
         $this->db->bind(':iniciar',$iniciar,PDO::PARAM_INT);
         $this->db->bind(':nrecepciones',$recepciones_x_pagina,PDO::PARAM_INT);
             $listaRecepciones=$this->db->registros();
@@ -81,7 +81,7 @@ class Recepcion extends Base
         //-----ACTUALIZAR--------------------------------------------------
         //consulto los datos para cargarlos en el formulario de edición.
         public function ConsultarDatos_x_id($idRecepcion){
-        	$this->db->query("SELECT r.codigoRecibo,r.created_at,p.numeroContacto,r.correo,r.direccion,p.primerNombre,r.temperatura,p.primerApellido,p.documentoIdentidad, f.nombreFinca,f.vereda,m.municipio FROM recepciones as r  inner join personas as p on p.idPersona=r.idcliente INNER join detallefinca as f on f.idCliente=p.idPersona inner join municipios as m ON m.id_municipio=f.idmunicipio WHERE r.idRecepcion=:idRecepcion");
+        	$this->db->query("SELECT r.numeroRecibo,r.created_at,p.numeroContacto,r.correo,r.direccion,p.primerNombre,r.temperatura,p.primerApellido,p.documentoIdentidad, f.nombreFinca,f.vereda,m.municipio FROM recepciones as r  inner join personas as p on p.idPersona=r.idcliente INNER join detallefinca as f on f.idCliente=p.idPersona inner join municipios as m ON m.id_municipio=f.idmunicipio WHERE r.numerorecibo=:idRecepcion");
         	$this->db->bind(':idRecepcion',$idRecepcion);
         	 $fila=$this->db->registro();
             return $fila;
