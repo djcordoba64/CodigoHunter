@@ -115,7 +115,6 @@ class EstadosTorrefaccion extends Controlador
 						'codigoCafe'=>$estados->codigoCafe,
 
 				];
-
 				
 				//echo "tiene uno o varios estados";
 				$this->redirectToAction('EstadosTorrefaccion', "consultar_proceso_sig", $datos);
@@ -205,6 +204,22 @@ class EstadosTorrefaccion extends Controlador
 			//echo "Pruebas de Laboratorio";
 			//obtengo La ultima letra del proceso
 			$ultimaletra=substr($estadoDb, -1);
+			if ($ultimaletra=='P') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Pruebas de Laboratorio";
+				
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="TRD";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="TRF";
+
+				$datos["nombreModificarP"]="Modificar datos ";
+	
+				
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
 		}
 
 		// ESTA EN PROCESO TORREFACTOR	

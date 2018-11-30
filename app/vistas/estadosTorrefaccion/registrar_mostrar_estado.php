@@ -24,6 +24,10 @@
                                     <!--Boton Modificar datos delproceso de trilla-->
                                     <?php if ( isset($datos["nombreModificar"])) { ?>
                                      <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosTrilla/editar_crgarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificar"]?></a><?php }?>
+
+                                      <!--Boton Modificar datos delproceso de Pruebas Laboratorio-->
+                                    <?php if ( isset($datos["nombreModificarP"])) { ?>
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosPruebasLaboratorio/editar_crgarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarP"]?></a><?php }?>
                                   
                                     <!--Boton detener  proceso-->
                                     <?php if ( isset($datos["nombreDetener"])) { ?>
@@ -39,6 +43,8 @@
                                     <?php if ( isset($datos["nombreFinalizar"])) { ?>
                                       <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#finalizar"><?php echo $datos["nombreFinalizar"]?></a>  
                                     <?php }?>
+
+                                   
                       </div>
                       </div>
                       <div class="form-group">
