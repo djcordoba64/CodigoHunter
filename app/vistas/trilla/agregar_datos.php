@@ -31,20 +31,20 @@
               <div class="col-md-12" >
                 <div class="col-md-6">
                   <p>
-                    <label for="mermaTrilla" class="">Merma en trilla</label><span style="color: #b89d64;font-size:18px"> (%)</span>
-                    <input class="contact-input"   required  name="mermaTrilla" value=""/>
+                    <label for="mermaTrilla" class="">Merma en trilla</label>
+                    <input class="contact-input" type="number" min="1" required  name="mermaTrilla" value=""/>
                   </p>
                 </div>
                 <div  class="col-md-6">
                   <label for="mallas" class="">Mallas</label>
-                    <input class="contact-input"  required name="mallas" value=""/>                     
+                    <input class="contact-input" type="number" min="1" required name="mallas" value=""/>                     
                 </div>               
               </div>
               <div class="col-md-12" >
                 <div class="col-md-6">
                   <p>
                     <label for="pesoCafeVerde" class="">Peso Cafe Verde</label>
-                    <input class="contact-input"  required name="pesoCafeVerde" value=""/>
+                    <input class="contact-input" min="1" type="number" required name="pesoCafeVerde" value=""/>
                   </p>
                 </div>             
               </div>

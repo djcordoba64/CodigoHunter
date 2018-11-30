@@ -512,7 +512,7 @@
 
 	public function agregar_finca(){
 
-		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+		if($_SESSION["rol"]!="tostador")
 			{
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
