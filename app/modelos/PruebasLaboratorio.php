@@ -12,9 +12,15 @@ class PruebasLaboratorio
 	}
 
 	public function crear($datos,$idcafe){
-		//preparamos la consulata
-		$this->db->query('INSERT INTO datospruebasdelaboratorio (fechaHora,idCafe,humedad,densidad,actividadAcuosa,diseñoCurva,observacion,created_at,created_by) 
-		VALUES (NOW(),:idcafe,:humedad,:densidad,:actividadAcuosa,:diseñoCurva,:observacion,NOW(),:created_by)
+		$this->db->query( "SELECT * FROM datospruebasdelaboratorio where idcafe=:idcafe and iddatosPruebasLaboratorio =(select max(iddatosPruebasLaboratorio) from datospruebasdelaboratorio  where idcafe=:idcafe)" );
+        $this->db->bind(':idcafe',$idcafe);     
+       $fila=$this->db->registro();
+
+       var_dump($fila);
+       if($fila!==true){
+       		//preparamos la consulata
+		$this->db->query('INSERT INTO datospruebasdelaboratorio (fechaHora,idCafe,humedad,densidad,actividadAcuosa,disenoCurva,observacion,created_by) 
+		VALUES (NOW(),:idcafe,:humedad,:densidad,:actividadAcuosa,:disenoCurva,:observacion,:created_by)
 			 ');
 
 			 //vinculamos los valores
@@ -22,7 +28,7 @@ class PruebasLaboratorio
 			 $this->db->bind(':humedad', $datos['humedad']);
 			 $this->db->bind(':densidad', $datos['densidad']);
 			 $this->db->bind(':actividadAcuosa', $datos['actividadAcuosa']);
-			  $this->db->bind(':diseñoCurva', $datos['diseñoCurva']);	
+			 $this->db->bind(':disenoCurva', $datos['disenoCurva']);	
 			 $this->db->bind(':observacion', $datos['observacion']);			 		
 			 $this->db->bind(':created_by', $_SESSION['idUsuario']);
 
@@ -33,6 +39,12 @@ class PruebasLaboratorio
             	return -1;
            }
 
+       }else{
+
+       	  return 1;//EL id ya existe.
+       }
+
+		
 	}
 
 

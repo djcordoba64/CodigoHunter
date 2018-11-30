@@ -2,7 +2,6 @@
 <div class="col-md-12">
     <h2>Gestionar trazabilidad de al Torrefacción</h2>
   </div>
-  <?php var_dump($datos) ?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">

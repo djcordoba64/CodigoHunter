@@ -5,7 +5,7 @@
 <div class="col-md-12">
 	<h2>Información de la finca</h2>
 </div>
-<section class="cart-wrap">	
+<section class="product-single">	
 	<div class="container">
 		<div class="woocommerce">
 			<form class="checkout woocommerce-checkout" id="form1" method="POST">
@@ -61,7 +61,7 @@
 									<input type="text" class="input-text"  name="coordenadasGoogle" autofocus="autofocus" value='<?php echo isset($datos['coordenadasGoogle'])? $datos['coordenadasGoogle'] : '';?>'>	
 								</p>
 								<div class="cold-md-12">
-									<div class="col-md-4">
+									<div class="col-md-3">
 										<!--Temperatura-->
 										<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 										<label for="billing_first_name">Temperatura<abbr class="required" title="required">			
@@ -78,7 +78,7 @@
 				                       		</div>						
 										</p>
 									</div>
-									<div class="col-md-8">													 
+									<div class="col-md-9">													 
 										<!--Estado-->
 										<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 											<label for="billing_first_name" class="">Estado:</label>
@@ -90,8 +90,11 @@
 										</p>
 									</div>
 								</div>
+								<br>
+								<div align="center">
 								<!--boton de guardar que no es submit, modifica el action del fomulario cuando se le hace click para poder tener varios action en un mismo form-->
 								<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Fincas/agregar_guardar_temporalmente',true)" class="btn btn-default" type="button" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>">
+								</div>
 							</div>
 							<div class="col-md-7" >
 								<div class="col-md-12" align="center">
@@ -102,12 +105,12 @@
 										<thead>
 						                    <tr>
 						                        
-						                    	<th class="">Nombre</th>
-												<th class="">Dpto</th>
-												<th class="">Municipio</th>
-												<th class="">Vereda</th>
-												<th class="">Temperatura</th>
-												<th class="">Acciones</th>
+						                    	<th  style="font-size:18px" class="">Nombre</th>
+												<th   style="font-size:18px" class="">Departamento</th>
+												<th  style="font-size:18px" class="">Municipio</th>
+												<th  style="font-size:18px" class="">Vereda</th>
+												<th  style="font-size:18px" class="">Temperatura</th>
+												<th  style="font-size:18px" class="">Acciones</th>
 						                    </tr>
 					                	</thead>
 					                	<tbody  class="cart_item">

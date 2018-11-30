@@ -5,6 +5,7 @@
 	        session_start(); 
 	    }
 	?>
+
 <!-- CART --> 
 	<section class="cart-wrap">
 		<div class="col-md-6" align="right">

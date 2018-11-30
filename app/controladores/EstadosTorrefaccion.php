@@ -117,7 +117,7 @@ class EstadosTorrefaccion extends Controlador
 				];
 
 				
-				echo "tiene uno o varios estados";
+				//echo "tiene uno o varios estados";
 				$this->redirectToAction('EstadosTorrefaccion', "consultar_proceso_sig", $datos);
 		}else
 		{	//Es primera ver que se va ha registrar
@@ -128,13 +128,13 @@ class EstadosTorrefaccion extends Controlador
 
 	public function consultar_proceso_sig($datos){
 		//declaro las variables para los proceso
-		var_dump($datos);
+		//var_dump($datos);
 		$estadoDb=$datos['codigoEstado'];
 		
 		// obtener los estados las primeras dos letras
 		$proceso=substr($estadoDb,0,2);//images
 
-		var_dump($estadoDb);
+		//var_dump($estadoDb);
 		
 		// ESTA EN PROCESO TRILLA	
 		if ($proceso=="TR"){ 		
@@ -201,8 +201,8 @@ class EstadosTorrefaccion extends Controlador
 
 		// ESTA EN PRUEBAS DE LABORATORIO
 		if ($proceso=="PL") {
-			var_dump($proceso);
-			echo "Pruebas de Laboratorio";
+			//var_dump($proceso);
+			//echo "Pruebas de Laboratorio";
 			//obtengo La ultima letra del proceso
 			$ultimaletra=substr($estadoDb, -1);
 		}
@@ -273,7 +273,7 @@ class EstadosTorrefaccion extends Controlador
 
 		$datos['idcafe']=$idcafe;
 		$datos['codigoSiguiente']=$codigoSiguiente;
-		var_dump($datos);
+		//var_dump($datos);
 
 		if($codigoSiguiente=="TRP"){
 			//var_dump($datos);

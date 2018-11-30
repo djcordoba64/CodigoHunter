@@ -9,7 +9,7 @@ class DatosPruebasLaboratorio extends Controlador
 	{
 		$this->cafesModelo = $this->modelo('Cafe');
 		$this->TorrefaccionModelo=$this->modelo('Torrefaccion');
-		$this->PrubasLaboratorioModelo=$this->modelo('PruebasLaboratorio');
+		$this->PruebasLaboratorioModelo=$this->modelo('PruebasLaboratorio');
 	}
 
 	//--------------REGISTRAR DATOS---------------------------------------
@@ -58,7 +58,7 @@ class DatosPruebasLaboratorio extends Controlador
 			$datos["humedad"]=$_POST['humedad'];
 			$datos["densidad"]=$_POST['densidad'];
 			$datos["actividadAcuosa"]=$_POST['actividadAcuosa'];
-			$datos["diseñoCurva"]=$_POST['diseñoCurva'];
+			$datos["disenoCurva"]=$_POST['disenoCurva'];
 			$datos["observacion"]=$_POST['observacion'];
 
 			//Y los guardo en la variable datos para hacer el Insert en la BD
@@ -67,11 +67,13 @@ class DatosPruebasLaboratorio extends Controlador
 				'humedad'=>trim($_POST['humedad']),					
 				'densidad'	=>trim($_POST['densidad']),	
 				'actividadAcuosa'=>trim($_POST['actividadAcuosa']),
-				'diseñoCurva'=>trim($_POST['diseñoCurva']),
+				'disenoCurva'=>trim($_POST['disenoCurva']),
 				'observacion'=>trim($_POST['observacion']),
 			];
 
-			$id = $this->PrubasLaboratorioModelo->crear($datos,$idcafe);
+			echo var_dump($datos);
+			//echo $idcafe;
+			$id = $this->PruebasLaboratorioModelo->crear($datos,$idcafe);
 
 			if($id== -1){
 				// no se ejecutó el insert
@@ -84,10 +86,10 @@ class DatosPruebasLaboratorio extends Controlador
 			else{
 					
 				// Si se realizo el insert
-				$datos['mensaje_exito'] ='Exito al guardar los datos';
-				$this->vista('EstadosTorrefaccion/registrar_inicio', $datos);
-				return;
-				//redireccionar('/Cliente/editar');
+				//$datos['mensaje_exito'] ='Exito al guardar los datos';
+				//$this->vista('EstadosTorrefaccion/registrar_inicio', $datos);
+				//return;
+				redireccionar('/EstadosTorrefaccion/registrar_inicio');
 			}
 					
 		}

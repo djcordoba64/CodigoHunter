@@ -19,7 +19,7 @@
 		}
 
 		//$mensaje='',$error=''
-		public function index($pagina=1,$mensaje='',$error=''){
+		public function index($pagina=1,$mensaje='',$error='',$exito=''){
 			//validacion de rol
 			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 			{
@@ -38,7 +38,16 @@
 			if(!empty($mensaje))
 			{
 				$datos['mensaje_advertencia'] =$mensaje;
+
 			}
+
+			if(!empty($exito))
+			{
+				$datos['mensaje_exito'] =$exito;
+
+			}
+			
+
 			
 
 			//echo $pagina;
@@ -326,6 +335,7 @@
 				}
 				else{
 
+					
 					redireccionar('/Cliente/index');
 				}
 

@@ -4,7 +4,6 @@
   <div class="col-md-12">
     <h2>Proceso de Pruebas de Laboratorio</h2>
   </div>
-<?php var_dump($datos) ?>
   <div class="well well-sm">    
     <div class="row">
       <div class="col-md-12">                           
@@ -48,8 +47,8 @@
                 </div>
                 <div class="col-md-6">
                   <p>
-                    <label for="diseñoCurva" class="">Diseño de curva</label>
-                    <input class="contact-input" min="1" type="number" required name="diseñoCurva" value=""/>
+                    <label for="disenoCurva" class="">Diseño de curva</label>
+                    <input class="contact-input" min="1" type="number" required name="disenoCurva" value=""/>
                   </p>
                 </div>                          
               </div>
@@ -64,8 +63,6 @@
             </div>
                
             </div>
-
-
           </div>  
         </form>         
       </div>

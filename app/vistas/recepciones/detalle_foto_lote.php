@@ -4,6 +4,7 @@
 <section class="where-buy alt">
 	<div class="container">
 		<div class="row">
+			<a href="<?php echo RUTA_URL;?>/Recepciones/index" class="btn btn-light"><i class="glyphicon glyphicon-hand-left"></i> Volver</a>
 			<div class="col-md-12"><h2>Recepción</h2></div>
 			<div class="col-md-4">					
 				<h6>Descripción de la recepción.</h6>
@@ -35,7 +36,7 @@
 										<tr class="">
 											<td class="product-remove"><?php echo $cafe->codigoCafe;?></td>
 											<td class="product-remove"><img src="<?php echo RUTA_URL.'/images/cafes/lote'.$cafe->idcafe.'.jpg'?>" alt="" width="70px"></td>
-											<td class="product-remove"><a  href="<?php echo RUTA_URL;?>/Cafes/cambiar_subir_foto/<?php echo $cafe->idcafe;?>" class="btn btn-sm btn-default" target="_blank">
+											<td class="product-remove"><a  href="<?php echo RUTA_URL;?>/Cafes/cambiar_subir_foto/<?php echo $cafe->idcafe;?>" class="btn btn-sm btn-default" target="_blank" data-toggle="tooltip" title="Ver información detallada del lote y cambiar foto" >
 	                       					<span class="glyphicon glyphicon-picture"></span> Cambiar foto
 	                      					</a></td>
 											

@@ -415,13 +415,18 @@
 			}
 
 			$datoscafes= $this->CafeModelo ->consultar_x_idCafe($idcafe);
+			
+
 				$datos=[
 						'codigoCafe'	=> $datoscafes->codigoCafe,
 						'idcafe'	=> $datoscafes->idcafe,
 						'especie'=>$datoscafes->especie,
 						'variedad'=>$datoscafes->variedad,
 						'porcentajeHumedad'=>$datoscafes->porcentajeHumedad,
-															
+						'factorRendimiento' =>$datoscafes->factorRendimiento,
+						'tipoTueste'=>$datoscafes->tipoTueste,
+						'Pnombre'=>$datoscafes->materiaprima,
+						'Tnombre'=>$datoscafes->tipobeneficio									
 					];
 
 
@@ -458,7 +463,7 @@
 			$this->vista('/Recepciones/mostrar_opcion_foto', $datos);
 		}else{
 			$datos=['mensaje_advertencia'=> 'Se actualizo la foto'];
-
+			$datos["cerrar"]=true;
 			$this->vista('/recepciones/index', $datos);
 		}			
 

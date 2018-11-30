@@ -162,7 +162,7 @@
 
 
 		public function consultar_x_idCafe($idcafe){
-			$this->db->query('SELECT * FROM cafes where idcafe=:idcafe ');
+			$this->db->query('SELECT c.idcafe,c.codigoCafe,c.especie,c.variedad,c.porcentajeHumedad,c.factorRendimiento,c.tipoTueste,m.nombre as materiaprima,p.nombre as tipobeneficio FROM cafes as c inner join materiaprima as m on m.idmateriaPrima=c.idmateriaPrima inner join tipobeneficio as p on p.idtipoBeneficio=p.idtipoBeneficio where idcafe=:idcafe and c.idtipoBeneficio=p.idtipoBeneficio');
 			$this->db->bind(':idcafe', $idcafe);
 			$fila=$this->db->registro();
             return $fila;

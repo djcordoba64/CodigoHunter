@@ -2,11 +2,11 @@
 
 <!-- CART -->
 <div class="col-md-12">
-	<h2>Agregar-editar-buscar</h2>
+	<h2>Clientes</h2>
 </div>
-
 <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
 <span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
+
 	<section class="cart-wrap">
 		<div class="container">			
 			<div class="row">				

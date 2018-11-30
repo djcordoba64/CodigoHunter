@@ -5,9 +5,8 @@
 	        session_start(); 
 	    }
 	?>
-
 <!-- CART --> 
-	<section class="cart-wrap">
+<section class="cart-wrap">
 		<div class="col-md-6" align="right">
 		 <a  href="<?php echo RUTA_URL;?>/paginas/index" class="btn btn-light"><i class="fa fa-backward"></i> Salir</a>
 		 </div>
@@ -110,8 +109,8 @@
 				</div>
 			</form>
 		</div>
-	</section>
-	<!-- CART END --> 
+</section>
+<!-- CART END --> 
 
 
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 

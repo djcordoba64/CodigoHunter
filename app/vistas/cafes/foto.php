@@ -1,6 +1,4 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
-
-<?php echo var_dump($datos) ?>
 <section class="product-single">
 		<div class="container">
 			<div class="row">
@@ -12,8 +10,6 @@
 						<input  type="file" name="imagen">
 						<br/>				
 					</div>
-					<div class="description"></div>
-
 				</div>
 				<div class="col-md-7">
 					<h4 class="name">Lote</h4>
@@ -22,17 +18,22 @@
 						<div class="col-md-5">
 						<div class="item">Especie: <strong><?php echo $datos['especie']?></strong></div>
 						<div class="item">Variedad: <strong><?php echo $datos['variedad']?></strong></div>
-						
+						<div class="item">Poncentaje de humedad: <strong><?php echo $datos['porcentajeHumedad']?></strong></div>
+						<div class="item">Factor de Rendimiento: <strong><?php echo $datos['factorRendimiento']?></strong></div>
+						<div class="item">Tipo de tueste: <strong><?php echo $datos['variedad']?></strong></div>
 						</div>
-						<div class="col-md-7">
 						
+						<div class="col-md-7">
+							<div class="item">Materia prima: <strong><?php echo $datos['Pnombre']?></strong></div>
+							<div class="item">Tipo de beneficio: <strong><?php echo $datos['Tnombre']?></strong></div>
 						</div>
 					</div><br>
-					<input value="Guardar" class="btn btn-brown" type="submit">															
+					<input value="Guardar" class="btn btn-brown" type="submit">
+					<input value="Cerrar" class="btn btn-default" type="button" onclick="window.close();">															
 				</div>
 				
 				</form>				
 			</div>
 		</div>
-	</section>
+</section>
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 
