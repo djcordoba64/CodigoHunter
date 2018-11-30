@@ -418,6 +418,9 @@
 				$datos=[
 						'codigoCafe'	=> $datoscafes->codigoCafe,
 						'idcafe'	=> $datoscafes->idcafe,
+						'especie'=>$datoscafes->especie,
+						'variedad'=>$datoscafes->variedad,
+						'porcentajeHumedad'=>$datoscafes->porcentajeHumedad,
 															
 					];
 
@@ -454,7 +457,9 @@
 			// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
 			$this->vista('/Recepciones/mostrar_opcion_foto', $datos);
 		}else{
-			$datos=['mensaje_advertencia'=> 'Perfil Aactualizado'];
+			$datos=['mensaje_advertencia'=> 'Se actualizo la foto'];
+
+			$this->vista('/recepciones/index', $datos);
 		}			
 
 	}

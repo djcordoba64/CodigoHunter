@@ -266,7 +266,7 @@
 			$datosRecepcion= $this->recepcionModelo->ConsultarDatos_x_id($idRecepcion);
 				
 					$datos=[
-						//'codigoRecibo'	=> $datosRecepcion->codigorecibo,
+						'numeroRecibo'	=> $datosRecepcion->numeroRecibo,
 						'fecha'	=> $datosRecepcion->created_at,	
 						'primerNombre'	=> $datosRecepcion->primerNombre,
 						'primerApellido'	=> $datosRecepcion->primerApellido,

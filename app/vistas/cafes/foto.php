@@ -1,4 +1,6 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
+
+<?php echo var_dump($datos) ?>
 <section class="product-single">
 		<div class="container">
 			<div class="row">
@@ -18,18 +20,12 @@
 					<div class="top-price"><?php echo $datos['codigoCafe'] ?></div>				
 					<div class="row">
 						<div class="col-md-5">
-						<div class="item">Especie: <a href="#">Coffee</a></div>
-						<div class="item">Variedad: <strong>10</strong></div>
-						<div class="item">Materia prima: <a href="#">Coffee,</a> <a href="#">Robusta</a></div>
-						<div class="item">Variedad: <strong>10</strong></div>
-						<div class="item">Tipo de beneficio: <strong>10</strong></div>
+						<div class="item">Especie: <strong><?php echo $datos['especie']?></strong></div>
+						<div class="item">Variedad: <strong><?php echo $datos['variedad']?></strong></div>
+						
 						</div>
 						<div class="col-md-7">
-						<div class="item">Especie: <a href="#">Coffee</a></div>
-						<div class="item">Variedad: <strong>10</strong></div>
-						<div class="item">Materia prima: <a href="#">Coffee,</a> <a href="#">Robusta</a></div>
-						<div class="item">Variedad: <strong>10</strong></div>
-						<div class="item">Tipo de beneficio: <strong>10</strong></div>
+						
 						</div>
 					</div><br>
 					<input value="Guardar" class="btn btn-brown" type="submit">															

@@ -71,8 +71,8 @@
 												<?php echo $recepcion->estado;?>				
 											</td class="product-remove">
 											<td class="product-remove">
-												<a data-toggle="tooltip" title="Subir o cambiar la foto de los lotes de café" href="<?php echo RUTA_URL;?>/Recepciones/mostrar_opcion_foto/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
-												 <span class="glyphicon glyphicon-picture"></span> Foto
+												<a data-toggle="tooltip" title="Ver los lotes agregados a la recepcion" href="<?php echo RUTA_URL;?>/Recepciones/mostrar_opcion_foto/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
+												 <span class=""></span> Lotes
 												 </a>
 												<a data-toggle="tooltip" title="Anular la recepción" href="<?php echo RUTA_URL;?>/Recepciones/CambiarEstado/<?php echo $recepcion->NumeroRecibo;?>" class="btn btn-sm btn-bordered" >
 												 <span class="glyphicon glyphicon-remove"></span> Anular

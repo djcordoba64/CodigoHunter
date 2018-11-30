@@ -162,7 +162,7 @@
 
 
 		public function consultar_x_idCafe($idcafe){
-			$this->db->query('SELECT codigoCafe, idcafe FROM cafes where idcafe=:idcafe ');
+			$this->db->query('SELECT * FROM cafes where idcafe=:idcafe ');
 			$this->db->bind(':idcafe', $idcafe);
 			$fila=$this->db->registro();
             return $fila;
