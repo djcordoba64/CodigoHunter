@@ -38,7 +38,7 @@
 			}
 			
 			//echo $pagina;
-			$recepciones_x_pagina=2;			
+			$recepciones_x_pagina=5;			
 			
 			//obtener los usuarios
 			$iniciar=($pagina-1)*$recepciones_x_pagina ;
