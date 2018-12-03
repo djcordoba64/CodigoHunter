@@ -42,9 +42,42 @@ class PruebasLaboratorio
        }else{
 
        	  return 1;//EL id ya existe.
-       }
+       }		
+	}
 
-		
+	public function obtenerDatos_x_id($idcafe){
+		$this->db->query("SELECT c.codigoCafe, d.iddatosPruebasLaboratorio,d.fechaHora,d.idcafe,d.humedad,d.densidad,d.actividadAcuosa,d.disenoCurva,d.observacion from datospruebasdelaboratorio as d INNER JOIN cafes as c on c.idcafe=d.idcafe WHERE d.idcafe=:idcafe");
+        $this->db->bind(':idcafe',$idcafe);
+        $fila=$this->db->registro();
+        return $fila;
+	}
+
+
+	public function actualizarDatos($datos){
+		$this->db->query('UPDATE datospruebasdelaboratorio SET 
+			humedad=:humedad,
+			densidad=:densidad,
+			actividadAcuosa=:actividadAcuosa, 
+			disenoCurva=:disenoCurva,
+			observacion=:observacion,
+			updated_at= NOW(),
+			updated_by = :updated_by 
+            where iddatosPruebasLaboratorio=:iddatosPruebasLaboratorio');
+
+            $this->db->bind(':humedad',  $datos['humedad']);
+            $this->db->bind(':densidad',  $datos['densidad']);
+            $this->db->bind(':actividadAcuosa',  $datos['actividadAcuosa']);
+            $this->db->bind(':disenoCurva',  $datos['disenoCurva']);
+            $this->db->bind(':observacion',  $datos['observacion']);           
+            $this->db->bind(':updated_by',  $_SESSION['idUsuario']);
+			$this->db->bind(':iddatosPruebasLaboratorio',  $datos['iddatosPruebasLaboratorio']);
+
+            if ($this->db->execute()){           
+                return 0; //se hizo el update
+            }
+            else{
+                return -1;
+            }
 	}
 
 

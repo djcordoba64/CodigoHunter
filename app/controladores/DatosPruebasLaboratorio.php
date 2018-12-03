@@ -96,7 +96,75 @@ class DatosPruebasLaboratorio extends Controlador
 	}
 
 
-	//----------------------------------------------------------------
+	//-----EDITAR-----------------------------------------------------------
+	public function editar_cargarDatos($idcafe){
+		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+		{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+		}
+
+		//consulatos los datos
+		$datosPLaboratorio= $this->PruebasLaboratorioModelo->obtenerDatos_x_id($idcafe);
+
+			$datos=[
+					'codigoCafe'=>$datosPLaboratorio->codigoCafe,
+					'iddatosPruebasLaboratorio'=>$datosPLaboratorio->iddatosPruebasLaboratorio,	
+					'fechaHora'=>$datosPLaboratorio->fechaHora,
+					'humedad'=>$datosPLaboratorio->humedad,
+					'densidad'=>$datosPLaboratorio->densidad,
+					'actividadAcuosa'=>$datosPLaboratorio->actividadAcuosa,
+					'disenoCurva'=>$datosPLaboratorio->disenoCurva,
+					'observacion'=>$datosPLaboratorio->observacion,
+			];				
+					//me redirecciona a la vista Editar, para cargar los datos en el formulario de edicion.
+					$this->vista('/pruebasLaboratorio/editar', $datos);
+
+	}
+
+	public function editar($iddatosPruebasLaboratorio){
+
+		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+		{
+				// agrego mensaje a arreglo de datos para ser mostrado 
+				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+				$this->vista('/paginas/index',$datos);
+				return;
+		}
+
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error']))
+		{
+			$datos=[
+					'iddatosPruebasLaboratorio'	=>$iddatosPruebasLaboratorio,
+					'humedad'	=>trim($_POST['humedad']),					
+					'densidad'		=>trim($_POST['densidad']),
+					'actividadAcuosa'	=>trim($_POST['actividadAcuosa']),	
+					'disenoCurva'	=>trim($_POST['disenoCurva']),
+					'observacion'	=>trim($_POST['observacion']),
+					
+				];
+
+			$id = $this->PruebasLaboratorioModelo->actualizarDatos($datos);
+			if($id==0){
+
+				$datos['mensaje_exito'] ='Exito al editar los datos';
+				$this->vista('EstadosTorrefaccion/registrar_inicio', $datos);
+				return;
+					
+			}
+			else{
+					
+				$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+					$this->vista('/pruebasLaboratorio/editar', $datos);
+					return;
+			}
+
+		}
+	}
 
 	
 }

@@ -1,20 +1,19 @@
 <?php
-
 /**
  * 
  */
-class DatosTrilla extends Controlador
+class DatosLaboratorio extends Controlador
 {
 	
 	function __construct()
 	{
 		$this->cafesModelo = $this->modelo('Cafe');
 		$this->TorrefaccionModelo=$this->modelo('Torrefaccion');
-		$this->TrillaModelo=$this->modelo('Trilla');
+		$this->LaboratorioModelo=$this->modelo('Laboratorio');
 	}
 
 	//--------------REGISTRAR DATOS---------------------------------------
-	public function mostrar_formulario_trilla($datos){
+	public function mostrar_formulario($datos){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
@@ -26,7 +25,7 @@ class DatosTrilla extends Controlador
 		}
 
 
-		$this->vista('/Trilla/agregar_datos', $datos);
+		$this->vista('/laboratorio/agregar_datos', $datos);
 	}
 
 	public function registrar_datos(){
@@ -56,47 +55,37 @@ class DatosTrilla extends Controlador
 		}
 		else{
 			//recupero los datos que vienes por POST
-			$datos["mermaTrilla"]=$_POST['mermaTrilla'];
-			$datos["mallas"]=$_POST['mallas'];
+			$datos["perfilTaza2"]=$_POST['perfilTaza2'];
 			$datos["observacion"]=$_POST['observacion'];
-			$datos["pesoCafeVerde"]=$_POST['pesoCafeVerde'];
 
 			//Y los guardo en la variable datos para hacer el Insert en la BD
 			$datos=[
 	
-				'mermaTrilla'=>trim($_POST['mermaTrilla']),					
-				'mallas'	=>trim($_POST['mallas']),	
+				'perfilTaza2'=>trim($_POST['perfilTaza2']),					
 				'observacion'=>trim($_POST['observacion']),
-				'pesoCafeVerde'=>trim($_POST['pesoCafeVerde']),
 			];
 
-			$id = $this->TrillaModelo->crear($datos,$idcafe);
+			$id = $this->LaboratorioModelo->crear($datos,$idcafe);
 
 			if($id== -1){
 				// no se ejecutó el insert
 				// agrego mensaje a arreglo de datos para ser mostrado 
 				$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
 					// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario intente de nuevo
-					$this->vista('/Trilla/agregar_datos', $datos);
+					$this->vista('/PruebasLaboratorio/agregar_datos', $datos);
 				return;
 			}
 			else{
 					
-				// Si se realizo el insert
-				$datos['mensaje_exito'] ='Exito al guardar los datos';
-				$this->vista('EstadosTorrefaccion/registrar_inicio', $datos);
-				return;
-				//redireccionar('/Cliente/editar');
+				redireccionar('/EstadosTorrefaccion/registrar_inicio');
 			}
 					
 		}
 	}
 
-	//----------------------------------------------------------------
 
-	//---------**EDITAR***----------------------------------------------------//
-
-	public function editar_crgarDatos($idcafe){
+	//-----EDITAR-----------------------------------------------------------
+	public function editar_cargarDatos($idcafe){
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
 				// agrego mensaje a arreglo de datos para ser mostrado 
@@ -107,24 +96,21 @@ class DatosTrilla extends Controlador
 		}
 
 		//consulatos los datos
-		$datostrilla= $this->TrillaModelo->obtenerDatos_x_id($idcafe);
+		$datosLaboratorio= $this->LaboratorioModelo->obtenerDatos_x_id($idcafe);
 
 			$datos=[
-					'idDatoTrilla'=>$datostrilla->idDatoTrilla,	
-					'fechaHora'=>$datostrilla->fechaHora,
-					'idcafe'=>$datostrilla->idcafe,
-					'mermaTrilla'=>$datostrilla->mermaTrilla,
-					'mallas'=>$datostrilla->mallas,
-					'observacion'=>$datostrilla->observacion,
-					'pesoCafeVerde'=>$datostrilla->pesoCafeVerde,
-					'codigoCafe'=>$datostrilla->codigoCafe,
+					'codigoCafe'=>$datosLaboratorio->codigoCafe,
+					'iddatosLaboratorio'=>$datosLaboratorio->iddatosLaboratorio,	
+					'fechaHora'=>$datosLaboratorio->fechaHora,
+					'perfilTaza2'=>$datosLaboratorio->perfilTaza2,
+					'observacion'=>$datosLaboratorio->observacion,
 			];				
 					//me redirecciona a la vista Editar, para cargar los datos en el formulario de edicion.
-					$this->vista('/trilla/editar', $datos);
+					$this->vista('/laboratorio/editar', $datos);
 
 	}
 
-	public function editar($idDatoTrilla){
+	public function editar($iddatosLaboratorio){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
@@ -138,20 +124,13 @@ class DatosTrilla extends Controlador
 		if ($_SERVER['REQUEST_METHOD'] == 'POST' and !isset($datos['mensaje_error']))
 		{
 			$datos=[
-					'idDatoTrilla'	=>$idDatoTrilla,
-					'idcafe'		=>trim($_POST['idcafe']),
-					'mermaTrilla'	=>trim($_POST['mermaTrilla']),					
-					'mallas'		=>trim($_POST['mallas']),
-					'pesoCafeVerde'	=>trim($_POST['pesoCafeVerde']),	
+					'iddatosLaboratorio'	=>$iddatosLaboratorio,
+					'perfilTaza2'	=>trim($_POST['perfilTaza2']),					
 					'observacion'	=>trim($_POST['observacion']),
 					
 				];
 
-			var_dump($datos);
-
-			$id = $this->TrillaModelo->actualizarDatos($datos);
-
-			echo $id;
+			$id = $this->LaboratorioModelo->actualizarDatos($datos);
 			if($id==0){
 
 				$datos['mensaje_exito'] ='Exito al editar los datos';
@@ -162,12 +141,15 @@ class DatosTrilla extends Controlador
 			else{
 					
 				$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
-					$this->vista('trilla/editar', $datos);
+					$this->vista('/laboratorio/editar', $datos);
 					return;
 			}
 
 		}
 	}
-	//-------------------------------------------------------------------//
+
+
 }
+
+
 ?>

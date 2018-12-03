@@ -3,6 +3,7 @@
     <h2>Gestionar trazabilidad de al Torrefacción</h2>
   </div>
 <div class="container">
+  <?php echo var_dump($datos) ?>
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
@@ -16,30 +17,47 @@
                       <br>De clic en una de las opciones para:
 
                       <div style="margin: 20px;">
-                                     <!--Boton iniciar siguiente proceso o (Primer proceso)-->
+                                <!--Boton iniciar siguiente proceso o (Primer proceso)-->
                                     <?php if ( isset($datos["nombreSiguiente"])) { ?>
                                     <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#IniciarProceso"><?php echo $datos["nombreSiguiente"]?></a>   
                                     <?php }?>
 
+                                <!--Boton Modificar-->
                                     <!--Boton Modificar datos delproceso de trilla-->
                                     <?php if ( isset($datos["nombreModificar"])) { ?>
                                      <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosTrilla/editar_crgarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificar"]?></a><?php }?>
 
                                       <!--Boton Modificar datos delproceso de Pruebas Laboratorio-->
                                     <?php if ( isset($datos["nombreModificarP"])) { ?>
-                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosPruebasLaboratorio/editar_crgarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarP"]?></a><?php }?>
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosPruebasLaboratorio/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarP"]?></a><?php }?>
+
+                                      <!--Boton Modificar datos del proceso Torrefactor-->
+                                    <?php if ( isset($datos["nombreModificarTo"])) { ?>
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosTorrefactor/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarTo"]?></a><?php }?>
+
+                                      <!--Boton Modificar datos del proceso Estabilización-->
+                                    <?php if ( isset($datos["nombreModificarEs"])) { ?>
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosEstabilizacion/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarEs"]?></a><?php }?>
+
+                                      <!--Boton Modificar datos del proceso Laboratotio-->
+                                    <?php if ( isset($datos["nombreModificarLa"])) { ?>
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosLaboratorio/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarLa"]?></a><?php }?>
+
+                                      <!--Boton Modificar datos del proceso Empaque-->
+                                    <?php if ( isset($datos["nombreModificarEm"])) { ?>
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosEmpaque/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarEm"]?></a><?php }?>
                                   
-                                    <!--Boton detener  proceso-->
+                                <!--Boton detener  proceso-->
                                     <?php if ( isset($datos["nombreDetener"])) { ?>
                                       <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#detener"><?php echo $datos["nombreDetener"]?></a>   
                                     <?php }?>
 
-                                    <!--Boton Reanudar proceso-->
+                                <!--Boton Reanudar proceso-->
                                     <?php if ( isset($datos["nombreReanudar"])) { ?>
                                       <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#reanudar"><?php echo $datos["nombreReanudar"]?></a>   
                                     <?php }?>
 
-                                    <!--Boton finalizar  proceso-->
+                                <!--Boton finalizar  proceso-->
                                     <?php if ( isset($datos["nombreFinalizar"])) { ?>
                                       <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#finalizar"><?php echo $datos["nombreFinalizar"]?></a>  
                                     <?php }?>

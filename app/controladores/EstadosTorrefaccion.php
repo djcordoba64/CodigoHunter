@@ -210,47 +210,299 @@ class EstadosTorrefaccion extends Controlador
 				$datos['nombreProceso']="Pruebas de Laboratorio";
 				
 				$datos["nombreDetener"]="Detener proceso";
-				$datos["codigoDetener"]="TRD";
+				$datos["codigoDetener"]="PLD";
 				
 				$datos["nombreFinalizar"]="Finalizar proceso";
-				$datos["codigoFinalizar"]="TRF";
+				$datos["codigoFinalizar"]="PLF";
 
 				$datos["nombreModificarP"]="Modificar datos ";
 	
 				
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
+			if ($ultimaletra=='D') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Pruebas de Laboratorio";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="PLF";
+
+				$datos["nombreReanudar"]="Reanudar proceso";
+				$datos["codigoReanudar"]="PLR";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='R') {
+
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Pruebas de Laboratorio";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="PLF";
+
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="PLD";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='F') {
+
+				$datos['leyenda']=" ha finalizado  el proceso de Pruebas de Laboratorio, el proceso siguiente es ";
+				$datos['nombreProceso']="Torrefactor";
+				
+				$datos["nombreSiguiente"]="Iniciar Torrefactor";
+				$datos["codigoSiguiente"]="TOP";
+
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}			
+
 		}
 
 		// ESTA EN PROCESO TORREFACTOR	
 		if($proceso=="TO"){
-			var_dump($proceso);
-			echo "TORREFACTO";
 			//obtengo La ultima letra del proceso
 			$ultimaletra=substr($estadoDb, -1);
+			if ($ultimaletra=='P') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Torrefactor";
+				
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="TOD";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="TOF";
+
+				$datos["nombreModificarTo"]="Modificar datos ";
+	
+				
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+			if ($ultimaletra=='D') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']=">Torrefactor";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="TOF";
+
+				$datos["nombreReanudar"]="Reanudar proceso";
+				$datos["codigoReanudar"]="TOR";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='R') {
+
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Torrefactor";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="TOF";
+
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="TOD";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='F') {
+
+				$datos['leyenda']=" ha finalizado  el proceso de Torrefactor, el proceso siguiente es ";
+				$datos['nombreProceso']="Estabilización";
+				
+				$datos["nombreSiguiente"]="Iniciar proceso de Establilizacion";
+				$datos["codigoSiguiente"]="ESP";
+
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}			
+
 		}
 		// ESTA EN PROCESO TESTABILIZACIÓN DEL CAFÉ
-		if($proceso=="EC"){
-			var_dump($proceso);
-			echo "ESTABILIZACION DEL CAFE";
-			//obtengo La ultima letra del proceso
+		if($proceso=="ES"){
+
 			$ultimaletra=substr($estadoDb, -1);
+
+			if ($ultimaletra=='P') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Estabilización";
+				
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="ESD";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="ESF";
+
+				$datos["nombreModificareEs"]="Modificar datos ";
+	
+				
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+			if ($ultimaletra=='D') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Estabilización";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="ESF";
+
+				$datos["nombreReanudar"]="Reanudar proceso";
+				$datos["codigoReanudar"]="ESR";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='R') {
+
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Estabilización";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="ESF";
+
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="ESD";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='F') {
+
+				$datos['leyenda']=" ha finalizado  el proceso de Establilizacion, el proceso siguiente es ";
+				$datos['nombreProceso']="Laboratorio";
+				
+				$datos["nombreSiguiente"]="Iniciar proceso de laboratorio";
+				$datos["codigoSiguiente"]="LAP";
+
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
 		}
 		// ESTA EN LABORATORIO
 		if($proceso=="LA"){
-			var_dump($proceso);
-			echo "LABOLARORIO";
-
 			//obtengo La ultima letra del proceso
 			$ultimaletra=substr($estadoDb, -1);
+			if ($ultimaletra=='P') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Laboratorio";
+				
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="LAD";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="LAF";
+
+				$datos["nombreModificarLa"]="Modificar datos ";
+	
+				
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+			if ($ultimaletra=='D') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="laboratorio";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="LAF";
+
+				$datos["nombreReanudar"]="Reanudar proceso";
+				$datos["codigoReanudar"]="LAR";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='R') {
+
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="laboratorio";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="LAF";
+
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="LAD";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='F') {
+
+				$datos['leyenda']=" ha finalizado  el proceso de laboratorio, el proceso siguiente es ";
+				$datos['nombreProceso']="EMPAQUE";
+				
+				$datos["nombreSiguiente"]="Iniciar proceso de Empaque";
+				$datos["codigoSiguiente"]="EMP";
+
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
 		}
 		// ESTA EN EMPAQUE
 		if($proceso=="EM"){
-			var_dump($proceso);
-			echo "EMPAQUE";
-
 			//obtengo La ultima letra del proceso
 			$ultimaletra=substr($estadoDb, -1);
+			if ($ultimaletra=='P') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Empaque";
+				
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="EMD";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="EMF";
+
+				$datos["nombreModificarEm"]="Modificar datos ";
+	
+				
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+			if ($ultimaletra=='D') {
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Empaque";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="EMF";
+
+				$datos["nombreReanudar"]="Reanudar proceso";
+				$datos["codigoReanudar"]="EMR";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='R') {
+
+
+				$datos['leyenda']=" está en el proceso de ";
+				$datos['nombreProceso']="Empaque";
+				
+				$datos["nombreFinalizar"]="Finalizar proceso";
+				$datos["codigoFinalizar"]="EMF";
+
+				$datos["nombreDetener"]="Detener proceso";
+				$datos["codigoDetener"]="EMD";
+					
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
+
+			if ($ultimaletra=='F') {
+
+				$datos['leyenda']=" ha finalizado el último estado que es Empaque. Para finalizar el proceso de";
+				$datos['nombreProceso']="Torrefacción";
+				
+				$datos["nombreSiguiente"]="Finalizar proceso";
+				$datos["codigoSiguiente"]="GTF";//GESTION DE TORREFACCIÓN FINALIZADO.
+
+				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
+			}
 		}
 		
 	}
@@ -266,7 +518,7 @@ class EstadosTorrefaccion extends Controlador
 		$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 	}
 
-	//Se va ha registrar el inicio del proceso Trilla(TR) y es estado seria en 'proceso'(P)
+	//Se cambia el estado de cualquier proceso.(Se registra el inicio de cualquier proceso.)
 	public function cambiar_estado($idcafe,$codigoSiguiente){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -277,8 +529,6 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/paginas/index',$datos);
 				return;
 		}
-		//echo $idcafe;
-		//echo $codigoSiguiente;
 
 		$codigoCafe=$this->cafesModelo->consultar_x_idCafe($idcafe);
 
@@ -288,20 +538,32 @@ class EstadosTorrefaccion extends Controlador
 
 		$datos['idcafe']=$idcafe;
 		$datos['codigoSiguiente']=$codigoSiguiente;
-		//var_dump($datos);
 
 		if($codigoSiguiente=="TRP"){
-			//var_dump($datos);
 			$this->redirectToAction('DatosTrilla', "mostrar_formulario_trilla",$datos );
 
 		}
 		if($codigoSiguiente=="PLP"){
 
-			echo "Registrar";
 			$this->redirectToAction('DatosPruebasLaboratorio', "mostrar_formulario",$datos );
 		}
 
+		if($codigoSiguiente=="TOP"){
+			$this->redirectToAction('DatosTorrefactor', "mostrar_formulario",$datos );
+		}
+		if($codigoSiguiente=="ESP"){
+			$this->redirectToAction('DatosEstabilizacion', "mostrar_formulario",$datos );
+		}
+		if($codigoSiguiente=="LAP"){
+			$this->redirectToAction('DatosLaboratorio', "mostrar_formulario",$datos );
+		}
+		if($codigoSiguiente=="EMP"){
+			$this->redirectToAction('DatosEmpaque', "mostrar_formulario",$datos );
+		}
+
 	}
+
+	//Se registra la detención de cualquier proceso.
 	public function detener_estado($idcafe,$codigoDetener){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -315,7 +577,7 @@ class EstadosTorrefaccion extends Controlador
 	
 	
 		$datos['idcafe']=$idcafe;
-		$datos['codigoDetener']=$codigoDetener;//TRD
+		$datos['codigoDetener']=$codigoDetener;
 
 		//$proceso=substr($estadoDb,0,2);
 
@@ -324,7 +586,7 @@ class EstadosTorrefaccion extends Controlador
 
 				if($id==1){
 
-					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
+					$datos['mensaje_exito']='Se ha detenido el proceso de trilla';
 					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
 				}
 				else{
@@ -336,9 +598,92 @@ class EstadosTorrefaccion extends Controlador
 				}
 			
 		}
+
+		if ($codigoDetener=="PLD") {
+			$id = $this->TorrefaccionModelo->insertarEstado_detenido($idcafe,$codigoDetener);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha detenido el proceso Pruebas de Laboratorio';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+		}
+		if ($codigoDetener=="TOD") {
+			$id = $this->TorrefaccionModelo->insertarEstado_detenido($idcafe,$codigoDetener);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha detenido el proceso Pruebas de Laboratorio';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+		}
+
+		if ($codigoDetener=="ESD") {
+			$id = $this->TorrefaccionModelo->insertarEstado_detenido($idcafe,$codigoDetener);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha detenido el proceso Pruebas de Laboratorio';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+		}
+		if ($codigoDetener=="LAD") {
+			$id = $this->TorrefaccionModelo->insertarEstado_detenido($idcafe,$codigoDetener);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha detenido el proceso Pruebas de Laboratorio';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+		}
+		if ($codigoDetener=="EMD") {
+			$id = $this->TorrefaccionModelo->insertarEstado_detenido($idcafe,$codigoDetener);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha detenido el proceso Pruebas de Laboratorio';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+		}
 		
 	}
-	
+
+	//se reanuda cualquier proceso
 	public function reanudar_estado($idcafe,$codigoReanudar){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -373,8 +718,95 @@ class EstadosTorrefaccion extends Controlador
 				}
 			
 		}
+		if($codigoReanudar=="PLR"){	
+			$id = $this->TorrefaccionModelo->insertarEstado_reanudado($idcafe,$codigoReanudar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+		if($codigoReanudar=="TOR"){	
+			$id = $this->TorrefaccionModelo->insertarEstado_reanudado($idcafe,$codigoReanudar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+		if($codigoReanudar=="ESR"){	
+			$id = $this->TorrefaccionModelo->insertarEstado_reanudado($idcafe,$codigoReanudar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+		if($codigoReanudar=="LAR"){	
+			$id = $this->TorrefaccionModelo->insertarEstado_reanudado($idcafe,$codigoReanudar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+		if($codigoReanudar=="EMR"){	
+			$id = $this->TorrefaccionModelo->insertarEstado_reanudado($idcafe,$codigoReanudar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
 		
 	}
+
+	//se registra el proceso finalizado de caulquier estado.
 	public function finalizar_estado($idcafe,$codigoFinalizar){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -398,6 +830,92 @@ class EstadosTorrefaccion extends Controlador
 				if($id==1){
 
 					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+		if($codigoFinalizar=="PLF"){	
+			$id = $this->TorrefaccionModelo->insertar_finalizarEstado($idcafe,$codigoFinalizar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso de trilla';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+
+		if($codigoFinalizar=="TOF"){	
+			$id = $this->TorrefaccionModelo->insertar_finalizarEstado($idcafe,$codigoFinalizar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso Torrefactor';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+		if($codigoFinalizar=="ESF"){	
+			$id = $this->TorrefaccionModelo->insertar_finalizarEstado($idcafe,$codigoFinalizar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso Torrefactor';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+		if($codigoFinalizar=="LAF"){	
+			$id = $this->TorrefaccionModelo->insertar_finalizarEstado($idcafe,$codigoFinalizar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso Torrefactor';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+				}
+				else{
+					$datos['mensaje_exito']='NO se puede ejecutar el proceso';
+					//$datos['mensaje_advertencia'] ='no se realizo el insert';
+					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+					return;
+					
+				}
+			
+		}
+		if($codigoFinalizar=="EMF"){	
+			$id = $this->TorrefaccionModelo->insertar_finalizarEstado($idcafe,$codigoFinalizar);
+
+				if($id==1){
+
+					$datos['mensaje_exito']='Se ha registrado el proceso Torrefactor';
 					$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
 				}
 				else{
