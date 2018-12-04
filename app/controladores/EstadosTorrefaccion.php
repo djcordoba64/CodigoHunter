@@ -13,22 +13,20 @@ class EstadosTorrefaccion extends Controlador
 		$this->TorrefaccionModelo=$this->modelo('Torrefaccion');
 	}
 
-	public function index()
-	{
-			//validacion de rol
-			if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
-			{
-				// agrego mensaje a arreglo de datos para ser mostrado 
-				$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+	public function index(){
+		//validacion de rol
+		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+		{
+			// agrego mensaje a arreglo de datos para ser mostrado 
+			$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
 				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
-				$this->vista('/paginas/index',$datos);
-				return;
-			}
+			$this->vista('/paginas/index',$datos);
+			return;
+		}
 	}
 
-	//Mustra el campo para ingresar el codigo del café.
-	public function registrar_inicio($datos=[])
-	{
+	//Muestra el campo para ingresar el codigo del café.
+	public function registrar_inicio($datos=[]){
 			//validacion de rol
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
@@ -75,7 +73,6 @@ class EstadosTorrefaccion extends Controlador
 				$datos=array('mensaje_error'=>'El café esta registrado pero el estado es "Rechazado"');
 				$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
 			}
-
 		}else
 		{
 			//Si no esta registrado muestra mensaje de adventencia.
@@ -84,8 +81,6 @@ class EstadosTorrefaccion extends Controlador
 			$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
 		}
 	}
-	
-	//---------------------------------------
 
 	public function validar_estados($datos){
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -103,44 +98,41 @@ class EstadosTorrefaccion extends Controlador
 
 		if ($existe==1) // Tiene uno o varios estados
 		{
-				//consulto cual es el ultimo proceso
-				$estados=$this->TorrefaccionModelo->consultar_idEstados($datos);
+			//consulto cual es el ultimo proceso
+			$estados=$this->TorrefaccionModelo->consultar_idEstados($datos);
 
-				//var_dump($estados);
-
-				$datos=[
-						'idestadosTorrefaccion'=>$estados->idestadosTorrefaccion,
-						'idcafe'=>$estados->idcafe,
-						'codigoEstado'=>$estados->codigoEstado,
-						'codigoCafe'=>$estados->codigoCafe,
-
-				];
+			//guardo los datos  obtenidos de la consulta en un array, para enviarselos al método.
+			$datos=[
+					
+				'idestadosTorrefaccion'=>$estados->idestadosTorrefaccion,
+				'idcafe'=>$estados->idcafe,
+				'codigoEstado'=>$estados->codigoEstado,
+				'codigoCafe'=>$estados->codigoCafe,
+			];
 				
-				//echo "tiene uno o varios estados";
-				$this->redirectToAction('EstadosTorrefaccion', "consultar_proceso_sig", $datos);
+			//echo "tiene uno o varios estados";
+			$this->redirectToAction('EstadosTorrefaccion', "consultar_proceso_sig", $datos);
 		}else
-		{	//Es primera ver que se va ha registrar
-				
+		{	//Es primera ver que se va ha registrar				
 			$this->redirectToAction('EstadosTorrefaccion', "iniciar_primer_proceso", $datos);
 		}			
 	}
 
+	/*Este método me consulta el proceso que siguiente, dependiendo del estado en el que está el lote de café.Posterimermente me muestra las posibles opsiones.
+	*/
 	public function consultar_proceso_sig($datos){
-		//declaro las variables para los proceso
-		//var_dump($datos);
-		$estadoDb=$datos['codigoEstado'];
 		
-		// obtener los estados las primeras dos letras
-		$proceso=substr($estadoDb,0,2);//images
-
-		//var_dump($estadoDb);
+		$estadoDb=$datos['codigoEstado']; //gusrdo en una variable el codigo del estado de la BD.
 		
-		// ESTA EN PROCESO TRILLA	
+		// obtengo las primeras dos letras del codigoEstado.
+		$proceso=substr($estadoDb,0,2);//
+		
+		// ESTA EN ESTADO-> TRILLA(TR)
 		if ($proceso=="TR"){ 		
-			//obtengo La ultima letra del proceso
+		//obtengo La ultima letra del ESTADO.Para saber cual es el posibles sub-estado.
 			$ultimaletra=substr($estadoDb, -1);
 
-			if ($ultimaletra=='P') {
+			if ($ultimaletra=='P') { //sub-estado (EN PROCESO) osea P.
 
 				$datos['leyenda']=" está en el proceso de ";
 				$datos['nombreProceso']="Trilla";
@@ -157,7 +149,7 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 
-			if ($ultimaletra=='D') {
+			if ($ultimaletra=='D') {//sub-estado (DETENIDO) osea D.
 
 				$datos['leyenda']=" está en el proceso de ";
 				$datos['nombreProceso']="Trilla";
@@ -171,7 +163,7 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 
-			if ($ultimaletra=='R') {
+			if ($ultimaletra=='R') {//sub-estado (REANUDADO) osea R.
 
 
 				$datos['leyenda']=" está en el proceso de ";
@@ -186,25 +178,26 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 
-			if ($ultimaletra=='F') {
+			if ($ultimaletra=='F') {//sub-estado (FINALIZADO) osea F.
 
 				$datos['leyenda']=" ha finalizado  el proceso de Trilla, el proceso siguiente es ";
 				$datos['nombreProceso']="Pruebas de Laboratorio";
 				
+				//CUANDO EL ESTADO TERMINA EN F, sigue con el siguiente estado.
 				$datos["nombreSiguiente"]="Iniciar Pruebas de Laboratorio";
-				$datos["codigoSiguiente"]="PLP";
+				$datos["codigoSiguiente"]="PLP";//PRUEBAS DE LABORATORIO EN PROCESO, OSEA (PLP)
 
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}			
 		}
 
-		// ESTA EN PRUEBAS DE LABORATORIO
+		// ESTA EN PRUEBAS DE LABORATORIO OSEA (PL),->PRIMERAS DOS LETRAS DEL ESTADO.
 		if ($proceso=="PL") {
-			//var_dump($proceso);
-			//echo "Pruebas de Laboratorio";
-			//obtengo La ultima letra del proceso
+
 			$ultimaletra=substr($estadoDb, -1);
-			if ($ultimaletra=='P') {
+
+			//PRUEBAS DE LABORATORIO EN PROCESO osea (PLP)->obtengo la ultima letra osea P.
+			if ($ultimaletra=='P') { 
 
 				$datos['leyenda']=" está en el proceso de ";
 				$datos['nombreProceso']="Pruebas de Laboratorio";
@@ -220,6 +213,7 @@ class EstadosTorrefaccion extends Controlador
 				
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
+			//PRUEBAS DE LABORATORIO DETENIDA osea (PLD)->obtengo la ultima letra osea D
 			if ($ultimaletra=='D') {
 
 				$datos['leyenda']=" está en el proceso de ";
@@ -233,7 +227,7 @@ class EstadosTorrefaccion extends Controlador
 					
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
-
+			//PRUEBAS DE LABORATORIO REANUDADA osea (PLR)->obtengo la ultima letra osea R
 			if ($ultimaletra=='R') {
 
 
@@ -248,14 +242,15 @@ class EstadosTorrefaccion extends Controlador
 					
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
-
+			//PRUEBAS DE LABORATORIO FINALIZADA osea (PLF)->obtengo la ultima letra osea F.
 			if ($ultimaletra=='F') {
 
 				$datos['leyenda']=" ha finalizado  el proceso de Pruebas de Laboratorio, el proceso siguiente es ";
 				$datos['nombreProceso']="Torrefactor";
 				
+				//como termina en F, continua con el siguiente estado.
 				$datos["nombreSiguiente"]="Iniciar Torrefactor";
-				$datos["codigoSiguiente"]="TOP";
+				$datos["codigoSiguiente"]="TOP"; //TORREFACTOR EN PROCESO,ose TOP
 
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}			
@@ -264,7 +259,7 @@ class EstadosTorrefaccion extends Controlador
 
 		// ESTA EN PROCESO TORREFACTOR	
 		if($proceso=="TO"){
-			//obtengo La ultima letra del proceso
+			//obtengo La ultima letra del Estado
 			$ultimaletra=substr($estadoDb, -1);
 			if ($ultimaletra=='P') {
 
@@ -507,16 +502,27 @@ class EstadosTorrefaccion extends Controlador
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
 		}
+
+		if($proceso=="GT"){
+			//obtengo La ultima letra del estado
+			$ultimaletra=substr($estadoDb, -1);
+
+			if ($ultimaletra=='F') {
+
+				$datos['mensaje_advertencia'] ='El lote de cafe, con ese código ha terminado el proceso de torrefacción.';
+				$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+			}
+		}
 		
 	}
 
-	public function iniciar_primer_proceso($datos){
-		//var_dump($datos);		
+	//Primer estado del proceso de torrefaccion (TRILLA).
+	public function iniciar_primer_proceso($datos){	
 		$datos['leyenda']=" no tiene registrado ningún proceso, el primer proceso a registrar es ";
 		$datos["nombreProceso"]="TRILLA";
 		$datos["nombreSiguiente"]="Iniciar el proceso de Trilla";
 		
-		$datos["codigoSiguiente"]="TRP";
+		$datos["codigoSiguiente"]="TRP";//TRILLA EN PROCESO-> osea TRP
 
 		$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 	}
@@ -566,7 +572,7 @@ class EstadosTorrefaccion extends Controlador
 
 	}
 
-	//Se registra la detención de cualquier proceso.
+	//Se registra la detención de cualquer estado
 	public function detener_estado($idcafe,$codigoDetener){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -686,7 +692,7 @@ class EstadosTorrefaccion extends Controlador
 		
 	}
 
-	//se reanuda cualquier proceso
+	//se reanuda cualquier estado
 	public function reanudar_estado($idcafe,$codigoReanudar){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -809,7 +815,7 @@ class EstadosTorrefaccion extends Controlador
 		
 	}
 
-	//se registra el proceso finalizado de caulquier estado.
+	//se registra el proceso finalizado de cualquier estado.
 	public function finalizar_estado($idcafe,$codigoFinalizar){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -932,7 +938,7 @@ class EstadosTorrefaccion extends Controlador
 		}
 		
 	}
-
+	//me redirecciona a la vista estados Torrefaccion(registrar_finalizacion) para registrar los datos para finalizar el proceso de torrefaccion.
 	public function TerminarProceso($idcafe,$codigoFinalizar){
 
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
@@ -954,6 +960,43 @@ class EstadosTorrefaccion extends Controlador
 
 		$this->vista('/estadosTorrefaccion/registrar_finalizacion', $datos);
 		
+	}
+	//registro los datos del proceso de torrefacion terminado.
+	public function registrar_datos(){
+		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+		{
+			// agrego mensaje a arreglo de datos para ser mostrado 
+			$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+			$this->vista('/paginas/index',$datos);
+				return;		
+		}
+
+		//Y los guardo en la variable datos para hacer el Insert en la BD
+			$datos=[
+	
+				'codigoFinalizar'=>trim($_POST['codigoFinalizar']),					
+				'idcafe'	=>trim($_POST['idcafe']),
+				'observacion'=>trim($_POST['observacion']),
+				'mermaTueste'=>trim($_POST['mermaTueste']),	
+				
+			];
+				//var_dump($datos);
+
+		$id = $this->TorrefaccionModelo->insertar_procesoTorrefaccionfinalizado($datos);
+
+		if($id==1){
+
+			$datos['mensaje_exito']='Se guardaron los datos';		
+			$this->vista('/EstadosTorrefaccion/registrar_inicio', $datos);
+			return;
+			
+		}else{
+			$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
+			$this->vista('/EstadosTorrefaccion/registrar_finalizacion', $datos);
+			return;
+			
+		}
 	}
 	
 	

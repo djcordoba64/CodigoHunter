@@ -69,13 +69,13 @@ class Torrefaccion
       if($fila->codigoEstado!==$codigoSiguiente){
           
         //preparamos la consulata
-        $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
-           VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
+        $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_by) 
+           VALUES (:idcafe,NOW(),:codigoEstado,:created_by)
            ');
     
            //vinculamos los valores
           $this->db->bind(':idcafe',$idcafe);   
-          $this->db->bind(':codigoEstado',$codigoSiguiente);  
+          $this->db->bind(':codigoEstado',$codigoSiguiente); 
           $this->db->bind(':created_by', $_SESSION['idUsuario']);
            
            //Ejecutamos la consulta
@@ -91,7 +91,13 @@ class Torrefaccion
 
 
   public function insertarEstado_detenido($idcafe, $codigoDetener){
-    $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
+    $this->db->query( "SELECT * FROM estadostorrefaccion where idcafe=:idcafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion where idcafe=:idcafe)" );
+        $this->db->bind(':idcafe',$idcafe);     
+       $fila=$this->db->registro();
+
+       //var_dump($fila);
+      if($fila->codigoEstado!==$codigoDetener){
+         $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
            VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
            ');
     
@@ -106,11 +112,20 @@ class Torrefaccion
           }else{
                   return 0; //no SE HIZO ELINSERT
           }
+      }else{
+         return 1;//EL COGIGO YA SE REGISTRO.
+      }  
+   
   }
 
 
   public function insertarEstado_reanudado($idcafe, $codigoReanudar){
-    $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
+    $this->db->query( "SELECT * FROM estadostorrefaccion where idcafe=:idcafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion where idcafe=:idcafe)" );
+        $this->db->bind(':idcafe',$idcafe);     
+       $fila=$this->db->registro();
+
+        if($fila->codigoEstado!==$codigoReanudar){
+           $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
            VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
            ');
     
@@ -125,11 +140,21 @@ class Torrefaccion
           }else{
                   return 0; //no SE HIZO ELINSERT
           }
+        }else{
+          return 1;//EL COGIGO YA SE REGISTRO
+        }
+
+   
   }
 
 
   public function insertar_finalizarEstado($idcafe, $codigoFinalizar){
-    $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
+    $this->db->query( "SELECT * FROM estadostorrefaccion where idcafe=:idcafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion where idcafe=:idcafe)" );
+        $this->db->bind(':idcafe',$idcafe);     
+       $fila=$this->db->registro();
+
+        if($fila->codigoEstado!==$codigoFinalizar){
+          $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
            VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
            ');
     
@@ -144,6 +169,39 @@ class Torrefaccion
           }else{
                   return 0; //no SE HIZO ELINSERT
           }
+      }else{
+        return 1;//EL COGIGO YA SE REGISTRO
+      }
+
+  }
+
+  public function insertar_procesoTorrefaccionfinalizado($datos){
+    $this->db->query( "SELECT * FROM estadostorrefaccion where idcafe=:idcafe and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion where idcafe=:idcafe)" );
+    $this->db->bind(':idcafe',$datos['idcafe']);     
+      $fila=$this->db->registro();
+
+    if($fila->codigoEstado!==$datos['codigoFinalizar']){
+
+      $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,observacion,mermaTueste,created_by) 
+        VALUES (:idcafe,NOW(),:codigoEstado,:observacion,:mermaTueste,:created_by)
+       ');
+        
+         //vinculamos los valores
+        $this->db->bind(':idcafe',$datos['idcafe']);   
+        $this->db->bind(':codigoEstado',$datos['codigoFinalizar']);
+        $this->db->bind(':observacion',$datos['observacion']);
+        $this->db->bind(':mermaTueste',$datos['mermaTueste']);   
+        $this->db->bind(':created_by', $_SESSION['idUsuario']);
+             
+        //Ejecutamos la consulta
+        if ($this->db->execute()){           
+          return 1;  //SE HIZO EL INSERT
+       }else{
+           return 0; //no SE HIZO ELINSERT
+        }
+     }else{
+      return 1;//EL COGIGO YA SE REGISTRO
+     } 
   }
 
 

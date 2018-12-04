@@ -4,7 +4,6 @@
   <div class="col-md-12">
     <h2>Torrefaccion</h2>
   </div>
-  <?php echo var_dump($datos) ?>
   <div class="well well-sm">    
     <div class="row">
       <div class="col-md-12">                           
@@ -14,9 +13,8 @@
               <h4>Datos a registrar</h4>
               <div class="col-md-12" >
                 <div class="col-md-6">
-                  <input hidden  name="codigoSiguiente" value="<?php echo $datos['codigoSiguiente'] ?>"/>
+                  <input hidden  name="codigoFinalizar" value="<?php echo $datos['codigoFinalizar'] ?>"/>
                   <input hidden  name="idcafe" value="<?php echo $datos['idcafe'] ?>"/>
-                  <input hidden  name="codigoCafe" value="<?php echo $datos['codigoCafe'] ?>"/>
                   <p>
                     <label for="codigoCafe" class="">Codigo café</label>
                     <input class="contact-input" type="text" disabled name="codigoCafe" value="<?php echo $datos['codigoCafe'] ?>"/>
