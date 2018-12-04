@@ -55,13 +55,13 @@ class DatosLaboratorio extends Controlador
 		}
 		else{
 			//recupero los datos que vienes por POST
-			$datos["perfilTaza2"]=$_POST['perfilTaza2'];
+			$datos["perfildeTaza2"]=$_POST['perfildeTaza2'];
 			$datos["observacion"]=$_POST['observacion'];
 
 			//Y los guardo en la variable datos para hacer el Insert en la BD
 			$datos=[
 	
-				'perfilTaza2'=>trim($_POST['perfilTaza2']),					
+				'perfildeTaza2'=>trim($_POST['perfildeTaza2']),					
 				'observacion'=>trim($_POST['observacion']),
 			];
 
@@ -102,7 +102,7 @@ class DatosLaboratorio extends Controlador
 					'codigoCafe'=>$datosLaboratorio->codigoCafe,
 					'iddatosLaboratorio'=>$datosLaboratorio->iddatosLaboratorio,	
 					'fechaHora'=>$datosLaboratorio->fechaHora,
-					'perfilTaza2'=>$datosLaboratorio->perfilTaza2,
+					'perfildeTaza2'=>$datosLaboratorio->perfildeTaza2,
 					'observacion'=>$datosLaboratorio->observacion,
 			];				
 					//me redirecciona a la vista Editar, para cargar los datos en el formulario de edicion.
@@ -125,7 +125,7 @@ class DatosLaboratorio extends Controlador
 		{
 			$datos=[
 					'iddatosLaboratorio'	=>$iddatosLaboratorio,
-					'perfilTaza2'	=>trim($_POST['perfilTaza2']),					
+					'perfildeTaza2'	=>trim($_POST['perfildeTaza2']),					
 					'observacion'	=>trim($_POST['observacion']),
 					
 				];

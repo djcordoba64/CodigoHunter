@@ -7,7 +7,7 @@
   <div class="well well-sm">    
     <div class="row">
       <div class="col-md-12">                           
-        <form class="contact-form" action="<?php echo RUTA_URL;?>/DatosEstabilizacion/editar/<?php echo $datos['iddatosLaboratorio']?>" method="POST">
+        <form class="contact-form" action="<?php echo RUTA_URL;?>/DatosLaboratorio/editar/<?php echo $datos['iddatosLaboratorio']?>" method="POST">
           <div class="row">               
             <div class="col-md-6" style="background-color:#fff">
               <h4>Datos actualizar</h4>
@@ -26,8 +26,8 @@
               <div class="col-md-12" >
                 <div class="col-md-6">
                   <p>
-                    <label for="perfilTaza2" class="">perfil de Taza 2</label>
-                    <input class="contact-input" type="number" min="1" required  name="perfilTaza2" value="<?php echo $datos['perfilTaza2'] ?>"/>
+                    <label for="perfildeTaza2" class="">perfil de Taza 2</label>
+                    <input class="contact-input" type="number" min="1" required  name="perfildeTaza2" value="<?php echo $datos['perfildeTaza2'] ?>"/>
                   </p>
                 </div>              
               </div>

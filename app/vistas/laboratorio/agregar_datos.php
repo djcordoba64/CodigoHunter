@@ -29,8 +29,8 @@
               <div class="col-md-12" >
                 <div class="col-md-6">
                   <p>
-                    <label for="perfiltaza2" class="">Perfil de taza</label>
-                    <input class="contact-input" type="number" min="1" required  name="perfiltaza2" value=""/>
+                    <label for="perfildeTaza2" class="">Perfil de taza</label>
+                    <input class="contact-input" type="number" min="1" required  name="perfildeTaza2" value=""/>
                   </p>
                 </div>              
               </div>

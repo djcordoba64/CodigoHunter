@@ -4,6 +4,7 @@
   <div class="col-md-12">
     <h2>Estabilización de café</h2>
   </div>
+  <?php echo var_dump($datos) ?>
   <div class="well well-sm">    
     <div class="row">
       <div class="col-md-12">                           

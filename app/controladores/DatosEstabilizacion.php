@@ -44,9 +44,11 @@ class DatosEstabilizacion extends Controlador
 		$codigoSiguiente=$_POST['codigoSiguiente'];
 		$idcafe=$_POST['idcafe'];
 
-				
-		$id = $this->EstabilizacionModelo->insertarEstado($idcafe,$codigoSiguiente);
 
+				
+		$id = $this->TorrefaccionModelo->insertarEstado($idcafe,$codigoSiguiente);
+
+		 //echo var_dump($id);
 		if($id!==1){
 			$datos['mensaje_exito']='NO se puede ejecutar el proceso';
 			//$datos['mensaje_advertencia'] ='no se realizo el insert';

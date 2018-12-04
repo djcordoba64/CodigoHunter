@@ -339,7 +339,7 @@ class EstadosTorrefaccion extends Controlador
 				$datos["nombreFinalizar"]="Finalizar proceso";
 				$datos["codigoFinalizar"]="ESF";
 
-				$datos["nombreModificareEs"]="Modificar datos ";
+				$datos["nombreModificarEs"]="Modificar datos ";
 	
 				
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
@@ -436,7 +436,7 @@ class EstadosTorrefaccion extends Controlador
 			if ($ultimaletra=='F') {
 
 				$datos['leyenda']=" ha finalizado  el proceso de laboratorio, el proceso siguiente es ";
-				$datos['nombreProceso']="EMPAQUE";
+				$datos['nombreProceso']="Empaque";
 				
 				$datos["nombreSiguiente"]="Iniciar proceso de Empaque";
 				$datos["codigoSiguiente"]="EMP";
