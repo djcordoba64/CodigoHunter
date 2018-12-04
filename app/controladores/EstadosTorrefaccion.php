@@ -13,7 +13,7 @@ class EstadosTorrefaccion extends Controlador
 		$this->TorrefaccionModelo=$this->modelo('Torrefaccion');
 	}
 
-	public function index(){
+	public function index($pagina=1){
 		//validacion de rol
 		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
 		{
@@ -22,7 +22,30 @@ class EstadosTorrefaccion extends Controlador
 				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
 			$this->vista('/paginas/index',$datos);
 			return;
-		}
+		}		
+			//echo $pagina;
+			$Estados_x_pagina=5;			
+			
+			//obtener los usuarios
+			$iniciar=($pagina-1)*$Estados_x_pagina ;
+			//echo $iniciar;
+
+			$estados=$this->TorrefaccionModelo->obtenerEstadosLimit($iniciar,$Estados_x_pagina);
+
+			$datos["estados"]=$estados;
+
+			//contar los usuarios de nuestra base d edatos
+			$total_estados_db=$this->TorrefaccionModelo->contarEstados();
+			
+			//calculo es total de paginas
+			$paginas=$total_estados_db->cuenta/$Estados_x_pagina;
+			$numeroPaginas= ceil($paginas);
+
+			$datos['numeroPaginas']=$numeroPaginas;
+			//echo $numeroPaginas;
+			$datos["pagina"]=$pagina;
+
+			$this->vista('/estadosTorrefaccion/index',$datos);
 	}
 
 	//Muestra el campo para ingresar el codigo del café.

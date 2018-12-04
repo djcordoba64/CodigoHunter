@@ -204,7 +204,20 @@ class Torrefaccion
      } 
   }
 
+//------------INDEX----------------------------------------------------
+  public function obtenerEstadosLimit($iniciar,$Estados_x_pagina){
+        //Hacemos la consulta para obtener todos lo usuarios registrados.
+        $this->db->query("SELECT e.fechaHora,e.codigoEstado,c.codigoCafe,p.primerNombre,p.segundoApellido,p.documentoIdentidad  FROM estadostorrefaccion as e inner join cafes as c on c.idcafe=e.idcafe inner join personas as p on e.created_by=p.idPersona ORDER BY e.fechaHora desc LIMIT :iniciar,:nestados");
+        $this->db->bind(':iniciar',$iniciar,PDO::PARAM_INT);
+        $this->db->bind(':nestados',$Estados_x_pagina,PDO::PARAM_INT);
+            $listaEStados=$this->db->registros();
+           return $listaEStados;
+      }
 
+  public function contarEstados(){
+    $this->db->query("SELECT count(*) as cuenta FROM estadostorrefaccion as e where e.codigoEstado LIKE 'GT%'");
+     return $this->db->registro();                
+  }
 
 }
 

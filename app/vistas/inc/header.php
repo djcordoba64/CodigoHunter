@@ -34,13 +34,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL ?>/css/estilos.css">
 
 
-
-
-
-
-
-
-
 </head>
 <body>
   <!-- TOP BAR -->
@@ -104,7 +97,8 @@
                   <li class="parent">
                     <a href="#">Torrefacción</a>
                     <ul class="sub-menu">
-                      <li><a href="/Hunter/EstadosTorrefaccion/registrar_inicio">Gestionar</a></li>                    
+                      <li><a href="/Hunter/EstadosTorrefaccion/index">Administrar</a></li>
+                      <li><a href="/Hunter/EstadosTorrefaccion/registrar_inicio">Gestionar</a></li>
                    </ul>     
                   </li>                
                 </ul>
