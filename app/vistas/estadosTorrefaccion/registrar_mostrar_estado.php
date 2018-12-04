@@ -62,6 +62,11 @@
                                       <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#finalizar"><?php echo $datos["nombreFinalizar"]?></a>  
                                     <?php }?>
 
+                                <!--Boton finalizar  proceso-->
+                                    <?php if ( isset($datos["nombreFinalizarT"])) { ?>
+                                     <a href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/TerminarProceso/<?php echo $datos["idcafe"].'/'.$datos['codigoFinalizar']?>" class="btn btn-sm btn-default"><?php echo $datos["nombreFinalizarT"]?></a> 
+                                    <?php }?>
+
                                    
                       </div>
                       </div>

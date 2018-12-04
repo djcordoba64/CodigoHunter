@@ -498,8 +498,11 @@ class EstadosTorrefaccion extends Controlador
 				$datos['leyenda']=" ha finalizado el último estado que es Empaque. Para finalizar el proceso de";
 				$datos['nombreProceso']="Torrefacción";
 				
-				$datos["nombreSiguiente"]="Finalizar proceso";
-				$datos["codigoSiguiente"]="GTF";//GESTION DE TORREFACCIÓN FINALIZADO.
+				$datos["nombreFinalizarT"]="Finalizar proceso de Torrefaccion";
+				$datos["codigoFinalizar"]="GTF";//GESTION DE TORREFACCIÓN FINALIZADO.
+
+
+
 
 				$this->vista('/EstadosTorrefaccion/registrar_mostrar_estado', $datos);
 			}
@@ -927,6 +930,29 @@ class EstadosTorrefaccion extends Controlador
 				}
 			
 		}
+		
+	}
+
+	public function TerminarProceso($idcafe,$codigoFinalizar){
+
+		if($_SESSION["rol"]!="operario"	and $_SESSION["rol"]!="tostador")
+		{
+			// agrego mensaje a arreglo de datos para ser mostrado 
+			$datos['mensaje_advertencia'] ='Usted no tiene permiso para realizar esta acción';
+				// vuelvo a llamar la misma vista con los datos enviados previamente para que usuario corrija
+			$this->vista('/paginas/index',$datos);
+				return;		
+		}
+
+		$datosCafe=$this->cafesModelo->consultar_x_idCafe($idcafe);
+		$datos=[										
+				'idcafe'=>$datosCafe->idcafe,
+				'codigoCafe'=>$datosCafe->codigoCafe,			
+			];
+
+		$datos['codigoFinalizar']=$codigoFinalizar; 
+
+		$this->vista('/estadosTorrefaccion/registrar_finalizacion', $datos);
 		
 	}
 	

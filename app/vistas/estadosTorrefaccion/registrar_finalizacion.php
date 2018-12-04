@@ -2,12 +2,13 @@
 
 <div class="container">
   <div class="col-md-12">
-    <h2>Empaque</h2>
+    <h2>Torrefaccion</h2>
   </div>
+  <?php echo var_dump($datos) ?>
   <div class="well well-sm">    
     <div class="row">
       <div class="col-md-12">                           
-        <form class="contact-form" action="<?php echo RUTA_URL;?>/DatosEmpaque/registrar_datos/" method="POST">
+        <form class="contact-form" action="<?php echo RUTA_URL;?>/EstadosTorrefaccion/registrar_datos/" method="POST">
           <div class="row">               
             <div class="col-md-6" style="background-color:#fff">
               <h4>Datos a registrar</h4>
@@ -29,8 +30,8 @@
               <div class="col-md-12" >
                 <div class="col-md-6">
                   <p>
-                    <label for="empaque" class="">Empaque</label>
-                    <input class="contact-input" type="number" min="1" required  name="empaque" value=""/>
+                    <label for="mermaTueste" class="">Merma Tueste</label>
+                    <input class="contact-input" type="number" min="1" required  name="mermaTueste" value=""/>
                   </p>
                 </div>              
               </div>
@@ -39,11 +40,10 @@
               <h5 class="">Observación</h5>
               <div class="col-md-12" >
                   <textarea name="observacion"></textarea>                                                                 
-              </div>
-               <div class="col-md-12 text-center" style="margin: 42px;">
-                <input value="Guardar" class="btn btn-lg btn-brown" type="submit"/>
+              </div>               
             </div>
-               
+             <div class="col-md-12 text-center" style="margin: 42px;">
+                <input value="Guardar" class="btn btn-lg btn-brown" type="submit"/>
             </div>
           </div>  
         </form>         
@@ -51,4 +51,5 @@
     </div>
   </div>
 </div>
+
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 
