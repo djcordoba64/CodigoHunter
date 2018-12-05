@@ -13,62 +13,34 @@
 							<i class="glyphicon glyphicon-thumbs-up"><p  style="color: #EBDFC5; font-size:40px">Bienvenido!</p></i>
 						</div>
 			    		<p class="text">Sed sagittis sodales lobortis. Curabitur in eleifend turpis, id vehicula odio. Donec pulvinar tellus eget magna aliquet ultricies. Praesent gravida hendrerit ex, nec eleifend sem convallis vitae. Sed sagittis sodales lobortis. Curabitur in eleifend turpis, id vehicula odio. </p>
-			    		<div class="name"><a href="#" class="btn btn-default" data-toggle="modal" data-target="#mostrarInicio_Modal">Ingresar</a></div>
+			    		
+			    		<button class="btn btn-default" id="IngresarMostrar" >Ingresar</button>
+			    	</div>
+			    	<div class="review-item" id="opcionValidarRecibo" style="display:none;">	  
+			            <div class="well well-sm" style="background: #f5f2eb">
+			                <form class="form-horizontal" action="<?php echo RUTA_URL;?>/Trazabilidad/validar_numeroRecibo" method="POST">  
+			                    <fieldset>
+			                        <legend class="text-center header">*Ingrese el número del recibo</legend>
+
+			                        <div class="form-group">
+			                            <div class="col-md-7">
+			                                <input required name="numero" type="text"  class="form-control" placeholder="Número del recibo"  value=""><br>
+
+			                                <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
+			                            </div>
+			                            <div class="col-md-5" align="left">
+			                               <input value="Consultar" class="btn btn-brown" type="submit">
+			                            </div>
+			                        </div>
+			                    </fieldset>
+			                </form>
+			            </div>
 			    	</div>
 				</div>				
 			</div>
 		</div>
 	</section>
 	<!-- TESTIMONIALS END -->
-
-
-
-
-<!-- Modal iniciar proceso-->
-<div class="modal fade" id="mostrarInicio_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog " role="document" >
-    <div class="modal-content">
-      <div class="modal-header" >
-      	 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-         <h2>Consultar Trazabilidad</h2>
-       
-      </div>
-      <div class="modal-body">
-		<div class="woocommerce">
-			<form class="checkout ">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div id="customer_details">
-						    <div class="woocommerce-billing-fields">						       
-						        <div class="col-md-10">
-							        <p class="form-row form-row-wide">
-							              <label for="numeroRecibo" class="">*Ingrese el número del recibo<abbr class="required" title="required">*</abbr></label>
-							             <input class="input-text " name="txtnumerorecibo" id="txtnumerorecibo" placeholder="Número de recibo" value="" type="text">
-							       	</p>						       		
-						        </div>
-						    </div>
-						</div>	
-					</div>
-				</div>
-			</div>
-			</form>
-		</div>
-	</div>
-      <div class="modal-footer"> 
-	      <div align="center">
-	      <button type="button" class="btn btn-sm btn-bordered" data-dismiss="modal">Cancelar</button>       
-	       <a  class="btn btn-sm btn-brown"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/cambiar_estado/<?php  ?>">Consultar</a>
-
-	      </div> 
-      </div>       
-      </div>
-
-  </div>
-</div>
-</div>
 
 	
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 

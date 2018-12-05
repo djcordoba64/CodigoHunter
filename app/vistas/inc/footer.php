@@ -184,8 +184,6 @@
   			$('#vereda').val(finca[0].vereda);
   			$('#Temperatura').val(finca[0].Temperatura);
   			
-
-
   			//por ultimo mostrar el div de los datos de la finca
 
   			$('#divDetalleFinca').show();
@@ -196,9 +194,6 @@
 			$('#municipio').val("");
 			$('#vereda').val("");
 			$('#Temperatura').val("");
-
-  			
-
 
   			//por ultimo mostrar el div de los datos de la finca
 
@@ -427,16 +422,12 @@
 	      }
 	}
 
-	function MostrarRecibo(sel){
-		if(se.value=="generarRecibo"){
-			 divfactura = document.getElementById("tbl_recibo");
-	         divfactura.style.display = "";
 
-		}else{
-			 divfactura = document.getElementById("tbl_recibo");
-	         divfactura .style.display="none";
-		}
-	}
+	 $("#IngresarMostrar").click(function(){
+ $("#opcionValidarRecibo").toggle(1000);
+ });
+
+
 
 
 </script>

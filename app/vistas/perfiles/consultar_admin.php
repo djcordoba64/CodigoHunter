@@ -76,8 +76,7 @@
 						                    </p>
 					                    </div>
 					                    <div id="noMostrar" style="display:;">
-								             <!--contrasena--> 
-						             
+								             <!--contrasena--> 						             
 						                      <input hidden  type="password" class="input-text" disabled  name="contrasena" autofocus="autofocus" id="contrasena"  value="">              
 						                    </p>
 						 
