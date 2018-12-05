@@ -33,16 +33,15 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
                 </div>
               </div>
   						<form method="post">
-  							<table class="shop_table shop_table_responsive cart" id="tbl_Usuarios">
+  							<table class="shop_table shop_table_responsive cart" id="tbl_Estados">
   								<thead >
   									<tr  class="header">
-    									<th class="product-remove">Lote</th>
-  										<th class="product-remove">Estado</th>
-  										<th class="product-remove">Fecha</th>
-  										<th class="product-remove">Registrado por</th>
-  										<th class="product-remove">Documento</th>
-  										<th class="product-remove">Acciones</th>
+    		              <th  class="product-remove">Lote</th>
+                      <th class="product-remove">Estado</th>
+                      <th class="product-remove">Fecha</th> 
+  										<th colspan="2" class="product-remove">Registrado por</th>  										
   									</tr>
+
   								</thead>
   								<tbody  class="cart_item">
   									<?php foreach($datos['estados']  as $estado): ?>
@@ -62,11 +61,6 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
 										</td>
 										<td class="product-remove">
 											<?php echo $estado->documentoIdentidad;?>				
-										</td>
-										<td class="product-remove">
-                      <a href="<?php echo RUTA_URL;?>/Usuarios/editar/<?php echo $usuario->idPersona;?>" class="btn btn-sm btn-default">
-                       <span class="glyphicon glyphicon-edit"></span> Editar
-                      </a>		
 										</td>
 									</tr>
 									<?php endforeach;?>

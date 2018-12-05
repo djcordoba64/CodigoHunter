@@ -26,12 +26,9 @@
 <link href="<?php echo RUTA_URL ?>/css/zoomslider.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL ?>/css/select2.min.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL ?>/css/style.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo RUTA_URL?>/css/estilos.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL?>/css/woocommerce-layout.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo RUTA_URL?>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-<link href="<?php echo RUTA_URL ?>/css/estilos.css" rel="stylesheet" type="text/css" />
-
-
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL ?>/css/estilos.css">
 
 
 </head>
@@ -100,7 +97,8 @@
                       <li><a href="/Hunter/EstadosTorrefaccion/index">Administrar</a></li>
                       <li><a href="/Hunter/EstadosTorrefaccion/registrar_inicio">Gestionar</a></li>
                    </ul>     
-                  </li>                
+                  </li>
+                     <li><a href="/Hunter/Trazabilidad/consultar_mostrarInicio">Trazabilidad</a></li>               
                 </ul>
               </div>
               <div class="col-lg-2 col-md-12">

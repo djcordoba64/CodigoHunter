@@ -24,7 +24,7 @@ class EstadosTorrefaccion extends Controlador
 			return;
 		}		
 			//echo $pagina;
-			$Estados_x_pagina=5;			
+			$Estados_x_pagina=30;			
 			
 			//obtener los usuarios
 			$iniciar=($pagina-1)*$Estados_x_pagina ;
