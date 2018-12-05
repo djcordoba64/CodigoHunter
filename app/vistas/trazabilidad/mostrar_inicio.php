@@ -29,10 +29,11 @@
   <div class="modal-dialog " role="document" >
     <div class="modal-content">
       <div class="modal-header" >
-         <h2>Consultar proceso</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      	 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+         <h2>Consultar Trazabilidad</h2>
+       
       </div>
       <div class="modal-body">
 		<div class="woocommerce">
@@ -42,13 +43,11 @@
 					<div class="col-md-6">
 						<div id="customer_details">
 						    <div class="woocommerce-billing-fields">						       
-						        
-						        	<div class="col-md-12">
-							        	<p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
-							                <label for="billing_company" class="">Número de recibo</label>
-							                <input class="input-text " name="billing_company" id="billing_company" placeholder="" value="" autocomplete="organization" type="text">
-							       		</p>
-						       		
+						        <div class="col-md-10">
+							        <p class="form-row form-row-wide">
+							              <label for="numeroRecibo" class="">*Ingrese el número del recibo<abbr class="required" title="required">*</abbr></label>
+							             <input class="input-text " name="txtnumerorecibo" id="txtnumerorecibo" placeholder="Número de recibo" value="" type="text">
+							       	</p>						       		
 						        </div>
 						    </div>
 						</div>	
@@ -57,10 +56,13 @@
 			</div>
 			</form>
 		</div>
-	
-      <div class="modal-footer">         
-       <a  class="btn btn-sm btn-brown"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/cambiar_estado/">Consultar</a>
-      
+	</div>
+      <div class="modal-footer"> 
+	      <div align="center">
+	      <button type="button" class="btn btn-sm btn-bordered" data-dismiss="modal">Cancelar</button>       
+	       <a  class="btn btn-sm btn-brown"  href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/cambiar_estado/<?php  ?>">Consultar</a>
+
+	      </div> 
       </div>       
       </div>
 

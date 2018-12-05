@@ -133,7 +133,6 @@
 
 <p>
   
-
   <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
   <span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
   <span class="badge badge-info"><?php isset($datos["mensaje_informacion"])? print($datos["mensaje_informacion"]):''; ?></span>
