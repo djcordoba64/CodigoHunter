@@ -44,7 +44,10 @@
 					];	
 
 						
-				$datos["cafes"] = $this ->cafeModelo->obtenerCafesRecepcion($datos['idRecepcion']);
+				$cafes= $this ->cafeModelo->obtenerCafesRecepcion($datos['idRecepcion']);
+				$cafes = json_encode($cafes);
+				
+				$datos["cafes"]=$cafes;
 				
 				$this->vista('/Trazabilidad/mostrar_opciones', $datos);
 				

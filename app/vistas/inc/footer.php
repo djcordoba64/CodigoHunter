@@ -115,6 +115,15 @@
 		}
 		);
 
+		$.each(cafes, function(idx, cafe)
+		{
+			var o = new Option(cafe.codigoCafe, cafe.idcafe);
+			$(o).html(cafes.codigoCafe);
+			$("#codigoLote").append(o);
+		}
+		);
+
+
 		$.each(deptos, function(idx, depto)
 		{
 			var o = new Option(depto.departamento, depto.id_departamento);
@@ -147,6 +156,7 @@
 		}
 		);
 
+		
 	});
 
 		//esto es solo para que el segundo combo se cargue en cascada dependiendo del primero
@@ -422,10 +432,10 @@
 	      }
 	}
 
-
+	//Mostar opcion para consultar un numero de recibo en la vista Trazabilidad.
 	 $("#IngresarMostrar").click(function(){
- $("#opcionValidarRecibo").toggle(1000);
- });
+ 		$("#opcionValidarRecibo").toggle(1000);
+ 	});
 
 
 

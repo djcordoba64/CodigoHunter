@@ -1,10 +1,24 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
-
-<?php var_dump($datos) ?>
 <!-- SHOP -->
+<?php echo $datos['cafes'] ?>
 	<div class="shop-wrap">
 		<div class="container">
 			<div class="row">
+				<div class="col-md-12">
+				<div class="testimonials">		
+					<div class="col-md-3 testimonials-list">
+						<div class="review-item">
+							<div class="quote">
+								<p>Bienvenid@!</p>			
+								<i class="fa fa-user"></i>
+								<div class="name"><?php echo $datos['primerNombre'].' '.$datos['segundoNombre'].' '.$datos['primerApellido'].' '.$datos['segundoApellido']?></div>
+				    		<div class="date"><?php echo $datos['correo'] ?></div>
+							</div>
+				    		
+			    		</div>
+			    	</div>
+			    </div>
+			    </div>
 				<div class="col-md-3">
 					<aside class="shop-sidebar">
 					    <div class="widget-area">
@@ -47,32 +61,20 @@
 											<strong>Selecciones un lote de café para visualizar la trazavilidad. <i class="glyphicon glyphicon-hand-right" aria-hidden="true"></i></strong>
 										</div>
 										<div class="col-md-4 col-sm-6">
-											<select style="width: 100%" class="woo-sort select2-hidden-accessible" tabindex="-1" aria-hidden="true">
-							                    <option value="">Sort by newness</option>
-							                    <option value="">Sort by score</option>
+											<select style="width: 100%" class="woo-sort select2-hidden-accessible"  name="codigoLote" id="codigoLote" aria-hidden="true">
+							                    <option value="">Seleccione..</option>
 							                </select>
+							                  
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="product-item">
-									<div class="img-wrap"><a href="product.html"><img src="images/prod-img.jpg" alt=""></a></div>
-									<a href="product.html" class="name">100%  Arabica</a>
-									<div class="text">Professional espresso serie</div>
-									<div class="price">$19</div>
-									<a href="#" class="btn btn-default"><i class="fa fa-shopping-cart" aria-hidden="true"></i>add to cart</a>
-								</div>
+							<div class="col-md-12">
+								<fieldset>
+								  
+								</fieldset>
 							</div>
-							<div class="col-md-6">
-								<div class="product-item">
-									<div class="img-wrap"><a href="product.html"><img src="images/prod-img1.jpg" alt=""></a></div>
-									<a href="product.html" class="name">Espresso Premium</a>
-									<div class="text">Professional espresso serie</div>
-									<div class="price">$46</div>
-									<a href="#" class="btn btn-default"><i class="fa fa-shopping-cart" aria-hidden="true"></i>add to cart</a>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>
