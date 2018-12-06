@@ -1,6 +1,5 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 <!-- SHOP -->
-<?php echo $datos['cafes'] ?>
 	<div class="shop-wrap">
 		<div class="container">
 			<div class="row">
