@@ -228,6 +228,8 @@
 	var idBeneficio = <?php echo isset($datos["beneficio"])? $datos["beneficio"]:"''";?>;
 
 	var cerrar = <?php echo isset($datos["cerrar"])? $datos["cerrar"]:"false";?>;
+	
+	var cafes = <?php echo isset($datos["cafes"])? $datos["cafes"]:"[]";?>;
 
 	  function submitForm(action,checkForm=false) {
 
