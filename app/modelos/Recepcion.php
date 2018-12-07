@@ -81,7 +81,7 @@ class Recepcion extends Base
         //-----ACTUALIZAR--------------------------------------------------
         //consulto los datos para cargarlos en el formulario de edición.
         public function ConsultarDatos_x_id($idRecepcion){
-        	$this->db->query("SELECT r.numeroRecibo,r.created_at,p.numeroContacto,r.correo,r.direccion,p.primerNombre,r.temperatura,p.primerApellido,p.documentoIdentidad, f.nombreFinca,f.vereda,m.municipio FROM recepciones as r  inner join personas as p on p.idPersona=r.idcliente INNER join detallefinca as f on f.idCliente=p.idPersona inner join municipios as m ON m.id_municipio=f.idmunicipio WHERE r.numerorecibo=:idRecepcion");
+        	$this->db->query("SELECT r.numeroRecibo,r.created_at,r.created_by,p.numeroContacto,r.correo,r.direccion,p.primerNombre,r.temperatura,p.primerApellido,p.documentoIdentidad, f.nombreFinca,f.vereda,m.municipio FROM recepciones as r  inner join personas as p on p.idPersona=r.idcliente INNER join detallefinca as f on f.idCliente=p.idPersona inner join municipios as m ON m.id_municipio=f.idmunicipio WHERE r.numerorecibo=:idRecepcion");
         	$this->db->bind(':idRecepcion',$idRecepcion);
         	 $fila=$this->db->registro();
             return $fila;

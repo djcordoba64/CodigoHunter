@@ -439,6 +439,11 @@
  		$("#opcionValidarRecibo").toggle(1000);
  	});
 
+	//Mostar recibo
+	 $("#generarRecibo").click(function(){
+ 		$("#mostrarRecibo").toggle(1000);
+ 	});
+
 
 
 
