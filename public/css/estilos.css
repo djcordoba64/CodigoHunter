@@ -4,7 +4,7 @@
 }
 .receipt-main {
   display: inline-block;
-  width: 80%;
+  width: 100%;
   padding: 40px;
   font-size: 18px;
   border: 1px solid #000;
@@ -26,11 +26,17 @@
 }
   
 .receipt-label {
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .text-large {
-  font-size: 16px;
+  font-size: 15px;
+}
+
+.text-consecutivo{
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
 }
 
 .receipt-section {
@@ -56,4 +62,13 @@
   p {
     text-align: center;
     margin: 0;
+  }
+
+  .align-img"{
+    text-align:left ;
+  }
+  .receipt-info{
+    align-content:center;
+    text-align:right; 
+    font-size: 14px;
   }

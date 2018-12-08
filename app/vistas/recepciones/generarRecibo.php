@@ -2,7 +2,7 @@
 
 
 <!-- PRODUCT -->
-<?php echo var_dump($datos) ?>
+<?php  echo $cafe['peso']?> ?>
 	<section class="product-single">
 		<div class="container">
 			<div class="row">
@@ -22,101 +22,129 @@
 					</div>
 				</div>
 				<!-- RECIBO --> 
-				<div class="cart-wrap" id="mostrarRecibo" style="display:none;">
-						<div class="receipt-main">
-  
-						  <p class="receipt-title">RECEPCIÓN DE CAFÉ EN PLANTA</p>
-						  
-						  <div class="receipt-section pull-left">
-						    <span class="receipt-label text-large">	FECHA:</span>
-						    <span class="text-large"><?php echo $datos['fecha'] ?></span>
-						  </div>
-						  
-						  <div class="pull-right receipt-section">
-						    <span class="text-large receipt-label">CONSECUTIVO: </span>
-						    <span class="text-large"><?php echo $datos['numeroRecibo'] ?></span>
-						  </div>
-						  
-						  <div class="clearfix"></div>
-						  
-						  <div class="receipt-section">
-						    <span class="receipt-label">Nombre caficultor:</span>
-						    <span><?php echo $datos['primerNombre'].' '.$datos['primerApellido'] ?></span>
-						  </div>
-						  <div class="receipt-section">
-						    <span class="receipt-label">Documento:</span>
-						    <span><?php echo $datos['documentoIdentidad'] ?></span>
-						  </div>
-						  <div class="receipt-section">
-						    <span class="receipt-label">Correo:</span>
-						    <span><?php echo $datos["correo"] ?></span>
-						  </div>
-						  
-						  <div class="receipt-section">
-						    <span class="receipt-label">Finca / Origen: </span>
-						    <span><?php echo $datos["nombreFinca"] ?></span>
-						  </div>
-						  <div class="receipt-section">
-						    <span class="receipt-label">Teléfono / celular: </span>
-						    <span><?php echo $datos["numeroContacto"] ?></span>
-						  </div>
-						  <div class="receipt-section">
-						     <span class="receipt-label">Dirección / municipio: </span>
-						    <span><?php echo $datos["municipio"].'-'.$datos['Vereda'] ?></span>
-						  </div>
+				<div class="col-md-12" >
+					<div class="cart-wrap" id="mostrarRecibo" style="display:none;">
+							<div class="receipt-main">
+							<div class="col-md-12">
+								<div class="col-md-6">
+	  								<img src="<?php echo RUTA_URL.'/images/logo.jpg'?>" 
+	  							 width="100" height="100" >
+	  							</div>
+								<div class="col-md-6">
+									<div  class="receipt-info">
+									   <div class="item">Isabel vega</div>
+									   <div class="item">Regimen simplificado</div>
+									    <div class="item">Rut: 32.244.418-8</div>
+									    <div class="item">Calle 10 sur N° 50 FF 120</div>
+									    <div class="item">Celular: 321478587</div>
+									   <div class="item">Medellín-Antioquía</div>
+							 		</div>
+							 	</div>
+	  						</div>	
+	  						<p class="receipt-title">RECEPCIÓN DE CAFÉ EN PLANTA</p>
+	  						<div align="pull-right">					  						  
+							  <div class="receipt-section pull-left">
+							    <span class="receipt-label text-large">	FECHA:</span>
+							    <span class="text-large"><?php echo $datos['fecha'] ?></span>
+							  </div>
+							  
+							  <div class="pull-right receipt-section">
+							    <span class="text-large receipt-label">CONSECUTIVO: </span>
+							    <span class="text-consecutivo">N°. <?php echo $datos['numeroRecibo'] ?></span>
+							  </div>
+							  
+							  <div class="clearfix"></div>
+							  
+							  <div class="receipt-section">
+							    <span class="receipt-label">Nombre caficultor:</span>
+							    <span><?php echo $datos['primerNombre'].' '.$datos['primerApellido'] ?></span>
+							  </div>
+							  <div class="receipt-section">
+							    <span class="receipt-label">Documento:</span>
+							    <span><?php echo $datos['documentoIdentidad'] ?></span>
+							  </div>
+							  <div class="receipt-section">
+							    <span class="receipt-label">Correo:</span>
+							    <span><?php echo $datos["correo"] ?></span>
+							  </div>
+							  
+							  <div class="receipt-section">
+							    <span class="receipt-label">Finca / Origen: </span>
+							    <span><?php echo $datos["nombreFinca"] ?></span>
+							  </div>
+							  <div class="receipt-section">
+							    <span class="receipt-label">Teléfono / celular: </span>
+							    <span><?php echo $datos["numeroContacto"] ?></span>
+							  </div>
+							  <div class="receipt-section">
+							     <span class="receipt-label">Dirección / municipio: </span>
+							    <span><?php echo $datos["municipio"].'-'.$datos['Vereda'] ?></span>
+							  </div>
+							</div>
+							   						  
+							 <div class="pull-right receipt-section">
+							    <span class="text-large receipt-label">**MAQUILA PARA TRILLA Y TUESTE**</span>
+							    <input type="checkbox" disabled checked>
+							  </div><br>
+							  <div class="clearfix"></div>
+							 <div class="col-xs-6 text-page" >
+							    <table class="shop_table" >
+							    	<thead>
+							    		<tr>
+								    		
+								    		<th style="font-size:14px" colspan="4">Descripción</th>
+								    		<th style="font-size:14px"  colspan="7">Forma de entrega</th>
 
-						   <div class="receipt-section pull-left">
-						    <span class="receipt-label text-large">	CANTIDAD ENTREGADA (Peso Gr):</span>
-						    <span>201</span>gr
-						    <p>HUMEDAD:</p>
-						    <P>TOSTION:</P>
-						  </div>						  
-						  <div class="pull-right receipt-section">
-						    <span class="text-large receipt-label">**MAQUILA PARA TRILLA Y TUESTE**</span>
-						    <input type="checkbox" disabled checked>
-						  </div>
-						  <div class="clearfix"></div>
-						 <div class="col-xs-6" >
-						    <p class="receipt-subtitle">Forma de entrega</p>
-						    <div class="col-xs-4" >
-						    	<div class="receipt-section pull-left">
-								    <span class="receipt-label text-large">Molida</span>
-								    <p>Lb:</p>
-								    <P>1/2 libra</P>
-								    <P>5 libras</P>
-						  		</div>
-						    </div>
-						    <div class="col-xs-4" >
-						    	<div class="receipt-section pull-right ">
-								    <span class="receipt-label text-large">Grano</span>
-								    <p>Lb:</p>
-								    <P>1/2 libra</P>
-								    <P>5 libras</P>
-						  		</div>
-						    </div>
-						    <div class="col-xs-4" >
-						    	<div class="receipt-section pull-right ">
-								    <span class="receipt-label text-large">Agranel</span>
-								    <p>Lb:</p>
-						  		</div>
-						    </div>
-						</div>						   						 												  
-						  <div class="clearfix"></div>
-						  
-						  <div class="receipt-signature col-xs-6">
-						    
-						    <span class="receipt-label text-large">Firma quien entrega</span>
-						    <p class="receipt-line"></p>
-						    <p>--------------------------</p>
-						  </div>
+								    		
+							    		</tr>
+							    		<tr>
+								    		<th style="font-size:10px">Peso</th>
+								    		<th style="font-size:10px">Lote</th>
+								    		<th style="font-size:10px">Humedad</th>
+								    		<th style="font-size:10px">Tostion</th>
+								    		<th style="font-size:10px" colspan="3">Molida</th>
+								    		<th style="font-size:10px" colspan="3">Gano</th>
+								    		<th style="font-size:10px" >Agranel</th>
+							    		</tr>
+							    		
+							    	</thead>
+							    	<tbody>
+							    		<?php if (isset($datos['lotesArr'])) { foreach($datos['lotesArr'] as $cafe): ?>
+							    		<tr>					
+							                <td><?php echo $cafe['peso']?></td>
+							                <td></td>
+							                <td></td>
+							                <td></td>
+							                <td></td>
+							                <td></td>
+							                <td></td>
+							                <td></td>
+							                <td></td>
+							                 <td></td>
+							                <td></td>
+			            				</tr>
+			            				<?php endforeach; }?>
+							    		
+							    	</tbody>
+							    </table>
+							</div>						   						 												  
+							  <div class="clearfix"></div>
+							  
+							  <div class="receipt-signature col-xs-6">
+							    
+							    <span class="receipt-label text-large">Firma quien entrega</span>
+							    <p class="receipt-line"></p>
+							    <p>--------------------------</p>
+							  </div>
 
-						  <div class="receipt-signature col-xs-6">
-						  	<span class="receipt-label text-large">Firma quien recibe</span>
-						    <p class="receipt-line"></p>
-						    <p>--------------------------</p>
-						  </div>
-						</div>
-				</div>
+							  <div class="receipt-signature col-xs-6">
+							  	<span class="receipt-label text-large">Firma quien recibe</span>
+							    <p class="receipt-line"></p>
+							    <p>--------------------------</p>
+							  </div>
+							</div>
+					</div>
+				</div >
 				<!-- RECIBO--> 
 			</div>
 		</div>

@@ -309,6 +309,7 @@
 			}
 
 			$idRecepcion=$datos['idRecepcion'];
+			$datos["lotesArr"];
 
 			//echo var_dump($datos);
 			///consulatos los datos de la recepcion
