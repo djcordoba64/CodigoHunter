@@ -5,66 +5,120 @@
 		<h2>Gestión de entrega</h2>
 	</div>
 	<div class="container" >
-	    <div class="row">
-	        <div class="col-md-12">	           
-				<div class="widget-area" role="complementary"">
-					<aside class="widget">
-						<div class="col-sm-12" style="margin: 20px;">
-							<u style="color: #b89d64; "><p  style="color: #b89d64; font-size:35px">Búsqueda</p></u>							
-						</div>
-						<div class="col-sm-12">
-							<div class="col-sm-4">
-								<div class="content">
-									<div class="form wp-searchform" method="get">
-										<label>*Fecha en que se registro la recepción</label>
-										<input  type="text" name="search"  id="buscar" onkeyup="buscarCliente()" placeholder="fecha de la recepción">
-										<button type="submit" class="fa fa-search"></button>
+		<div class="product-single">
+		    <div class="row">
+		        <div class="col-md-12">	           
+					<div class="widget-area" role="complementary"">
+						<aside class="widget">
+							<div class="col-sm-12" style="margin: 20px;">
+								<u style="color: #b89d64; "><p  style="color: #b89d64; font-size:35px">Búsqueda</p></u>							
+							</div>
+							<div class="col-sm-12">
+								<div class="col-sm-4">
+									<div class="content">
+										<div class="form wp-searchform" method="get">
+											<label>*Fecha</label>
+											<div class='input-group date' id='divMiCalendario'>
+
+						                      <input type='text' id="txtFecha" readonly/>
+						                      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+						                      </span>
+						                  </div>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="content">
-									<div class="form wp-searchform" method="get">
-										<label>*Número de recibo</label>
-										<input  type="text" name="search"  id="buscar" onkeyup="buscarCliente()" placeholder="Número de recibo">
-										<button type="submit" class="fa fa-search"></button>
+								<div class="col-sm-4">
+									<div class="content">
+										<div class="form wp-searchform" method="get">
+											<label>*Número de documento del cliente</label>
+											<input  type="text" name="search"  id="buscar" onkeyup="buscarCliente()" placeholder="Documento de identidad">
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="content">
-									<div class="form wp-searchform" method="get">
-										<label>*Número de documento del cliente</label>
-										<input  type="text" name="search"  id="buscar" onkeyup="buscarCliente()" placeholder="Documento de identidad">
-										<button type="submit" class="fa fa-search"></button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</aside>
-				</div>
-				<div  style="margin: 20px;">
-					 <table class="shop_table shop_table_responsive cart" id="tbl_Recepcion" >
-					                <thead>
-					                    <tr class="header">
-					                    	<th class="product-remove">Recibo</th>	
-					                    	<th class="product-remove">Fecha</th>                    		
-					                    	<th class="product-remove">Cliente</th>
-											<th class="product-remove">Documento</th>							
-											<th class="product-remove">Estado</th>
-											<th class="product-remove">Acciones</th>
-					                    </tr>
-					                </thead>
-					                <tbody  class="cart_item">
-																
+								<div class="col-sm-4">
+									<div class="content">
+										<div class="form wp-searchform" method="get">
+											<label>*Número de recibo</label>
+											<div class="quantity">									
+										         <input style="background-color: #fff" type="number" name="cantidad"  min="1"  step="1" value="" required>
+											</div>
 									
-					                </tbody>
-					            </table>
-					
-				</div>	      
-							
-	        </div>
-	    </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</aside>
+					</div>
+					<div  style="margin: 20px;">
+					<table class="shop_table shop_table_responsive cart" id="tbl_Recepcion" >
+						                <thead>
+						                    <tr class="header">
+						                    	<th class="product-remove">Fecha</th>  
+						                    	<th class="product-remove">Recibo</th>
+						                    	<th class="product-remove">Cliente</th>
+												<th class="product-remove">Documento</th>						
+												<th class="product-remove">Estado</th>
+												<th class="product-remove">Acciones</th>
+						                    </tr>
+						                </thead>
+						                <tbody  class="cart_item">
+										<?php foreach($datos['recepciones']  as $recepcion): ?>
+											<tr class="cart_item">
+												<td class="product-remove">					
+													<?php echo $recepcion->fecha;?>								
+												</td>
+												<td class="product-remove">
+													<?php echo $recepcion->numeroRecibo;?>					
+												</td>																	
+												<td class="product-remove">
+													<?php echo $recepcion->Cliente;?>				
+												</td>
+												<td class="product-remove">
+													<?php echo $recepcion->documento;?>				
+												</td>
+												<td class="product-remove">
+													<?php echo $recepcion->estado;?>				
+												</td class="product-remove">
+												<td class="product-remove">
+													<a data-toggle="tooltip" title="Ver información" href="<?php echo RUTA_URL;?>/Entrega/mostrar_generarFactura/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
+													 <span class=""></span>Seleccionar
+													 </a>
+													 				
+												</td class="product-remove">
+
+											</tr>
+										<?php endforeach;?>
+						                </tbody>
+						            </table>
+					</div>
+
+					 <div class="col-md-12">
+							             <div class="paging-navigation">
+							              <hr>
+							              <div class="pagination">
+
+
+							                  <a class="prev <?php  echo $datos['pagina']<= 1? 'disabled' :'' ?>  " href="<?php echo RUTA_URL;?>/Entrega/index/<?php echo ($datos['pagina']-1)?>" >
+							                    <i class="fa fa-chevron-left" aria-hidden="true"></i>Anterior
+							                  </a>
+
+							                  <?php for ($i=0; $i<$datos['numeroPaginas'] ; $i++): ?>
+
+							                    <a href="<?php echo RUTA_URL;?>/Entrega/index/<?php echo $i+1 ?> " class="page-numbers current <?php echo $datos['pagina']==$i+1 ? 'active':''?> "><?php echo $i+1 ?></a>
+							                  
+							                  <?php endfor?>
+							                
+							                  <a  class="next <?php  echo $datos['pagina']>= $datos['numeroPaginas'] ? 'disabled' :'' ?>"  href="<?php echo RUTA_URL;?>/Entrega/index/<?php echo $datos['pagina']+1 ?>">Siguiente
+							                  <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+
+							                  
+							              </div>
+							          </div>
+	        						</div>     
+								
+		        </div>
+		    </div>
+		</div>
 	</div>	
 </div>
 

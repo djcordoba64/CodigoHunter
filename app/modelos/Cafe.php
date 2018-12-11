@@ -194,5 +194,13 @@
             }
         }
 
+        //mostrar detalle index- detalle
+		public function obtenerCafes_torrefaccion($idRecepcion){
+			$this->db->query("SELECT * from cafes where idRecepcion=:idRecepcion");	
+			 $this->db->bind(':idRecepcion', $idRecepcion);	
+            $cafes=$this->db->registros();
+        return $cafes;
+
+	    }
 	}
 ?>

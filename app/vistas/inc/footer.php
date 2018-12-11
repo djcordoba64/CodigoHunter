@@ -90,7 +90,7 @@
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.select2.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/jquery.swipebox.min.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL ?>/js/main.js"></script>
-
+<script type="text/javascript" src="<?php echo RUTA_URL ?>/js/bootstrap-datetimepicker.es.js"></script>
 
 
 
@@ -444,7 +444,10 @@
  		$("#mostrarRecibo").toggle(1000);
  	});
 
-
+	 $('#divMiCalendario').datetimepicker({
+          format: 'YYYY-MM-DD HH:mm'       
+      });
+      $('#divMiCalendario').data("DateTimePicker").show();
 
 
 </script>

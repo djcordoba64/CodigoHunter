@@ -98,7 +98,7 @@
                       <li><a href="/Hunter/EstadosTorrefaccion/registrar_inicio">Gestionar</a></li>
                    </ul>     
                   </li>
-                    <li><a href="/Hunter/Entrega/consultar_mostrarInicio">Entrega</a></li>
+                    <li><a href="/Hunter/Entrega/index">Entrega</a></li>
                     <li><a href="/Hunter/Trazabilidad/consultar_mostrarInicio">Trazabilidad</a></li>               
                 </ul>
               </div>
