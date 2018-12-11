@@ -137,6 +137,7 @@
 			$datos["correo"]=$_POST['correo'];
 			$datos['direccion']=$_POST['direccion'];
 			$datos['Temperatura']=$_POST['Temperatura'];
+			$datos['numeroContacto']=$_POST['numeroContacto'];
 			
 
 			
@@ -147,7 +148,8 @@
 					'idDetalleFinca'		=>trim($_POST['idDetalleFinca']),
 					'correo'	=>trim($_POST['correo']),
 					'direccion'	=>trim($_POST['direccion']),
-					'Temperatura'	=>trim($_POST['Temperatura'])
+					'Temperatura'	=>trim($_POST['Temperatura']),
+					'numeroContacto'	=>trim($_POST['numeroContacto']),
 				];
 				
 				//
@@ -237,7 +239,7 @@
 			$datosRecepcion= $this->recepcionModelo->ConsultarDatos_x_id($idRecepcion);
 				
 					$datos=[
-						//'codigoRecibo'	=> $datosRecepcion->codigorecibo,
+						'numeroRecibo'	=> $datosRecepcion->numeroRecibo,
 						'fecha'	=> $datosRecepcion->created_at,	
 						'primerNombre'	=> $datosRecepcion->primerNombre,
 						'primerApellido'	=> $datosRecepcion->primerApellido,
@@ -248,7 +250,8 @@
 						'nombreFinca'=>$datosRecepcion->nombreFinca,
 						'municipio'=>$datosRecepcion->municipio,
 						'Vereda'=>$datosRecepcion->vereda,
-						'temperatura'	=> $datosRecepcion->temperatura,										
+						'temperatura'	=> $datosRecepcion->temperatura,
+															
 
 					];
 
@@ -290,7 +293,7 @@
 					];
 
 			//consulto datos de los  cafés registrados  a esa recepción
-			$datos["lotes"] = $this ->cafeModelo ->obtenerCafesRecepcion($idRecepcion);				
+			$datos["lotes"] = $this ->cafeModelo ->obtenerCafes_recibo($idRecepcion);				
 
 					$this->vista('/recepciones/detalle_foto_lote', $datos);
 
@@ -331,7 +334,7 @@
 
 
 			//consulto datos de los  cafés registrados  a esa recepción
-			$datos["lotes"] = $this ->cafeModelo ->obtenerCafesRecepcion($idRecepcion);
+			$datos["lotes"] = $this ->cafeModelo ->obtenerCafes_recibo($idRecepcion);
 
 
 			$this->vista('/Recepciones/generarRecibo', $datos);

@@ -23,10 +23,10 @@ class Recepcion extends Base
 		  return -2;       
 		 }  */  
 		 $this->db->query("INSERT INTO recepciones (
-							  idcliente, numeroFactura, idFinca, Estado, created_at,created_by, correo, direccion, temperatura) 
+							  idcliente, numeroFactura, idFinca, Estado, created_at,created_by, correo, direccion, temperatura,numeroContacto) 
 							  VALUES (
 							  :idcliente,:numeroFactura, :idFinca, 'Activo', 
-							  NOW(),:created_by, :correo, :direccion, :temperatura)
+							  NOW(),:created_by, :correo, :direccion, :temperatura,:numeroContacto)
 						  ");
 
 		 //VINCULAR LOS VALORES --- BIND(sentencias preparadas)---
@@ -37,6 +37,7 @@ class Recepcion extends Base
 		 $this->db->bind(':correo'  ,  $datos['correo']);
 		 $this->db->bind(':direccion'  ,  $datos['direccion']);
 		 $this->db->bind(':temperatura'  ,  $datos['Temperatura']);
+		 $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
 
 		//EJECUTAMOS LA CONSULTA ----Execute
 
@@ -64,7 +65,7 @@ class Recepcion extends Base
         //limitar las recepciones para la paginación y mostrar en el index
         public function limit_recepciones($iniciar,$recepciones_x_pagina){
 
-        $this->db->query(" SELECT r.numeroRecibo, r.created_at as fecha, c.documentoIdentidad as documento, concat(c.primerNombre , ' ' , c.primerApellido) as Cliente,  r.estado, r.numeroRecibo from recepciones as r inner join personas as c on r.idcliente=c.idPersona  ORDER BY r.created_at DESC LIMIT :iniciar,:nrecepciones");
+        $this->db->query(" SELECT r.numeroRecibo, r.created_at as fecha, c.documentoIdentidad as documento, concat(c.primerNombre , ' ' , c.primerApellido) as Cliente,  r.estado, r.numeroRecibo from recepciones as r inner join personas as c on r.idcliente=c.idPersona  ORDER BY r.numerorecibo DESC LIMIT :iniciar,:nrecepciones");
         $this->db->bind(':iniciar',$iniciar,PDO::PARAM_INT);
         $this->db->bind(':nrecepciones',$recepciones_x_pagina,PDO::PARAM_INT);
             $listaRecepciones=$this->db->registros();
@@ -81,7 +82,7 @@ class Recepcion extends Base
         //-----ACTUALIZAR--------------------------------------------------
         //consulto los datos para cargarlos en el formulario de edición.
         public function ConsultarDatos_x_id($idRecepcion){
-        	$this->db->query("SELECT r.numeroRecibo,r.created_at,r.created_by,p.numeroContacto,r.correo,r.direccion,p.primerNombre,r.temperatura,p.primerApellido,p.documentoIdentidad, f.nombreFinca,f.vereda,m.municipio FROM recepciones as r  inner join personas as p on p.idPersona=r.idcliente INNER join detallefinca as f on f.idCliente=p.idPersona inner join municipios as m ON m.id_municipio=f.idmunicipio WHERE r.numerorecibo=:idRecepcion");
+        	$this->db->query("SELECT r.numeroRecibo,r.created_at,r.created_by,r.numeroContacto,r.correo,r.direccion,p.primerNombre,r.temperatura,p.primerApellido,p.documentoIdentidad, f.nombreFinca,f.vereda,m.municipio FROM recepciones as r  inner join personas as p on p.idPersona=r.idcliente INNER join detallefinca as f on f.idCliente=p.idPersona inner join municipios as m ON m.id_municipio=f.idmunicipio WHERE r.numerorecibo=:idRecepcion");
         	$this->db->bind(':idRecepcion',$idRecepcion);
         	 $fila=$this->db->registro();
             return $fila;

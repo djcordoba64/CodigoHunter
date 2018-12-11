@@ -44,7 +44,7 @@
 					];	
 
 						
-				$cafes= $this ->cafeModelo->obtenerCafesRecepcion($datos['idRecepcion']);
+				$cafes= $this ->cafeModelo->obtenerCafes_recibo($datos['idRecepcion']);
 				$cafes = json_encode($cafes);
 				
 				$datos["cafes"]=$cafes;

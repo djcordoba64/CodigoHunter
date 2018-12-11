@@ -9,25 +9,7 @@
 	 	{
 	 		$this->db = new Base;
 	 	}
-	 
-	 	 //--CREAR UN NUEVO CAFÉ----
-	 	 public function crear(){
-	 	 	$this->db->query("INSERT INTO cafes (idcafe,codigoCafe,peso,especie,variedad,porcentajeHumedad,factorRendimiento,tipoTueste,molidaMediaLibra,molidaLibra,granoMediaLibra,granoLibra,estado,foto,cantidad,valorUnitario,idmateriaPrima,idtipoBeneficio,created_at,created_by) VALUES (:idcafe,:codigoCafe,:peso,:especie,:variedad,:porcentajeHumedad,:factorRendimiento,:tipoTueste,:molidaMediaLibra,:molidaLibra,:granoMediaLibra,:granoLibra,:estado,:foto,:cantidad,:valorUnitario,idmateriaPrima,:idtipoBeneficio,:NOW(),:created_by)");
-
-
-	 	 	//vinculamos los valores
-	 	 	//vinculamos los valores
-			 $this->db->bind(':codigoCafe' , $cafe['codigoCafe']);
-			 $this->db->bind(':peso',$cafes['peso']);
-			 $this->db->bind(':especie' , $cafe['especie']);
-			 $this->db->bind(':variedad',$cafes['variedad']);
-			 $this->db->bind(':porcentajeHumedad' , $cafe['porcentajeHumedad']);
-			 $this->db->bind(':factorRendimiento',$cafes['factorRendimiento']);
-			 $this->db->bind(':tipoTueste' , $cafe['tipoTueste']);
-			 $this->db->bind(':molidaMediaLibra',$cafes['molidaMediaLibra']);
-			
-	 	 }
-
+	 	
 	 	 //Validar si esta registrado el codigo del café
 	 	 public function cafeExiste($codigoCafe){
             $this->db->query( "SELECT count(1) as existe FROM cafes where codigoCafe=:codigoCafe " );
@@ -52,7 +34,7 @@
 
 			foreach ($datosLote as $lote) {
 						//preparamos la consulata
-					$datos["archivo"]=$lote->archivo;
+					//$datos["archivo"]=$lote->archivo;
 					$datos["peso"]=$lote->peso;
 					$datos["variedad"]=$lote->variedad;
 					$datos["tipoTueste"]=$lote->tipoTueste;
@@ -67,6 +49,7 @@
 					$datos["granoLibra"]=$lote->granoLibra;
 					$datos["granoMediaLibra"]=$lote->granoMediaLibra;
 					$datos["granoCincoLibras"]=$lote->granoCincoLibras;
+					$datos["agranel"]=$lote->agranel;
 					$datos["cantidad"]=$lote->cantidad;
 					$datos["valorUnitario"]=$lote->valorUnitario;
 					$datos["estado"]=$lote->estado;
@@ -85,10 +68,10 @@
 		public function agregarLote($datosLote,$idCliente){
 			//preparamos la consulata
 			$this->db->query('INSERT INTO cafes (codigoCafe,peso,especie,variedad,idtipoBeneficio,idmateriaPrima,porcentajeHumedad,factorRendimiento,
-			tipoTueste,molidaLibra,molidaMediaLibra,molidaCincoLibras,granoLibra,granoMediaLibra,granoCincoLibras,cantidad,
+			tipoTueste,molidaLibra,molidaMediaLibra,molidaCincoLibras,granoLibra,granoMediaLibra,granoCincoLibras,agranel,cantidad,
 			valorUnitario,estado,idRecepcion,created_at,created_by) 
 			 VALUES (:codigoCafe, :peso, :especie, :variedad, :idtipoBeneficio, :idmateriaPrima, :porcentajeHumedad, :factorRendimiento, 
-			 :tipoTueste, :molidaLibra, :molidaMediaLibra, :molidaCincoLibras, :granoLibra, :granoMediaLibra, :granoCincoLibras, :cantidad, 
+			 :tipoTueste, :molidaLibra, :molidaMediaLibra, :molidaCincoLibras, :granoLibra, :granoMediaLibra, :granoCincoLibras,:agranel, :cantidad, 
 			 :valorUnitario, :estado, :idRecepcion, NOW(), :created_by)
 			 ');
 			 
@@ -108,6 +91,7 @@
 			 $this->db->bind(':granoLibra', $datosLote['granoLibra']);
 			 $this->db->bind(':granoMediaLibra', $datosLote['granoMediaLibra']);
 			 $this->db->bind(':granoCincoLibras', $datosLote['granoCincoLibras']);
+			 $this->db->bind(':agranel', $datosLote['agranel']);
 			 $this->db->bind(':cantidad', $datosLote['cantidad']);	
 			 $this->db->bind(':valorUnitario', $datosLote['valorUnitario']);		
 			 $this->db->bind(':estado', $datosLote['estado']);
@@ -168,6 +152,8 @@
             return $fila;
 		}
 
+	
+
 		//mostrar detalle index- detalle
 		public function obtenerCafesRecepcion($idRecepcion){
 			$this->db->query("SELECT * from cafes where idRecepcion=:idRecepcion");	
@@ -194,6 +180,16 @@
             }
         }
 
+        //obtener cafes par gerar el recibo
+		public function obtenerCafes_recibo($idRecepcion){
+			$this->db->query("SELECT * from cafes where estado='recibido' and  idRecepcion=:idRecepcion ");	
+			 $this->db->bind(':idRecepcion', $idRecepcion);	
+            $cafes=$this->db->registros();
+        return $cafes;
+
+
+		}
+
         //mostrar detalle index- detalle
 		public function obtenerCafes_torrefaccion($idRecepcion){
 			$this->db->query("SELECT * from cafes where idRecepcion=:idRecepcion");	
@@ -202,5 +198,6 @@
         return $cafes;
 
 	    }
+
 	}
 ?>

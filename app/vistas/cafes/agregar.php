@@ -20,6 +20,8 @@
 										<input type="hidden" name="direccion" value="<?php echo $datos["direccion"] ?>" >
 										<!--en el input hidden tare el id del cliente-->
 										<input type="hidden" name="Temperatura" value="<?php echo $datos["Temperatura"] ?>" >
+										<!--en el input hidden tare el id del cliente-->
+										<input type="hidden" name="numeroContacto" value="<?php echo $datos["numeroContacto"] ?>" >
 										<!--hidden para guardar temporalmente los lotes de cafe que se van creando y poder guardarlas todas al final junto con el cliente y la finca-->	
 										<input type="hidden" name="lotesJson" value='<?php echo isset($datos['lotesJson'])? $datos['lotesJson'] : '';?>'><!--array de lotes de cafe en una cadena de json-->
 										<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
@@ -104,7 +106,7 @@
 												<!---->
 												<p class="form-row form-row-first validate-required validate-phone" id="billing_phone_field" data-priority="100">
 													<label for="estado">Estado<abbr class="required" title="required">*</abbr></label>
-													<select name="estado" id="materia" style="width: 100%" class="country_to_state country_select select2-hidden-accessible"  tabindex="-1" aria-hidden="true">
+													<select name="estado" id="materia" style="width: 100%" class="country_to_state country_select select2-hidden-accessible"  tabindex="-1" aria-hidden="true" required>
 													    <option value="">Seleccione..</option>
 											    		<option value="recibido" <?php echo  (isset($datos['estado']) and $datos['estado'] == 'recibido') ? "selected='selected'":'' ?>>Recibido</option>
 											   			<option value="rechazado"  <?php echo  (isset($datos['estado']) and $datos['estado'] == 'rechazado') ? "selected='selected'":'' ?>>Rechazado</option>

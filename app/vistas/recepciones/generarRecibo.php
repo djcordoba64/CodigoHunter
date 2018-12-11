@@ -1,12 +1,12 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
 
-<!-- PRODUCT -->
-<?php var_dump($datos['lotes']) ?> 
+<!-- PRODUCT --> 
 	<section class="product-single">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
+					<a href="<?php echo RUTA_URL;?>/recepciones/index" class="btn btn-light"><i class="glyphicon glyphicon-hand-left"></i> Salir</a>
 					<h2 class="related-title">Recepción</h2>
 					<div class="row">
 						<div class="col-md-12">
@@ -87,41 +87,54 @@
 							    <input type="checkbox" disabled checked>
 							  </div><br>
 							  <div class="clearfix"></div>
-							 <div class="col-xs-6 text-page" >
+							 <div class="col-xs-9 text-page" >
 							 	
-							    <table class="shop_table" >
+							    <table class="table table-bordered">
 							    	<thead>
 							    		<tr>
 								    		
-								    		<th style="font-size:14px" colspan="4">Descripción</th>
-								    		<th style="font-size:14px"  colspan="7">Forma de entrega</th>
+								    		<th style="font-size:14px;text-align: center;color: #fff " colspan="4">Descripción</th>
+								    		<th style="font-size:14px;text-align: center;color: #fff"  colspan="7">Forma de entrega</th>
 							    		</tr>
 
 							    		
 							    	</thead>
-							    	<tr>
-								    		<th style="font-size:10px">Peso</th>
-								    		<th style="font-size:10px">Lote</th>
-								    		<th style="font-size:10px">Humedad</th>
-								    		<th style="font-size:10px">Tostion</th>
-								    		<th style="font-size:10px" colspan="3">Molida</th>
-								    		<th style="font-size:10px" colspan="3">Gano</th>
-								    		<th style="font-size:10px" >Agranel</th>
+							    		<tr >
+								    		
+								    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Lote</th>
+								    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Peso</th>
+								    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Humedad</th>
+								    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Tostion</th>
+								    		<th style="font-size:10px;text-align: center" colspan="3">Molida</th>
+								    		<th style="font-size:10px;text-align: center" colspan="3">Gano</th>
+								    		<th style="font-size:10px;text-align: center"  ROWSPAN=2>Agranel</th>
+							    		</tr>
+
+							    		<tr>
+								    		
+								    		<th style="font-size:10px" >Lb</th>
+								    		<th style="font-size:10px" >1/2 Lb</th>
+								    		<th style="font-size:10px" >5 Lb</th>
+								    		<th style="font-size:10px" >Lb</th>
+								    		<th style="font-size:10px" >1/2 Lb</th>
+								    		<th style="font-size:10px" >5 Lb</th>
+								    	
 							    		</tr>
 							    	<tbody>
 							    		<?php foreach($datos['lotes']  as $cafe): ?>
 							    		<tr>					
-							                <td><?php echo $cafe->peso?></td>
-							                <td></td>
-							                <td></td>
-							                <td></td>
-							                <td></td>
-							                <td></td>
-							                <td></td>
-							                <td></td>
-							                <td></td>
-							                <td></td>
-							                <td></td>
+							                
+							                <td style="font-size:12px" scope="row"><?php echo $cafe->codigoCafe?></td>
+							                <td style="font-size:12px"><?php echo $cafe->peso?></td>
+							                <td style="font-size:12px"><?php echo $cafe->porcentajeHumedad?></td>
+							                <td style="font-size:12px"><?php echo $cafe->tipoTueste?></td>
+							                <td style="font-size:12px"><?php echo $cafe->molidaLibra?> </td>
+							                <td style="font-size:12px"><?php echo $cafe->molidaMediaLibra?></td>
+							                <td style="font-size:12px"><?php echo $cafe->molidaCincoLibras?> </td>
+							                <td style="font-size:12px"><?php echo $cafe->granoLibra?> </td>
+							                <td style="font-size:12px"><?php echo $cafe->granoMediaLibra?> </td>
+							                <td style="font-size:12px"><?php echo $cafe->granoCincoLibras?> </td>
+							                <td style="font-size:12px"><?php echo $cafe->agranel?></td>
 			            				</tr>
 			            				<?php endforeach;?>
 							    		
@@ -150,7 +163,6 @@
 		</div>
 	</section>
 	<!-- PRODUCT END -->
-
 
         
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 

@@ -26,7 +26,7 @@
 								</div>
 								<div  class="col-md-6">
 									<label for="numeroContacto" class="">Contácto</label>
-										<input class="contact-input" type="text" disabled name="numeroContacto" value="<?php echo $datos['numeroContacto']?>"/>											
+										<input class="contact-input" type="text"  name="numeroContacto" value="<?php echo $datos['numeroContacto']?>"/>											
 								</div>
 							</div>
 							<p>

@@ -324,7 +324,7 @@
         //__CLIENTES_RECEPCIÖN--------
         //validar si existe un cliente con el número de identificación(1=exite)
         public function clienteExiste($documentoIdentidad){
-            $this->db->query( "SELECT count(1) as existe FROM personas where documentoIdentidad=:documentoIdentidad " );
+            $this->db->query( "SELECT count(1) as existe FROM personas where documentoIdentidad=:documentoIdentidad  and tipoPersona='cliente' " );
             $this->db->bind(':documentoIdentidad',$documentoIdentidad);
             $fila=$this->db->registro();
             return $fila->existe==1;

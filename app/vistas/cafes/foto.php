@@ -28,8 +28,9 @@
 							<div class="item">Tipo de beneficio: <strong><?php echo $datos['Tnombre']?></strong></div>
 						</div>
 					</div><br>
+					<input value="Cerrar" class="btn btn-bordered" type="button" onclick="window.close();">
 					<input value="Guardar" class="btn btn-brown" type="submit">
-					<input value="Cerrar" class="btn btn-default" type="button" onclick="window.close();">															
+																				
 				</div>
 				
 				</form>				

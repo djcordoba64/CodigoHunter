@@ -41,8 +41,9 @@
 		$datos['molidadMedilaLibra']='';
 		$datos['granoMediaLibra']='';
 		$datos['granoLibra']='';
+		$datos['agranel']='';
 		$datos['estado']='';
-		$datos['foto']='';
+		//$datos['foto']='';
 		$datos['cantidad']='';
 		$datos['valorUnitario']='';
 		$datos['idMateriPrima']='';
@@ -54,6 +55,7 @@
 		$datos['correo']=$_POST["correo"];
 		$datos['direccion']=$_POST["direccion"];
 		$datos['Temperatura']=$_POST["Temperatura"];
+		$datos['numeroContacto']=$_POST["numeroContacto"];
 
 			//consultas datos para los select del formulario
 			$materias = $this->materiaPrimaModelo -> obtenerMateriasPrimas();
@@ -109,9 +111,10 @@
 			$datos['correo']=$_POST["correo"];
 			$datos['direccion']=$_POST["direccion"];
 			$datos['Temperatura']=$_POST["Temperatura"];
+			$datos['numeroContacto']=$_POST["numeroContacto"];
 
 			// recupero los datos del formulario, la finca que se desea agregar/actualizar
-			$datos["archivo"]=$_POST['archivo'];
+			//$datos["archivo"]=$_POST['archivo'];
 			$datos["peso"]=$_POST['peso'];
 			$datos["variedad"]=$_POST['variedad'];
 			$datos["tipoTueste"]=$_POST['tipoTueste'];
@@ -126,6 +129,7 @@
 			$datos["granoLibra"]=$_POST['granoLibra'];
 			$datos["granoMediaLibra"]=$_POST['granoMediaLibra'];
 			$datos["granoCincoLibras"]=$_POST['granoCincoLibras'];
+			$datos["agranel"]=$_POST['agranel'];
 			$datos["cantidad"]=$_POST['cantidad'];
 			$datos["valorUnitario"]=$_POST['valorUnitario'];
 			$datos["estado"]=$_POST['estado'];
@@ -137,7 +141,8 @@
 				//El siguiente codigo arregla un error que se genera al mandar los datos de las fincas por post, y estas se convierten en objetos, pero las necesitamos como array
 				$temp_array=array();
 				foreach ($datos['lotesArr'] as $lote) {
-					$lote_temp = array('archivo'=>$lote->archivo,
+					$lote_temp = array(
+						//'archivo'=>$lote->archivo,
 										'peso'=>$lote->peso,
 										'variedad'=>$lote->variedad,
 										'tipoTueste'=>$lote->tipoTueste,
@@ -152,6 +157,7 @@
 										'granoLibra'=>$lote->granoLibra,
 										'granoMediaLibra'=>$lote->granoMediaLibra,
 										'granoCincoLibras'=>$lote->granoCincoLibras,
+										'agranel'=>$lote->agranel,
 										'cantidad'=>$lote->cantidad,
 										'valorUnitario'=>$lote->valorUnitario,
 										'estado'=>$lote->estado,
@@ -172,7 +178,8 @@
 					//es una nueva finca
 					
 						// creo array con datos
-						$nuevoLote = array('archivo'=>$_POST['archivo'],
+						$nuevoLote = array(
+										//'archivo'=>$_POST['archivo'],
 										'peso'=>$_POST['peso'],
 										'variedad'=>$_POST['variedad'],
 										'tipoTueste'=>$_POST['tipoTueste'],
@@ -187,6 +194,7 @@
 										'granoLibra'=>$_POST['granoLibra'],
 										'granoMediaLibra'=>$_POST['granoMediaLibra'],
 										'granoCincoLibras'=>$_POST['granoCincoLibras'],
+										'agranel'=>$_POST['agranel'],
 										'cantidad'=>$_POST['cantidad'],
 										'valorUnitario'=>$_POST['valorUnitario'],
 										'estado'=>$_POST['estado'], 
@@ -209,7 +217,7 @@
 
 						//limpio el formulario
 						unset($datos["nombreFinca"]);
-						unset($datos["archivo"]);
+						//unset($datos["archivo"]);
 						unset($datos["peso"]);
 						unset($datos["variedad"]);
 						unset($datos["tipoTueste"]);
@@ -224,6 +232,7 @@
 						unset($datos["granoLibra"]);
 						unset($datos["granoMediaLibra"]);
 						unset($datos["granoCincoLibras"]);
+						unset($datos["agranel"]);
 						unset($datos["cantidad"]);
 						unset($datos["valorUnitario"]);
 						unset($datos["estado"]);
@@ -255,6 +264,7 @@
 										'granoLibra'=>$_POST['granoLibra'],
 										'granoMediaLibra'=>$_POST['granoMediaLibra'],
 										'granoCincoLibras'=>$_POST['granoCincoLibras'],
+										'agranel'=>$_POST['agranel'],
 										'cantidad'=>$_POST['cantidad'],
 										'valorUnitario'=>$_POST['valorUnitario'],
 										'estado'=>$_POST['estado'], 
@@ -292,6 +302,7 @@
 						unset($datos["granoLibra"]);
 						unset($datos["granoMediaLibra"]);
 						unset($datos["granoCincoLibras"]);
+						unset($datos["agranel"]);
 						unset($datos["cantidad"]);
 						unset($datos["valorUnitario"]);
 						unset($datos["estado"]);
@@ -336,6 +347,7 @@
 				$datos['correo']=$_POST["correo"];
 				$datos['direccion']=$_POST["direccion"];
 				$datos['Temperatura']=$_POST["Temperatura"];
+				$datos['numeroContacto']=$_POST["numeroContacto"];
 
 			
 			//recupero datos de las fincas que se han creado temporalmente (guardadas en el hidden y no se han guardado en BD)
@@ -360,6 +372,7 @@
 							'granoLibra'=>$lote->granoLibra,
 							'granoMediaLibra'=>$lote->granoMediaLibra,
 							'granoCincoLibras'=>$lote->granoCincoLibras,
+							'agranel'=>$lote->granel,
 							'cantidad'=>$lote->cantidad,
 							'valorUnitario'=>$lote->valorUnitario,
 							'estado'=>$lote->estado,
@@ -391,6 +404,7 @@
 				$datos["granoLibra"]=$datosLote['granoLibra'];
 				$datos["granoMediaLibra"]=$datosLote['granoMediaLibra'];
 				$datos["granoCincoLibras"]=$datosLote['granoCincoLibras'];
+				$datos["agranel"]=$datosLote['agranel'];
 				$datos["cantidad"]=$datosLote['cantidad'];
 				$datos["valorUnitario"]=$datosLote['valorUnitario'];
 				$datos["estado"]=$datosLote['estado'];

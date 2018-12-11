@@ -4,6 +4,7 @@
 	<section class="where-buy alt">
 		<div class="container">
 			<div class="row">
+				<a href="<?php echo RUTA_URL;?>/recepciones/index" class="btn btn-light"><i class="glyphicon glyphicon-hand-left"></i> Salir</a>
 				<div class="col-md-12"><h2>Recepción</h2></div>
 				<p>Aquí se muestra de forma detallada la información de la recepción.</p>
 				<div class="col-md-12">
@@ -13,8 +14,8 @@
 								<div class="col-md-3 col-sm-3" >
 									<div class="buy-item" >
 										<div class="info">
-											<address style="color: #b89d64;font-size:20px">Recibo</address>
-											<div class="phone"><label >Numero:</label><span style="color: #b89d64;font-size:18px"></span></div>
+											<address style="font-size:20px">Recibo</address>
+											<div class="phone"><label >Numero:</label><span style="color: #b89d64;font-size:18px"><?php echo $datos['numeroRecibo'] ?></span></div>
 											<div class="phone"><label >Fecha:</label><span style="color: #b89d64;font-size:18px"> <?php echo $datos['fecha'] ?></span></div>										
 										</div>
 									</div>
@@ -23,7 +24,7 @@
 									<div class="buy-item">
 										
 										<div class="info">
-											<address style="color: #b89d64;font-size:17px">Datos del cliente</address>
+											<address style="font-size:17px">Datos del cliente</address>
 											<div class="phone"><label >Nombre:</label><span style="color: #b89d64;font-size:18px"> <?php echo $datos['primerNombre']."
 											".$datos['primerApellido'] ?></span></div>
 
@@ -38,7 +39,7 @@
 								<div class="col-md-5 col-sm-4">
 									<div class="buy-item">
 										<div class="info">
-											<address style="color: #b89d64;font-size:17px">Datos de la finca</address>	
+											<address style="font-size:17px">Datos de la finca</address>	
 											<div class="phone"><label >Nombre:</label><span style="color: #b89d64;font-size:18px"> <?php echo $datos['nombreFinca'] ?></span></div>
 											<div class="phone"><label >Municipio:</label><span style="color: #b89d64;font-size:18px"> <?php echo $datos['municipio'] ?></span></div>
 											<div class="phone"><label >Vereda:</label><span style="color: #b89d64;font-size:18px"> <?php echo $datos['Vereda'] ?></span></div>
@@ -66,6 +67,7 @@
 											<th style="font-size:18px" class="product-remove">Tipo tueste</th>
 											<th style="font-size:18px" class="product-remove">Cantidad</th>
 											<th style="font-size:18px" class="product-remove">Valor</th>
+											<th style="font-size:18px" class="product-remove">Estado</th>
 											
 									    </tr>
 									</thead>
@@ -88,6 +90,7 @@
 											<td class="product-remove"><?php echo $cafe->cantidad;?></td>
 										
 											<td class="product-remove"><?php echo $cafe->valorUnitario;?></td>
+											<td class="product-remove"><?php echo $cafe->estado;?></td>
 										</tr>
 									<?php endforeach; }?>
 									</tbody>
