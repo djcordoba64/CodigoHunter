@@ -72,3 +72,10 @@
     text-align:right; 
     font-size: 14px;
   }
+
+.modal-header{
+  background-color: #b89d64;
+}
+.modal-title{
+  color: #fff;
+}

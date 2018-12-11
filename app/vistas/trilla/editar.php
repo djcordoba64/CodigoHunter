@@ -1,6 +1,5 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
-<h1>Editar datos trilla</h1>
 <div class="container">
   <div class="col-md-12">
     <h2>Proceso de Trilla</h2>

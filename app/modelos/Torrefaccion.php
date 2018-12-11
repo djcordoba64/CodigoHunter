@@ -97,8 +97,8 @@ class Torrefaccion
 
        //var_dump($fila);
       if($fila->codigoEstado!==$codigoDetener){
-         $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
-           VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
+         $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_by) 
+           VALUES (:idcafe,NOW(),:codigoEstado,:created_by)
            ');
     
            //vinculamos los valores
@@ -125,8 +125,8 @@ class Torrefaccion
        $fila=$this->db->registro();
 
         if($fila->codigoEstado!==$codigoReanudar){
-           $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
-           VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
+           $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_by) 
+           VALUES (:idcafe,NOW(),:codigoEstado,:created_by)
            ');
     
            //vinculamos los valores
@@ -154,8 +154,8 @@ class Torrefaccion
        $fila=$this->db->registro();
 
         if($fila->codigoEstado!==$codigoFinalizar){
-          $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_at,created_by) 
-           VALUES (:idcafe,NOW(),:codigoEstado,NOW(),:created_by)
+          $this->db->query('INSERT INTO estadostorrefaccion (idCafe,fechaHora,codigoEstado,created_by) 
+           VALUES (:idcafe,NOW(),:codigoEstado,:created_by)
            ');
     
            //vinculamos los valores

@@ -434,7 +434,7 @@
 	      }
 	}
 
-	//Mostar opcion para consultar un numero de recibo en la vista Trazabilidad.
+	//Mostrar opcion para consultar un numero de recibo en la vista Trazabilidad.
 	 $("#IngresarMostrar").click(function(){
  		$("#opcionValidarRecibo").toggle(1000);
  	});

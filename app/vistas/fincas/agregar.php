@@ -1,7 +1,6 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
 <!-- CLIENTES_FINCAS- -->
-<a href="<?php echo RUTA_URL;?>/Clientes/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
 <div class="col-md-12">
 	<h2>Información de la finca</h2>
 </div>

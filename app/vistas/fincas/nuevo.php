@@ -5,7 +5,7 @@
 <div class="col-md-12">
 	<h2>Agregar nueva finca</h2>
 </div>
-<section class="cart-wrap">	
+<section class="product-single">	
 	<div class="container">
 		<div class="woocommerce">
 			<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Fincas/agregar_finca" method="POST">

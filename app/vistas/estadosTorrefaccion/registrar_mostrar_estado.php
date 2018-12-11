@@ -1,81 +1,118 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 <div class="col-md-12">
-    <h2>Gestionar trazabilidad de al Torrefacción</h2>
+    <h2>Torrefacción</h2>
   </div>
 <div class="container">
-  <?php echo var_dump($datos) ?>
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
                 <div class="form-horizontal" style="background: #f5f2eb">
                     <fieldset >
-                    <legend class="text-center header">Administrar</legend>                     
+                    <legend class="text-center header">Gestionar trazabilidad</legend>                     
                     <div class="col-md-12" style="background-color:#fff;" >
                       <div style="background-color: #fff;margin: 40px;">
                       El lote <label style="color: #b89d64;font-size:20px"><span><?php echo $datos['codigoCafe']?></span></label>, actualmente<span><?php echo $datos['leyenda']?></span><?php if ( isset($datos["nombreProceso"])) { ?>
                       <label style="color: #b89d64;font-size:20px"><span></span><?php echo $datos['nombreProceso']?></span> <?php }?></label>. 
                       <br>De clic en una de las opciones para:
-
-                      <div style="margin: 20px;">
-                                <!--Boton iniciar siguiente proceso o (Primer proceso)-->
-                                    <?php if ( isset($datos["nombreSiguiente"])) { ?>
-                                    <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#IniciarProceso"><?php echo $datos["nombreSiguiente"]?></a>   
-                                    <?php }?>
-
-                                <!--Boton Modificar-->
-                                    <!--Boton Modificar datos delproceso de trilla-->
-                                    <?php if ( isset($datos["nombreModificar"])) { ?>
-                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosTrilla/editar_crgarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificar"]?></a><?php }?>
-
-                                      <!--Boton Modificar datos delproceso de Pruebas Laboratorio-->
-                                    <?php if ( isset($datos["nombreModificarP"])) { ?>
-                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosPruebasLaboratorio/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarP"]?></a><?php }?>
-
-                                      <!--Boton Modificar datos del proceso Torrefactor-->
-                                    <?php if ( isset($datos["nombreModificarTo"])) { ?>
-                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosTorrefactor/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarTo"]?></a><?php }?>
-
-                                      <!--Boton Modificar datos del proceso Estabilización-->
-                                    <?php if ( isset($datos["nombreModificarEs"])) { ?>
-                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosEstabilizacion/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarEs"]?></a><?php }?>
-
-                                      <!--Boton Modificar datos del proceso Laboratotio-->
-                                    <?php if ( isset($datos["nombreModificarLa"])) { ?>
-                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosLaboratorio/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarLa"]?></a><?php }?>
-
-                                      <!--Boton Modificar datos del proceso Empaque-->
-                                    <?php if ( isset($datos["nombreModificarEm"])) { ?>
-                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosEmpaque/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarEm"]?></a><?php }?>
-                                  
-                                <!--Boton detener  proceso-->
-                                    <?php if ( isset($datos["nombreDetener"])) { ?>
-                                      <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#detener"><?php echo $datos["nombreDetener"]?></a>   
-                                    <?php }?>
-
-                                <!--Boton Reanudar proceso-->
-                                    <?php if ( isset($datos["nombreReanudar"])) { ?>
-                                      <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#reanudar"><?php echo $datos["nombreReanudar"]?></a>   
-                                    <?php }?>
-
-                                <!--Boton finalizar  proceso-->
-                                    <?php if ( isset($datos["nombreFinalizar"])) { ?>
-                                      <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#finalizar"><?php echo $datos["nombreFinalizar"]?></a>  
-                                    <?php }?>
-
-                                <!--Boton finalizar  proceso-->
-                                    <?php if ( isset($datos["nombreFinalizarT"])) { ?>
-                                     <a href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/TerminarProceso/<?php echo $datos["idcafe"].'/'.$datos['codigoFinalizar']?>" class="btn btn-sm btn-default"><?php echo $datos["nombreFinalizarT"]?></a> 
-                                    <?php }?>
-
-                                   
-                      </div>
-                      </div>
-                      <div class="form-group">
-                            <div class="col-md-12 text-center">
-                                <a  class="btn btn-lg btn-brown" href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/registrar_inicio">Cancelar</a>
+                      <div style="margin: 15px;">
+                      <!--Boton iniciar siguiente proceso o (Primer proceso)-->
+                        <?php if ( isset($datos["nombreSiguiente"])) { ?>
+                          <div class="col-md-3">
+                            <div class="product-item">
+                              <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#IniciarProceso"><?php echo $datos["nombreSiguiente"]?></a>
+                            </div> 
+                          </div>  
+                        <?php }?>
+                      <!--Boton Modificar-->
+                        <!--Boton Modificar datos delproceso de trilla-->
+                        <?php if ( isset($datos["nombreModificar"])) { ?>
+                          <div class="col-md-3">
+                            <div class="product-item">
+                               <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosTrilla/editar_crgarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificar"]?></a>
                             </div>
-                    </div>                        
+                          </div>
+                        <?php }?>
+                        <!--Boton Modificar datos delproceso de Pruebas Laboratorio-->
+                        <?php if ( isset($datos["nombreModificarP"])) { ?>
+                          <div class="col-md-3">
+                            <div class="product-item">
+                              <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosPruebasLaboratorio/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarP"]?></a>
+                            </div>
+                          </div>
+                        <?php }?>
+                        <!--Boton Modificar datos del proceso Torrefactor-->
+                        <?php if ( isset($datos["nombreModificarTo"])) { ?>
+                         <div class="col-md-3"> 
+                          <div class="product-item">
+                                <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosTorrefactor/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarTo"]?></a>
+                          </div>
+                        </div>
+                        <?php }?>
+                        <!--Boton Modificar datos del proceso Estabilización-->
+                        <?php if ( isset($datos["nombreModificarEs"])) { ?>
+                          <div class="col-md-3">
+                            <div class="product-item"> 
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosEstabilizacion/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarEs"]?></a>
+                            </div>
+                          </div>
+                        <?php }?>
+                        <!--Boton Modificar datos del proceso Laboratotio-->
+                        <?php if ( isset($datos["nombreModificarLa"])) { ?>
+                          <div class="col-md-3">
+                            <div class="product-item"> 
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosLaboratorio/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarLa"]?></a>
+                            </div>
+                          </div>
+                        <?php }?>
+                        <!--Boton Modificar datos del proceso Empaque-->
+                        <?php if ( isset($datos["nombreModificarEm"])) { ?>
+                          <div class="col-md-3">
+                            <div class="product-item">
+                                     <a  class="btn btn-sm btn-default"  href="<?php echo RUTA_URL;?>/DatosEmpaque/editar_cargarDatos/<?php echo $datos['idcafe']?>"><?php echo $datos["nombreModificarEm"]?></a>
+                            </div>
+                          </div>
+                        <?php }?>
+                        <!--Boton detener  proceso-->
+                        <?php if ( isset($datos["nombreDetener"])) { ?>
+                          <div class="col-md-3">
+                            <div class="product-item"> 
+                              <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#detener"><?php echo $datos["nombreDetener"]?></a>
+                            </div>
+                          </div>   
+                        <?php }?>
+                        <!--Boton Reanudar proceso-->
+                        <?php if ( isset($datos["nombreReanudar"])) { ?>
+                          <div class="col-md-3">
+                            <div class="product-item">
+                              <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#reanudar"><?php echo $datos["nombreReanudar"]?></a>
+                            </div>
+                          </div>   
+                        <?php }?>
+                       <!--Boton finalizar  proceso-->
+                        <?php if ( isset($datos["nombreFinalizar"])) { ?>
+                          <div class="col-md-3">
+                            <div class="product-item">
+                              <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#finalizar"><?php echo $datos["nombreFinalizar"]?></a>
+                            </div>
+                          </div>  
+                        <?php }?>
+                        <!--Boton finalizar  proceso-->
+                        <?php if ( isset($datos["nombreFinalizarT"])) { ?>
+                          <div class="col-md-3">
+                            <div class="product-item">
+                              <a href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/TerminarProceso/<?php echo $datos["idcafe"].'/'.$datos['codigoFinalizar']?>" class="btn btn-sm btn-default"><?php echo $datos["nombreFinalizarT"]?></a> 
+                            </div>
+                          </div>
+                        <?php }?>                                  
+                      </div>
+                      </div>
+                             <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <a  class="btn btn-lg btn-bordered" href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/registrar_inicio">Cancelar</a>
+                            </div>
+                    </div>                 
                     </fieldset>
+
                 </div>
             </div>
         </div>
@@ -93,19 +130,19 @@
         </button>
       </div>
       <div class="modal-body">      
-          <div>
+          <div  >
             <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoSiguiente'] ?>" />
             <p>
-               <label>Nombre del proceso</label>
-               <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
+               <label>Proceso:</label>
+               <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" disabled/>
             </p>       
              <p>
-                <label>codigo Cafe</label>
-                <input  name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" />
+                <label>Lote:</label>
+                <input  name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" disabled/>
               </p>
               <p>
-                <label>Fecha</label>
-                <input  name="fecha" type="text" id="fecha" value="<?php echo date("m/d/Y g:ia"); ?>" size="20"/>
+                <label>Fecha:</label>
+                <input  name="fecha" type="text" id="fecha" value="<?php echo date("m/d/Y g:ia"); ?>" size="20" disabled/>
               </p>
           </div>                          
       </div>
@@ -133,7 +170,7 @@
           <div>
             <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoDetener'] ?>" />
             <p>
-               <label>Nombre del proceso</label>
+               <label>Proceso</label>
                <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
             </p>       
              <p>
@@ -170,7 +207,7 @@
           <div>
             <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoReanudar'] ?>" />
             <p>
-               <label>Nombre del proceso</label>
+               <label>Proceso</label>
                <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
             </p>       
              <p>
@@ -207,7 +244,7 @@
           <div>
             <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoFinalizar'] ?>" />
             <p>
-               <label>Nombre del proceso</label>
+               <label>Proceso</label>
                <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
             </p>       
              <p>

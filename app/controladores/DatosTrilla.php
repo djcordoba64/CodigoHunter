@@ -147,11 +147,8 @@ class DatosTrilla extends Controlador
 					
 				];
 
-			var_dump($datos);
-
 			$id = $this->TrillaModelo->actualizarDatos($datos);
 
-			echo $id;
 			if($id==0){
 
 				$datos['mensaje_exito'] ='Exito al editar los datos';

@@ -18,8 +18,8 @@ class Torrefactor
        //var_dump($fila);
        if($fila!==true){
        		//preparamos la consulata
-		$this->db->query('INSERT INTO datostorrefactor  (fechaHora,idCafe,enfriar,observacion,creted_at,created_by) 
-		VALUES (NOW(),:idcafe,:enfriar,:observacion,NOW(),:created_by)
+		$this->db->query('INSERT INTO datostorrefactor  (fechaHora,idCafe,enfriar,observacion,created_by) 
+		VALUES (NOW(),:idcafe,:enfriar,:observacion,:created_by)
 			 ');
 
 			 //vinculamos los valores

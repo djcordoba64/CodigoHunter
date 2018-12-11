@@ -393,7 +393,7 @@ class EstadosTorrefaccion extends Controlador
 
 			if ($ultimaletra=='F') {
 
-				$datos['leyenda']=" ha finalizado  el proceso de Establilizacion, el proceso siguiente es ";
+				$datos['leyenda']=" ha finalizado  el proceso de Establilizacion del café, el proceso siguiente es ";
 				$datos['nombreProceso']="Laboratorio";
 				
 				$datos["nombreSiguiente"]="Iniciar proceso de laboratorio";

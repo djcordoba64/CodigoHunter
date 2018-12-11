@@ -94,11 +94,12 @@
                   <li class="parent">
                     <a href="#">Torrefacción</a>
                     <ul class="sub-menu">
-                      <li><a href="/Hunter/EstadosTorrefaccion/index">Administrar</a></li>
+                      <li><a href="/Hunter/Entrega/consultar_mostrarInicio">Administrar</a></li>
                       <li><a href="/Hunter/EstadosTorrefaccion/registrar_inicio">Gestionar</a></li>
                    </ul>     
                   </li>
-                     <li><a href="/Hunter/Trazabilidad/consultar_mostrarInicio">Trazabilidad</a></li>               
+                    <li><a href="/Hunter/Entrega/consultar_mostrarInicio">Entrega</a></li>
+                    <li><a href="/Hunter/Trazabilidad/consultar_mostrarInicio">Trazabilidad</a></li>               
                 </ul>
               </div>
               <div class="col-lg-2 col-md-12">

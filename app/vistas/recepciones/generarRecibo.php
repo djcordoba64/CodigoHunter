@@ -2,7 +2,7 @@
 
 
 <!-- PRODUCT -->
-<?php  echo $cafe['peso']?> ?>
+<?php var_dump($datos['lotes']) ?> 
 	<section class="product-single">
 		<div class="container">
 			<div class="row">
@@ -88,16 +88,18 @@
 							  </div><br>
 							  <div class="clearfix"></div>
 							 <div class="col-xs-6 text-page" >
+							 	
 							    <table class="shop_table" >
 							    	<thead>
 							    		<tr>
 								    		
 								    		<th style="font-size:14px" colspan="4">Descripción</th>
 								    		<th style="font-size:14px"  colspan="7">Forma de entrega</th>
-
-								    		
 							    		</tr>
-							    		<tr>
+
+							    		
+							    	</thead>
+							    	<tr>
 								    		<th style="font-size:10px">Peso</th>
 								    		<th style="font-size:10px">Lote</th>
 								    		<th style="font-size:10px">Humedad</th>
@@ -106,10 +108,8 @@
 								    		<th style="font-size:10px" colspan="3">Gano</th>
 								    		<th style="font-size:10px" >Agranel</th>
 							    		</tr>
-							    		
-							    	</thead>
 							    	<tbody>
-							    		<?php if (isset($datos['lotesArr'])) { foreach($datos['lotesArr'] as $cafe): ?>
+							    		<?php foreach($datos['lote']  as $cafe): ?>
 							    		<tr>					
 							                <td><?php echo $cafe['peso']?></td>
 							                <td></td>
@@ -120,10 +120,10 @@
 							                <td></td>
 							                <td></td>
 							                <td></td>
-							                 <td></td>
+							                <td></td>
 							                <td></td>
 			            				</tr>
-			            				<?php endforeach; }?>
+			            				<?php endforeach;?>
 							    		
 							    	</tbody>
 							    </table>
