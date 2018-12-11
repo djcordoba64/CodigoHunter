@@ -109,9 +109,9 @@
 								    		<th style="font-size:10px" >Agranel</th>
 							    		</tr>
 							    	<tbody>
-							    		<?php foreach($datos['lote']  as $cafe): ?>
+							    		<?php foreach($datos['lotes']  as $cafe): ?>
 							    		<tr>					
-							                <td><?php echo $cafe['peso']?></td>
+							                <td><?php echo $cafe->peso?></td>
 							                <td></td>
 							                <td></td>
 							                <td></td>
