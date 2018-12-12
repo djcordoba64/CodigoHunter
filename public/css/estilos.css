@@ -79,3 +79,14 @@
 .modal-title{
   color: #fff;
 }
+
+.text-largeR {
+  font-size: 14px;
+}
+.receipt-mainR {
+  display: inline-block;
+  width: 100%;
+  padding: 40px;
+  font-size: 18px;
+  border: 1px solid #000;
+}

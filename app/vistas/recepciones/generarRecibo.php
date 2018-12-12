@@ -162,7 +162,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- PRODUCT END -->
+<!-- PRODUCT END -->
 
         
 <?php require RUTA_APP . '/vistas/inc/footer.php' ?> 

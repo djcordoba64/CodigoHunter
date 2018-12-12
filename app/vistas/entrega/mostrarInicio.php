@@ -49,73 +49,55 @@
 							</div>
 						</aside>
 					</div>
+					<div class="col-sm-12"  style="margin: 20px;">
+					<label>*Lista de la recepciones.</label><i class="glyphicon glyphicon-arrow-down"></i></div>
 					<div  style="margin: 20px;">
-					<table class="shop_table shop_table_responsive cart" id="tbl_Recepcion" >
-						                <thead>
-						                    <tr class="header">
-						                    	<th class="product-remove">Fecha</th>  
-						                    	<th class="product-remove">Recibo</th>
-						                    	<th class="product-remove">Cliente</th>
-												<th class="product-remove">Documento</th>						
-												<th class="product-remove">Estado</th>
-												<th class="product-remove">Acciones</th>
-						                    </tr>
-						                </thead>
-						                <tbody  class="cart_item">
-										<?php foreach($datos['recepciones']  as $recepcion): ?>
-											<tr class="cart_item">
-												<td class="product-remove">					
-													<?php echo $recepcion->fecha;?>								
-												</td>
-												<td class="product-remove">
-													<?php echo $recepcion->numeroRecibo;?>					
-												</td>																	
-												<td class="product-remove">
-													<?php echo $recepcion->Cliente;?>				
-												</td>
-												<td class="product-remove">
-													<?php echo $recepcion->documento;?>				
-												</td>
-												<td class="product-remove">
-													<?php echo $recepcion->estado;?>				
-												</td class="product-remove">
-												<td class="product-remove">
-													<a data-toggle="tooltip" title="Ver información" href="<?php echo RUTA_URL;?>/Entrega/mostrar_generarFactura/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
-													 <span class=""></span>Seleccionar
-													 </a>
-													 				
-												</td class="product-remove">
-
-											</tr>
-										<?php endforeach;?>
-						                </tbody>
-						            </table>
+						<table class="shop_table shop_table_responsive cart" id="tbl_Recepcion" >
+							<thead>
+							    <tr class="header">
+							        <th style="font-size:14px" class="product-remove" >Fecha</th>  
+							        <th style="font-size:14px" class="product-remove" >N° recibo</th>
+							        <th style="font-size:14px" class="product-remove" >Cliente</th>
+									<th style="font-size:14px" class="product-remove" >Documento</th>
+							        <th style="font-size:14px" class="product-remove">Estado de la recepción</th>
+									<th style="font-size:14px" class="product-remove">Acciones</th>          							
+								</tr>
+							</thead>
+							<tbody  class="cart_item">
+								<?php foreach($datos['recepciones']  as $recepcion): ?>
+								<tr class="cart_item">
+									<td class="product-remove"><?php echo $recepcion->fecha;?></td>
+									<td class="product-remove"><?php echo $recepcion->numeroRecibo;?></td>	
+									<td class="product-remove"><?php echo $recepcion->Cliente;?></td>
+									<td class="product-remove"><?php echo $recepcion->documento;?></td>
+									<td class="product-remove"><?php echo $recepcion->estado;?></td class="product-remove">
+									<td class="product-remove">
+										<a data-toggle="tooltip" title="Ver información!" href="<?php echo RUTA_URL;?>/Entrega/mostrar_generarFactura/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
+										<span class=""></span>Detalle</a>
+										<a data-toggle="tooltip" title="Generar Recibo!" href="<?php echo RUTA_URL;?>/Entrega/mostrar_generarFactura/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
+										<span class=""></span>Seleccionar
+										</a>
+									</td class="product-remove">
+								</tr>
+								<?php endforeach;?>
+							</tbody>
+						</table>
 					</div>
-
 					 <div class="col-md-12">
-							             <div class="paging-navigation">
-							              <hr>
-							              <div class="pagination">
-
-
-							                  <a class="prev <?php  echo $datos['pagina']<= 1? 'disabled' :'' ?>  " href="<?php echo RUTA_URL;?>/Entrega/index/<?php echo ($datos['pagina']-1)?>" >
-							                    <i class="fa fa-chevron-left" aria-hidden="true"></i>Anterior
-							                  </a>
-
-							                  <?php for ($i=0; $i<$datos['numeroPaginas'] ; $i++): ?>
-
-							                    <a href="<?php echo RUTA_URL;?>/Entrega/index/<?php echo $i+1 ?> " class="page-numbers current <?php echo $datos['pagina']==$i+1 ? 'active':''?> "><?php echo $i+1 ?></a>
-							                  
-							                  <?php endfor?>
-							                
-							                  <a  class="next <?php  echo $datos['pagina']>= $datos['numeroPaginas'] ? 'disabled' :'' ?>"  href="<?php echo RUTA_URL;?>/Entrega/index/<?php echo $datos['pagina']+1 ?>">Siguiente
-							                  <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-
-							                  
-							              </div>
-							          </div>
-	        						</div>     
-								
+						<div class="paging-navigation">
+							<hr>
+							<div class="pagination">
+								<a class="prev <?php  echo $datos['pagina']<= 1? 'disabled' :'' ?>  " href="<?php echo RUTA_URL;?>/Entrega/index/<?php echo ($datos['pagina']-1)?>" >
+							          <i class="fa fa-chevron-left" aria-hidden="true"></i>Anterior
+							    </a>
+								<?php for ($i=0; $i<$datos['numeroPaginas'] ; $i++): ?>
+									<a href="<?php echo RUTA_URL;?>/Entrega/index/<?php echo $i+1 ?> " class="page-numbers current <?php echo $datos['pagina']==$i+1 ? 'active':''?> "><?php echo $i+1 ?></a>
+							   <?php endfor?>							                
+							     <a  class="next <?php  echo $datos['pagina']>= $datos['numeroPaginas'] ? 'disabled' :'' ?>"  href="<?php echo RUTA_URL;?>/Entrega/index/<?php echo $datos['pagina']+1 ?>">Siguiente
+							         <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+							</div>
+						</div>
+	        		</div>     								
 		        </div>
 		    </div>
 		</div>
