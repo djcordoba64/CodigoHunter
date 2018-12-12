@@ -439,15 +439,22 @@
  		$("#opcionValidarRecibo").toggle(1000);
  	});
 
-	//Mostar recibo
+	//Mostrar recibo
 	 $("#generarRecibo").click(function(){
  		$("#mostrarRecibo").toggle(1000);
  	});
 
-	 $('#divMiCalendario').datetimepicker({
-          format: 'YYYY-MM-DD HH:mm'       
-      });
-      $('#divMiCalendario').data("DateTimePicker").show();
+	//Mostrar Factura
+	 $("#generarFactura").click(function(){
+ 		$("#mostrarFactura").toggle(1000);
+ 	});
+
+	 //Mostrar Informe proceso de torrefacción
+	 $("#generarInforme").click(function(){
+ 		$("#mostrarInforme").toggle(1000);
+ 	});
+
+	 
 
 
 </script>

@@ -84,14 +84,14 @@ class Entrega extends Controlador
 						'nombreFinca'=>$datosRecepcion->nombreFinca,
 						'municipio'=>$datosRecepcion->municipio,
 						'Vereda'=>$datosRecepcion->vereda,
-						'temperatura'	=> $datosRecepcion->temperatura,										
+						'temperatura'	=> $datosRecepcion->temperatura,								
 
 					];
 
 			//consulto datos de los  cafés registrados  a esa recepción
-			$datos["lotes"] = $this ->cafeModelo -> obtenerCafes_torrefaccion($idRecepcion);	
+			$datos["lotes"] = $this ->EntregaCafeModelo ->obtenerCafes_Facturainforme($idRecepcion);	
 
-		$datos['numeroRecibo']=$idRecepcion;
+			//$datos['numeroRecibo']=$idRecepcion;
 
 			//me retorna a la vista.
 		$this->vista('/Entrega/generar_facturaInforme', $datos);	
