@@ -72,9 +72,9 @@
 									<td class="product-remove"><?php echo $recepcion->documento;?></td>
 									<td class="product-remove"><?php echo $recepcion->estado;?></td class="product-remove">
 									<td class="product-remove">
-										<a data-toggle="tooltip" title="Ver información!" href="<?php echo RUTA_URL;?>/Entrega/mostrar_generarFactura/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
+										<a data-toggle="tooltip" title="Ver información!" href="<?php echo RUTA_URL;?>/Entrega/detalle/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
 										<span class=""></span>Detalle</a>
-										<a data-toggle="tooltip" title="Generar Recibo!" href="<?php echo RUTA_URL;?>/Entrega/mostrar_generarFactura/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
+										<a data-toggle="tooltip" title="Generar Recibo e informe!" href="<?php echo RUTA_URL;?>/Entrega/mostrar_generarFactura/<?php echo $recepcion->numeroRecibo;?>" class="btn btn-sm btn-default" >
 										<span class=""></span>Seleccionar
 										</a>
 									</td class="product-remove">

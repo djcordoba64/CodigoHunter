@@ -156,11 +156,10 @@
 
 		//mostrar detalle index- detalle
 		public function obtenerCafesRecepcion($idRecepcion){
-			$this->db->query("SELECT * from cafes where idRecepcion=:idRecepcion");	
+			$this->db->query("SELECT c.*,m.nombre as materiaprima,p.nombre as tipobeneficio FROM cafes as c inner join materiaprima as m on m.idmateriaPrima=c.idmateriaPrima inner join tipobeneficio as p on p.idtipoBeneficio=p.idtipoBeneficio where idRecepcion=:idRecepcion and c.idtipoBeneficio=p.idtipoBeneficio");	
 			 $this->db->bind(':idRecepcion', $idRecepcion);	
             $cafes=$this->db->registros();
         return $cafes;
-
 
 		}
 

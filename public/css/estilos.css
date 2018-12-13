@@ -114,3 +114,47 @@
   font-size: 18px;
   border: 1px solid #000;
 }
+.content-datos{
+ 
+    padding: 0 30px 30px 30px;
+    margin-bottom: 35px;
+    background: #F5F5F5;
+    position: relative;
+    overflow: hidden;
+}
+.name-datos {
+    padding-top: 9px;
+    color: #1e130e;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration:underline;
+    text-align: center;
+     
+}
+.info-datos{
+    padding-top: 20px;
+    
+}
+.dato {
+    color: #b89d64;
+    transition: all 400ms;
+    outline: none;
+    font-weight:normal;
+     
+}
+.review-itemE .name {
+    padding-top: 15px;
+    color: #b89d64;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.review-itemE .icon {
+    /* padding-top: 4px; */
+    color: #b89d64;
+    /* font-size: 12px; */
+    font-weight: 300;
+     text-align: center;
+}
