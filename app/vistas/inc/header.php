@@ -56,6 +56,7 @@
   </div>
   <!-- TOP BAR END -->
   <!-- HEADER -->
+
   <div class="header-wrap">
     <header class="top-nav inner-page" data-spy="affix" data-offset-top="34">
       <div class="container">
@@ -121,6 +122,10 @@
               </div>
             </nav>
           </div>
+          <p>  
+            <span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
+            <span class="badge badge-info"><?php isset($datos["mensaje_informacion"])? print($datos["mensaje_informacion"]):''; ?></span>
+          </p>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#coffee-menu" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -132,12 +137,7 @@
     </header>
   </div>
 
-<p>
-  
-  <span class="badge badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
-  <span class="badge badge-warning"><?php isset($datos["mensaje_advertencia"])? print($datos["mensaje_advertencia"]):''; ?></span>
-  <span class="badge badge-info"><?php isset($datos["mensaje_informacion"])? print($datos["mensaje_informacion"]):''; ?></span>
-</p>
+
 
   <!-- HEADER END -->
 

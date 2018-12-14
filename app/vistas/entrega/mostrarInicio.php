@@ -4,7 +4,7 @@
 	<div class="col-md-12">
 		<h2>Gestión de entrega</h2>
 	</div>
-	<div class="container" >
+	<div class="container">
 		<div class="product-single">
 		    <div class="row">
 		        <div class="col-md-12">	           

@@ -158,3 +158,49 @@
     font-weight: 300;
      text-align: center;
 }
+.page-login{
+    background: url(../images/login-img.jpg) 50% 50% no-repeat;
+}
+/* #28 404 page*/
+.page-coming .center { margin: 30% 0 30%; text-align: center; }
+.page-login .center { margin: 8% 0 8%; text-align: center;}
+.page-login h2 {position: relative;color: #b89d64;font-family: 'Playfair Display', serif;font-weight: bold;text-align: center;font-size: 48px;}
+
+.woocommerce-login .input-text {
+    background: ;
+    border: 1px solid #e3ded4;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #fff;
+}
+.page-login  .quote {
+    padding-top: 10px;
+    color: #b89d64;
+    font-size: 30px;
+}
+
+.page-login.wp-searchform { margin-top: 83px; margin-bottom: 60px; font-size: 0; position: relative; }
+.page-login .wp-searchform input[type='text'] { background: #f5f2eb; padding-right: 32%; width: 100%;border-color: #b9e564;box-shadow: 0 0 1px 1px #b9e564; }
+.page-login .wp-searchform input[type='password'] {background: #f5f2eb; padding-right: 32%; width: 100%;box-shadow: 0 0 1px 1px #e75a3a; }
+.page-login  .quote {
+    padding-top: 10px;
+    color: #b89d64;
+    font-size: 30px;
+}
+
+.page-login p{margin: 8px;}
+
+.page-login .error {
+    display: inline-block;
+    min-width: 10px;
+    padding: 5px 7px;
+    font-size: 12px;
+    font-weight: normal;
+    color: red;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 20px;
+}
