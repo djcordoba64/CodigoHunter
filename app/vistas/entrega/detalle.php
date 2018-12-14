@@ -1,13 +1,15 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
-<?php echo var_dump($datos) ?>
+
 <!-- TESTIMONIALS -->
 	<section class="testimonials">
+
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12"><h2>Información detallas de la recepción</h2></div>
-				<div class="col-md-10 col-md-offset-2 testimonials-list">
+				<a href="<?php echo RUTA_URL;?>/Entrega/index" class="btn btn-light"><i class="glyphicon glyphicon-hand-left"></i> Salir</a>
+				<div class="col-md-12"><h2>Información de la recepción</h2></div>
+				<div class="col-md-8 col-md-offset-2 testimonials-list">
 						<div class="review-itemE">						
-				    		<div class="name">CLIENTE</div>
+				    		<div class="name">Cliente</div>
 				    		<div class="icon">		
 								<i class="fa fa-quote-left"></i>
 							</div>
@@ -31,10 +33,10 @@
 								</div>
 								<div class="col-md-6 info-datos">
 									<div class="intem">
-										<div class="item">Correo <label class="dato"><?php echo $datos['correo']?></label></div>
+										<div class="item">Correo: <label class="dato"><?php echo $datos['correo']?></label></div>
 									</div>
 									<div class="intem">
-										<div class="item">Teléfono/Celular:: <label class="dato"><?php echo $datos['numeroContacto']?></label></div>
+										<div class="item">Teléfono/Celular: <label class="dato"><?php echo $datos['numeroContacto']?></label></div>
 									</div>
 								</div>																
 							</div>
@@ -43,22 +45,21 @@
 								<div class="col-md-6 info-datos">
 									<div class="intem">
 										<div class="item">
-											Nombre:<label class="dato"><?php echo $datos['nombreFinca'].'
-											'.$datos['primerApellido'] ?></label>
+											Nombre: <label class="dato"> <?php echo $datos['nombreFinca'] ?></label>
 										</div>
 									</div>
 									<div class="intem">
 										<div class="item">
-											Municipio: <label class="dato"><?php echo $datos['municipio']?></label></div>
+											Municipio: <label class="dato"> <?php echo $datos['municipio']?></label></div>
 									</div>
 									<div class="intem">
-										<div class="item">Vereda <label class="dato"><?php echo $datos['Vereda']?></label></div>
+										<div class="item">Vereda: <label class="dato"> <?php echo $datos['Vereda']?></label></div>
 									</div>
 
 								</div>
 								<div class="col-md-6 info-datos">
 									<div class="intem">
-										<div class="item">Temperatura promedio:<label class="dato"><?php echo $datos['temperatura']?></label></div>
+										<div class="item">Temperatura promedio: <label class="dato"> <?php echo $datos['temperatura']?> ℃</label></div>
 									</div>
 								</div>																
 							</div>				    		
@@ -98,11 +99,12 @@
 									</div>
 
 								</div>																
-							</div>
-							<div class="content-datos">
+							</div>									</div>
+			    	</div>
+			    	<div class="col-md-10 col-md-offset-1 testimonials-list">
+			    	<div class=" content-datos">
 								<div class="name-datos">Lotes de café agregados</div>
 								<div class="col-md-6 info-datos">
-
 									<div class="col-md-6 text-page">
 									    <table class="table table-bordered">
 								    	<thead>
@@ -170,10 +172,64 @@
 								    </table>
 									</div>
 								</div>															
-							</div>				    		
-				    	</div>
-			    	</div>
+					</div>
+					<hr>
+					</div>					
 				</div>
+				<div class="review-itemE">
+					<div class="name">Gestion de Torrefacción</div>
+				    		<div class="icon">		
+								<i class="fa fa-quote-left"></i>
+							</div>
+				<div class="col-md-8 col-md-offset-2 testimonials-list">
+
+			    	<div class="content-datos">
+								<div class="name-datos">Descripción</div>
+								<div class="col-md-12 info-datos">
+									<div class="col-md-12 text-page">
+									    <table class="table table-bordered">
+								    	<thead>
+								    	
+								    		<tr >
+									    		
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Lote</th>
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Estado</th>
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Fecha</th>
+									    		<th style="font-size:12px;text-align: center" colspan="2">Registrado por</th>
+									    		
+								    		</tr>
+								    			<tr >
+									    		
+									    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Operario/Tostador</th>
+									    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Documento</th>
+									    		
+									    		
+								    		</tr>
+								    		
+								    		
+								    	</thead>
+								    		
+								    	<tbody>
+								    		<?php foreach($datos['cafesT']  as $cafe): ?>
+								    		<tr>					
+								                
+								                <td style="font-size:12px"><?php echo $cafe->codigoCafe?></td>
+
+								                <td style="font-size:12px"><?php echo $cafe->codigoEstado?></td>
+								                <td style="font-size:12px"><?php echo $cafe->fechaHora?></td>
+								                 <td style="font-size:12px"><?php echo $cafe->primerNombre.' '.$cafe->primerApellido?> </td>
+								               	<td style="font-size:12px"><?php echo $cafe->documentoIdentidad?></td>						                
+				            				</tr>
+				            				<?php endforeach;?>
+								    		
+								    	</tbody>
+								    </table>
+									</div>
+								</div>															
+					</div>
+					<hr>
+					</div>
+			</div>
 			</div>
 		</div>
 	</section>

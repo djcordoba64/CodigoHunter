@@ -72,6 +72,7 @@
 										<option value="Inactivo" <?php echo $datos['estado']=='Inactivo'? print "selected='selected'" : "";?> >Inactivo</option>
 									</select>
 						        </p>
+						         <a href="<?php echo RUTA_URL;?>/Clientes/index" class="btn btn-lg btn-bordered">Cancelar</a>
 						        <input value="SIGUIENTE" class="btn btn-lg btn-brown" type="submit">
 							</div>
 						</div>

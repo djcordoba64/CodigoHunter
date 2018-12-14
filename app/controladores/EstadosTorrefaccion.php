@@ -145,7 +145,7 @@ class EstadosTorrefaccion extends Controlador
 	*/
 	public function consultar_proceso_sig($datos){
 		
-		$estadoDb=$datos['codigoEstado']; //gusrdo en una variable el codigo del estado de la BD.
+		$estadoDb=$datos['codigoEstado']; //guardo en una variable el codigo del estado de la BD.
 		
 		// obtengo las primeras dos letras del codigoEstado.
 		$proceso=substr($estadoDb,0,2);//

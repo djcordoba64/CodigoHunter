@@ -2,7 +2,7 @@
 
 <!-- CLIENTES_FINCAS- -->
 <div class="col-md-12">
-	<h2>Información de la finca</h2>
+	<h2>Agregar fincas</h2>
 </div>
 <section class="product-single">	
 	<div class="container">
@@ -29,6 +29,7 @@
 					<div id="customer_details">
 						<div class="woocommerce-billing-fields">
 							<div class="col-md-5" >
+								<h3>Datos de la finca</h3>
 								<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
 								<input type="hidden" name="idDetalleFinca" value="<?php echo isset($datos['idDetalleFinca'])? $datos['idDetalleFinca'] : '-1';?>" >
 								<!--Nombre de la finca--> 

@@ -10,6 +10,7 @@ class Entrega extends Controlador
 		$this->recepcionModelo = $this->modelo('Recepcion');
 		$this->EntregaCafeModelo=$this->modelo('EntregaCafe');
 		$this->cafeModelo=$this->modelo('Cafe');
+		$this->TorrefaccionModelo=$this->modelo('Torrefaccion');
 	}
 
 	public function index($pagina=1,$mensaje='',$error=''){
@@ -130,8 +131,10 @@ class Entrega extends Controlador
 					];
 
 			//consulto datos de los  cafés registrados  a esa recepción
-			$datos["lotes"] = $this ->cafeModelo ->obtenerCafesRecepcion($idRecepcion);
-				
+			$datos["lotes"]= $this ->cafeModelo ->obtenerCafesRecepcion($idRecepcion);
+
+			//obtengo el ultimo estado del proceso de torrefación
+			$datos["cafesT"]= $this->EntregaCafeModelo->obtenerCafesRecepcionTorrefaccion($idRecepcion);
 				
 			$this->vista('/Entrega/detalle', $datos);
 

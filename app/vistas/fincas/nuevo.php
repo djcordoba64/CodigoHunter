@@ -75,9 +75,10 @@
 										</p>
 									</div>
 								</div>
-
-							 <input value="Guardar" class="btn  btn-brown" type="submit">
-							 <input value="Cerrar" class="btn btn-default" type="button" onclick="window.close();">
+								<div align="center">
+								<input value="Cerrar" class="btn btn-bordered" type="button" onclick="window.close();">
+							 	<input value="Guardar" class="btn  btn-brown" type="submit">
+							 	</div>
 							</div>
 						</div>
 					</div>										

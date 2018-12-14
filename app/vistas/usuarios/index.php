@@ -59,8 +59,7 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
   								<thead >
   									<tr  class="header">
     									<th class="product-remove">Documento</th>
-  										<th class="product-remove">Nombre</th>
-  										<th class="product-remove">Apellidos</th>
+  										<th class="product-remove" >Nombre</th>
   										<th class="product-remove">Correo</th>
   										<th class="product-remove">Contácto</th>
   										<th class="product-remove">Dirección</th>
@@ -72,18 +71,14 @@ require RUTA_APP . '/vistas/inc/header.php' ?>
   								<tbody  class="cart_item">
   									<?php foreach($datos['personas']  as $usuario): ?>
   									<tr class="cart_item">
-  										<td class="product-remove">					
+  										<td class="product-remove" >					
 											<?php echo $usuario->documentoIdentidad;?>								
 										  </td>
-	  									<td class="product-remove">
+	  									<td class="product-remove" >
 											<a href="<?php echo RUTA_URL;?>/Usuarios/detalle/<?php echo $usuario->idPersona;?>">
-												<?php echo $usuario->primerNombre;?>
-												<?php echo $usuario->segundoNombre;?>
+												<?php echo $usuario->primerNombre;?>							
+                        <?php echo $usuario->primerApellido;?>
 											</a>
-										</td>
-										<td class="product-remove">
-											<?php echo $usuario->primerApellido;?>
-											<?php echo $usuario->segundoApellido;?>
 										</td>
 										<td class="product-remove">
 											<?php echo $usuario->correo;?>				

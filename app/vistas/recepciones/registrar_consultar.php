@@ -1,7 +1,7 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
 <!-- CONTACTS -->
-
+<?php var_dump($datos) ?>
 <div class="container">
 	<div class="col-md-12"><h2>Recepción del café</h2></div>			
 	<div class="product-single">		
@@ -56,6 +56,7 @@
 											<a href="<?php echo RUTA_URL;?>/Fincas/agregar_finca_mostrar_formulario/<?php echo $datos['idPersona'];?>" data-toggle="tooltip" title="Agregar una finca!" target="_blank">
 												<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
 											</a>
+											
 										</li>
 									</ul>	
 								</div>
@@ -82,7 +83,7 @@
 									<div class="col-md-6"><label>Temperatura promedio:</label></div>
 									<div class="col-md-6">
 										<div class="quantity">									
-                           			 		<input type="number" name="Temperatura"  min="1"  step="1" value="1">
+                           			 		<input type="number" name="Temperatura"  min="1"  id="Temperatura"  value="<?php echo isset($datos['Temperatura'])? $datos['Temperatura'] : '';?>">
                         				</div>
 									</div>									                        	
 								</div>																										
@@ -91,11 +92,12 @@
 						<div class="col-md-12" style="margin: 20px;">
 							<div class="col-md-6" align="center" >									
 
-									<a href="<?php echo RUTA_URL;?>/paginas/index" class="btn btn-lg btn-default">Cancelar</a>
+									<a href="<?php echo RUTA_URL;?>/paginas/index" class="btn btn-lg btn-bordered"><i class="glyphicon glyphicon-remove-circle" aria-hidden="true"></i> Cancelar </a>
 
 							</div>
+
 							<div class="col-md-6" align="center">
-									<input value="Siguiente>>" class="btn btn-lg btn-brown" type="submit"/>
+									<input value="Siguiente->" class="btn btn-lg btn-brown" type="submit"/>
 							</div>
 						</div>
 					</div>	

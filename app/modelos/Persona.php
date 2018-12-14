@@ -172,7 +172,7 @@
         }
         //Hacemos la consulta para obtener todos lo usuarios registrados.
         public function obtenerClienteLimit($iniciar,$cliente_x_pagina){       
-          $this->db->query(" SELECT * FROM personas where tipoPersona='cliente' ORDER BY created_at ASC  LIMIT :iniciar,:nclientes");
+          $this->db->query(" SELECT * FROM personas where tipoPersona='cliente' ORDER BY created_at desc  LIMIT :iniciar,:nclientes");
           $this->db->bind(':iniciar',$iniciar,PDO::PARAM_INT);
           $this->db->bind(':nclientes',$cliente_x_pagina,PDO::PARAM_INT);
             $listaCliente=$this->db->registros();

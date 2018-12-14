@@ -64,7 +64,7 @@
 									</div>
 								</div>
 								<input value="Actualizar" class="btn btn-brown" type="submit">
-								<input value="Cerrar" class="btn btn-default" type="button" onclick="window.close();">
+								<input value="Cerrar" class="btn btn-bordered" type="button" onclick="window.close();">
 								
 							</div>
 						</div>

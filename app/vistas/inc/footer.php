@@ -454,6 +454,15 @@
  		$("#mostrarInforme").toggle(1000);
  	});
 
+	
+	//Filtrar por el documento.()->Modulo etrega
+        
+        $('#B_x_documento').keyup(function () {
+            $("#table td.col4:contains('" + $(this).val() + "')").parent().show();
+            $("#table td.col4:not(:contains('" + $(this).val() + "'))").parent().empty();
+        });
+    
+   
 	 
 
 

@@ -12,7 +12,7 @@ class EntregaCafe
 
 	//obtener cafes par gerar el informe
 	public function obtenerCafes_Facturainforme($idRecepcion){
-		$this->db->query("SELECT c.*,t.created_at as FechaTrilla,t.mallas,t.pesoCafeVerde,t.mermaTrilla,e.mermaTueste,e.fechaHora as FechaTueste from estadostorrefaccion as e inner JOIN datostrilla as t on t.idcafe= e.idcafe INNER join cafes as c on c.idcafe =t.idcafe where e.codigoEstado= 'GTF' AND c.idRecepcion=:idRecepcion");	
+		$this->db->query("SELECT c.*,t.created_at as FechaTrilla,t.mallas,t.pesoCafeVerde,t.mermaTrilla,e.mermaTueste,e.fechaHora as FechaTueste from estadostorrefaccion as e inner JOIN datostrilla as t on t.idcafe= e.idcafe INNER join cafes as c on c.idcafe =t.idcafe where c.idRecepcion=:idRecepcion");	
 			 $this->db->bind(':idRecepcion', $idRecepcion);	
             $cafes=$this->db->registros();
         return $cafes;
@@ -28,6 +28,14 @@ class EntregaCafe
             return $fila;
 
         }
+     //mostrar detalle index- detalle
+		public function obtenerCafesRecepcionTorrefaccion($idRecepcion){
+			$this->db->query("SELECT c.codigoCafe,e.fechaHora,e.codigoEstado, p.primerNombre,p.primerApellido,p.documentoIdentidad FROM cafes as c inner join recepciones as r on r.numeroRecibo=c.idRecepcion inner join estadostorrefaccion as e on e.idcafe=c.idcafe inner join personas as p on p.idPersona=e.created_by where c.idRecepcion=:idRecepcion and idestadosTorrefaccion =(select max(idestadosTorrefaccion) from estadostorrefaccion where idcafe=c.idcafe)");	
+			 $this->db->bind(':idRecepcion', $idRecepcion);	
+            $cafes=$this->db->registros();
+        return $cafes;
+
+		}
 
 	
 }

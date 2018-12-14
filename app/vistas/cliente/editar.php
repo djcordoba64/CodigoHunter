@@ -91,7 +91,7 @@
 					                        </select>
 					                    </p>
 									</div>			         			 				         			 	
-			         			 	<a href="<?php echo RUTA_URL;?>/Cliente/index" class="btn btn-default" />Cerrrar</a>
+			         			 	<a href="<?php echo RUTA_URL;?>/Cliente/index" class="btn btn-bordered" />Cerrrar</a>
 			         			 	<button onclick="exito();"  class="btn btn-brown">Actualizar</button>
 			         			 </div>
 							</div>

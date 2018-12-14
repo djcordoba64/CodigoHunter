@@ -31,7 +31,7 @@
 									<div class="content">
 										<div class="form wp-searchform" method="get">
 											<label>*Número de documento del cliente</label>
-											<input  type="text" name="search"  id="buscar" onkeyup="buscarCliente()" placeholder="Documento de identidad">
+											<input  type="text" name="B_x_documento"  id="B_x_documento" placeholder="Documento de identidad" filterForColumn="4">
 										</div>
 									</div>
 								</div>
@@ -40,7 +40,7 @@
 										<div class="form wp-searchform" method="get">
 											<label>*Número de recibo</label>
 											<div class="quantity">									
-										         <input style="background-color: #fff" type="number" name="cantidad"  min="1"  step="1" value="" required>
+										         <input style="background-color: #fff" type="number" name="cantidad" id="BNumeroRecibo"  min="1"  step="1" value="" required>
 											</div>
 									
 										</div>
@@ -52,7 +52,7 @@
 					<div class="col-sm-12"  style="margin: 20px;">
 					<label>*Lista de la recepciones.</label><i class="glyphicon glyphicon-arrow-down"></i></div>
 					<div  style="margin: 20px;">
-						<table class="shop_table shop_table_responsive cart" id="tbl_Recepcion" >
+						<table class="shop_table shop_table_responsive cart" id="tbl_recepcionE" >
 							<thead>
 							    <tr class="header">
 							        <th style="font-size:14px" class="product-remove" >Fecha</th>  

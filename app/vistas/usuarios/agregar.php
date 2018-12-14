@@ -136,7 +136,9 @@
                   </div>
 							</div>
 						</div>
-            <input value="Guardar" class="btn btn-lg btn-brown" type="submit"> 
+           
+            <a href="<?php echo RUTA_URL;?>/Usuarios/index" class="btn btn-lg btn-bordered">Cancelar</a>
+             <input value="Guardar" class="btn btn-lg btn-brown" type="submit"> 
 					</div>
 				</div>
 			</form>
