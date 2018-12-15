@@ -10,11 +10,11 @@
 <!-- 404 PAGE -->
 <section class="page-login">
   <div class="container">                           
-    <div class="center">
-        <h2>Iniciar sesión</h2>
+    <div class="center">        
         <div class="row">
           <div class="col-md-4 col-md-offset-4">
              <form  class="wp-searchform" action="<?php echo RUTA_URL;?>/Login/validar" method="POST">
+              <h2>Iniciar sesión</h2>
                 <p >
                   <div class="quote">
                     <i class="fa fa-user-circle"></i>
@@ -33,7 +33,6 @@
                   <input class="btn btn-bordered" value="Entrar"  type="submit">
                 </p>
             </form> 
-
           </div>
         </div>              
     </div>

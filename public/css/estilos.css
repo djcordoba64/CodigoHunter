@@ -162,26 +162,31 @@
     background: url(../images/login-img.jpg) 50% 50% no-repeat;
 }
 /* #28 404 page*/
-.page-coming .center { margin: 30% 0 30%; text-align: center; }
-.page-login .center { margin: 8% 0 8%; text-align: center;}
+.page-coming .center { 
+  margin: 30% 0 30%;
+   text-align: center;
+   width:200px;
+   height:70px;
+   position:absolute;
+   top:0px;
+ }
+.page-login .center { margin: 8% 0 10%; text-align: center; }
 .page-login h2 {position: relative;color: #b89d64;font-family: 'Playfair Display', serif;font-weight: bold;text-align: center;font-size: 48px;}
 
-.woocommerce-login .input-text {
-    background: ;
-    border: 1px solid #e3ded4;
-    border-radius: 2px;
-    font-size: 14px;
-    color: #fff;
-}
 .page-login  .quote {
     padding-top: 10px;
     color: #b89d64;
     font-size: 30px;
 }
 
-.page-login.wp-searchform { margin-top: 83px; margin-bottom: 60px; font-size: 0; position: relative; }
-.page-login .wp-searchform input[type='text'] { background: #f5f2eb; padding-right: 32%; width: 100%;border-color: #b9e564;box-shadow: 0 0 1px 1px #b9e564; }
-.page-login .wp-searchform input[type='password'] {background: #f5f2eb; padding-right: 32%; width: 100%;box-shadow: 0 0 1px 1px #e75a3a; }
+.page-login.wp-searchform { margin-top: 100px; margin-bottom: 100px; font-size: 0; position: relative; }
+.page-login .wp-searchform input[type='text'] { background: none; padding-right: 32%; width: 100%;box-shadow: 0 0 1px 1px #b89d64;    padding: 10px 22px 10px 22px; }
+.page-login .wp-searchform input[type='password'] {line-height: 49px; background: none; padding-right: 50%; width: 100%; height:48px; border-color: #b89d64;box-shadow: 0 0 0px 0px none;    padding: 10px 22px 10px 22px;}
+.page-login .wp-searchfor .btn.btn-bordered {
+    background:#fff;
+    color: #b89d64;
+    border: 1px solid #b89d64;
+}
 .page-login  .quote {
     padding-top: 10px;
     color: #b89d64;
@@ -189,6 +194,9 @@
 }
 
 .page-login p{margin: 8px;}
+
+
+
 
 .page-login .error {
     display: inline-block;
@@ -204,3 +212,4 @@
     background-color: #fff;
     border-radius: 20px;
 }
+
