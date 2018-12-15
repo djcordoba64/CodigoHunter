@@ -69,11 +69,26 @@
 								</div>
 							</div>
 							<div class="col-md-12">
-								<fieldset>
-								  
-								</fieldset>
-							</div>
-							
+								<div class="content-VisualTra">
+									   		 <!-- Nav tabs -->
+									        <ul class="nav nav-tabs process-model more-icon-preocess" role="tablist">
+									          <li role="presentation" class="active"><a href="#discover" aria-controls="discover" role="tab" data-toggle="tab"><i class="fa fa-search" aria-hidden="true"></i>
+									            <p>Trilla</p>
+									            </a></li>
+									          <li role="presentation"><a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab"><i class="fa fa-send-o" aria-hidden="true"></i>
+									            <p>Pruebas laboratorio</p>
+									            </a></li>
+									          <li role="presentation"><a href="#optimization" aria-controls="optimization" role="tab" data-toggle="tab"><i class="fa fa-qrcode" aria-hidden="true"></i>
+									            <p>Torrefactor</p>
+									            </a></li>
+									          <li role="presentation"><a href="#content" aria-controls="content" role="tab" data-toggle="tab"><i class="fa fa-newspaper-o" aria-hidden="true"></i>
+									            <p>Laboratorio</p>
+									            </a></li>
+									          <li role="presentation"><a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab"><i class="fa fa-clipboard" aria-hidden="true"></i>
+									            <p>Estabilización</p>
+									            </a></li>
+									        </ul>									   					
+							</div>							
 						</div>
 					</div>
 				</div>

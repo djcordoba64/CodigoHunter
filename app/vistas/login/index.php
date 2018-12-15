@@ -12,27 +12,27 @@
   <div class="container">                           
     <div class="center">        
         <div class="row">
-          <div class="col-md-4 col-md-offset-4">
+          <div class="col-md-5 col-md-offset-3">
+            <div class="opaco">
              <form  class="wp-searchform" action="<?php echo RUTA_URL;?>/Login/validar" method="POST">
               <h2>Iniciar sesión</h2>
-                <p >
                   <div class="quote">
                     <i class="fa fa-user-circle"></i>
                   </div>
-                  <input class="input-text " name="identificacion"  placeholder="Numero de identificación" value="" autocomplete="Numero de identificación" type="text">
-                </p>
+                  <input class="input-text " name="identificacion"  placeholder="Numero de identificación.." value="" autocomplete="Numero de identificación" type="text" required>
+               
                 <p>
                   <div class="quote">
                      <i class="fa fa-unlock-alt"></i>
                   </div>
-                  <input class="input-text " name="contrasena"  placeholder="Contraseña" value="" autocomplete="Numero de identificación" type="password">
+                  <input class="input-text " name="contrasena"  placeholder="Contraseña.." value="" autocomplete="Numero de identificación" type="password" required>
                  </p>
                   <div class="col-md-12 text-center">
-                    <span class="error badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>                                       
-                <p>
-                  <input class="btn btn-bordered" value="Entrar"  type="submit">
-                </p>
-            </form> 
+                    <span class="error badge-danger"><?php isset($datos["mensaje_error"])? print($datos["mensaje_error"]):''; ?></span>
+                    <input class="btn btn-bordered" value="Entrar"  type="submit">
+                  </div>
+            </form>
+            </div> 
           </div>
         </div>              
     </div>

@@ -23,7 +23,7 @@
     </section>
   <!-- PAGE HEAD END -->
 <!--Editar-->
-<section class="cart-wrap">
+<section class="cart-wrapU">
   <a href="<?php echo RUTA_URL;?>/Usuarios/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
   	<div class="col-md-12">
 		<h2>Infomación personal del usuario</h2>
@@ -32,7 +32,7 @@
 		<div class="woocommerce">
 			<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Usuarios/editar/<?php echo $datos['idPersona']?>" method="POST">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-7">
 						<div id="customer_details">
 							<div class="woocommerce-billing-fields">
 								<div class="woocommerce-billing-fields">
