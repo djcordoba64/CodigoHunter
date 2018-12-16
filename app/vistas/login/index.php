@@ -6,6 +6,8 @@
     { 
         session_start(); 
     }
+    //enviarCorreo('mcastro90@outlook.com', 'Saludo', 'Hola mundo');
+
 ?>
 <!-- 404 PAGE -->
 <section class="page-login">
