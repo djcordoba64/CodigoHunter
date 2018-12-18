@@ -81,8 +81,14 @@ class DatosTrilla extends Controlador
 				return;
 			}
 			else{
-					
 				// Si se realizo el insert
+
+				// envio el correo 
+				$correo = $this->TorrefaccionModelo->obtener_CorreoCliente($idcafe);
+
+				//var_dump($correo);
+				//$this->enviarCorreo($correo, 'Saludo', 'Hola mundo');
+
 				$datos['mensaje_exito'] ='Exito al guardar los datos';
 				$this->vista('EstadosTorrefaccion/registrar_inicio', $datos);
 				return;

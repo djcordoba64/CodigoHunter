@@ -219,6 +219,14 @@ class Torrefaccion
      return $this->db->registro();                
   }
 
+  //obtener correo para enviar la notificación de que ha iniciado una etapa o estado del proceso.
+  public function obtener_CorreoCliente($idcafe){
+    $this->db->query ("SELECT r.correo,p.primerNombre, p.segundoNombre,p.primerApellido,p.segundoApellido,p.documentoIdentidad FROM cafes as c inner join recepciones as r on r.numeroRecibo= c.idRecepcion inner join personas as p on p.idPersona=r.idcliente where idcafe=$idcafe");
+     $this->db->bind(':idcafe',$idcafe);
+      $correo=$this->db->registros();
+      return $correo;
+           
+  }
 }
 
 
