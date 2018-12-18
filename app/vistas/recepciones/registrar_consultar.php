@@ -1,7 +1,6 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
 <!-- CONTACTS -->
-<?php var_dump($datos) ?>
 <div class="container">
 	<div class="col-md-12"><h2>Recepción del café</h2></div>			
 	<div class="product-single">		

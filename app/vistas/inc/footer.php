@@ -115,6 +115,8 @@
 		}
 		);
 
+
+
 		$.each(cafes, function(idx, cafe)
 		{
 			var o = new Option(cafe.codigoCafe, cafe.idcafe);
@@ -122,6 +124,8 @@
 			$("#codigoLote").append(o);
 		}
 		);
+
+		
 
 
 		$.each(deptos, function(idx, depto)

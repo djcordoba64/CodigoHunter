@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="icon" type="image/png" href="<?php echo RUTA_URL;?>/images/logo.jpg">
 <title>Hunter</title>
 
 
@@ -95,7 +95,7 @@
                   <li class="parent">
                     <a href="#">Torrefacción</a>
                     <ul class="sub-menu">
-                      <li><a href="/Hunter/Entrega/consultar_mostrarInicio">Administrar</a></li>
+                      <li><a href="/Hunter/EstadosTorrefaccion/index">Administrar</a></li>
                       <li><a href="/Hunter/EstadosTorrefaccion/registrar_inicio">Gestionar</a></li>
                    </ul>     
                   </li>

@@ -6,16 +6,40 @@
 		<div class="row">
 			<a href="<?php echo RUTA_URL;?>/Recepciones/index" class="btn btn-light"><i class="glyphicon glyphicon-hand-left"></i> Volver</a>
 			<div class="col-md-12"><h2>Recepción</h2></div>
-			<div class="col-md-4">					
-				<h6>Descripción de la recepción.</h6>
-				<div class="product-info">
-					<div class="item">Fecha: <label style="color: #b89d64;font-size:20px"><span><?php echo $datos['fecha']?></span></label></a></div>
-					<div class="item">Número de recibo: <strong style="color: #b89d64;font-size:20px"><?php echo $datos['numeroRecibo']?></strong></div>
+			<div class="col-md-3">
+					<aside class="shop-sidebar">
+					    <div class="widget-area">
+					        <ul>
+					            <li class="widget-container woocommerce widget_shopping_cart">
+					                <h3 class="widget-title">Recibo</h3>
+					                <div class="widget_shopping_cart_content">
+					                    <ul class="cart_list product_list_widget ">
+					                        <li class="mini_cart_item">
+					                        	<div class="name"><strong>Numero</strong><br>
+					                            <span class="quantity">
+					                            	<span class="woocommerce-Price-amount amount">
+					                            		<span class="woocommerce-Price-currencySymbol"> # </span><?php echo $datos['numeroRecibo'] ?></span>
+					                            </span>
+					                        </li>
+					                        <li class="mini_cart_item">
+					                           <div class="name"><strong>Fecha</strong><br>
+					                           
+					                            <span class="quantity">
+					                            	<span class="woocommerce-Price-amount amount">
+					                            		<span class="woocommerce-Price-currencySymbol"> <i class="glyphicon glyphicon-calendar" aria-hidden="true"></i> </span> <?php echo $datos['fecha'] ?></span>
+					                            </span>
+					                        </li>
+					                    </ul>
+					                    
+					                </div>
+					                <div class="clearfix"></div>
+					            </li>
+					        </ul>
+					    </div>
+					</aside>
 				</div>
-			</div>
-			<br>
 			<div class="col-md-8">
-				<h6>Lotes de café</h6>
+				<h4>Lotes de café</h4>
 					<div class="tab-content">
 						<div >
 							<div  class="row">

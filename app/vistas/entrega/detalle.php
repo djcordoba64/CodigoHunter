@@ -233,9 +233,8 @@
 			</div>
 		</div>
 	</section>
-	<!-- TESTIMONIALS END -->
+<!-- TESTIMONIALS END -->
 
-	<!-- BLOG SINGLE POST -->
 	
 		
 				

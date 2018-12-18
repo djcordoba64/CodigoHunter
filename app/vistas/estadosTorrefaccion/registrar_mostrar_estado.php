@@ -1,14 +1,14 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
+<section class="cart-wrap">
 <div class="col-md-12">
     <h2>Torrefacción</h2>
   </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="well well-sm">
-                <div class="form-horizontal" style="background: #f5f2eb">
-                    <fieldset >
-                    <legend class="text-center header">Gestionar trazabilidad</legend>                     
+        <div class="col-md-9 col-md-offset-1" style="border-left: 4px solid #b89d64;" >
+            <div class="">
+                <div class="form-horizontal">
+                    <fieldset >                     
                     <div class="col-md-12" style="background-color:#fff;" >
                       <div style="background-color: #fff;margin: 40px;">
                       El lote <label style="color: #b89d64;font-size:20px"><span><?php echo $datos['codigoCafe']?></span></label>, actualmente<span><?php echo $datos['leyenda']?></span><?php if ( isset($datos["nombreProceso"])) { ?>
@@ -17,7 +17,7 @@
                       <div style="margin: 15px;">
                       <!--Boton iniciar siguiente proceso o (Primer proceso)-->
                         <?php if ( isset($datos["nombreSiguiente"])) { ?>
-                          <div class="col-md-3">
+                          <div class="col-md-5">
                             <div class="product-item">
                               <a  class="btn btn-sm btn-default"  data-toggle="modal" data-target="#IniciarProceso"><?php echo $datos["nombreSiguiente"]?></a>
                             </div> 
@@ -98,7 +98,7 @@
                         <?php }?>
                         <!--Boton finalizar  proceso-->
                         <?php if ( isset($datos["nombreFinalizarT"])) { ?>
-                          <div class="col-md-3">
+                          <div class="col-md-5">
                             <div class="product-item">
                               <a href="<?php echo RUTA_URL;?>/EstadosTorrefaccion/TerminarProceso/<?php echo $datos["idcafe"].'/'.$datos['codigoFinalizar']?>" class="btn btn-sm btn-default"><?php echo $datos["nombreFinalizarT"]?></a> 
                             </div>
@@ -118,7 +118,7 @@
         </div>
     </div>
 </div>
-
+</section>
 <!-- Modal iniciar proceso-->
 <div class="modal fade" id="IniciarProceso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm " role="document" >
@@ -132,18 +132,17 @@
       <div class="modal-body">      
           <div  >
             <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoSiguiente'] ?>" />
+             <input hidden type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
+             <input hidden name="codigoCafe" type="text"  value="<?php echo $datos['codigoCafe'] ?>" size="10"/>
             <p>
-               <label>Proceso:</label>
-               <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" disabled/>
+               <label>Proceso:</label><span><?php echo $datos['nombreProceso'] ?></span>
             </p>       
              <p>
-                <label>Lote:</label>
-                <input  name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" disabled/>
-              </p>
-              <p>
-                <label>Fecha:</label>
-                <input  name="fecha" type="text" id="fecha" value="<?php echo date("m/d/Y g:ia"); ?>" size="20" disabled/>
-              </p>
+                <label>Lote:</label><span> <?php echo $datos['codigoCafe'] ?></span>
+            </p>
+            <p>
+              <label>Fecha:</label><span> <?php echo date("m/d/Y g:ia"); ?></span>
+            </p>
           </div>                          
       </div>
       <div class="modal-footer">
@@ -168,19 +167,19 @@
       </div>
       <div class="modal-body">      
           <div>
-            <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoDetener'] ?>" />
+            <input hidden name="codigoSiguiente" type="text" value="<?php echo $datos['codigoDetener'] ?>" />
+            <input hidden name="nombreSiguiente" type="text" value="<?php echo $datos['nombreProceso'] ?>" />
+            <input hidden name="codigoCafe" type="text"  value="<?php echo $datos['codigoCafe'] ?>" size="10" />
             <p>
-               <label>Proceso</label>
-               <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
+               <label>Proceso:</label><span> <?php echo $datos['nombreProceso'] ?></span>
             </p>       
              <p>
-                <label>codigo Cafe</label>
-                <input  name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" />
-              </p>
-              <p>
-                <label>Fecha</label>
-                <input  name="fecha" type="text" id="fecha" value="<?php echo date("m/d/Y g:ia"); ?>" size="20"/>
-              </p>
+                <label>Lote:</label><span> <?php echo $datos['codigoCafe'] ?></span>
+            </p>
+            <p>
+              <label>Fecha:</label><span> <?php echo date("m/d/Y g:ia"); ?></span>
+            </p>
+                  
           </div>                          
       </div>
       <div class="modal-footer">
@@ -206,17 +205,16 @@
       <div class="modal-body">      
           <div>
             <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoReanudar'] ?>" />
+            <input hidden type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
+            <input hidden name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" />
             <p>
-               <label>Proceso</label>
-               <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
+               <label>Proceso</label><span><?php echo $datos['nombreProceso'] ?></span>
             </p>       
              <p>
-                <label>codigo Cafe</label>
-                <input  name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" />
+                <label>codigo Cafe</label><span><?php echo $datos['codigoCafe'] ?></span>
               </p>
               <p>
-                <label>Fecha</label>
-                <input  name="fecha" type="text" id="fecha" value="<?php echo date("m/d/Y g:ia"); ?>" size="20"/>
+                <label>Fecha</label><span><?php echo date("m/d/Y g:ia"); ?></span>
               </p>
           </div>                          
       </div>
@@ -243,18 +241,17 @@
       <div class="modal-body">      
           <div>
             <input hidden name="codigoSiguiente" value="<?php echo $datos['codigoFinalizar'] ?>" />
+            <input hidden name="codigoCafe" type="text" id="codigoCafe" value="<?php echo $datos['codigoCafe'] ?>" size="10" />
+            
             <p>
-               <label>Proceso</label>
-               <input type="text"name="nombreSiguiente" value="<?php echo $datos['nombreProceso'] ?>" />
+               <label>Proceso:</label><span> <?php echo $datos['nombreProceso'] ?></span>
             </p>       
              <p>
-                <label>codigo Cafe</label>
-                <input  name="fecha" type="text" id="fecha" value="<?php echo $datos['codigoCafe'] ?>" size="10" />
-              </p>
-              <p>
-                <label>Fecha</label>
-                <input  name="fecha" type="text" id="fecha" value="<?php echo date("m/d/Y g:ia"); ?>" size="20"/>
-              </p>
+                <label>Lote:</label><span> <?php echo $datos['codigoCafe'] ?></span>
+            </p>
+            <p>
+              <label>Fecha:</label><span> <?php echo date("m/d/Y g:ia"); ?></span>
+            </p>
           </div>                          
       </div>
       <div class="modal-footer">

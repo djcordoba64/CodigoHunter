@@ -7,7 +7,7 @@ class DatosEmpaque extends Controlador
 	
 	function __construct()
 	{
-		$this->cafesModelo = $this->modelo('Cafe');
+		$this->cafeModelo = $this->modelo('Cafe');
 		$this->TorrefaccionModelo=$this->modelo('Torrefaccion');
 		$this->EmpaqueModelo=$this->modelo('Empaque');
 	}
@@ -24,7 +24,24 @@ class DatosEmpaque extends Controlador
 				return;
 		}
 
+		$idcafe=$datos['idcafe'];
 
+		$datosCafe= $this->cafeModelo ->consultar_x_idCafe($idcafe);
+		$datos=[
+					'idcafe'=>$datosCafe->idcafe,
+					'codigoCafe'=>$datosCafe->codigoCafe,
+					'codigoSiguiente'=>$datos['codigoSiguiente'],
+					'molidaLibra'=>$datosCafe->molidaLibra,
+					'molidaMediaLibra'=>$datosCafe->molidaMediaLibra,	
+					'molidaCincoLibras'=>$datosCafe->molidaCincoLibras,
+					'granoLibra'=>$datosCafe->granoLibra,
+					'granoMediaLibra'=>$datosCafe->granoMediaLibra,	
+					'granoCincoLibras'=>$datosCafe->granoCincoLibras,
+					'agranel'=>$datosCafe->agranel,
+					
+		];	
+
+					
 		$this->vista('/empaque/agregar_datos', $datos);
 	}
 
@@ -102,17 +119,26 @@ class DatosEmpaque extends Controlador
 		}
 
 		//consulatos los datos
-		$datosEmpaque= $this->EmpaqueModelo->obtenerDatos_x_id($idcafe);
-
+		$datosEmpaque=$this->EmpaqueModelo->obtenerDatos_x_id($idcafe);
+		$datosCafe=$this->cafeModelo ->consultar_x_idCafe($idcafe);
 			$datos=[
+
 					'codigoCafe'=>$datosEmpaque->codigoCafe,
 					'iddatosEmpaque'=>$datosEmpaque->iddatosEmpaque,	
 					'fechaHora'=>$datosEmpaque->fechaHora,
 					'empaque'=>$datosEmpaque->empaque,
 					'observacion'=>$datosEmpaque->observacion,
+					'idcafe'=>$datosCafe->idcafe,
+					'molidaLibra'=>$datosCafe->molidaLibra,
+					'molidaMediaLibra'=>$datosCafe->molidaMediaLibra,	
+					'molidaCincoLibras'=>$datosCafe->molidaCincoLibras,
+					'granoLibra'=>$datosCafe->granoLibra,
+					'granoMediaLibra'=>$datosCafe->granoMediaLibra,	
+					'granoCincoLibras'=>$datosCafe->granoCincoLibras,
+					'agranel'=>$datosCafe->agranel,
 			];				
 					//me redirecciona a la vista Editar, para cargar los datos en el formulario de edicion.
-					$this->vista('/empaque/editar', $datos);
+		$this->vista('/empaque/editar', $datos);
 
 	}
 
@@ -147,7 +173,7 @@ class DatosEmpaque extends Controlador
 			else{
 					
 				$datos['mensaje_error'] ='Ocurrió un problema al procesar la solicitud';
-					$this->vista('/pruebasLaboratorio/editar', $datos);
+					$this->vista('/empaque/editar', $datos);
 					return;
 			}
 

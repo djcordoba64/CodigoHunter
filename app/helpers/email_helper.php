@@ -6,4 +6,4 @@
     $encabezado = "From:" . $de;
     mail($para,$asunto,$mensaje, $encabezado);
     }
-    ?>
+?>
