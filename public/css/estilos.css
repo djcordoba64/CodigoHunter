@@ -204,6 +204,127 @@
     border-radius:50px;
     border:7px  #666;
 }
+.content-VisualTra .receipt-VisulTra  label{
+  font-size: 30px;
+  color: #b89d64;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px;
+  
+}
+.encabezado{
+  background-color: #FFFAFA  ;
+  padding: 15px;
+}
+
+.receipt-VisulTra {
+  display: inline-block;
+  width: 100%;
+  padding: 0px;
+  font-size: 18px;
+  border: 1px solid #C2C1C1  ;
+}
+
+.cuerpo {
+  width: 100%;
+  padding: 40px;
+ text-align:center;
+}
+.opciones-cuerpo{
+  padding: 4px;
+  width: 25%;
+  background-color:  #FFFAFA ;
+  border: 1px solid #C2C1C1  ;
+  display:inline-block;
+
+}
+.receipt-sectionEstado  {
+  margin-top: 10px;
+  border-right: 2px solid  #C2C1C1 ;
+  padding-left: 3px; 
+  padding-right: 3px;
+}
+.receipt-sectionDescrip {
+  margin-top: 10px;
+   border-bottom: 2px solid  #C2C1C1 ;
+  
+}
+.content-VisualTra .receipt-VisulTra .lbDescripF{
+  font-size: 12px;
+  color: #2c1910;
+}
+.content-VisualTra .receipt-VisulTra .lbDescripE{
+  font-size: 14px;
+  color: #BAB8B8  ;
+  font-weight: normal;
+}
+.content-VisualTra .receipt-VisulTra .estadolb{
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight:normal;
+  padding: 5px;
+  background-color:#b89d64 ;
+  border:7px  #666;
+  
+}
+
+span.grey {
+  background: #cccccc;
+  border-radius: 0.8em;
+  -moz-border-radius: 0.8em;
+  -webkit-border-radius: 0.8em;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1.6em;
+  margin-right: 20px;
+  text-align: center;
+  width: 1.6em; 
+}
+
+.content-VisualTra .receipt-VisulTra h4 {
+    margin: 30px 0 40px; 
+    font-size: 25px;
+}
+
+.content-VisualTra .receipt-VisulTra h1 {
+    position: relative;
+    color: #2c1910;
+    font-family: 'Playfair Display', serif;
+    font-weight: normal;
+    text-align: center;
+    font-size: 10px;
+}
+
+.content-VisualTra .receipt-VisulTra p {
+   line-height: 10px;
+   margin: 0 0 4px;
+   font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 
-
+.process-model {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    max-width: 600px;
+    margin: 20px auto 26px;
+    border: none;
+    z-index: 0;
+}
+.process-model li::after {
+    background: #e5e5e5 none repeat scroll 0 0;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 4px;
+    margin: 0 auto;
+    position: absolute;
+    right: -30px;
+    top: 33px;
+    width: 85%;
+    z-index: -1;
+}

@@ -42,7 +42,7 @@
 							 	</div>
 	  						</div>	
 	  						<p class="receipt-title">RECEPCIÓN DE CAFÉ EN PLANTA</p>
-	  						<div align="pull-right">					  						  
+	  						<div class="pull-right">					  						  
 							  <div class="receipt-section pull-left">
 							    <span class="receipt-label text-large">	FECHA:</span>
 							    <span class="text-large"><?php echo $datos['fecha'] ?></span>
