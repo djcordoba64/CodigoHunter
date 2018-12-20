@@ -475,6 +475,7 @@ textarea { padding: 10px 22px 10px 22px; background: #f5f2eb; border:1px solid #
 .woocommerce-billing-fields__field-wrapper p { padding-top: 16px; }
 .woocommerce-billing-fields .input-text { background: #f5f2eb; border:1px solid #e3ded4; border-radius: 2px; font-size: 14px; color: #2c1910; }
 .woocommerce-billing-fields .input-text:focus { border-color: #e3ded4; box-shadow: 0 0 1px 1px #e3ded4; background: none; }
+.woocommerce-billing-fields input[type=date]  {color:#838181 ;line-height: 49px; background: none; padding-right: 50%; width: 100%; height:48px; border-color: #b89d64;box-shadow: 0 0 0px 0px none;    padding: 10px 22px 10px 22px;}
 .woocommerce-additional-fields textarea { height: 143px; }
 .woocommerce-additional-fields textarea:focus { box-shadow: 0 0 1px 1px #e3ded4; background: none;}
 .woocommerce-billing-fields abbr[title] { border: none; color: #e5481e; }

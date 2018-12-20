@@ -45,17 +45,17 @@
 					<div class="col-md-6">
 					<!--Lista de las fincas agregadas al cliente-->	
 					<div class="col-md-12"><h3>Fincas</h3></div> 		
-					<div class="">
+					<div class="text-page">
 						
-									<table class="shop_table shop_table_responsive cart" width="600">
+									<table class="table table-bordered">
 					                <thead>
 					                    <tr>
 					                        
-					                    	<th class="product-remove">Nombre</th>
-											<th class="product-remove">Temperatura</th>
-											<th class="product-remove">Municipio</th>
-											<th class="product-remove">Vereda</th>
-											<th class="product-remove">Estado</th>
+					                    	<th style="font-size:12px;text-align: center">Nombre</th>
+											<th style="font-size:12px;text-align: center">Temperatura</th>
+											<th style="font-size:12px;text-align: center">Municipio</th>
+											<th style="font-size:12px;text-align: center">Vereda</th>
+											<th style="font-size:12px;text-align: center">Estado</th>
 					                    </tr>
 					                </thead>
 					                <tbody  class="cart_item">
@@ -67,7 +67,7 @@
 											</td>
 										
 											<td class="product-remove">
-													<?php echo $finca->Temperatura;?>
+													<?php echo $finca->Temperatura;?> ℃
 											</td class="cart_item">
 											<td class="product-remove">
 												<?php echo $finca->municipio;?>				

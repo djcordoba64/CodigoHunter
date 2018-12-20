@@ -1,4 +1,40 @@
 
+/*LOGIN*/
+.img-login {
+    width:25px;
+    height:25px;
+    border-radius:50px;
+    border:7px  #666;
+}
+/*PERFIL*/
+.perfil-cont{
+padding: 60px;
+}
+
+.content-img-Perfil{
+  background-color:#f5f2eb;
+  padding: 50px;
+  text-align: center
+}
+.div-img-perfil{
+  background-color: #fff  ;
+  display: inline-block;
+  width: 60%; 
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #D5D4D3;
+}
+.div-input-file{
+  padding: 10px;
+}
+
+.content-img-Perfil p{
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+}
+/**/
+
 .cart-wrapU { padding: 10px 0 40px 0; }
 * {
   box-sizing: border-box;
@@ -198,6 +234,7 @@
     
 }
 
+/* #PÁGINA TRAZABILIDAD*/
 .img-trazabilidad {
     width:50px;
     height:50px;

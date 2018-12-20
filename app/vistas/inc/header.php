@@ -41,7 +41,8 @@
           <ul class="top-bar-contacts">
             <li><i class="fa fa-phone" aria-hidden="true"></i>+80 (041) 2824 504 43</li>
             <li class="mail"><i class="fa fa-envelope-o" aria-hidden="true"></i>orders@mistercoffee.us</li>
-            <li class="skype"><i class="fa fa-user" aria-hidden="true"></i><?php echo isset($_SESSION["nombreCompleto"])? $_SESSION["nombreCompleto"]:"Bienvenido Invitado";?></li>
+            <li class="skype"><img class="img-login" src="<?php echo RUTA_URL.'/images/perfiles/usuario'.$_SESSION["idUsuario"].'.jpg'?>"> <?php echo isset($_SESSION["nombreCompleto"])? $_SESSION["nombreCompleto"]:"Bienvenido Invitado";?></li>
+            <li style="color: #2b1b13;"><?php echo isset($_SESSION["rol"])? $_SESSION["rol"]:"";?></li>
           </ul>
         </div>
         <div class="col-md-2 col-sm-3 top-social-wrap">

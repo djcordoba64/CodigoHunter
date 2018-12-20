@@ -1,7 +1,7 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 
 <div class="col-md-12">
-	<h2>Información personal</h2>
+	<h2>Información del cliente</h2>
 </div>
 <section class="cart-wrap">	
 	<div class="container">
@@ -11,7 +11,8 @@
 				<div class="row">
 					<div id="customer_details">
 						<div class="woocommerce-billing-fields">
-							<div class="col-md-6" >
+							<div class="col-md-6 col-md-offset-2" >
+								<h4>Registrar datos</h4>
 								<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
 									<label for="billing_first_name" class="">Primer Nombre: <abbr class="required" title="required">*</abbr></label>
 									<input type="text" class="input-text"  name="primerNombre" autofocus="autofocus" required value="<?php echo $datos['primerNombre']?>" onkeypress="return soloLetras(event);" id="primerNombre" >							
@@ -72,8 +73,10 @@
 										<option value="Inactivo" <?php echo $datos['estado']=='Inactivo'? print "selected='selected'" : "";?> >Inactivo</option>
 									</select>
 						        </p>
-						         <a href="<?php echo RUTA_URL;?>/Clientes/index" class="btn btn-lg btn-bordered">Cancelar</a>
-						        <input value="SIGUIENTE" class="btn btn-lg btn-brown" type="submit">
+						        <div style="text-align: center;padding: 20px">
+							         <a href="<?php echo RUTA_URL;?>/Clientes/index" class="btn btn-lg btn-bordered">Cancelar</a>
+							        <input value="SIGUIENTE" class="btn btn-lg btn-brown" type="submit">
+						        </div>
 							</div>
 						</div>
 					</div>

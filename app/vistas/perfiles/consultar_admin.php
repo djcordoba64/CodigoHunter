@@ -27,15 +27,15 @@
                  						 </p> 
 							        	<p class="form-row form-row-wide" data-priority="30">
 							                <label for="billing_company" class="">Nombre completo</label>
-							                <input style="background-color:#dddddd;" class="input-text " name="nombreCompleto" type="text" disabled value="<?php echo $datos['primerNombre'].' '.$datos['segundoNombre'].' '.$datos['primerApellido'].' '.$datos['segundoApellido']?>"  />
+							                <input style="background-color:#F5F5F5;" class="input-text " name="nombreCompleto" type="text" disabled value="<?php echo $datos['primerNombre'].' '.$datos['segundoNombre'].' '.$datos['primerApellido'].' '.$datos['segundoApellido']?>"  />
 							            </p> 
-							            <p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" data-priority="10">
+							            <p class="form-row form-row-first">
 							                <label for="billing_first_name" class="">Documento de identidad</label>
-							                <input style="background-color:#dddddd;" class="input-text" name="documentoIdentidad" type="text" disabled value="<?php echo $datos['documentoIdentidad']?>"  />
+							                <input style="background-color:#F5F5F5;" class="input-text" name="documentoIdentidad" type="text" disabled value="<?php echo $datos['documentoIdentidad']?>"  />
 							            </p>
-							            <p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
+							            <p class="form-row form-row-last" data-priority="20">
 							                <label for="billing_last_name" >Fecha Nacimiento</label>
-							                <input style="background-color:#dddddd;" class="input-text" name="fechaNacimiento" type="text"  disabled value="<?php echo $datos['fechaNacimiento']?>" />
+							                <input style="background-color:#F5F5F5;" class="input-text" name="fechaNacimiento" type="text"  disabled value="<?php echo $datos['fechaNacimiento']?>" />
 							            </p>
 							           		<p class="form-row form-row-first validate-required validate-phone" data-priority="100">
 							                <label for="billing_phone" class="">Correo<abbr class="required" title="required">*</abbr></label>
@@ -86,24 +86,19 @@
 							   
 							</div>	
 						</div>
-						<div class="col-md-6">
-							<div class="order_box">
-								<h6>foto de perfil</h6>	
-							    <div id="order_review" class="woocommerce-checkout-review-order">				 	<div id="payment" class="woocommerce-checkout-payment">
-							            
-							            <div class="col-md-3 col-sm-6" >
-											<p><img  src="<?php echo RUTA_URL.'/images/perfiles/usuario'.$datos['idPersona'].'.jpg'?>"  ></p>
-										</div>
-										<div class="col-md-3 col-sm-6">
-										<input type="file" name="foto">							            
-							            </div>
-							        </div>
-							    </div>
-							</div>
+						<div class="col-md-6 perfil-cont">
+							<div class="content-img-Perfil">
+								<p >Foto de perfil</p>
+								<div class="div-img-perfil" >
+									<img  src="<?php echo RUTA_URL.'/images/perfiles/usuario'.$datos['idPersona'].'.jpg'?>" width="170">
+								</div>
+
+							</div>	
 						</div>
 					</div>
 				</div>
-				<div class="form-row place-order" align="center">
+				<div  class="col-md-12" >
+					<a href="<?php echo RUTA_URL;?>/paginas/index" class="btn btn-lg btn-bordered">Cancelar</a>
 					<input value="actualizar" class="btn btn-lg btn-brown" type="submit"/>
 				</div>
 			</form>

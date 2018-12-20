@@ -34,7 +34,8 @@
 						$_SESSION["nombreCompleto"] = $datosUsuario -> primerNombre." ".$datosUsuario -> primerApellido;
 						$_SESSION["identificacion"] = $datosUsuario -> documentoIdentidad;	
 						$_SESSION["idUsuario"] = $datosUsuario -> idPersona;	
-						$_SESSION["rol"] = $datosUsuario -> rol;	
+						$_SESSION["rol"] = $datosUsuario -> rol;
+
 
 						$this->vista('/paginas/index');
 					}

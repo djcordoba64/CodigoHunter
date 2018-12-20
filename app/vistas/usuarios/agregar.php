@@ -31,7 +31,7 @@
 		<div class="woocommerce">
 			<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Usuarios/agregar" method="POST">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-6 col-md-offset-2">
 						<div id="customer_details">
 							<div class="woocommerce-billing-fields">
 								<div class="woocommerce-billing-fields">

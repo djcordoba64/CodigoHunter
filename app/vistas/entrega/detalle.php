@@ -83,7 +83,7 @@
 											Numero de recibo: <label class="dato"><?php echo $datos['codigoRecibo']?></label></div>
 									</div>
 									<div class="intem">
-										<div class="item">Estado: <label class="dato"><?php echo $datos['estado']?></label></div>
+										<div class="item">Estado: <label class="dato" ><?php echo $datos['estado']?></label></div>
 									</div>
 
 								</div>
@@ -101,10 +101,11 @@
 								</div>																
 							</div>									</div>
 			    	</div>
-			    	<div class="col-md-10 col-md-offset-1 testimonials-list">
+			    	<div class="col-md-12  testimonials-list">
 			    	<div class=" content-datos">
 								<div class="name-datos">Lotes de café agregados</div>
 								<div class="col-md-6 info-datos">
+									<p>Se listan los lotes de cafés, que fueron agregados en la recepción.</p>
 									<div class="col-md-6 text-page">
 									    <table class="table table-bordered">
 								    	<thead>
@@ -118,18 +119,18 @@
 								    	</thead>
 								    		<tr >
 									    		
-									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Lote</th>
-									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Peso</th>
-									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Especie</th>
-									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Variedad</th>						<th style="font-size:8px;text-align: center" ROWSPAN=2>Humedad</th>						
-									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Factor Rendimiento</th>
-									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Tostion</th>
-									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Materia Prima</th>
-									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Tipo de Beneficio</th>
-									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Estado</th>
-									    		<th style="font-size:8px;text-align: center" colspan="3">Molida</th>
-									    		<th style="font-size:8px;text-align: center" colspan="3">Gano</th>
-									    		<th style="font-size:8px;text-align: center"  ROWSPAN=2>Agranel</th>
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Lote</th>
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Peso</th>
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Especie</th>
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Variedad</th>						<th style="font-size:12px;text-align: center" ROWSPAN=2>Humedad</th>						
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Factor Rendimiento</th>
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Tostion</th>
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Materia Prima</th>
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Tipo de Beneficio</th>
+									    		<th style="font-size:12px;text-align: center" ROWSPAN=2>Estado</th>
+									    		<th style="font-size:12px;text-align: center" colspan="3">Molida</th>
+									    		<th style="font-size:12px;text-align: center" colspan="3">Gano</th>
+									    		<th style="font-size:12px;text-align: center"  ROWSPAN=2>Agranel</th>
 									    		
 								    		</tr>
 
@@ -147,23 +148,23 @@
 								    		<?php foreach($datos['lotes']  as $cafe): ?>
 								    		<tr>					
 								                
-								                <td style="font-size:12px" scope="row"><?php echo $cafe->codigoCafe?></td>
-								                <td style="font-size:12px"><?php echo $cafe->peso?></td>
-								                <td style="font-size:12px"><?php echo $cafe->especie?></td>
-								                <td style="font-size:12px"><?php echo $cafe->variedad?></td>
-								                <td style="font-size:12px"><?php echo $cafe->factorRendimiento?></td>
-								                <td style="font-size:12px"><?php echo $cafe->porcentajeHumedad?></td>
-								                <td style="font-size:12px"><?php echo $cafe->tipoTueste?></td>
-								                <td style="font-size:12px"><?php echo $cafe->materiaprima?></td>
-								                <td style="font-size:12px"><?php echo $cafe->tipobeneficio ?></td>
-								                <td style="font-size:12px"><?php echo $cafe->estado?></td>
-								                <td style="font-size:12px"><?php echo $cafe->molidaLibra?> </td>
-								                <td style="font-size:12px"><?php echo $cafe->molidaMediaLibra?></td>
-								                <td style="font-size:12px"><?php echo $cafe->molidaCincoLibras?> </td>
-								                <td style="font-size:12px"><?php echo $cafe->granoLibra?> </td>
-								                <td style="font-size:12px"><?php echo $cafe->granoMediaLibra?> </td>
-								                <td style="font-size:12px"><?php echo $cafe->granoCincoLibras?> </td>
-								                <td style="font-size:12px"><?php echo $cafe->agranel?></td>
+								                <td style="font-size:14px;color:#1e130e; font-weight: bold;" scope="row"><?php echo $cafe->codigoCafe?></td>
+								                <td style="font-size:14px"><?php echo $cafe->peso?></td>
+								                <td style="font-size:14px"><?php echo $cafe->especie?></td>
+								                <td style="font-size:14px"><?php echo $cafe->variedad?></td>
+								                <td style="font-size:14px"><?php echo $cafe->factorRendimiento?></td>
+								                <td style="font-size:14px"><?php echo $cafe->porcentajeHumedad?></td>
+								                <td style="font-size:14px"><?php echo $cafe->tipoTueste?></td>
+								                <td style="font-size:14px"><?php echo $cafe->materiaprima?></td>
+								                <td style="font-size:14px"><?php echo $cafe->tipobeneficio ?></td>
+								                <td style="font-size:14px"><?php echo $cafe->estado?></td>
+								                <td style="font-size:14px"><?php echo $cafe->molidaLibra?> </td>
+								                <td style="font-size:14px"><?php echo $cafe->molidaMediaLibra?></td>
+								                <td style="font-size:14px"><?php echo $cafe->molidaCincoLibras?> </td>
+								                <td style="font-size:14px"><?php echo $cafe->granoLibra?> </td>
+								                <td style="font-size:14px"><?php echo $cafe->granoMediaLibra?> </td>
+								                <td style="font-size:14px"><?php echo $cafe->granoCincoLibras?> </td>
+								                <td style="font-size:14px"><?php echo $cafe->agranel?></td>
 								                
 				            				</tr>
 				            				<?php endforeach;?>
@@ -186,6 +187,7 @@
 			    	<div class="content-datos">
 								<div class="name-datos">Descripción</div>
 								<div class="col-md-12 info-datos">
+									<p>Estado actual del lote de café, en el proceso de torrefacción.</p>
 									<div class="col-md-12 text-page">
 									    <table class="table table-bordered">
 								    	<thead>
@@ -213,12 +215,12 @@
 								    		<?php foreach($datos['cafesT']  as $cafe): ?>
 								    		<tr>					
 								                
-								                <td style="font-size:12px"><?php echo $cafe->codigoCafe?></td>
+								                <td style="font-size:14px ;color:#1e130e; font-weight: bold;"><?php echo $cafe->codigoCafe?></td>
 
-								                <td style="font-size:12px"><?php echo $cafe->codigoEstado?></td>
-								                <td style="font-size:12px"><?php echo $cafe->fechaHora?></td>
-								                 <td style="font-size:12px"><?php echo $cafe->primerNombre.' '.$cafe->primerApellido?> </td>
-								               	<td style="font-size:12px"><?php echo $cafe->documentoIdentidad?></td>						                
+								                <td style="font-size:14px;color:#b89d64; font-weight: bold;"><?php echo $cafe->codigoEstado?></td>
+								                <td style="font-size:14px"><?php echo $cafe->fechaHora?></td>
+								                 <td style="font-size:14px"><?php echo $cafe->primerNombre.' '.$cafe->primerApellido?> </td>
+								               	<td style="font-size:14px"><?php echo $cafe->documentoIdentidad?></td>						                
 				            				</tr>
 				            				<?php endforeach;?>
 								    		

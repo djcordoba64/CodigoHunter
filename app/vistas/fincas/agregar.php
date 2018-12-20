@@ -2,6 +2,7 @@
 
 <!-- CLIENTES_FINCAS- -->
 <div class="col-md-12">
+
 	<h2>Agregar fincas</h2>
 </div>
 <section class="product-single">	
@@ -78,7 +79,7 @@
 				                       		</div>						
 										</p>
 									</div>
-									<div class="col-md-9">													 
+									<div class="col-md-9" style="padding: 20px">													 
 										<!--Estado-->
 										<p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
 											<label for="billing_first_name" class="">Estado:</label>
@@ -96,21 +97,21 @@
 								<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Fincas/agregar_guardar_temporalmente',true)" class="btn btn-default" type="button" value="<?php echo (isset($datos['idDetalleFinca']))? "Guardar Cambios" : "Agregar";?>">
 								</div>
 							</div>
-							<div class="col-md-7" >
+							<div class="col-md-7" style="padding: 80px" >
 								<div class="col-md-12" align="center">
-									<h4>Fincas Agregadas</h4>
+									<h5>Fincas Agregadas</h5>
 								</div>
-								<div class="">
-									<table class="shop_table shop_table_responsive cart" width="700">
+								<div class="text-page">
+									<table class="table table-bordered">
 										<thead>
 						                    <tr>
 						                        
-						                    	<th  style="font-size:18px" class="">Nombre</th>
-												<th   style="font-size:18px" class="">Departamento</th>
-												<th  style="font-size:18px" class="">Municipio</th>
-												<th  style="font-size:18px" class="">Vereda</th>
-												<th  style="font-size:18px" class="">Temperatura</th>
-												<th  style="font-size:18px" class="">Acciones</th>
+						                    	<th  style="font-size:14px" class="">Nombre</th>
+												<th   style="font-size:14px" class="">Departamento</th>
+												<th  style="font-size:14px" class="">Municipio</th>
+												<th  style="font-size:14px" class="">Vereda</th>
+												<th  style="font-size:14px" class="">Temperatura</th>
+												<th  style="font-size:14px" class="">Acciones</th>
 						                    </tr>
 					                	</thead>
 					                	<tbody  class="cart_item">
@@ -141,17 +142,24 @@
 					                	</tbody>
 									</table>
 								</div>
+								<div class="col-md-12" align="center">
+									<hr style="padding: 100px">
+									<div style="padding: 60px">
+										<?php if (isset($datos['fincasArr']) and count($datos['fincasArr'])>0) { ?>
+										<a href="<?php echo RUTA_URL;?>/Cliente/index" class="btn btn-lg btn-bordered">Cancelar</a>
+										<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cliente/crear_guardar')" class="btn btn-lg btn-brown" type="button" value="Guardar">
+
+										
+										<?php }     ?>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<hr>					
+										
 					
 				</div>
-				<div class="col-md-12" align="center">
-				<?php if (isset($datos['fincasArr']) and count($datos['fincasArr'])>0) { ?>
-				<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cliente/crear_guardar')" class="btn btn-lg btn-brown" type="button" value="finalizar">
-				<?php }     ?>
-				</div>
+				
 			</form>
 		</div>
 	</div>

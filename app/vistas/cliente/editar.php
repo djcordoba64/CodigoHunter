@@ -2,13 +2,14 @@
  <section class="cart-wrap">
   <a href="<?php echo RUTA_URL;?>/Cliente/index" class="btn btn-light"><i class="fa fa-backward"></i>Volver</a>
   	<div class="col-md-12">
-		<h2>Infomación personal del Cliente</h2>
+		<h2>Infomación del Cliente</h2>
 	</div>
 	<div class="container">
 		<div class="woocommerce">
 			<form class="checkout woocommerce-checkout" action="<?php echo RUTA_URL;?>/Cliente/editar/<?php echo $datos['idPersona']?>" method="POST">
 				<div class="row">
 					<div class="col-md-6">
+						<h4>Datos a editar</h4>
 						<div id="customer_details">
 							<div class="woocommerce-billing-fields">
 								<div class="woocommerce-billing-fields">
@@ -97,19 +98,19 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 text-page" style="padding:70px;">
 							<div class="col-md-12" align="center">
-									<h4>Fincas del cliente</h4>
-								</div>
+								<h4>Fincas del cliente</h4>
+							</div>
 							
-							<table class="shop_table shop_table_responsive cart" width="800">
+							<table class="table table-bordered" >
 						        <thead>
 						            <tr>					                        
-						                <th class="product-remove">Nombre</th>									
-										<th class="product-remove">Municipio</th>
-										<th class="product-remove">Vereda</th>
-										<th class="product-remove">Estado</th>
-										<th class="product-remove">Acciones</th>
+						                <th  style="font-size:12px;text-align: center">Nombre</th>									
+										<th style="font-size:12px;text-align: center">Municipio</th>
+										<th style="font-size:12px;text-align: center">Vereda</th>
+										<th style="font-size:12px;text-align: center">Estado</th>
+										<th style="font-size:12px;text-align: center">Acciones</th>
 						            </tr>
 						        </thead>
 						        <tbody  class="cart_item">					             
@@ -132,18 +133,18 @@
 									<?php endforeach; }?>
 						        </tbody>
 						    </table>
-						    <div class="col-sm-4">
-									<div class="footer-social">
-										<div class="title"></div>
-											<ul class="social">
-												
-												<li>
-													<a href="<?php echo RUTA_URL;?>/Fincas/agregar_finca_mostrar_formulario/<?php echo $datos['idPersona'];?>" data-toggle="tooltip" title="Agregar una finca!" target="_blank">
-														<i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a>
-												</li>
-											</ul>	
-									</div>
+						    <p>*De clic en la siguiente opción para agregar una finca</p>
+						    <div class="col-sm-12">
+								<div class="footer-social" >
+									<div class="title" ></div>
+									<ul class="social">												
+										<li>
+											<a href="<?php echo RUTA_URL;?>/Fincas/agregar_finca_mostrar_formulario/<?php echo $datos['idPersona'];?>" data-toggle="tooltip" title="Agregar una finca!" target="_blank">
+											<i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a>
+										</li>
+									</ul>	
 								</div>
+							</div>
 					</div>
 				</div>
 			</form>
