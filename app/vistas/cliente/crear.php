@@ -74,7 +74,7 @@
 									</select>
 						        </p>
 						        <div style="text-align: center;padding: 20px">
-							         <a href="<?php echo RUTA_URL;?>/Clientes/index" class="btn btn-lg btn-bordered">Cancelar</a>
+							         <a href="<?php echo RUTA_URL;?>/Cliente/index" class="btn btn-lg btn-bordered">Cancelar</a>
 							        <input value="SIGUIENTE" class="btn btn-lg btn-brown" type="submit">
 						        </div>
 							</div>

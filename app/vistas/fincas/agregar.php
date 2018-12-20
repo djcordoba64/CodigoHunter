@@ -147,9 +147,7 @@
 									<div style="padding: 60px">
 										<?php if (isset($datos['fincasArr']) and count($datos['fincasArr'])>0) { ?>
 										<a href="<?php echo RUTA_URL;?>/Cliente/index" class="btn btn-lg btn-bordered">Cancelar</a>
-										<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cliente/crear_guardar')" class="btn btn-lg btn-brown" type="button" value="Guardar">
-
-										
+										<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cliente/crear_guardar')" class="btn btn-lg btn-brown" type="button" value="Guardar">										
 										<?php }     ?>
 									</div>
 								</div>

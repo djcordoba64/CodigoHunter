@@ -6,6 +6,42 @@
     border-radius:50px;
     border:7px  #666;
 }
+.page-login{
+    background: url(../images/login-img.jpg) 50% 50% no-repeat;
+}
+.page-coming .center { 
+  margin: 30% 0 30%;
+   text-align: center;
+   width:200px;
+   height:70px;
+   position:absolute;
+   top:0px;
+ }
+.page-login .opaco::bifore{background-color:#2b1b13; opacity: 0.4;padding: 20px;margin: 8% 0 10%; }
+.page-login .center { margin: 8% 0 10%; text-align: center; }
+.page-login h2 {position: relative;color: #b89d64;font-family: 'Playfair Display', serif;font-weight: bold;text-align: center;font-size: 48px;}
+.page-login p{margin: 8px;}
+.page-login  .quote {padding-top: 10px;color: #b89d64;font-size: 30px;}
+.page-login.wp-searchform{; margin-top: 100px; margin-bottom: 100px; font-size: 0; position: relative; }
+.page-login .wp-searchform input[type='text'] {color:#838181; background: none; padding-right: 32%; width: 100%;box-shadow: 0 0 1px 1px #b89d64;    padding: 10px 22px 10px 22px; }
+.page-login .wp-searchform input[type='password'] {color:#838181 ;line-height: 49px; background: none; padding-right: 50%; width: 100%; height:48px; border-color: #b89d64;box-shadow: 0 0 0px 0px none;    padding: 10px 22px 10px 22px;}
+.page-login .wp-searchfor .btn.btn-bordered { background:#fff;color: #b89d64;border: 1px solid #b89d64;}
+.page-login  .quote {padding-top: 10px;color: #b89d64;font-size: 30px;}
+
+.page-login .error {    
+    min-width: 10px;
+    padding: 5px 7px;
+    font-size: 13px;
+    font-weight: normal;
+    color:#fff ;
+    border-color: #A94B4B ;
+    line-height: 2;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    background-color: none;
+    
+}
 /*PERFIL*/
 .perfil-cont{
 padding: 60px;
@@ -33,6 +69,48 @@ padding: 60px;
   text-align: center;
   font-weight: bold;
 }
+/*RECEPCIÓN*/
+.recepcion{
+  padding:20px ; 
+  margin-bottom: 90px;
+}
+
+.recep-cont{
+  margin: 20px;
+  background-color: #f5f2eb;
+}
+.recep-legend{
+  padding: 10px;
+  background-color: #f5f2eb;
+}
+
+.recepcion .recep-cont  span {    
+    min-width: 10px;
+    padding: 5px 7px;
+    font-size: 13px;
+    font-weight: bold;
+    color:#B54747    ;
+    border-color: #B54747  ;
+    line-height: 2;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    background-color: none;
+    
+}
+.recepcion .recep-cont .recep-legend .top-title {
+  padding-top: 35px;
+    padding-bottom: 2px;
+    font-size: 18px;
+    color: #2b1b13;
+    line-height: bold;
+}
+.recepcion .recep-cont .recep-legend a{
+text-decoration: underline  #b89d64;
+ line-height: bold;
+}
+
+
 /**/
 
 .cart-wrapU { padding: 10px 0 40px 0; }
@@ -196,43 +274,7 @@ padding: 60px;
      text-align: center;
 }
 
-/* #PÁGINA DE lOGIN*/
-.page-login{
-    background: url(../images/login-img.jpg) 50% 50% no-repeat;
-}
-.page-coming .center { 
-  margin: 30% 0 30%;
-   text-align: center;
-   width:200px;
-   height:70px;
-   position:absolute;
-   top:0px;
- }
-.page-login .opaco::bifore{background-color:#2b1b13; opacity: 0.4;padding: 20px;margin: 8% 0 10%; }
-.page-login .center { margin: 8% 0 10%; text-align: center; }
-.page-login h2 {position: relative;color: #b89d64;font-family: 'Playfair Display', serif;font-weight: bold;text-align: center;font-size: 48px;}
-.page-login p{margin: 8px;}
-.page-login  .quote {padding-top: 10px;color: #b89d64;font-size: 30px;}
-.page-login.wp-searchform{; margin-top: 100px; margin-bottom: 100px; font-size: 0; position: relative; }
-.page-login .wp-searchform input[type='text'] {color:#838181; background: none; padding-right: 32%; width: 100%;box-shadow: 0 0 1px 1px #b89d64;    padding: 10px 22px 10px 22px; }
-.page-login .wp-searchform input[type='password'] {color:#838181 ;line-height: 49px; background: none; padding-right: 50%; width: 100%; height:48px; border-color: #b89d64;box-shadow: 0 0 0px 0px none;    padding: 10px 22px 10px 22px;}
-.page-login .wp-searchfor .btn.btn-bordered { background:#fff;color: #b89d64;border: 1px solid #b89d64;}
-.page-login  .quote {padding-top: 10px;color: #b89d64;font-size: 30px;}
 
-.page-login .error {    
-    min-width: 10px;
-    padding: 5px 7px;
-    font-size: 13px;
-    font-weight: normal;
-    color:#fff ;
-    border-color: #A94B4B ;
-    line-height: 2;
-    vertical-align: middle;
-    white-space: nowrap;
-    text-align: center;
-    background-color: none;
-    
-}
 
 /* #PÁGINA TRAZABILIDAD*/
 .img-trazabilidad {

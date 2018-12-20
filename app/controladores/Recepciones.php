@@ -112,7 +112,7 @@
 			}else
 			{
 				//NO se hizo submit al boton Consultar
-				$mensaje_error=array('mensaje_error'=>'El cliente no esta registrado');
+				$mensaje_error=array('mensaje_error'=>'No hay un cliente registrado con ese número de documento.');
 				$this->vista('/Recepciones/registrar_nueva', $mensaje_error);
 			}
 			var_dump($datos);
