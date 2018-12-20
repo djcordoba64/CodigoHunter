@@ -164,7 +164,7 @@ textarea { padding: 10px 22px 10px 22px; background: #f5f2eb; border:1px solid #
 .main-menu .sub-menu > li.parent > a:before { content: "\f105"; font-family: FontAwesome; font-size: 14px; color: inherit; position: absolute; top: 8px; right: 22px; transition: all 200ms; }
 .main-menu .sub-menu > li.parent:hover > a:before { right: 16px; }
 .main-menu .sub-menu > li.active { background: #b89d64;}
-.main-menu > li.parent:hover > .sub-menu { top: 61px; opacity: 1; visibility: visible; z-index: -1; }
+.main-menu > li.parent:hover > .sub-menu { top: 61px; opacity: 1; visibility: visible; z-index: 999; }
 .main-menu .third-level { padding: 15px 0; width: 223px; position: absolute; left: 0; top: 0; z-index: 10; opacity: 0; visibility: hidden; background: #b89d64; transition: all 300ms; z-index: -1;}
 .main-menu .third-level > li {}
 .main-menu .sub-menu > li.parent:hover > .third-level { left: 100%; opacity: 1; visibility: visible;}

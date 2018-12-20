@@ -287,13 +287,17 @@
 
         //perfil del usuario direrente al administrador
         public function editarPerfil($datos,$destino1){
-          $this->db->query('UPDATE personas SET correo=:correo, numeroContacto=:numeroContacto,direccion=:direccion,foto=:foto, updated_at= NOW(), updated_by = :updated_by where idPersona= :idPersona');
+            if($destino1=="")            
+                $this->db->query('UPDATE personas SET correo=:correo, numeroContacto=:numeroContacto,direccion=:direccion, updated_at= NOW(), updated_by = :updated_by where idPersona= :idPersona');
+            else
+                $this->db->query('UPDATE personas SET correo=:correo, numeroContacto=:numeroContacto,direccion=:direccion,foto=:foto, updated_at= NOW(), updated_by = :updated_by where idPersona= :idPersona');
 
            //vinculamos los valores
             $this->db->bind(':idPersona',  $datos['idPersona']);
              $this->db->bind(':correo'       ,  $datos['correo']);
             $this->db->bind(':numeroContacto'  ,  $datos['numeroContacto']);
             $this->db->bind(':direccion'       ,  $datos['direccion']);
+            if($destino1!="") 
             $this->db->bind(':foto'  ,  $destino1);           
             $this->db->bind(':updated_by' ,$_SESSION['idUsuario']);
 
