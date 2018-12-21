@@ -1,16 +1,16 @@
 <?php require RUTA_APP . '/vistas/inc/header.php' ?>
 <!-- CART --> 
 
-
+<h2>Recepción de café</h2>
 	<section class="cart-wrap  product-single">
-		<h2>Recepción de café</h2>
+		
 		<div class="woocommerce">
 			<form class="checkout woocommerce-checkout">
 				<div class="container">
-					<div class="row">
-						<div class="col-md-5">
-							<div id="customer_details">
-							    <div class="woocommerce-billing-fields">						        
+					<div class="row" >
+						<div class="col-md-6 form-sect">
+							<div class="title-form-sect">Datos básicos</div>							
+							    <div class="woocommerce-billing-fields">
 							        <div class="woocommerce-billing-fields__field-wrapper">
 							        	<!--en el input hidden tare el id del cliente-->
 										<input type="hidden" name="idCliente" value="<?php echo $datos["idCliente"] ?>" >
@@ -29,7 +29,7 @@
 										<!--este campo me indica si el fomulario esta en modo edicion o agregar nuevo, y guarda el id de la finca a editar en el caso de edicion-->
 										<input type="hidden" name="idLoteCafe" value="<?php echo isset($datos['idLoteCafe'])? $datos['idLoteCafe'] : '-1';?>" >
 							        	<!--MATERIA PRIMA-->												            
-											<p class="form-row form-row-wide address-field update_totals_on_change validate-required" id="billing_country_field" data-priority="40">
+											<p class="form-row form-row-wide address-field update_totals_on_change validate-required" >
 												 <label for="materia">Materia Prima<abbr class="required" title="required">*</abbr></label>
 												<select name="materia" id="materia" style="width: 100%" class="country_to_state country_select select2-hidden-accessible"  tabindex="-1" aria-hidden="true">
 													<option value="">Seleccione...</option>
@@ -37,64 +37,61 @@
 											</p>
 										<div class="col-lg-12">
 											<!--ESPECIE-->       	
-											<p><label for="billing_first_name" class="">Especie<abbr class="required" title="required">*</abbr></label></p>
+											<p><label for="especie" class="">Especie<abbr class="required" title="required">*</abbr></label></p>
 											<input class="input-radio" type="radio" name="especie" value="robusta"  <?php echo  ( isset($datos['especie']) and $datos['especie'] == 'robusta') ? 'checked':'' ?>   required> <label>Robusta</label>
-											<input class="class="input-radio"" type="radio" name="especie" value="arabiga" <?php echo  (isset($datos['especie']) and $datos['especie'] == 'arabiga') ? 'checked':'' ?> > <label>Arábiga</label>
+											<input class="class="input-radio" type="radio" name="especie" value="arabiga" <?php echo  (isset($datos['especie']) and $datos['especie'] == 'arabiga') ? 'checked':'' ?> > <label>Arábiga</label>
 										</div>
 										<!--VARIEDAD-->
-										<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
+										<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field">
 											<label for="variedad">Variedad<abbr class="required" title="required">*</abbr></label>      
 											<input class="input-text" type="text" name="variedad" id="variedad" onkeypress="return soloLetras(event);" id="variedad"  value="<?php echo isset($datos['variedad'])? $datos['variedad'] : '';?>" required>
 										</p>
 										<!--TIPO DE BENEFICIO-->
-										 <p class="form-row form-row-last validate-required woocommerce-validated" id="billing_last_name_field" data-priority="20">
-											<label for="">Tipo de beneficio<abbr class="required" title="required">*</abbr></label>
+										 <p class="form-row form-row-last validate-required woocommerce-validated">
+											<label for="beneficio">Tipo de beneficio<abbr class="required" title="required">*</abbr></label>
 											<select name="beneficio" id="beneficio" style="width: 100%" class="country_to_state country_select select2-hidden-accessible"  tabindex="-1" aria-hidden="true">
 												<option value="">Seleccione...</option>
 											</select>
-										</p>
-										  <!--TIPO TUESTE-->						            
+										</p>						            
 							        </div>
-							    </div>
-							</div>	
+							    </div>								
 						</div>
-						<div class="col-md-6 col-md-offset-1 woocommerce-billing-fields">
-							<h4>Muestreo</h4>
-							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-								<div class="quantity">									
-									<label for="peso" class="">Peso<span  style="color: #b89d64;font-size:17px"> Kg </span><abbr class="required" title="required">*</abbr></label>
-									<input type="number" name="peso"  min="1"  step="1" value="<?php echo isset($datos['peso'])? $datos['peso'] : '';?>">
+						<div class="col-md-6 " style="padding-top: 155px">
+							<div class="col-md-12 form-sect">						
+								<div class="title-form-sect">Mustreo</div>
+								<div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
+									<div class="quantity">									
+										<label for="peso" class="">Peso<span  style="color: #b89d64;font-size:17px"> Kg </span><abbr class="required" title="required">*</abbr></label>
+										<input placeholder="Kg" type="number" name="peso"  min="1"  step="1" value="<?php echo isset($datos['peso'])? $datos['peso'] : '';?>">
+									</div>
 								</div>
-							</div>
-							<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4">
-								<label for="factorRendimiento" class="">Factor rendimiento<abbr class="required" title="required">*</abbr></label>
-									<div class="quantity">									
-										<input type="number" name="factorRendimiento"  min="1"  step="1" value="<?php echo isset($datos['factorRendimiento'])? $datos['factorRendimiento'] : '';?>">
-									</div>
-							</div>
-							<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4">
-								<label for="PorcentajeHumedad" class="">Humedad<span  style="color: #b89d64;font-size:20px"> % </span><abbr class="required" title="required">*</abbr></label>
-									<div class="quantity">									
-										<input type="number" name="PorcentajeHumedad"  min="1"  step="1" value="<?php echo isset($datos['PorcentajeHumedad'])? $datos['PorcentajeHumedad'] : '';?>">
-									</div>
-							</div>
-							<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4">
-								<label for="actividaAcuosa" class="">Actividad acuosa<span  style="color: #b89d64;font-size:20px"></span><abbr class="required" title="required">*</abbr></label>
-									<div class="quantity">									
-										<input type="number" name="actividaAcuosa"  min="1"  step="1" value="<?php echo isset($datos['actividaAcuosa'])? $datos['actividaAcuosa'] : '';?>">
-									</div>
+								<div class=" col-lg-5 col-md-4 col-sm-4 col-xs-4">
+									<label for="factorRendimiento" class="">Factor rendimiento<abbr class="required" title="required">*</abbr></label>
+										<div class="quantity">									
+											<input type="number" name="factorRendimiento"  min="1"  step="1" value="<?php echo isset($datos['factorRendimiento'])? $datos['factorRendimiento'] : '';?>">
+										</div>
+								</div>
+								<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4">
+									<label for="PorcentajeHumedad" class="">Humedad<span  style="color: #b89d64;font-size:20px"> % </span><abbr class="required" title="required">*</abbr></label>
+										<div class="quantity">									
+											<input type="number"  placeholder="%" name="PorcentajeHumedad"  min="1"  step="1" value="<?php echo isset($datos['PorcentajeHumedad'])? $datos['PorcentajeHumedad'] : '';?>">
+										</div>
+								</div>
+								<div class=" col-lg-12">
+									<label for="actividaAcuosa" class="">Actividad acuosa<span  style="color: #b89d64;font-size:20px"></span><abbr class="required" title="required">*</abbr></label>
+										<div class="quantity">									
+											<input type="number" name="actividaAcuosa"  min="1"  step="1" value="<?php echo isset($datos['actividaAcuosa'])? $datos['actividaAcuosa'] : '';?>">
+										</div>
+								</div>	
 							</div>	
 						</div>
-					</div>
-					<hr>
-					<div class="col-md-12 woocommerce-billing-fields">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+						<div class="col-lg-8 col-md-3 col-sm-3 col-xs-3">
 							<label for="cantidad" class="">Cantidad recibida<span  style="color: #b89d64;font-size:17px"> Kg </span><abbr class="required" title="required">*</abbr></label></label>
 							<div class="quantity">									
 								<input type="number" name="cantidad" min="1"  step="1" value="<?php echo isset($datos['cantidad'])? $datos['cantidad'] : '';?>" required>
 							</div>
 						</div>
-						<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<div class=" col-lg-8 col-md-4 col-sm-4 col-xs-4">
 							<!--Estado-->
 							<p class="form-row form-row-first validate-required validate-phone" id="billing_phone_field" data-priority="100">
 								<label for="estado">Estado<abbr class="required" title="required">*</abbr></label>
@@ -105,29 +102,36 @@
 								</select>
 							</p>
 						</div>
+					</div>
+					<hr>
+					<div class="col-md-12 woocommerce-billing-fields">
+						
 						<!--FORMA DE ENTREGA DEL CAFÉ-->
 						<div class="col-md-12">
 							<aside class="shop-sidebar">
 								<div class="widget-area">												    	
 									<div  class="widget-container woocommerce widget_shopping_cart">
 										<div class="art_list product_list_widget ">
-											<h3 class="widget-title">Forma de entrega</h3><hr>
+											<div style="text-align: center"><h3 >Forma de entrega</h3><hr></div>
 												<!--Molida-->
-												<label style="color: #b89d64;font-size:20px"><span>Molida</span></label>
-													<div class="mini_cart_item">
+												<div style="text-align: center"><label style="color: #b89d64;font-size:20px;"><span>Molida</span></label></div>
+													<div class="mini_cart_item"><!--Molida-->
 
 														<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4" style="border-right: 4px solid #b89d64;">
-															<div class="col-lg-12" style="text-align: center;"><span style=" min-width: 20px;padding: 5px 7px;font-size: 13px;font-weight: normal;color:#fff ;border-color: #A94B4B ;line-height: 2;vertical-align: middle;white-space: nowrap;text-align: center;background-color:#b89d64 ;">Libra</span></div>
-															<label for="molidaLibra" class="">Cantidad</label>
-															<div class="quantity">									
-													            <input type="number" name="molidaLibra" style="background-color: #fff" min="1"  step="1" value="<?php echo isset($datos['molidaLibra'])? $datos['molidaLibra'] : '';?>"">
+															<div class="col-lg-12" style="text-align: center;background-color:#b89d64;border-radius: 15px;"><span style="color: #fff; font-weight: bold;">Libra ( lb )</span ></div>
+															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 10px">
+																<label for="molidaLibra" class="">Cantidad</label>
+															<div class="quantity" >									
+													            <input type="number" placeholder="lb" name="molidaLibra" style="background-color: #fff" min="1"  step="1" value="<?php echo isset($datos['molidaLibra'])? $datos['molidaLibra'] : '';?>"">
 															</div>
-															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4">
+															</div>
+															
+															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 10px">
 																<label for="molidaLibra" class="">Valor</label>
-																<input type="text" name="">
+																<input type="text" name="" placeholder="$" class="" style="height:35px;">
 															</div>
 														</div>
-														<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="border-right: 4px solid #b89d64;">
+														<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="border-right: 4px solid #b89d64;border-radius: 15px;">
 															<label for="molidaMediaLibra" class="">1/2 Lb</label>
 															<div class="quantity">									
 												                <input type="number" name="molidaMediaLibra" style="background-color: #fff" min="1"  step="1" value="<?php echo isset($datos['molidaMediaLibra'])? $datos['molidaMediaLibra'] : '';?>">
@@ -138,7 +142,7 @@
 															</div>
 														</div>
 														<!--CINCO LIBRAS-->
-														<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="border-right: 4px solid #b89d64;">
+														<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="border-right: 4px solid #b89d64;border-radius: 15px;">
 															<label for="molidaCincoLibras" class="">5 lb</label>
 															<div class="quantity">									
 												                <input type="number" name="molidaCincoLibras" style="background-color: #fff" min="1"  step="1" value="<?php echo isset($datos['molidaCincoLibras'])? $datos['molidaCincoLibras'] : '';?>">
@@ -150,9 +154,9 @@
 														</div>													                   
 													</div>
 													<!--GRANO-->
-													<label style="color: #b89d64;font-size:20px"><span>Grano</span></label>
+													<div style="text-align: center"><label style="color: #b89d64;font-size:20px;"><span>Grano</span></label></div>
 														<div class="mini_cart_item ">
-															 <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="border-right: 4px solid #b89d64;">
+															 <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="border-right: 4px solid #b89d64;border-radius: 15px;">
 																<label for="granoLibra" class="">lb</label>
 																<div class="quantity">									
 												                    <input type="number" name="granoLibra" style="background-color: #fff" min="1"  step="1" value="<?php echo isset($datos['granoLibra'])? $datos['granoLibra'] : '';?>">
@@ -162,7 +166,7 @@
 																	<input type="text" name="">
 																</div>
 															</div>
-															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="border-right: 4px solid #b89d64;">
+															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="border-right: 4px solid #b89d64;border-radius: 15px;">
 																<label for="granoMediaLibra" class="">1/2 Lb</label>
 																<div class="quantity">									
 												                    <input type="number" name="granoMediaLibra" style="background-color: #fff" min="1"  step="1" value="<?php echo isset($datos['granoMediaLibra'])? $datos['granoMediaLibra'] : '';?>"/>
@@ -173,7 +177,7 @@
 																</div>
 															</div>
 															<!---->
-															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="border-right: 4px solid #b89d64;">
+															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4"  style="border-right: 4px solid #b89d64;border-radius: 15px;">
 																<label for="granoCincoLibras" class="">5 lb</label>
 																<div class="quantity">									
 												                   <input type="number" name="granoCincoLibras" style="background-color: #fff" min="1"  step="1" value="<?php echo isset($datos['granoCincoLibras'])? $datos['granoCincoLibras'] : '';?>">
@@ -185,10 +189,10 @@
 															 </div>
 														</div>
 														<!--AGRANEL-->
-														<label style="color: #b89d64;font-size:20px"><span>Agranel</span></label>
+														
 														<div class="mini_cart_item ">													
 															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4">
-																<label for="agranel" class="">Agranel</label>
+																<div style="text-align: center"><label style="color: #b89d64;font-size:20px;"><span>Agranel</span></label></div>
 																<div class="quantity">									
 														            <input type="number" name="agranel" style="background-color: #fff" min="1"  step="1" value="<?php echo isset($datos['agranel'])? $datos['agranel'] : '';?>">
 																</div>

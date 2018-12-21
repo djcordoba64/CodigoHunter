@@ -109,6 +109,18 @@ padding: 60px;
 text-decoration: underline  #b89d64;
  line-height: bold;
 }
+.form-sect{
+  padding: 20px; border-color: #f7f7f7; border-style: solid;
+}
+.title-form-sect{
+  font-size: 25px;
+  font-weight:bold;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: #2c1910;
+  padding: 15px;
+}
+
 
 /*CAFE*/
 .cafe-Agregar-recepcion{
