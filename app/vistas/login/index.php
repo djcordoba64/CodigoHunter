@@ -21,7 +21,7 @@
                   <div class="quote">
                     <i class="fa fa-user-circle"></i>
                   </div>
-                  <input class="input-text " name="identificacion"  placeholder="Numero de identificación.." value="" autocomplete="Numero de identificación" type="text" required>
+                  <input class="input-text " name="identificacion"  placeholder="Número de identificación.." value="" autocomplete="Numero de identificación" type="text" required>
                
                 <p>
                   <div class="quote">

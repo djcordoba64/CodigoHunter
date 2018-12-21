@@ -7,7 +7,7 @@
     border:7px  #666;
 }
 .page-login{
-    background: url(../images/login-img.jpg) 50% 50% no-repeat;
+   background: url(../images/login.jpg) 50% 50% no-repeat;
 }
 .page-coming .center { 
   margin: 30% 0 30%;
@@ -17,7 +17,7 @@
    position:absolute;
    top:0px;
  }
-.page-login .opaco::bifore{background-color:#2b1b13; opacity: 0.4;padding: 20px;margin: 8% 0 10%; }
+.page-login .opaco{background-color:; padding: 20px;margin: 8% 0 10%;background: url(../images/login.jpg) 50% 50% no-repeat; }
 .page-login .center { margin: 8% 0 10%; text-align: center; }
 .page-login h2 {position: relative;color: #b89d64;font-family: 'Playfair Display', serif;font-weight: bold;text-align: center;font-size: 48px;}
 .page-login p{margin: 8px;}
@@ -33,7 +33,7 @@
     padding: 5px 7px;
     font-size: 13px;
     font-weight: normal;
-    color:#fff ;
+    color:#B54747 ;
     border-color: #A94B4B ;
     line-height: 2;
     vertical-align: middle;
@@ -110,6 +110,13 @@ text-decoration: underline  #b89d64;
  line-height: bold;
 }
 
+/*CAFE*/
+.cafe-Agregar-recepcion{
+  padding: 20px;
+}
+.cafe-Agregar-recepcion  h2{
+  padding: 20px;
+}
 
 /**/
 
@@ -120,7 +127,7 @@ text-decoration: underline  #b89d64;
 .receipt-main {
   display: inline-block;
   width: 100%;
-  padding: 40px;
+  padding: 20px;
   font-size: 18px;
   border: 1px solid #000;
 }

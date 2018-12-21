@@ -16,7 +16,7 @@
 		public function validar(){
 			if (empty($_POST['identificacion']) OR empty($_POST['contrasena']))
 				{
-					$mensaje_error=array('mensaje_error'=>'El numero de identificación y la contraseña son obligatorios');
+					$mensaje_error=array('mensaje_error'=>'El número de identificación y la contraseña son obligatorios.');
 					$this->vista('/Login/index', $mensaje_error);
 					return;
 				}
@@ -49,7 +49,7 @@
 				}
 				else
 				{
-					$mensaje_error=array('mensaje_error'=>'El numero de identificación y/o la contraseña son incorrectos');
+					$mensaje_error=array('mensaje_error'=>'El número de identificación y/o la contraseña son incorrectos.');
 					$this->vista('/Login/index', $mensaje_error);
 				}
 
