@@ -106,7 +106,8 @@
 									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Lote</th>
 									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Peso</th>
 									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Especie</th>
-									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Variedad</th>						<th style="font-size:8px;text-align: center" ROWSPAN=2>Humedad</th>						
+									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Variedad</th>
+									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Humedad</th>						
 									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Factor Rendimiento</th>
 									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Tostion</th>
 									    		<th style="font-size:8px;text-align: center" ROWSPAN=2>Materia Prima</th>

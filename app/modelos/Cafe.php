@@ -35,7 +35,8 @@
 			foreach ($datosLote as $lote) {
 						//preparamos la consulata
 					//$datos["archivo"]=$lote->archivo;
-					$datos["peso"]=$lote->peso;
+					$datos["pesoRecibido"]=$lote->pesoRecibido;
+					$datos["pesoMuestra"]=$lote->pesoMuestra;
 					$datos["variedad"]=$lote->variedad;
 					$datos["tipoTueste"]=$lote->tipoTueste;
 					$datos["materia"]=$lote->materia;
@@ -50,8 +51,15 @@
 					$datos["granoMediaLibra"]=$lote->granoMediaLibra;
 					$datos["granoCincoLibras"]=$lote->granoCincoLibras;
 					$datos["agranel"]=$lote->agranel;
-					$datos["cantidad"]=$lote->cantidad;
-					$datos["valorUnitario"]=$lote->valorUnitario;
+					$datos["VrmolidaLibra"]=$lote->molidaLibra;
+					$datos["VrmolidaMediaLibra"]=$lote->molidaMediaLibra;
+					$datos["VrmolidaCincoLibras"]=$lote->molidaCincoLibras;
+					$datos["VrgranoLibra"]=$lote->granoLibra;
+					$datos["VrgranoMediaLibra"]=$lote->granoMediaLibra;
+					$datos["VrgranoCincoLibras"]=$lote->granoCincoLibras;
+					$datos["Vragranel"]=$lote->agranel;
+					$datos["actividadAcuosa"]=$lote->actividadAcuosa;
+					$datos["valorTotal"]=$lote->valorTotal;
 					$datos["estado"]=$lote->estado;
 					$datos["idRecepcion"]=$idRecepcion;
 					// agregar POST (el id enviado es -1)
@@ -67,17 +75,18 @@
 
 		public function agregarLote($datosLote,$idCliente){
 			//preparamos la consulata
-			$this->db->query('INSERT INTO cafes (codigoCafe,peso,especie,variedad,idtipoBeneficio,idmateriaPrima,porcentajeHumedad,factorRendimiento,
-			tipoTueste,molidaLibra,molidaMediaLibra,molidaCincoLibras,granoLibra,granoMediaLibra,granoCincoLibras,agranel,cantidad,
-			valorUnitario,estado,idRecepcion,created_at,created_by) 
-			 VALUES (:codigoCafe, :peso, :especie, :variedad, :idtipoBeneficio, :idmateriaPrima, :porcentajeHumedad, :factorRendimiento, 
-			 :tipoTueste, :molidaLibra, :molidaMediaLibra, :molidaCincoLibras, :granoLibra, :granoMediaLibra, :granoCincoLibras,:agranel, :cantidad, 
-			 :valorUnitario, :estado, :idRecepcion, NOW(), :created_by)
+			$this->db->query('INSERT INTO cafes (codigoCafe,pesoRecibido,pesoMuestra,especie,variedad,idtipoBeneficio,idmateriaPrima,porcentajeHumedad,factorRendimiento,
+			tipoTueste,molidaLibra,molidaMediaLibra,molidaCincoLibras,granoLibra,granoMediaLibra,granoCincoLibras,agranel,VrmolidaLibra,VrmolidaMediaLibra,VrmolidaCincoLibras,VrgranoLibra,VrgranoMediaLibra,VrgranoCincoLibras,Vragranel,actividadAcuosa,
+			valorTotal,estado,idRecepcion,created_at,created_by) 
+			 VALUES (:codigoCafe, :pesoRecibido,pesoMuestra, :especie, :variedad, :idtipoBeneficio, :idmateriaPrima, :porcentajeHumedad, :factorRendimiento, 
+			 :tipoTueste, :molidaLibra, :molidaMediaLibra, :molidaCincoLibras, :granoLibra, :granoMediaLibra, :granoCincoLibras,:agranel,:VrmolidaLibra, :VrmolidaMediaLibra, :VrmolidaCincoLibras, :VrgranoLibra, :VrgranoMediaLibra, :VrgranoCincoLibras,:Vragranel, :actividadAcuosa, 
+			 :valorTotal, :estado, :idRecepcion, NOW(), :created_by)
 			 ');
 			 
 			 //vinculamos los valores
 			 $this->db->bind(':codigoCafe' , 0);
-			 $this->db->bind(':peso',$datosLote['peso']);
+			 $this->db->bind(':pesoRecibido',$datosLote['pesoRecibido']);
+			 $this->db->bind(':pesoMuestra',$datosLote['pesoMuestra']);
 			 $this->db->bind(':especie', $datosLote['especie']);
 			 $this->db->bind(':variedad', $datosLote['variedad']);	
 			 $this->db->bind(':idtipoBeneficio', $datosLote['beneficio']);	
@@ -92,8 +101,15 @@
 			 $this->db->bind(':granoMediaLibra', $datosLote['granoMediaLibra']);
 			 $this->db->bind(':granoCincoLibras', $datosLote['granoCincoLibras']);
 			 $this->db->bind(':agranel', $datosLote['agranel']);
-			 $this->db->bind(':cantidad', $datosLote['cantidad']);	
-			 $this->db->bind(':valorUnitario', $datosLote['valorUnitario']);		
+			  $this->db->bind(':VrmolidaLibra', $datosLote['molidaLibra']);
+			 $this->db->bind(':VrmolidaMediaLibra', $datosLote['molidaMediaLibra']);	
+			 $this->db->bind(':VrmolidaCincoLibras', $datosLote['molidaCincoLibras']);		
+			 $this->db->bind(':VrgranoLibra', $datosLote['granoLibra']);
+			 $this->db->bind(':VrgranoMediaLibra', $datosLote['granoMediaLibra']);
+			 $this->db->bind(':VrgranoCincoLibras', $datosLote['granoCincoLibras']);
+			 $this->db->bind(':Vragranel', $datosLote['agranel']);
+			 $this->db->bind(':actividadAcuosa', $datosLote['actividadAcuosa']);	
+			 $this->db->bind(':valor<total', $datosLote['valorTotal']);		
 			 $this->db->bind(':estado', $datosLote['estado']);
 			 $this->db->bind(':idRecepcion', $datosLote['idRecepcion']);
 			 $this->db->bind(':created_by', $_SESSION['idUsuario']);

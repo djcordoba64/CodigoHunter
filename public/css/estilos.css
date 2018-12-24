@@ -130,6 +130,30 @@ text-decoration: underline  #b89d64;
   padding: 20px;
 }
 
+.set-entrega{
+border-right: 4px solid #b89d64;
+}
+.title-opc{
+  text-align: center;background-color:#b89d64;border-radius: 15px;
+}
+.opcion-nombre{
+  color: #fff; font-weight: bold;
+}
+.inp-cant{
+  background-color: #fff;
+}
+.div-cant{
+  padding: 10px;
+}
+.inp-valor{
+  height:35px;
+}
+.nom{
+  text-align: center
+}
+.lbdescrip{
+  color: #b89d64;font-size:20px;
+}
 /**/
 
 .cart-wrapU { padding: 10px 0 40px 0; }

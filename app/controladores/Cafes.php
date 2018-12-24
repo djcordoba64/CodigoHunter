@@ -32,20 +32,32 @@
  		//limpiando formulario
  		$datos['idCafe']='';
 		$datos['codigoCafe']='';
-		$datos['peso']='';
 		$datos['especie']='';
 		$datos['variedad']='';
 		$datos['porcentajeHumedad']='';
 		$datos['factorRendimiento']='';
 		$datos['tipoTueste']='';
-		$datos['molidadMedilaLibra']='';
-		$datos['granoMediaLibra']='';
-		$datos['granoLibra']='';
-		$datos['agranel']='';
-		$datos['estado']='';
-		//$datos['foto']='';
-		$datos['cantidad']='';
-		$datos['valorUnitario']='';
+
+		$datos["molidaLibra"]='';
+		$datos["molidaMediaLibra"]='';
+		$datos["molidaCincoLibras"]='';
+		$datos["granoLibra"]='';
+		$datos["granoMediaLibra"]='';
+		$datos["granoCincoLibras"]='';
+		$datos["agranel"]='';
+
+		$datos["VrmolidaLibra"]='';
+		$datos["VrmolidaMediaLibra"]='';
+		$datos["VrmolidaCincoLibras"]='';
+		$datos["VrgranoLibra"]='';
+		$datos["VrgranoMediaLibra"]='';
+		$datos["VrgranoCincoLibras"]='';
+		$datos["VrAgranel"]='';
+		$datos["actividadAcuosa"]='';
+		$datos["pesoMuestra"]='';
+		$datos["pesoRecibido"]='';
+		$datos["valorTotal"]='';
+
 		$datos['idMateriPrima']='';
 		$datos['idTipoBeneficio']='';
 
@@ -115,7 +127,8 @@
 
 			// recupero los datos del formulario, la finca que se desea agregar/actualizar
 			//$datos["archivo"]=$_POST['archivo'];
-			$datos["peso"]=$_POST['peso'];
+			$datos["pesoMuestra"]=$_POST['pesoMuestra'];
+			$datos["pesoRecibido"]=$_POST['pesoRecibido'];
 			$datos["variedad"]=$_POST['variedad'];
 			$datos["tipoTueste"]=$_POST['tipoTueste'];
 			$datos["materia"]=$_POST['materia'];
@@ -123,6 +136,8 @@
 			$datos["PorcentajeHumedad"]=$_POST['PorcentajeHumedad'];
 			$datos["factorRendimiento"]=$_POST['factorRendimiento'];
 			$datos["especie"]=$_POST['especie'];
+			$datos["actividadAcuosa"]=$_POST['actividadAcuosa'];
+
 			$datos["molidaLibra"]=$_POST['molidaLibra'];
 			$datos["molidaMediaLibra"]=$_POST['molidaMediaLibra'];
 			$datos["molidaCincoLibras"]=$_POST['molidaCincoLibras'];
@@ -130,8 +145,16 @@
 			$datos["granoMediaLibra"]=$_POST['granoMediaLibra'];
 			$datos["granoCincoLibras"]=$_POST['granoCincoLibras'];
 			$datos["agranel"]=$_POST['agranel'];
-			$datos["cantidad"]=$_POST['cantidad'];
-			$datos["valorUnitario"]=$_POST['valorUnitario'];
+
+			$datos["VrmolidaLibra"]=$_POST['VrmolidaLibra'];
+			$datos["VrmolidaMediaLibra"]=$_POST['VrmolidaMediaLibra'];
+			$datos["VrmolidaCincoLibras"]=$_POST['VrmolidaCincoLibras'];
+			$datos["VrgranoLibra"]=$_POST['VrgranoLibra'];
+			$datos["VrgranoMediaLibra"]=$_POST['VrgranoMediaLibra'];
+			$datos["VrgranoCincoLibras"]=$_POST['VrgranoCincoLibras'];
+			$datos["VrAgranel"]=$_POST['VrAgranel'];
+			$datos["valorTotal"]=$_POST['valorTotal'];
+
 			$datos["estado"]=$_POST['estado'];
 			$datos["idLoteCafe"]=$_POST['idLoteCafe'];
 				
@@ -143,7 +166,7 @@
 				foreach ($datos['lotesArr'] as $lote) {
 					$lote_temp = array(
 						//'archivo'=>$lote->archivo,
-										'peso'=>$lote->peso,
+										'pesoRecibido'=>$lote->pesoRecibido,
 										'variedad'=>$lote->variedad,
 										'tipoTueste'=>$lote->tipoTueste,
 										'materia'=>$lote->materia,
@@ -158,10 +181,11 @@
 										'granoMediaLibra'=>$lote->granoMediaLibra,
 										'granoCincoLibras'=>$lote->granoCincoLibras,
 										'agranel'=>$lote->agranel,
-										'cantidad'=>$lote->cantidad,
-										'valorUnitario'=>$lote->valorUnitario,
 										'estado'=>$lote->estado,
+										'actividadAcuosa' => $lote->actividadAcuosa,
+										'valorTotal' => $lote->valorTotal,
 										'idLoteCafe' => $lote->idLoteCafe);
+
 					array_push($temp_array, $lote_temp);
 
 				}
@@ -180,7 +204,8 @@
 						// creo array con datos
 						$nuevoLote = array(
 										//'archivo'=>$_POST['archivo'],
-										'peso'=>$_POST['peso'],
+										'pesoRecibido'=>$_POST['pesoRecibido'],
+										'pesoMuestra'=>$_POST['pesoMuestra'],
 										'variedad'=>$_POST['variedad'],
 										'tipoTueste'=>$_POST['tipoTueste'],
 										'materia'=>$_POST['materia'],
@@ -197,7 +222,17 @@
 										'agranel'=>$_POST['agranel'],
 										'cantidad'=>$_POST['cantidad'],
 										'valorUnitario'=>$_POST['valorUnitario'],
-										'estado'=>$_POST['estado'], 
+										'estado'=>$_POST['estado'],
+										'VrmolidaLibra'=>$_POST['VrmolidaLibra'],
+										'VrmolidaMediaLibra'=>$_POST['VrmolidaMediaLibra'],
+										'VrmolidaCincoLibras'=>$_POST['VrmolidaCincoLibras'],
+										'VrgranoLibra'=>$_POST['VrgranoLibra'],
+										'VrgranoLibra'=>$_POST['VrgranoMediaLibra'],
+										'VrgranoCincoLibras'=>$_POST['VrgranoCincoLibras'],
+										'VrAgranel'=>$_POST['VrAgranel'],
+										'actividadAcuosa'=>$_POST['actividadAcuosa'],
+										'valorTotal'=>$_POST['valorTotal'],
+
 										'idLoteCafe' => count($datos["lotesArr"])//agrega un id ficticio para poder editarlo despues, coincide con la pocision en el arreglo para que al editar se pueda usar este mismo id como indice en el arreglo
 								);
 						/*//consultar nombres departamento y municipio
@@ -218,7 +253,8 @@
 						//limpio el formulario
 						unset($datos["nombreFinca"]);
 						//unset($datos["archivo"]);
-						unset($datos["peso"]);
+						unset($datos["pesoRecibido"]);
+						unset($datos["pesoMuestra"]);
 						unset($datos["variedad"]);
 						unset($datos["tipoTueste"]);
 						unset($datos["materia"]);
@@ -233,8 +269,17 @@
 						unset($datos["granoMediaLibra"]);
 						unset($datos["granoCincoLibras"]);
 						unset($datos["agranel"]);
-						unset($datos["cantidad"]);
-						unset($datos["valorUnitario"]);
+						unset($datos["VrmolidaLibra"]);
+						unset($datos["VrmolidaMediaLibra"]);
+						unset($datos["VrmolidaCincoLibras"]);
+						unset($datos["VrgranoLibra"]);
+						unset($datos["VrgranoMediaLibra"]);
+						unset($datos["VrgranoCincoLibras"]);
+						unset($datos["Vragranel"]);
+						unset($datos["actividadAcuosa"]);
+
+						unset($datos["valorTotal"]);
+						
 						unset($datos["estado"]);
 						unset($datos["idLoteCafe"]);
 
@@ -250,7 +295,8 @@
 					//editar finca creada temporalmente
 						
 						$datosModificados = array('archivo'=>$_POST['archivo'],
-										'peso'=>$_POST['peso'],
+										'pesoRecibido'=>$_POST['pesoRecibido'],
+										'pesoMuestra'=>$_POST['pesoMuestra'],
 										'variedad'=>$_POST['variedad'],
 										'tipoTueste'=>$_POST['tipoTueste'],
 										'materia'=>$_POST['materia'],
@@ -265,8 +311,16 @@
 										'granoMediaLibra'=>$_POST['granoMediaLibra'],
 										'granoCincoLibras'=>$_POST['granoCincoLibras'],
 										'agranel'=>$_POST['agranel'],
-										'cantidad'=>$_POST['cantidad'],
-										'valorUnitario'=>$_POST['valorUnitario'],
+										'VrmolidaLibra'=>$_POST['VrmolidaLibra'],
+										'VrmolidaMediaLibra'=>$_POST['VrmolidaMediaLibra'],
+										'VrmolidaCincoLibras'=>$_POST['VrmolidaCincoLibras'],
+										'VrgranoLibra'=>$_POST['VrgranoLibra'],
+										'VrgranoMediaLibra'=>$_POST['VrgranoMediaLibra'],
+										'VrgranoCincoLibras'=>$_POST['VrgranoCincoLibras'],
+										'Vragranel'=>$_POST['Vragranel'],
+
+										
+										'valorTotal'=>$_POST['valorTotal'],
 										'estado'=>$_POST['estado'], 
 										'idLoteCafe' => $_POST["idLoteCafe"]);//usa el id temporal de la finca que se esta editando
 
@@ -288,7 +342,8 @@
 						//limpio el formulario
 						unset($datos["nombreFinca"]);
 						unset($datos["archivo"]);
-						unset($datos["peso"]);
+						unset($datos["pesoRecibido"]);
+						unset($datos["pesoMuestra"]);
 						unset($datos["variedad"]);
 						unset($datos["tipoTueste"]);
 						unset($datos["materia"]);
@@ -303,8 +358,14 @@
 						unset($datos["granoMediaLibra"]);
 						unset($datos["granoCincoLibras"]);
 						unset($datos["agranel"]);
-						unset($datos["cantidad"]);
-						unset($datos["valorUnitario"]);
+						unset($datos["VrmolidaLibra"]);
+						unset($datos["VrmolidaMediaLibra"]);
+						unset($datos["VrmolidaCincoLibras"]);
+						unset($datos["VrgranoLibra"]);
+						unset($datos["VrgranoMediaLibra"]);
+						unset($datos["VrgranoCincoLibras"]);
+						unset($datos["Vragranel"]);
+						unset($datos["valorTotal"]);
 						unset($datos["estado"]);
 						unset($datos["idLoteCafe"]);
 
@@ -358,7 +419,8 @@
 			$temp_array=array();
 			foreach ($datos['lotesArr'] as $lote) {
 				$lote_temp = array('archivo'=>$lote->archivo,
-							'peso'=>$lote->peso,
+							'pesoRecibido'=>$lote->pesoRecibido,
+							'pesoMuestra'=>$lote->pesoMuestra,
 							'variedad'=>$lote->variedad,
 							'tipoTueste'=>$lote->tipoTueste,
 							'materia'=>$lote->materia,
@@ -373,8 +435,16 @@
 							'granoMediaLibra'=>$lote->granoMediaLibra,
 							'granoCincoLibras'=>$lote->granoCincoLibras,
 							'agranel'=>$lote->granel,
-							'cantidad'=>$lote->cantidad,
-							'valorUnitario'=>$lote->valorUnitario,
+							'VrmolidaLibra'=>$lote->VrmolidaLibra,
+							'VrmolidaMediaLibra'=>$lote->VrmolidaMediaLibra,
+							'VrmolidaCincoLibras'=>$lote->VrmolidaCincoLibras,
+							'VrgranoLibra'=>$lote->VrgranoLibra,
+							'VrgranoMediaLibra'=>$lote->VrgranoMediaLibra,
+							'VrgranoCincoLibras'=>$lote->VrgranoCincoLibras,
+							'Vragranel'=>$lote->Vrgranel,
+
+							'actividadAcuosa'=>$lote->actividadAcuosa,
+							'valorTotal'=>$lote->valorTotal,
 							'estado'=>$lote->estado,
 							'idLoteCafe' => $lote->idLoteCafe);
 			array_push($temp_array, $lote_temp);
@@ -389,8 +459,9 @@
 					$datosLote = $datos["lotesArr"][$idLoteEditar];
 
 				//asigno
-				$datos["archivo"]=$datosLote['archivo'];
-				$datos["peso"]=$datosLote['peso'];
+				//$datos["archivo"]=$datosLote['archivo'];
+				$datos["pesoRecibido"]=$datosLote['pesoRecibido'];
+				$datos["pesoMuestra"]=$datosLote['pesoMuestra'];
 				$datos["variedad"]=$datosLote['variedad'];
 				$datos["tipoTueste"]=$datosLote['tipoTueste'];
 				$datos["materia"]=$datosLote['materia'];
@@ -405,8 +476,15 @@
 				$datos["granoMediaLibra"]=$datosLote['granoMediaLibra'];
 				$datos["granoCincoLibras"]=$datosLote['granoCincoLibras'];
 				$datos["agranel"]=$datosLote['agranel'];
-				$datos["cantidad"]=$datosLote['cantidad'];
-				$datos["valorUnitario"]=$datosLote['valorUnitario'];
+				$datos["VrmolidaLibra"]=$datosLote['VrmolidaLibra'];
+				$datos["VrmolidaMediaLibra"]=$datosLote['VrmolidaMediaLibra'];
+				$datos["VrmolidaCincoLibras"]=$datosLote['VrmolidaCincoLibras'];
+				$datos["VrgranoLibra"]=$datosLote['VrgranoLibra'];
+				$datos["VrgranoMediaLibra"]=$datosLote['VrgranoMediaLibra'];
+				$datos["VrgranoCincoLibras"]=$datosLote['VrgranoCincoLibras'];
+				$datos["Vragranel"]=$datosLote['Vragranel'];
+				$datos["actividadAcuosa"]=$datosLote['actividadAcuosa'];
+				$datos["valorTotal"]=$datosLote['valorTotal'];
 				$datos["estado"]=$datosLote['estado'];
 				$datos["idLoteCafe"]=$idLoteEditar;
 
