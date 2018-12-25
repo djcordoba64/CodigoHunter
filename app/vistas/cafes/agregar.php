@@ -55,7 +55,7 @@
 										<!--TIPO DE TUESTE-->
 										<p class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field">
 											<label for="tipoTueste">Tipo de tueste<abbr class="required" title="required">*</abbr></label>      
-											<input class="input-text" type="text" name="variedad" id="tipoTueste" onkeypress="return soloLetras(event);" id="tipoTueste"  value="<?php echo isset($datos['tipoTueste'])? $datos['tipoTueste'] : '';?>" required>
+											<input class="input-text" type="text" name="tipoTueste" id="tipoTueste" onkeypress="return soloLetras(event);" id="tipoTueste"  value="<?php echo isset($datos['tipoTueste'])? $datos['tipoTueste'] : '';?>" required>
 										</p>
 															            
 							        </div>
@@ -130,7 +130,7 @@
 																</div>
 																	 <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 div-cant">
 																	<label for="VrmolidaLibra" class="">Valor</label>
-																	<input type="text" name="VrmolidaLibra" placeholder="$" class="inp-valor" value="<?php echo isset($datos['VrmolidaLibra'])? $datos['VrmolidaLibra'] : '';?>">
+																	<input type="text" name="VrmolidaLibra" placeholder="$" class="inp-valor monto" value="<?php echo isset($datos['VrmolidaLibra'])? $datos['VrmolidaLibra'] : '';?>" id="VrmolidaLibra" onchange="sumar();">
 																</div>
 															</div>
 															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 set-entrega">
@@ -143,7 +143,7 @@
 																</div>
 																	 <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 div-cant">
 																	<label for="VrmolidaMediaLibra" class="">Valor</label>
-																	<input type="text" name="" placeholder="$" class="inp-valor" value="<?php echo isset($datos['VrmolidaMediaLibra'])? $datos['VrmolidaMediaLibra'] : '';?>" >
+																	<input type="text" name="VrmolidaMediaLibra" placeholder="$" class="inp-valor monto"  value="<?php echo isset($datos['VrmolidaMediaLibra'])? $datos['VrmolidaMediaLibra'] : '';?>" id="VrmolidaMediaLibra" onchange="sumar();" >
 																</div>
 															</div>
 															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 set-entrega">
@@ -156,7 +156,7 @@
 																</div>
 																	 <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 div-cant">
 																	<label for="VrmolidaCincoLibras" class="">Valor</label>
-																	<input type="text" name="VrmolidaCincoLibras" placeholder="$" class="inp-valor" value="<?php echo isset($datos['VrmolidaCincoLibras'])? $datos['VrmolidaCincoLibras'] : '';?>">
+																	<input type="text" name="VrmolidaCincoLibras" placeholder="$" class="inp-valor monto" value="<?php echo isset($datos['VrmolidaCincoLibras'])? $datos['VrmolidaCincoLibras'] : '';?>" id="VrmolidaCincoLibras" onchange="sumar();">
 																</div>
 															</div>
 														</div>
@@ -173,7 +173,7 @@
 																</div>
 																	 <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 div-cant">
 																	<label for="VrgranoLibra" class="">Valor</label>
-																	<input type="text" name="VrgranoLibra" placeholder="$" class="inp-valor" value="<?php echo isset($datos['VrgranoLibra'])? $datos['VrgranoLibra'] : '';?>" >
+																	<input type="text" name="VrgranoLibra" placeholder="$" class="inp-valor monto" value="<?php echo isset($datos['VrgranoLibra'])? $datos['VrgranoLibra'] : '';?>"  id="VrgranoLibra" onchange="sumar();" >
 																</div>
 															</div>
 															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 set-entrega">
@@ -186,7 +186,7 @@
 																</div>
 																	 <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 div-cant">
 																	<label for="VrgranoMediaLibra" class="">Valor</label>
-																	<input type="text" name="VrgranoMediaLibra" placeholder="$" class="inp-valor" value="<?php echo isset($datos['VrgranoMediaLibra'])? $datos['VrgranoMediaLibra'] : '';?>" >
+																	<input type="text" name="VrgranoMediaLibra" placeholder="$" class="inp-valor monto" value="<?php echo isset($datos['VrgranoMediaLibra'])? $datos['VrgranoMediaLibra'] : '';?>" onchange="sumar();">
 																</div>
 															</div>
 															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 set-entrega">
@@ -194,12 +194,12 @@
 																<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 div-cant" >
 																	<label for="granoCincoLibras" class="">Cantidad</label>
 																	<div class="quantity" >									
-															            <input type="number" placeholder="lb" name="granoCincoLibras" style="background-color: #fff" min="1"  step="1" value="<?php echo isset($datos['granoCincoLibras'])? $datos['granoCincoLibras'] : '';?>">
+															            <input type="number" placeholder="lb" name="granoCincoLibras" style="background-color: #fff" min="1"  step="1" value="<?php echo isset($datos['granoCincoLibras'])? $datos['granoCincoLibras'] : '';?>" >
 																	</div>
 																</div>
 																	 <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 div-cant">
 																	<label for="VrgranoCincoLibras" class="">Valor</label>
-																	<input type="text" name="VrgranoCincoLibras" placeholder="$" class="inp-valor" value="<?php echo isset($datos['VrgranoCincoLibras'])? $datos['VrgranoCincoLibras'] : '';?>" >
+																	<input type="text" name="VrgranoCincoLibras" placeholder="$" class="inp-valor monto" value="<?php echo isset($datos['VrgranoCincoLibras'])? $datos['VrgranoCincoLibras'] : '';?>" id="VrgranoCincoLibras"  onchange="sumar();">
 																</div>
 															</div>
 														</div>
@@ -215,14 +215,14 @@
 																</div>
 																<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 div-cant">
 																	<label for="Vragranel" class="">Valor</label>
-																	<input type="text" name="VrAgranel" placeholder="$" class="inp-valor" value="<?php echo isset($datos['VrAgranel'])? $datos['VrAgranel'] : '';?>" >
+																	<input type="text" name="VrAgranel" placeholder="$" class="inp-valor monto" value="<?php echo isset($datos['VrAgranel'])? $datos['VrAgranel'] : '';?>" id="VrAgranel"  onchange="sumar();" >
 																</div>
 															</div>
 														</div>
 														<div class="mini_cart_item">
 															<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 div-cant">
 																	<label for="valorTotal" class="">Valor Total</label>
-																	<input type="text" name="valorTotal" placeholder="$" class="inp-valor"  value="<?php echo isset($datos['valorTotal'])? $datos['valorTotal'] : '';?>">
+																	<input type="text"   name="valorTotal" placeholder="$" class="inp-valor"  value="<?php echo isset($datos['valorTotal'])? $datos['valorTotal'] : '';?>" id="valorTotal">
 																</div>
 														</div>
 													</div>
@@ -254,7 +254,7 @@
 											<th style="font-size:14px" class="product-remove">Factor rendimiento</th>
 											<th style="font-size:14px" class="product-remove">Tipo tueste</th>
 											<th style="font-size:14px" class="product-remove">Actividad Acuosa</th>
-											<th style="font-size:14px" class="product-remove">Valor</th>
+											<th style="font-size:14px" class="product-remove">Valor total</th>
 											<th style="font-size:14px" class="product-remove">Estado</th>
 											<th style="font-size:14px" class="product-remove">Acciones</th>
 										</tr>
@@ -263,10 +263,10 @@
 									<?php if (isset($datos['lotesArr'])) { foreach($datos['lotesArr'] as $cafe): ?>
 										<tr class="">
 											<!--<td class="product-remove"><//?php echo $cafe['codigoCafe']?></td>-->
-											<td class="product-remove"><?php echo $cafe['pesoRecibido']?></td>
+											<td class="product-remove"><?php echo $cafe['pesoRecibido']?> Kg</td>
 											<td class="product-remove"><?php echo $cafe['especie']?></td>
 											<td class="product-remove"><?php echo $cafe['variedad']?></td>
-											<td class="product-remove"><?php echo $cafe['PorcentajeHumedad']?></td>
+											<td class="product-remove"><?php echo $cafe['PorcentajeHumedad']?> %</td>
 											<td class="product-remove"><?php echo $cafe['factorRendimiento']?></td>
 											<td class="product-remove"><?php echo $cafe['tipoTueste']?></td>
 											<td class="product-remove"><?php echo $cafe['actividadAcuosa']?></td>
@@ -277,9 +277,7 @@
 												<div class="col-md-6">
 													<input align="center" onclick="submitForm('<?php echo RUTA_URL;?>/Cafes/agregar_editar_temporal/<?php echo $cafe["idLoteCafe"];?>')" class="btn btn-sm btn-default" type="button" value="Editar">
 												</div>
-												<div class="col-md-6">
-													<input align="center"  class="btn btn-sm btn-bordered" type="button" value="Eliminar">
-												</div>	
+											
 											</td>
 										</tr>
 									<?php endforeach; }?>

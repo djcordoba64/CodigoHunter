@@ -149,7 +149,7 @@
 								    		<tr>					
 								                
 								                <td style="font-size:14px;color:#1e130e; font-weight: bold;" scope="row"><?php echo $cafe->codigoCafe?></td>
-								                <td style="font-size:14px"><?php echo $cafe->peso?></td>
+								                <td style="font-size:14px"><?php echo $cafe->pesoRecibido?></td>
 								                <td style="font-size:14px"><?php echo $cafe->especie?></td>
 								                <td style="font-size:14px"><?php echo $cafe->variedad?></td>
 								                <td style="font-size:14px"><?php echo $cafe->factorRendimiento?></td>

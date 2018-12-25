@@ -92,14 +92,17 @@
 								<div class="div-img-perfil" >
 									<img  src="<?php echo RUTA_URL.'/images/perfiles/usuario'.$datos['idPersona'].'.jpg'?>" width="170">
 								</div>
+								<div class="div-input-file">
+										<input type="file" name="foto" >
+									</div>
 
 							</div>	
 						</div>
 					</div>
-				</div>
-				<div  class="col-md-12" >
+					<div  class="col-md-12" >
 					<a href="<?php echo RUTA_URL;?>/paginas/index" class="btn btn-lg btn-bordered">Cancelar</a>
 					<input value="actualizar" class="btn btn-lg btn-brown" type="submit"/>
+				</div>
 				</div>
 			</form>
 		</div>

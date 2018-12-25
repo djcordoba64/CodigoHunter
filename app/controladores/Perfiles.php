@@ -136,6 +136,9 @@
 					'direccion'			=>trim($_POST['direccion'])		
 				];
 
+			if (!isset($destino1))
+				$destino1="";
+
 			$resultado = $this->personaModelo->editarPerfil($datos,$destino1);
 
 			if ($resultado==0){
@@ -159,7 +162,7 @@
 
  				if ($resultado==0){
 					$datos=[				
-					'mensaje_advertencia'		=> 'Perfil Aactualizado'
+					'mensaje_advertencia'		=> 'Perfil Actualizado'
 					];
 				}
  			}

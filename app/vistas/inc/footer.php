@@ -458,16 +458,28 @@
  		$("#mostrarInforme").toggle(1000);
  	});
 
-	
-	//Filtrar por el documento.()->Modulo etrega
-        
-        $('#B_x_documento').keyup(function () {
-            $("#table td.col4:contains('" + $(this).val() + "')").parent().show();
-            $("#table td.col4:not(:contains('" + $(this).val() + "'))").parent().empty();
-        });
-    
-   
-	 
+
+	 /* Sumar los input con los valores de cada una de la forma de entrega en agregar cafe. */
+	function sumar() {
+			 var total = 0;
+
+		  $(".monto").each(function() {
+
+		    if (isNaN(parseFloat($(this).val()))) {
+
+		      total += 0;
+
+		    } else {
+
+		      total += parseFloat($(this).val());
+
+		    }
+
+		  });
+
+		  //alert(total);
+		  $('#valorTotal').val(total);
+	}
 
 
 </script>

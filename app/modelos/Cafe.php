@@ -57,7 +57,7 @@
 					$datos["VrgranoLibra"]=$lote->granoLibra;
 					$datos["VrgranoMediaLibra"]=$lote->granoMediaLibra;
 					$datos["VrgranoCincoLibras"]=$lote->granoCincoLibras;
-					$datos["Vragranel"]=$lote->agranel;
+					$datos["VrAgranel"]=$lote->VrAgranel;
 					$datos["actividadAcuosa"]=$lote->actividadAcuosa;
 					$datos["valorTotal"]=$lote->valorTotal;
 					$datos["estado"]=$lote->estado;
@@ -76,10 +76,10 @@
 		public function agregarLote($datosLote,$idCliente){
 			//preparamos la consulata
 			$this->db->query('INSERT INTO cafes (codigoCafe,pesoRecibido,pesoMuestra,especie,variedad,idtipoBeneficio,idmateriaPrima,porcentajeHumedad,factorRendimiento,
-			tipoTueste,molidaLibra,molidaMediaLibra,molidaCincoLibras,granoLibra,granoMediaLibra,granoCincoLibras,agranel,VrmolidaLibra,VrmolidaMediaLibra,VrmolidaCincoLibras,VrgranoLibra,VrgranoMediaLibra,VrgranoCincoLibras,Vragranel,actividadAcuosa,
+			tipoTueste,molidaLibra,molidaMediaLibra,molidaCincoLibras,granoLibra,granoMediaLibra,granoCincoLibras,agranel,VrmolidaLibra,VrmolidaMediaLibra,VrmolidaCincoLibras,VrgranoLibra,VrgranoMediaLibra,VrgranoCincoLibras,VrAgranel,actividadAcuosa,
 			valorTotal,estado,idRecepcion,created_at,created_by) 
-			 VALUES (:codigoCafe, :pesoRecibido,pesoMuestra, :especie, :variedad, :idtipoBeneficio, :idmateriaPrima, :porcentajeHumedad, :factorRendimiento, 
-			 :tipoTueste, :molidaLibra, :molidaMediaLibra, :molidaCincoLibras, :granoLibra, :granoMediaLibra, :granoCincoLibras,:agranel,:VrmolidaLibra, :VrmolidaMediaLibra, :VrmolidaCincoLibras, :VrgranoLibra, :VrgranoMediaLibra, :VrgranoCincoLibras,:Vragranel, :actividadAcuosa, 
+			 VALUES (:codigoCafe, :pesoRecibido,:pesoMuestra, :especie, :variedad, :idtipoBeneficio, :idmateriaPrima, :porcentajeHumedad, :factorRendimiento, 
+			 :tipoTueste, :molidaLibra, :molidaMediaLibra, :molidaCincoLibras, :granoLibra, :granoMediaLibra, :granoCincoLibras,:agranel,:VrmolidaLibra, :VrmolidaMediaLibra, :VrmolidaCincoLibras, :VrgranoLibra, :VrgranoMediaLibra, :VrgranoCincoLibras,:VrAgranel, :actividadAcuosa, 
 			 :valorTotal, :estado, :idRecepcion, NOW(), :created_by)
 			 ');
 			 
@@ -101,15 +101,15 @@
 			 $this->db->bind(':granoMediaLibra', $datosLote['granoMediaLibra']);
 			 $this->db->bind(':granoCincoLibras', $datosLote['granoCincoLibras']);
 			 $this->db->bind(':agranel', $datosLote['agranel']);
-			  $this->db->bind(':VrmolidaLibra', $datosLote['molidaLibra']);
-			 $this->db->bind(':VrmolidaMediaLibra', $datosLote['molidaMediaLibra']);	
-			 $this->db->bind(':VrmolidaCincoLibras', $datosLote['molidaCincoLibras']);		
-			 $this->db->bind(':VrgranoLibra', $datosLote['granoLibra']);
-			 $this->db->bind(':VrgranoMediaLibra', $datosLote['granoMediaLibra']);
-			 $this->db->bind(':VrgranoCincoLibras', $datosLote['granoCincoLibras']);
-			 $this->db->bind(':Vragranel', $datosLote['agranel']);
+			  $this->db->bind(':VrmolidaLibra', $datosLote['VrmolidaLibra']);
+			 $this->db->bind(':VrmolidaMediaLibra', $datosLote['VrmolidaMediaLibra']);	
+			 $this->db->bind(':VrmolidaCincoLibras', $datosLote['VrmolidaCincoLibras']);		
+			 $this->db->bind(':VrgranoLibra', $datosLote['VrgranoLibra']);
+			 $this->db->bind(':VrgranoMediaLibra', $datosLote['VrgranoMediaLibra']);
+			 $this->db->bind(':VrgranoCincoLibras', $datosLote['VrgranoCincoLibras']);
+			 $this->db->bind(':VrAgranel', $datosLote['VrAgranel']);
 			 $this->db->bind(':actividadAcuosa', $datosLote['actividadAcuosa']);	
-			 $this->db->bind(':valor<total', $datosLote['valorTotal']);		
+			 $this->db->bind(':valorTotal', $datosLote['valorTotal']);		
 			 $this->db->bind(':estado', $datosLote['estado']);
 			 $this->db->bind(':idRecepcion', $datosLote['idRecepcion']);
 			 $this->db->bind(':created_by', $_SESSION['idUsuario']);

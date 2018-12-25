@@ -42,8 +42,8 @@
 							 	</div>
 	  						</div>	
 	  						<p class="receipt-title">RECEPCIÓN DE CAFÉ EN PLANTA</p>
-	  						<div class="pull-right">					  						  
-							  <div class="receipt-section pull-left">
+	  						<div class="">					  						  
+							  <div class="receipt-section ">
 							    <span class="receipt-label text-large">	FECHA:</span>
 							    <span class="text-large"><?php echo $datos['fecha'] ?></span>
 							  </div>
@@ -102,7 +102,7 @@
 							    		<tr >
 								    		
 								    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Lote</th>
-								    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Peso</th>
+								    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Peso recibido</th>
 								    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Humedad</th>
 								    		<th style="font-size:10px;text-align: center" ROWSPAN=2>Tostion</th>
 								    		<th style="font-size:10px;text-align: center" colspan="3">Molida</th>
@@ -125,7 +125,7 @@
 							    		<tr>					
 							                
 							                <td style="font-size:12px" scope="row"><?php echo $cafe->codigoCafe?></td>
-							                <td style="font-size:12px"><?php echo $cafe->peso?></td>
+							                <td style="font-size:12px"><?php echo $cafe->pesoRecibido ?></td>
 							                <td style="font-size:12px"><?php echo $cafe->porcentajeHumedad?></td>
 							                <td style="font-size:12px"><?php echo $cafe->tipoTueste?></td>
 							                <td style="font-size:12px"><?php echo $cafe->molidaLibra?> </td>

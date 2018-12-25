@@ -220,8 +220,7 @@
 										'granoMediaLibra'=>$_POST['granoMediaLibra'],
 										'granoCincoLibras'=>$_POST['granoCincoLibras'],
 										'agranel'=>$_POST['agranel'],
-										'cantidad'=>$_POST['cantidad'],
-										'valorUnitario'=>$_POST['valorUnitario'],
+				
 										'estado'=>$_POST['estado'],
 										'VrmolidaLibra'=>$_POST['VrmolidaLibra'],
 										'VrmolidaMediaLibra'=>$_POST['VrmolidaMediaLibra'],
@@ -294,7 +293,8 @@
 				{
 					//editar finca creada temporalmente
 						
-						$datosModificados = array('archivo'=>$_POST['archivo'],
+						$datosModificados = array(
+										//'archivo'=>$_POST['archivo'],
 										'pesoRecibido'=>$_POST['pesoRecibido'],
 										'pesoMuestra'=>$_POST['pesoMuestra'],
 										'variedad'=>$_POST['variedad'],
@@ -317,7 +317,8 @@
 										'VrgranoLibra'=>$_POST['VrgranoLibra'],
 										'VrgranoMediaLibra'=>$_POST['VrgranoMediaLibra'],
 										'VrgranoCincoLibras'=>$_POST['VrgranoCincoLibras'],
-										'Vragranel'=>$_POST['Vragranel'],
+										'VrAgranel'=>$_POST['VrAgranel'],
+										'actividadAcuosa'=>$_POST['actividadAcuosa'],
 
 										
 										'valorTotal'=>$_POST['valorTotal'],
@@ -364,7 +365,7 @@
 						unset($datos["VrgranoLibra"]);
 						unset($datos["VrgranoMediaLibra"]);
 						unset($datos["VrgranoCincoLibras"]);
-						unset($datos["Vragranel"]);
+						unset($datos["VrAgranel"]);
 						unset($datos["valorTotal"]);
 						unset($datos["estado"]);
 						unset($datos["idLoteCafe"]);
@@ -418,7 +419,8 @@
 			//El siguiente codigo arregla un error que se genera al mandar los datos de las fincas por post, y estas se convierten en objetos, pero las necesitamos como array
 			$temp_array=array();
 			foreach ($datos['lotesArr'] as $lote) {
-				$lote_temp = array('archivo'=>$lote->archivo,
+				$lote_temp = array(
+							//'archivo'=>$lote->archivo,
 							'pesoRecibido'=>$lote->pesoRecibido,
 							'pesoMuestra'=>$lote->pesoMuestra,
 							'variedad'=>$lote->variedad,
@@ -434,14 +436,14 @@
 							'granoLibra'=>$lote->granoLibra,
 							'granoMediaLibra'=>$lote->granoMediaLibra,
 							'granoCincoLibras'=>$lote->granoCincoLibras,
-							'agranel'=>$lote->granel,
+							'agranel'=>$lote->agranel,
 							'VrmolidaLibra'=>$lote->VrmolidaLibra,
 							'VrmolidaMediaLibra'=>$lote->VrmolidaMediaLibra,
 							'VrmolidaCincoLibras'=>$lote->VrmolidaCincoLibras,
 							'VrgranoLibra'=>$lote->VrgranoLibra,
 							'VrgranoMediaLibra'=>$lote->VrgranoMediaLibra,
 							'VrgranoCincoLibras'=>$lote->VrgranoCincoLibras,
-							'Vragranel'=>$lote->Vrgranel,
+							'VrAgranel'=>$lote->VrAgranel,
 
 							'actividadAcuosa'=>$lote->actividadAcuosa,
 							'valorTotal'=>$lote->valorTotal,
@@ -482,11 +484,13 @@
 				$datos["VrgranoLibra"]=$datosLote['VrgranoLibra'];
 				$datos["VrgranoMediaLibra"]=$datosLote['VrgranoMediaLibra'];
 				$datos["VrgranoCincoLibras"]=$datosLote['VrgranoCincoLibras'];
-				$datos["Vragranel"]=$datosLote['Vragranel'];
+				$datos["VrAgranel"]=$datosLote['VrAgranel'];
 				$datos["actividadAcuosa"]=$datosLote['actividadAcuosa'];
-				$datos["valorTotal"]=$datosLote['valorTotal'];
+				$datos["valorTotal"]=$datos["VrmolidaLibra"]+$datos["VrmolidaMediaLibra"]+$datos["VrmolidaCincoLibras"]+$datos["VrgranoLibra"]+$datos["VrgranoMediaLibra"]+$datos["VrgranoCincoLibras"]+$datos["VrAgranel"];
 				$datos["estado"]=$datosLote['estado'];
 				$datos["idLoteCafe"]=$idLoteEditar;
+
+
 
 				//envio datos de fincas existentes para gurdarlas en el campo hidden para poder editar las temporales o finalmente guardarlas en BD despues
 						$datos["lotesJson"]=json_encode($datos["lotesArr"]);
