@@ -167,6 +167,7 @@
 					$lote_temp = array(
 						//'archivo'=>$lote->archivo,
 										'pesoRecibido'=>$lote->pesoRecibido,
+										'pesoMuestra'=>$lote->pesoMuestra,
 										'variedad'=>$lote->variedad,
 										'tipoTueste'=>$lote->tipoTueste,
 										'materia'=>$lote->materia,
@@ -181,6 +182,13 @@
 										'granoMediaLibra'=>$lote->granoMediaLibra,
 										'granoCincoLibras'=>$lote->granoCincoLibras,
 										'agranel'=>$lote->agranel,
+										'VrmolidaLibra'=>$lote->VrmolidaLibra,
+										'VrmolidaMediaLibra'=>$lote->VrmolidaMediaLibra,
+										'VrmolidaCincoLibras'=>$lote->VrmolidaCincoLibras,
+										'VrgranoLibra'=>$lote->VrgranoLibra,
+										'VrgranoMediaLibra'=>$lote->VrgranoMediaLibra,
+										'VrgranoCincoLibras'=>$lote->VrgranoCincoLibras,
+										'VrAgranel'=>$lote->VrAgranel,
 										'estado'=>$lote->estado,
 										'actividadAcuosa' => $lote->actividadAcuosa,
 										'valorTotal' => $lote->valorTotal,
@@ -219,19 +227,19 @@
 										'granoLibra'=>$_POST['granoLibra'],
 										'granoMediaLibra'=>$_POST['granoMediaLibra'],
 										'granoCincoLibras'=>$_POST['granoCincoLibras'],
-										'agranel'=>$_POST['agranel'],
-				
-										'estado'=>$_POST['estado'],
+										'agranel'=>$_POST['agranel'],				
+										
 										'VrmolidaLibra'=>$_POST['VrmolidaLibra'],
 										'VrmolidaMediaLibra'=>$_POST['VrmolidaMediaLibra'],
 										'VrmolidaCincoLibras'=>$_POST['VrmolidaCincoLibras'],
 										'VrgranoLibra'=>$_POST['VrgranoLibra'],
-										'VrgranoLibra'=>$_POST['VrgranoMediaLibra'],
+										'VrgranoMediaLibra'=>$_POST['VrgranoMediaLibra'],
 										'VrgranoCincoLibras'=>$_POST['VrgranoCincoLibras'],
 										'VrAgranel'=>$_POST['VrAgranel'],
 										'actividadAcuosa'=>$_POST['actividadAcuosa'],
 										'valorTotal'=>$_POST['valorTotal'],
 
+										'estado'=>$_POST['estado'],
 										'idLoteCafe' => count($datos["lotesArr"])//agrega un id ficticio para poder editarlo despues, coincide con la pocision en el arreglo para que al editar se pueda usar este mismo id como indice en el arreglo
 								);
 						/*//consultar nombres departamento y municipio
@@ -274,7 +282,7 @@
 						unset($datos["VrgranoLibra"]);
 						unset($datos["VrgranoMediaLibra"]);
 						unset($datos["VrgranoCincoLibras"]);
-						unset($datos["Vragranel"]);
+						unset($datos["VrAgranel"]);
 						unset($datos["actividadAcuosa"]);
 
 						unset($datos["valorTotal"]);

@@ -212,7 +212,7 @@
 							    		<tr>					
 							                
 							                <td style="font-size:12px" scope="row"><?php echo $cafe->codigoCafe?></td>
-							                <td style="font-size:12px"><?php echo $cafe->peso?></td>
+							                <td style="font-size:12px"><?php echo $cafe->pesoRecibido?></td>
 							                <td style="font-size:12px"><?php echo $cafe->mallas?></td>
 							                <td style="font-size:12px"><?php echo $cafe->pesoCafeVerde?></td>
 							                <td style="font-size:12px"><?php echo $cafe->mermaTrilla?> %</td>
